@@ -10,7 +10,7 @@
       "id": 2,
       "question": "Liczba usterek w metrze bieżącym kabla",
       "correct": "poissona",
-      "explanation": "Rozkład Poissona modeluje rzadkie zdarzenia w stałym przedziale (czasu, przestrzeni). Usterki występują losowo i niezależnie, co spełnia założenia Poissona."
+      "explanation": "Rozkład Poissona modeluje liczbę zdarzeń w stałym przedziale (czasu/przestrzeni), gdy zdarzenia występują ze stałą średnią częstością (λ), niezależnie od siebie i bez górnego ograniczenia. Usterki spełniają te założenia."
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "id": 5,
       "question": "Liczba zgłoszeń na infolinię w ciągu godziny",
       "correct": "poissona",
-      "explanation": "Zgłoszenia przychodzą losowo w czasie z pewną średnią częstością (λ). To klasyczny przykład rozkładu Poissona dla zdarzeń w ustalonym czasie."
+      "explanation": "Zgłoszenia przychodzą ze stałą średnią częstością (λ zgłoszeń/godz), niezależnie od siebie, bez górnego limitu. To klasyczne założenia Poissona: zdarzenia w stałym czasie ze znaną λ."
     },
     {
       "id": 6,
@@ -46,7 +46,7 @@
       "id": 8,
       "question": "Liczba wypadków drogowych na skrzyżowaniu w ciągu tygodnia",
       "correct": "poissona",
-      "explanation": "Wypadki są rzadkimi zdarzeniami zachodzącymi losowo w czasie. Spełniają założenia Poissona: niezależność i stała średnia częstość."
+      "explanation": "Wypadki zachodzą ze stałą średnią częstością (λ wypadków/tydzień), niezależnie od siebie, w każdym momencie z równym prawdopodobieństwem. Teoretycznie bez górnego limitu. To Poisson."
     },
     {
       "id": 9,
@@ -64,7 +64,7 @@
       "id": 11,
       "question": "Liczba literówek na stronie książki",
       "correct": "poissona",
-      "explanation": "Literówki są rzadkimi błędami występującymi losowo w tekście. Średnia liczba literówek na stronę = λ, rozkład Poissona."
+      "explanation": "Literówki występują ze stałą średnią częstością (λ literówek/stronę), niezależnie od siebie, w dowolnym miejscu tekstu. Brak górnego ograniczenia. Rozkład Poissona."
     },
     {
       "id": 12,
@@ -82,7 +82,7 @@
       "id": 14,
       "question": "Liczba błędów w 1000 liniach kodu programu",
       "correct": "poissona",
-      "explanation": "Błędy występują rzadko i losowo w kodzie. Przy dużej liczbie linii i małym prawdopodobieństwie błędu, rozkład Poissona jest dobrym modelem."
+      "explanation": "Błędy występują ze stałą średnią częstością (λ błędów/1000 linii), niezależnie od siebie, w dowolnym miejscu kodu. Brak górnego limitu (nie ma ustalonej liczby prób jak w dwumianowym). To Poisson."
     },
     {
       "id": 15,
@@ -100,7 +100,7 @@
       "id": 17,
       "question": "Liczba klientów wchodzących do sklepu w ciągu 10 minut",
       "correct": "poissona",
-      "explanation": "Klienci przychodzą losowo w czasie ze średnią częstością λ (np. 5 klientów/10 min). To rozkład Poissona dla zdarzeń w stałym czasie."
+      "explanation": "Klienci przychodzą ze stałą średnią częstością (λ klientów/10 min), niezależnie od siebie, bez pamięci (każda chwila równie prawdopodobna). Brak górnego limitu. Klasyczny Poisson."
     },
     {
       "id": 18,
@@ -118,7 +118,7 @@
       "id": 20,
       "question": "Liczba połączeń telefonicznych w centrali w ciągu minuty",
       "correct": "poissona",
-      "explanation": "Połączenia przychodzą losowo w czasie z pewną średnią częstością. Klasyczny przykład Poissona dla procesów w telekomunikacji."
+      "explanation": "Połączenia przychodzą ze stałą średnią częstością (λ połączeń/min), niezależnie od siebie, w dowolnej chwili. Teoretycznie bez górnego limitu. Klasyczny Poisson w telekomunikacji."
     },
     {
       "id": 21,
@@ -130,7 +130,7 @@
       "id": 22,
       "question": "Liczba awarii serwera w ciągu miesiąca (średnio 3 awarie/miesiąc)",
       "correct": "poissona",
-      "explanation": "Awarie są rzadkimi zdarzeniami zachodzącymi losowo w czasie. Przy znanej średniej λ=3/miesiąc, rozkład Poissona dobrze to modeluje."
+      "explanation": "Awarie występują ze stałą średnią częstością (λ=3/miesiąc), niezależnie od siebie, w dowolnym momencie z równym prawdopodobieństwem. Brak górnego ograniczenia. Rozkład Poissona."
     },
     {
       "id": 23,
@@ -148,7 +148,7 @@
       "id": 25,
       "question": "Liczba bakterii na płytce Petriego (gdy średnio jest 20 kolonii)",
       "correct": "poissona",
-      "explanation": "Kolonie bakterii rosną w sposób losowy i niezależny. Liczba kolonii przy znanej średniej λ=20 ma rozkład Poissona."
+      "explanation": "Kolonie pojawiają się ze stałą średnią częstością (λ=20 kolonii/płytka), niezależnie od siebie, w dowolnym miejscu płytki. Brak górnego limitu liczby kolonii. Rozkład Poissona."
     },
     {
       "id": 26,
@@ -160,7 +160,7 @@
       "id": 27,
       "question": "Liczba meteorów obserwowanych w nocy (średnio 5/godzinę)",
       "correct": "poissona",
-      "explanation": "Meteory pojawiają się losowo w czasie ze średnią częstością λ=5/godz. To rozkład Poissona dla rzadkich zdarzeń w czasie."
+      "explanation": "Meteory pojawiają się ze stałą średnią częstością (λ=5/godz), niezależnie od siebie, w dowolnej chwili z równym prawdopodobieństwem. Brak górnego limitu. Rozkład Poissona."
     },
     {
       "id": 28,
@@ -178,7 +178,7 @@
       "id": 30,
       "question": "Liczba wypadków przy pracy w fabryce w ciągu roku (średnio 12/rok)",
       "correct": "poissona",
-      "explanation": "Wypadki są rzadkimi zdarzeniami losowymi w czasie. Przy średniej λ=12/rok, rozkład Poissona jest odpowiedni."
+      "explanation": "Wypadki zachodzą ze stałą średnią częstością (λ=12/rok), niezależnie od siebie, w dowolnym momencie roku z równym prawdopodobieństwem. Brak górnego limitu. Rozkład Poissona."
     }
   ]
 }
