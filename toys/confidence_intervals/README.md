@@ -11,7 +11,7 @@ Aplikacja pomaga studentom opanować kluczowe umiejętności:
 Każde pytanie zawiera:
 - Treść zadania z przedziałami ufności
 - **Wizualizację przedziałów CI** na osi liczbowej
-- Pytanie z 3 odpowiedziami: **TAK, JEST WIĘKSZE/WYŻSZE** | **TAK, JEST MNIEJSZE/NIŻSZE** | **NIE MOŻNA POWIEDZIEĆ**
+- Pytanie z 3 odpowiedziami: **JEST WIĘKSZE/WYŻSZE** | **JEST MNIEJSZE/NIŻSZE** | **NIE MOŻNA POWIEDZIEĆ**
 - Szczegółowe wyjaśnienie po odpowiedzi
 - Podświetlenie obszaru decyzyjnego na wykresie
 
@@ -21,16 +21,16 @@ Każde pytanie zawiera:
 **Przykład:** "CI 95%: [14; 22] zł. Czy średnia > 20 zł?"
 
 **Odpowiedzi:**
-- **TAK, JEST WIĘKSZE/WYŻSZE** - gdy testowana wartość jest **poza przedziałem po lewej stronie** (średnia > wartość)
-- **TAK, JEST MNIEJSZE/NIŻSZE** - gdy testowana wartość jest **poza przedziałem po prawej stronie** (średnia < wartość)
+- **JEST WIĘKSZE/WYŻSZE** - gdy testowana wartość jest **poza przedziałem po lewej stronie** (średnia > wartość)
+- **JEST MNIEJSZE/NIŻSZE** - gdy testowana wartość jest **poza przedziałem po prawej stronie** (średnia < wartość)
 - **NIE MOŻNA POWIEDZIEĆ** - gdy wartość jest **wewnątrz przedziału** lub **na granicy**
 
 ### 2. Porównanie dwóch grup (28 pytań)
 **Przykład:** "CI Warszawa [18; 24] vs Wrocław [14; 20]. Czy Warszawa droższa?"
 
 **Odpowiedzi:**
-- **TAK, JEST WIĘKSZE/WYŻSZE** - gdy przedziały są **rozdzielone** i CI1 > CI2
-- **TAK, JEST MNIEJSZE/NIŻSZE** - gdy przedziały są **rozdzielone** i CI1 < CI2
+- **JEST WIĘKSZE/WYŻSZE** - gdy przedziały są **rozdzielone** i CI1 > CI2
+- **JEST MNIEJSZE/NIŻSZE** - gdy przedziały są **rozdzielone** i CI1 < CI2
 - **NIE MOŻNA POWIEDZIEĆ** - gdy przedziały się **nakładają** (nawet minimalnie)
 
 ## Technologie
