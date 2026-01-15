@@ -1,0 +1,13 @@
+# Core framework
+flask>=3.0.0
+pywebview>=5.0.0
+
+# Data manipulation and statistics
+numpy>=1.26.0
+scipy>=1.11.0
+
+# Plotting (optional - może być wykorzystane w niektórych zabawkach)
+matplotlib>=3.8.0
+
+# Building executables
+pyinstaller>=6.0.0
