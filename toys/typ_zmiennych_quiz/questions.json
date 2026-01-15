@@ -149,6 +149,186 @@
       "question": "Liczba wypadków na skrzyżowaniu w ciągu roku (0, 1, 2, 3, ...)",
       "correct": "ilosciowa_dyskretna",
       "explanation": "Liczba wypadków to wartości przeliczalne. To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 26,
+      "question": "Stężenie azotanów w wodzie pitnej w mg/L (np. 15.3, 22.8, 8.1)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Stężenie azotanów może przyjmować dowolne wartości z przedziału, mierzone z dokładnością aparatury. To zmienna ilościowa ciągła. (gospodarka wodna)"
+    },
+    {
+      "id": 27,
+      "question": "Klasa czystości rzeki (I, II, III, IV, V)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Klasy czystości wód mają naturalny porządek (I - najczystsza, V - najbardziej zanieczyszczona), ale różnice między klasami nie są liczbowe. To zmienna jakościowa porządkowa. (inżynieria środowiska)"
+    },
+    {
+      "id": 28,
+      "question": "Typ kolektora słonecznego (płaski, próżniowy, powietrzny)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Typy kolektorów słonecznych to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna. (odnawialne źródła energii)"
+    },
+    {
+      "id": 29,
+      "question": "Liczba turbin wiatrowych na farmie (5, 12, 23, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba turbin to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna. (odnawialne źródła energii)"
+    },
+    {
+      "id": 30,
+      "question": "Suma opadów rocznych w mm (np. 567.2, 823.5, 412.8)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Suma opadów może przyjmować dowolne wartości z przedziału, mierzone z dokładnością deszczomierza. To zmienna ilościowa ciągła. (gospodarka opadami)"
+    },
+    {
+      "id": 31,
+      "question": "Przeznaczenie działki w planie zagospodarowania (mieszkaniowe, przemysłowe, rolne, leśne)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Przeznaczenie działki to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna. (gospodarka przestrzenna)"
+    },
+    {
+      "id": 32,
+      "question": "Klasa bonitacyjna gleby (I, II, III, IV, V, VI)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Klasy bonitacyjne gleb mają naturalny porządek (I - najlepsza, VI - najsłabsza), określający przydatność rolniczą, ale różnice nie są równe. To zmienna jakościowa porządkowa. (rolnictwo)"
+    },
+    {
+      "id": 33,
+      "question": "Zawartość azotu w glebie w mg/kg (np. 45.2, 67.8, 31.5)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Zawartość azotu może przyjmować dowolne wartości z przedziału, mierzone analitycznie. To zmienna ilościowa ciągła. (rolnictwo)"
+    },
+    {
+      "id": 34,
+      "question": "Liczba hodowanych krów na farmie (15, 28, 42, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba zwierząt to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna. (rolnictwo)"
+    },
+    {
+      "id": 35,
+      "question": "pH gleby (np. 5.8, 6.2, 7.1)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "pH może przyjmować dowolne wartości w zakresie 0-14, z dokładnością pomiaru. To zmienna ilościowa ciągła. (rolnictwo, inżynieria środowiska)"
+    },
+    {
+      "id": 36,
+      "question": "Gatunek drzewa (dąb, sosna, świerk, brzoza)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Gatunki drzew to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna. (ochrona środowiska)"
+    },
+    {
+      "id": 37,
+      "question": "Stopień zagrożenia gatunku (LC, NT, VU, EN, CR, EX)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Kategorie zagrożenia IUCN (Least Concern, Near Threatened, Vulnerable, Endangered, Critically Endangered, Extinct) mają ścisły porządek określający poziom zagrożenia. To zmienna jakościowa porządkowa. (ochrona środowiska)"
+    },
+    {
+      "id": 38,
+      "question": "Natężenie przepływu rzeki w m³/s (np. 15.7, 42.3, 8.9)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Natężenie przepływu może przyjmować dowolne wartości z przedziału, mierzone hydrometrycznie. To zmienna ilościowa ciągła. (gospodarka wodna)"
+    },
+    {
+      "id": 39,
+      "question": "Liczba dni z opadem w miesiącu (5, 12, 18, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba dni to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna. (gospodarka opadami)"
+    },
+    {
+      "id": 40,
+      "question": "Poziom retencji zlewni (niski, średni, wysoki)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Poziomy retencji można uporządkować (wysoki > średni > niski), ale różnice między kategoriami nie są precyzyjnie określone. To zmienna jakościowa porządkowa. (gospodarka wodna)"
+    },
+    {
+      "id": 41,
+      "question": "Moc zainstalowana elektrowni wiatrowej w MW (np. 2.5, 3.8, 5.2)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Moc zainstalowana może przyjmować dowolne wartości z przedziału. To zmienna ilościowa ciągła. (odnawialne źródła energii)"
+    },
+    {
+      "id": 42,
+      "question": "Typ panelu fotowoltaicznego (monokrystaliczny, polikrystaliczny, cienkowarstwowy)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Typy paneli to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna. (odnawialne źródła energii)"
+    },
+    {
+      "id": 43,
+      "question": "Wskaźnik cen konsumpcyjnych CPI w % (np. 102.3, 105.7, 98.2)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "CPI może przyjmować dowolne wartości, obliczane z dokładnością dziesiętną. To zmienna ilościowa ciągła. (ekonomia)"
+    },
+    {
+      "id": 44,
+      "question": "Sektor gospodarki (rolnictwo, przemysł, usługi)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Sektory gospodarki to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna. (ekonomia)"
+    },
+    {
+      "id": 45,
+      "question": "Liczba zatrudnionych pracowników w firmie (45, 120, 287, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba pracowników to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna. (ekonomia)"
+    },
+    {
+      "id": 46,
+      "question": "Rating kredytowy (AAA, AA, A, BBB, BB, B, CCC, CC, C, D)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Ratingi kredytowe mają ścisły porządek określający wiarygodność kredytową (AAA - najwyższy, D - default). To zmienna jakościowa porządkowa. (ekonomia)"
+    },
+    {
+      "id": 47,
+      "question": "Liczba bakterii E. coli w 100 ml wody (0, 5, 23, 150, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba bakterii to wartości przeliczalne (liczby całkowite), zliczane metodami mikrobiologicznymi. To zmienna ilościowa dyskretna. (inżynieria środowiska, medycyna)"
+    },
+    {
+      "id": 48,
+      "question": "Stężenie tlenu rozpuszczonego w wodzie w mg/L (np. 5.2, 8.7, 11.3)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Stężenie tlenu może przyjmować dowolne wartości z przedziału, mierzone sondy tlenowe. To zmienna ilościowa ciągła. (inżynieria środowiska, gospodarka wodna)"
+    },
+    {
+      "id": 49,
+      "question": "Kondycja zwierzęcia gospodarskiego (wyniszczona, słaba, dobra, bardzo dobra, doskonała)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Kondycja ma naturalny porządek (doskonała > bardzo dobra > dobra > słaba > wyniszczona), ale różnice nie są precyzyjnie zmierzone. To zmienna jakościowa porządkowa. (weterynaria)"
+    },
+    {
+      "id": 50,
+      "question": "Rasa bydła (polska czerwona, limousine, hereford, angus)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Rasy bydła to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna. (weterynaria, rolnictwo)"
+    },
+    {
+      "id": 51,
+      "question": "Wydajność mleczna krowy w litrach dziennie (np. 18.5, 24.2, 32.7)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Wydajność mleczna może przyjmować dowolne wartości, mierzone z dokładnością dziesiętną. To zmienna ilościowa ciągła. (weterynaria, rolnictwo)"
+    },
+    {
+      "id": 52,
+      "question": "Powierzchnia użytków zielonych w hektarach (np. 12.3, 45.8, 120.5)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Powierzchnia może przyjmować dowolne wartości, mierzone geodezyjnie z dużą dokładnością. To zmienna ilościowa ciągła. (gospodarka przestrzenna, rolnictwo)"
+    },
+    {
+      "id": 53,
+      "question": "Funkcja ochronna obszaru (park narodowy, rezerwat przyrody, park krajobrazowy, obszar chronionego krajobrazu)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Formy ochrony przyrody mają hierarchię stopnia ochrony (park narodowy > rezerwat > park krajobrazowy > obszar chronionego krajobrazu). To zmienna jakościowa porządkowa. (ochrona środowiska)"
+    },
+    {
+      "id": 54,
+      "question": "Temperatura wody w zbiorniku wodnym w °C (np. 12.4, 18.7, 23.2)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Temperatura może przyjmować dowolne wartości z przedziału, mierzone z dokładnością termometrów. To zmienna ilościowa ciągła. (gospodarka wodna, inżynieria środowiska)"
+    },
+    {
+      "id": 55,
+      "question": "Liczba gatunków ptaków zaobserwowanych na obszarze (15, 28, 42, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba gatunków to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna. (ochrona środowiska)"
     }
   ]
 }
