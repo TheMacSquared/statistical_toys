@@ -6,7 +6,7 @@ const CIVisualizer = {
     svg: null,
     width: 0,
     height: 200,
-    margin: { top: 20, right: 40, bottom: 40, left: 40 },
+    margin: { top: 20, right: 60, bottom: 40, left: 80 },  // Zwiększone marginesy
 
     /**
      * Inicjalizacja SVG
@@ -24,8 +24,9 @@ const CIVisualizer = {
     updateDimensions() {
         const container = document.querySelector('.visualization-container');
         if (container) {
-            this.width = container.clientWidth - 40; // Uwzględnij padding
-            if (this.width < 300) this.width = 300; // Minimalna szerokość
+            // Szerokość = pełna szerokość kontenera (padding jest w CSS)
+            this.width = container.clientWidth;
+            if (this.width < 400) this.width = 400; // Minimalna szerokość
             this.svg.attr('width', this.width).attr('height', this.height);
         }
     },
