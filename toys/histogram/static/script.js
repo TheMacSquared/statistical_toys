@@ -2,18 +2,19 @@
 let params = {
     n: 100,
     mean: 0,
-    sd: 1
+    sd: 1,
+    binwidth: null  // null = auto (Sturges)
 };
 
-// Debouncing timer (opóźnienie dla suwaków)
+// Debouncing timer (opóźnienie dla input fields)
 let debounceTimer = null;
 
 // Inicjalizacja przy załadowaniu strony
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Histogram App - inicjalizacja');
 
-    // Podpięcie event listenerów do suwaków
-    setupSliders();
+    // Podpięcie event listenerów do pól input
+    setupInputs();
 
     // Podpięcie przycisku regeneracji
     document.getElementById('btn-regenerate').addEventListener('click', function() {
@@ -25,29 +26,39 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /**
- * Konfiguracja suwaków - podpięcie event listenerów
+ * Konfiguracja pól input - podpięcie event listenerów
  */
-function setupSliders() {
-    const sliders = [
-        { id: 'param-n', param: 'n', valueId: 'value-n', formatter: v => v },
-        { id: 'param-mean', param: 'mean', valueId: 'value-mean', formatter: v => v.toFixed(1) },
-        { id: 'param-sd', param: 'sd', valueId: 'value-sd', formatter: v => v.toFixed(1) }
+function setupInputs() {
+    const inputs = [
+        { id: 'param-n', param: 'n', type: 'int' },
+        { id: 'param-mean', param: 'mean', type: 'float' },
+        { id: 'param-sd', param: 'sd', type: 'float' },
+        { id: 'param-binwidth', param: 'binwidth', type: 'float', optional: true }
     ];
 
-    sliders.forEach(slider => {
-        const element = document.getElementById(slider.id);
-        const valueDisplay = document.getElementById(slider.valueId);
+    inputs.forEach(input => {
+        const element = document.getElementById(input.id);
 
         element.addEventListener('input', function() {
-            const value = slider.param === 'n'
-                ? parseInt(this.value)
-                : parseFloat(this.value);
+            let value;
+
+            // Jeśli pole jest puste i opcjonalne, ustaw null (auto)
+            if (input.optional && this.value.trim() === '') {
+                value = null;
+            } else {
+                // Parsuj wartość
+                value = input.type === 'int'
+                    ? parseInt(this.value)
+                    : parseFloat(this.value);
+
+                // Walidacja - jeśli NaN, pomiń update
+                if (isNaN(value)) {
+                    return;
+                }
+            }
 
             // Aktualizuj parametry
-            params[slider.param] = value;
-
-            // Aktualizuj wyświetlaną wartość
-            valueDisplay.textContent = slider.formatter(value);
+            params[input.param] = value;
 
             // Auto-update z debouncing (czekaj 300ms po ostatniej zmianie)
             clearTimeout(debounceTimer);
@@ -107,17 +118,21 @@ async function updatePlot() {
  * Rysowanie histogramu używając Plotly.js
  */
 function plotHistogram(histData, params) {
+    // Oblicz szerokość binu
+    const binWidth = histData.bin_edges[1] - histData.bin_edges[0];
+
     // Trace dla histogramu (słupki)
     const histTrace = {
         x: histData.bin_centers,
         y: histData.counts,
         type: 'bar',
         name: 'Histogram',
+        width: binWidth * 0.98,  // 98% szerokości binu (praktycznie bez przerw)
         marker: {
             color: '#667eea',
             line: {
                 color: '#5568d3',
-                width: 1.5
+                width: 0  // Bez ramek między słupkami
             }
         },
         hovertemplate:
@@ -128,12 +143,10 @@ function plotHistogram(histData, params) {
 
     // Krzywa teoretyczna (gęstość rozkładu normalnego)
     const theoreticalTrace = generateNormalCurve(
-        histData.bin_edges[0],
-        histData.bin_edges[histData.bin_edges.length - 1],
         params.mean,
         params.sd,
         params.n,
-        histData.bin_edges[1] - histData.bin_edges[0]  // szerokość binu
+        binWidth
     );
 
     const layout = {
@@ -146,6 +159,7 @@ function plotHistogram(histData, params) {
         },
         xaxis: {
             title: 'Wartość',
+            range: [-10, 10],  // STAŁY ZAKRES [-10, 10]
             gridcolor: '#e0e0e0',
             zeroline: true,
             zerolinecolor: '#999'
@@ -180,8 +194,11 @@ function plotHistogram(histData, params) {
 
 /**
  * Generuje krzywą teoretyczną rozkładu normalnego
+ * Dla stałego zakresu [-10, 10]
  */
-function generateNormalCurve(xmin, xmax, mean, sd, n, binWidth) {
+function generateNormalCurve(mean, sd, n, binWidth) {
+    const xmin = -10;  // STAŁY ZAKRES
+    const xmax = 10;   // STAŁY ZAKRES
     const points = 200;
     const x = [];
     const y = [];

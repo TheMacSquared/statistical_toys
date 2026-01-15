@@ -18,93 +18,78 @@
             <p class="subtitle">Wizualizacja rozkładu normalnego N(μ, σ²)</p>
         </header>
 
-        <div class="controls">
-            <h2>Parametry Rozkładu</h2>
+        <div class="app-layout">
+            <!-- Sidebar - parametry po lewej -->
+            <aside class="sidebar">
+                <h2>Parametry</h2>
 
-            <div class="control-group">
-                <label for="param-n">
-                    Liczba próbek (n)
-                    <span id="value-n" class="value-display">100</span>
-                </label>
-                <input type="range" id="param-n"
-                       min="10" max="1000" value="100" step="10"
-                       class="slider">
-                <div class="slider-labels">
-                    <span>10</span>
-                    <span>1000</span>
+                <div class="param-group">
+                    <label for="param-n">Liczba próbek (n)</label>
+                    <input type="number" id="param-n" value="100" min="10" max="10000" step="10">
                 </div>
-            </div>
 
-            <div class="control-group">
-                <label for="param-mean">
-                    Średnia (μ)
-                    <span id="value-mean" class="value-display">0.0</span>
-                </label>
-                <input type="range" id="param-mean"
-                       min="-5" max="5" value="0" step="0.1"
-                       class="slider">
-                <div class="slider-labels">
-                    <span>-5</span>
-                    <span>5</span>
+                <div class="param-group">
+                    <label for="param-mean">Średnia (μ)</label>
+                    <input type="number" id="param-mean" value="0" step="0.1">
                 </div>
-            </div>
 
-            <div class="control-group">
-                <label for="param-sd">
-                    Odchylenie standardowe (σ)
-                    <span id="value-sd" class="value-display">1.0</span>
-                </label>
-                <input type="range" id="param-sd"
-                       min="0.1" max="3" value="1" step="0.1"
-                       class="slider">
-                <div class="slider-labels">
-                    <span>0.1</span>
-                    <span>3.0</span>
+                <div class="param-group">
+                    <label for="param-sd">Odchylenie (σ)</label>
+                    <input type="number" id="param-sd" value="1" min="0.1" step="0.1">
                 </div>
-            </div>
 
-            <button id="btn-regenerate" class="btn-primary">
-                🔄 Wygeneruj Nową Próbkę
-            </button>
-        </div>
+                <div class="param-group">
+                    <label for="param-binwidth">Szerokość binu</label>
+                    <input type="number" id="param-binwidth" placeholder="Auto" step="0.1" min="0.01">
+                    <small>Puste = automatyczne (Sturges)</small>
+                </div>
 
-        <div class="plot-container">
-            <div id="plot"></div>
-            <div id="loading" class="loading">Generowanie...</div>
-        </div>
+                <button id="btn-regenerate" class="btn-primary">
+                    🔄 Wygeneruj Nową Próbkę
+                </button>
+            </aside>
 
-        <div class="info-panel">
-            <h3>Statystyki Próbki</h3>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-label">Średnia (x̄)</span>
-                    <span id="stat-mean" class="stat-value">-</span>
+            <!-- Main content - wykres po prawej -->
+            <main class="main-content">
+                <div class="plot-container">
+                    <div id="plot"></div>
+                    <div id="loading" class="loading">Generowanie...</div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Odchylenie (s)</span>
-                    <span id="stat-sd" class="stat-value">-</span>
+
+                <div class="stats-panel">
+                    <h3>Statystyki Próbki</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Średnia (x̄)</span>
+                            <span id="stat-mean" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Odchylenie (s)</span>
+                            <span id="stat-sd" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Mediana</span>
+                            <span id="stat-median" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Min</span>
+                            <span id="stat-min" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Q1</span>
+                            <span id="stat-q25" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Q3</span>
+                            <span id="stat-q75" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Max</span>
+                            <span id="stat-max" class="stat-value">-</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Mediana</span>
-                    <span id="stat-median" class="stat-value">-</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Min</span>
-                    <span id="stat-min" class="stat-value">-</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Q1</span>
-                    <span id="stat-q25" class="stat-value">-</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Q3</span>
-                    <span id="stat-q75" class="stat-value">-</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Max</span>
-                    <span id="stat-max" class="stat-value">-</span>
-                </div>
-            </div>
+            </main>
         </div>
 
         <div class="description">
@@ -122,6 +107,7 @@
             <p>
                 <strong>Eksperymentuj!</strong> Zmień parametry μ i σ, aby zobaczyć jak wpływają na kształt rozkładu.
                 Zwiększ n, aby histogram był bardziej gładki i przypominał krzywą teoretyczną.
+                Ustaw szerokość binu aby kontrolować szczegółowość histogramu.
             </p>
         </div>
     </div>

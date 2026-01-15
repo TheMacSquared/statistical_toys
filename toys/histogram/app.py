@@ -17,6 +17,7 @@ def generate_histogram():
     - n: liczba próbek (int)
     - mean: średnia rozkładu (float)
     - sd: odchylenie standardowe (float)
+    - binwidth: szerokość binu (float, optional - None = auto)
 
     Zwraca:
     - histogram: dane do wykresu (counts, bins)
@@ -28,6 +29,7 @@ def generate_histogram():
         n = int(data.get('n', 100))
         mean = float(data.get('mean', 0))
         sd = float(data.get('sd', 1))
+        binwidth = data.get('binwidth', None)  # None = auto
 
         # Walidacja parametrów
         if n < 10 or n > 10000:
@@ -40,11 +42,26 @@ def generate_histogram():
         samples = np.random.normal(mean, sd, n)
 
         # Oblicz histogram
-        # Liczba binów: używamy reguły Sturges'a
-        n_bins = int(np.ceil(np.log2(n) + 1))
-        n_bins = min(max(n_bins, 10), 50)  # między 10 a 50 binów
+        if binwidth is not None:
+            # Manual binwidth
+            binwidth = float(binwidth)
+            if binwidth <= 0:
+                raise ValueError("Binwidth musi być > 0")
 
-        hist, bin_edges = np.histogram(samples, bins=n_bins)
+            # Oblicz liczbę binów na podstawie szerokości
+            # Dla stałego zakresu [-10, 10]
+            fixed_range = (-10, 10)
+            range_width = fixed_range[1] - fixed_range[0]
+            n_bins = int(np.ceil(range_width / binwidth))
+            n_bins = min(max(n_bins, 5), 200)  # limit 5-200 binów
+
+            hist, bin_edges = np.histogram(samples, bins=n_bins, range=fixed_range)
+        else:
+            # Auto (Sturges) - jak poprzednio, ale z fixed range
+            n_bins = int(np.ceil(np.log2(n) + 1))
+            n_bins = min(max(n_bins, 10), 50)  # między 10 a 50 binów
+
+            hist, bin_edges = np.histogram(samples, bins=n_bins, range=(-10, 10))
 
         # Przygotuj dane do wysłania
         # Plotly potrzebuje środków binów dla bar plot
@@ -61,6 +78,9 @@ def generate_histogram():
             'q75': float(np.percentile(samples, 75))
         }
 
+        # Oblicz rzeczywistą szerokość binu (dla zwrotu do frontendu)
+        actual_binwidth = bin_edges[1] - bin_edges[0]
+
         result = {
             'success': True,
             'histogram': {
@@ -72,7 +92,8 @@ def generate_histogram():
             'params': {
                 'n': n,
                 'mean': mean,
-                'sd': sd
+                'sd': sd,
+                'binwidth': actual_binwidth  # rzeczywista szerokość
             }
         }
 
