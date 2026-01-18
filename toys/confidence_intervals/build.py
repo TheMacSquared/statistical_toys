@@ -1,30 +1,17 @@
 import PyInstaller.__main__
 import os
 import sys
-import io
 
-# Force UTF-8 encoding for Windows compatibility
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
-
-# Dodaj katalog nadrzędny do ścieżki, aby zaimportować common
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from common.build_utils import add_data_arg
 
 def build_exe():
-    """Buduj .exe dla aplikacji przedziałów ufności"""
+    for path in ['templates', 'static', 'questions', 'ci_config.json']:
+        if not os.path.exists(path):
+            print(f"ERROR: {path} not found!")
+            sys.exit(1)
 
-    # Sprawdź czy katalogi istnieją
-    if not os.path.exists('templates'):
-        raise FileNotFoundError("Katalog 'templates' nie istnieje!")
-    if not os.path.exists('static'):
-        raise FileNotFoundError("Katalog 'static' nie istnieje!")
-    if not os.path.exists('questions'):
-        raise FileNotFoundError("Katalog 'questions' nie istnieje!")
-    if not os.path.exists('ci_config.json'):
-        raise FileNotFoundError("Plik 'ci_config.json' nie istnieje!")
-
-    print("Budowanie confidence_intervals.exe...")
+    print("Building confidence_intervals.exe...")
 
     PyInstaller.__main__.run([
         'main.py',
@@ -41,8 +28,7 @@ def build_exe():
         '--noconfirm'
     ])
 
-    print("\nBuild zakończony!")
-    print("Plik .exe znajduje się w: dist/confidence_intervals.exe")
+    print("Build complete: dist/confidence_intervals.exe")
 
 if __name__ == '__main__':
     build_exe()
