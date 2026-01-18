@@ -2,156 +2,75 @@
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-System modułowych interaktywnych aplikacji do nauki statystyki. Każda "zabawka" to samodzielna aplikacja desktopowa (.exe), którą studenci mogą pobrać i uruchomić bez instalacji R czy Pythona.
+Interaktywne aplikacje do nauki statystyki. Pobierz, uruchom i ucz sie przez eksploracje - bez instalacji dodatkowego oprogramowania!
 
-## Wizja Projektu
+## Co to jest?
 
-Celem jest stworzenie biblioteki małych, łatwych w użyciu narzędzi edukacyjnych, które:
-- **Działają offline** - studenci pobierają i uruchamiają lokalnie
-- **Nie wymagają instalacji** - jeden plik .exe, zero konfiguracji
-- **Są interaktywne** - suwaki, parametry, live wykresy
-- **Uczą przez eksplorację** - wizualizacja pojęć statystycznych
+**Statystyczne Zabawki** to zestaw prostych aplikacji edukacyjnych dla studentow. Kazda aplikacja to jeden plik `.exe`, ktory:
 
-## Architektura
+- Dziala offline - nie wymaga internetu
+- Nie wymaga instalacji - pobierasz i uruchamiasz
+- Jest interaktywna - suwaki, przyciski, wykresy na zywo
+- Pomaga zrozumiec statystyke przez zabaw
 
-Każda zabawka to aplikacja zbudowana w stacku:
-- **Backend**: Python + Flask (logika, obliczenia statystyczne)
-- **Frontend**: HTML/CSS/JavaScript + Plotly.js (UI, wykresy)
-- **Wrapper**: PyWebView (natywne okno aplikacji)
-- **Deployment**: PyInstaller (pakowanie do .exe dla Windows)
+## Dostepne aplikacje
 
-Aplikacje są:
-- **Modułowe** - każda zabawka to osobny folder w `toys/`
-- **Niezależne** - osobne .exe, można pobrać tylko jedną
-- **Rozszerzalne** - łatwo dodać nowe
+| Aplikacja | Co robi? | Pobierz |
+|-----------|----------|---------|
+| **Quiz Statystyczny** | Sprawdz swoja wiedze: typy zmiennych, rozklady, wybor testu | [Pobierz](../../releases) |
+| **Przedzialy Ufnosci** | Naucz sie interpretowac przedzialy ufnosci | [Pobierz](../../releases) |
+| **Histogram** | Zobacz jak parametry wplywaja na ksztalt histogramu | [Pobierz](../../releases) |
 
-## Struktura Projektu
+## Zobacz jak wygladaja
 
-```
-statistical_toys/
-├── toys/                   # Katalog z zabawkami
-│   ├── histogram/          # Przykładowa zabawka
-│   │   ├── app.py          # Flask backend
-│   │   ├── main.py         # PyWebView wrapper
-│   │   ├── templates/      # HTML UI
-│   │   ├── static/         # CSS, JS
-│   │   └── requirements.txt
-│   └── ...                 # Przyszłe zabawki
-├── build/                  # Skrypty do budowania .exe
-├── docs/                   # Dokumentacja
-│   ├── TWORZENIE_ZABAWKI.md  # Jak stworzyć nową zabawkę
-│   └── ...
-├── README.md               # Ten plik
-└── requirements.txt        # Globalne zależności
-```
+### Quiz Statystyczny
+Wybierz jeden z trzech trybow i sprawdz swoja wiedze:
 
-## Dostępne Zabawki
+![Quiz - menu glowne](images/quiz.png)
 
-| Zabawka | Opis | Pobierz |
-|---------|------|---------|
-| **Histogram** | Wizualizacja wpływu parametrów (n, μ, σ) na kształt histogramu | [Releases](../../releases) |
-| **Quiz Statystyczny** | Quiz z 3 trybami: typy zmiennych, rozkłady, wybór testu | [Releases](../../releases) |
-| **Przedziały Ufności** | Interaktywna nauka interpretacji przedziałów ufności | [Releases](../../releases) |
+Kazde pytanie zawiera wyjasnienie poprawnej odpowiedzi:
 
-### Przyszłe Pomysły
-- Test t-Studenta (wizualizacja mocy testu)
-- Centralne Twierdzenie Graniczne (symulacja)
-- Regresja liniowa (interaktywne dopasowanie)
+![Quiz - przyklad pytania](images/quiz2.png)
 
-## Pobieranie
+### Przedzialy Ufnosci
+Interaktywna nauka interpretacji przedzialow ufnosci z wizualizacja:
 
-### Dla Studentów (Windows)
+![Przedzialy ufnosci](images/CI.png)
 
-1. Przejdź do **[Releases](../../releases)** → kliknij najnowszą wersję
-2. Pobierz plik `.exe` dla interesującej Cię zabawki
-3. Dwuklik na pobranym pliku - otwiera się okno aplikacji
-4. Eksploruj!
+## Jak pobrac i uruchomic?
 
-**💡 Tip**: Link do najnowszej wersji: [github.com/.../releases/latest](../../releases/latest)
+1. Kliknij **[Releases](../../releases)** (lub link "Pobierz" przy wybranej aplikacji)
+2. Znajdz najnowsza wersje i pobierz plik `.exe`
+3. Dwuklik na pobranym pliku - aplikacja sie uruchomi
+4. Gotowe!
 
-**⚠️ Uwaga Windows**: Przy pierwszym uruchomieniu może pojawić się ostrzeżenie SmartScreen (aplikacja nie jest podpisana certyfikatem). Kliknij **"Więcej informacji"** → **"Uruchom mimo to"**.
+## Czy to bezpieczne?
 
-### Dla Mac/Linux
+**Tak, aplikacje sa bezpieczne.**
 
-Obecnie nie ma gotowych buildów dla Mac/Linux. Możesz uruchomić aplikacje z kodu źródłowego:
+Przy pierwszym uruchomieniu Windows Defender lub SmartScreen moga wyswietlic ostrzezenie. To normalne i nie oznacza, ze aplikacja jest niebezpieczna.
+
+**Dlaczego pojawia sie ostrzezenie?**
+
+Windows wyswietla takie komunikaty dla aplikacji, ktore nie maja platnego certyfikatu cyfrowego (kosztuje kilkaset dolarow rocznie). To samo ostrzezenie zobaczysz przy wielu darmowych programach edukacyjnych i open-source.
+
+**Co mozesz zrobic:**
+- Kliknij "Wiecej informacji" -> "Uruchom mimo to"
+- Caly kod zrodlowy jest dostepny publicznie w tym repozytorium - mozesz go przejrzec
+
+## Dla Mac/Linux
+
+Obecnie aplikacje sa dostepne tylko dla Windows. Uzytownicy Mac/Linux moga uruchomic aplikacje z kodu zrodlowego:
 
 ```bash
 cd toys/nazwa_zabawki
 pip install -r requirements.txt
 python main.py
 ```
-
-## Dla Developerów
-
-### Wymagania
-
-- Python 3.10+
-- Git
-- Podstawowa znajomość HTML/CSS/JavaScript (dla frontendu)
-
-### Jak Stworzyć Nową Zabawkę
-
-Szczegółowa instrukcja krok po kroku znajduje się w [docs/TWORZENIE_ZABAWKI.md](docs/TWORZENIE_ZABAWKI.md).
-
-### Szybki Start
-
-1. Sklonuj repo i zainstaluj zależności:
-```bash
-git clone https://github.com/your-username/statistical_toys.git
-cd statistical_toys
-pip install -r requirements.txt
-```
-
-2. Stwórz nową zabawkę w `toys/nazwa_zabawki/`
-3. Testuj lokalnie:
-```bash
-cd toys/nazwa_zabawki
-python main.py
-```
-
-4. Zbuduj .exe:
-```bash
-pyinstaller --onefile --windowed main.py
-```
-
-## Roadmap
-
-### Faza 1: Fundament
-- [x] Setup projektu
-- [x] Dokumentacja architektury
-- [x] Pierwsza zabawka (histogram)
-- [x] Pipeline budowania .exe
-- [x] Dokumentacja dla studentów
-
-### Faza 2: Rozbudowa
-- [x] 3 podstawowe zabawki (histogram, quiz, przedziały ufności)
-- [ ] Testy użytkownika (feedback od studentów)
-- [ ] Iteracja na podstawie feedbacku
-
-### Faza 3: Przyszłość (opcjonalnie)
-- [ ] Wersje online (gdy dostępny serwer)
-- [ ] Wersje dla Mac/Linux
-- [ ] Zaawansowane zabawki (modele mieszane, Bayesian, etc.)
-
-## Możliwości Technologiczne
-
-Rozważane były różne podejścia:
-- **PyWebView** (wybrane) - balans prostoty i możliwości
-- **Pure HTML/JS** - maksymalnie proste, ale ograniczone
-- **Electron** - profesjonalne, ale zbyt ciężkie
-- **Shiny Server** (przyszłość) - gdy dostępny serwer z R
-
-Pełna analiza wszystkich opcji (offline i online) znajduje się w osobnym dokumencie dla przyszłej referencji.
 
 ## Licencja
 
-Ten projekt jest udostępniony na licencji [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE).
-
-Możesz swobodnie:
-- **Udostępniać** — kopiować i rozpowszechniać materiał
-- **Adaptować** — zmieniać, przekształcać i tworzyć na jego podstawie
-
-Pod warunkiem **podania autorstwa**.
+Projekt na licencji [CC BY 4.0](LICENSE) - mozesz swobodnie uzywac i udostepniac, pod warunkiem podania autorstwa.
 
 ## Kontakt
 
