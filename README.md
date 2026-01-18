@@ -1,5 +1,7 @@
 # Statystyczne Zabawki
 
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+
 System modułowych interaktywnych aplikacji do nauki statystyki. Każda "zabawka" to samodzielna aplikacja desktopowa (.exe), którą studenci mogą pobrać i uruchomić bez instalacji R czy Pythona.
 
 ## Wizja Projektu
@@ -45,25 +47,39 @@ statistical_toys/
 
 ## Dostępne Zabawki
 
-### W Planach
-1. **Histogram z rozkładem normalnym** - wizualizacja wpływu parametrów (n, μ, σ) na kształt histogramu
+| Zabawka | Opis | Pobierz |
+|---------|------|---------|
+| **Histogram** | Wizualizacja wpływu parametrów (n, μ, σ) na kształt histogramu | [Releases](../../releases) |
+| **Quiz Statystyczny** | Quiz z 3 trybami: typy zmiennych, rozkłady, wybór testu | [Releases](../../releases) |
+| **Przedziały Ufności** | Interaktywna nauka interpretacji przedziałów ufności | [Releases](../../releases) |
 
 ### Przyszłe Pomysły
 - Test t-Studenta (wizualizacja mocy testu)
 - Centralne Twierdzenie Graniczne (symulacja)
 - Regresja liniowa (interaktywne dopasowanie)
-- Rozkłady prawdopodobieństwa (porównania)
 
-## Dla Studentów
+## Pobieranie
 
-### Jak Używać Zabawek
+### Dla Studentów (Windows)
 
-1. Przejdź do [Releases](../../releases)
-2. Pobierz interesującą Cię zabawkę (np. `histogram.exe`)
-3. Dwuklik na pliku - otwiera się okno aplikacji
-4. Eksploruj, zmieniaj parametry, obserwuj zmiany na wykresie!
+1. Przejdź do **[Releases](../../releases)** → kliknij najnowszą wersję
+2. Pobierz plik `.exe` dla interesującej Cię zabawki
+3. Dwuklik na pobranym pliku - otwiera się okno aplikacji
+4. Eksploruj!
 
-**Uwaga**: Windows może wyświetlić ostrzeżenie przy pierwszym uruchomieniu (aplikacja nie jest podpisana certyfikatem). Kliknij "Więcej informacji" → "Uruchom mimo to".
+**💡 Tip**: Link do najnowszej wersji: [github.com/.../releases/latest](../../releases/latest)
+
+**⚠️ Uwaga Windows**: Przy pierwszym uruchomieniu może pojawić się ostrzeżenie SmartScreen (aplikacja nie jest podpisana certyfikatem). Kliknij **"Więcej informacji"** → **"Uruchom mimo to"**.
+
+### Dla Mac/Linux
+
+Obecnie nie ma gotowych buildów dla Mac/Linux. Możesz uruchomić aplikacje z kodu źródłowego:
+
+```bash
+cd toys/nazwa_zabawki
+pip install -r requirements.txt
+python main.py
+```
 
 ## Dla Developerów
 
@@ -129,12 +145,14 @@ Pełna analiza wszystkich opcji (offline i online) znajduje się w osobnym dokum
 
 ## Licencja
 
-MIT License - projekty edukacyjne, swobodne użycie.
+Ten projekt jest udostępniony na licencji [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE).
+
+Możesz swobodnie:
+- **Udostępniać** — kopiować i rozpowszechniać materiał
+- **Adaptować** — zmieniać, przekształcać i tworzyć na jego podstawie
+
+Pod warunkiem **podania autorstwa**.
 
 ## Kontakt
 
 Projekt tworzony dla potrzeb dydaktycznych. Feedback i sugestie mile widziane!
-
----
-
-**Status projektu**: 🚧 W budowie - infrastruktura gotowa, pierwsza zabawka w trakcie implementacji.
