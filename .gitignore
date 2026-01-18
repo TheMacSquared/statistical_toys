@@ -69,3 +69,6 @@ toys/*/build/
 
 # Internal planning documents
 **/PLAN.md
+
+# Local build scripts
+build_windows.sh
