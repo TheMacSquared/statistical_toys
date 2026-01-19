@@ -46,24 +46,24 @@
     },
     {
       "id": 5,
-      "question": "Przedział ufności 95% dla średniej ceny kawy wynosi [14; 22] zł. Czy można powiedzieć z ufnością 95%, że średnia cena przekracza 14 zł?",
+      "question": "Przedział ufności 95% dla średniej ceny kawy wynosi [14; 22] zł. Czy można powiedzieć z ufnością 95%, że średnia cena przekracza 13.95 zł?",
       "ci_lower": 14,
       "ci_upper": 22,
-      "tested_value": 14,
+      "tested_value": 13.95,
       "unit": "zł",
-      "correct": "nie_mozna_powiedziec",
-      "explanation": "Wartość 14 zł znajduje się NA DOLNEJ GRANICY przedziału ufności [14; 22]. Wartości na granicach przedziału są traktowane jak wartości wewnątrz przedziału - nie możemy z ufnością 95% stwierdzić, czy średnia jest większa czy mniejsza od 14 zł.",
+      "correct": "tak_wieksze",
+      "explanation": "Wartość 13.95 zł znajduje się PONIŻEJ dolnej granicy przedziału ufności (14 zł). Z ufnością 95% możemy stwierdzić, że średnia cena PRZEKRACZA 13.95 zł, ponieważ cały przedział [14; 22] jest powyżej 13.95 zł.",
       "comparison": "greater"
     },
     {
       "id": 6,
-      "question": "Przedział ufności 95% dla średniej ceny kawy wynosi [14; 22] zł. Czy można powiedzieć z ufnością 95%, że średnia cena przekracza 22 zł?",
+      "question": "Przedział ufności 95% dla średniej ceny kawy wynosi [14; 22] zł. Czy można powiedzieć z ufnością 95%, że średnia cena przekracza 22.05 zł?",
       "ci_lower": 14,
       "ci_upper": 22,
-      "tested_value": 22,
+      "tested_value": 22.05,
       "unit": "zł",
       "correct": "nie_mozna_powiedziec",
-      "explanation": "Wartość 22 zł znajduje się NA GÓRNEJ GRANICY przedziału ufności [14; 22]. Wartości na granicach przedziału są traktowane jak wartości wewnątrz przedziału - nie możemy z ufnością 95% stwierdzić, czy średnia jest większa czy mniejsza od 22 zł.",
+      "explanation": "Wartość 22.05 zł znajduje się POWYŻEJ górnej granicy przedziału ufności (22 zł). Z ufnością 95% możemy stwierdzić, że średnia cena NIE PRZEKRACZA 22.05 zł, ponieważ cały przedział [14; 22] jest poniżej 22.05 zł.",
       "comparison": "greater"
     },
     {
