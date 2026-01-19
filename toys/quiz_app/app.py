@@ -159,9 +159,21 @@ def next_question(quiz_id):
             'question': question['question']
         }
 
-        # Dla quizów z losowaniem odpowiedzi (testy) - dodaj all_options
+        # Dla quizów z losowaniem odpowiedzi (testy) - wybierz 3 losowe opcje
+        # zawsze włączając poprawną odpowiedź
         if 'all_options' in question:
-            response_question['all_options'] = question['all_options']
+            correct_answer = question['correct']
+            other_options = [opt for opt in question['all_options'] if opt != correct_answer]
+
+            # Wylosuj 2 niepoprawne opcje
+            random.shuffle(other_options)
+            selected_wrong = other_options[:2]
+
+            # Połącz poprawną z nieprawiymi i wymieszaj
+            selected_options = selected_wrong + [correct_answer]
+            random.shuffle(selected_options)
+
+            response_question['options'] = selected_options
 
         return jsonify({
             'success': True,

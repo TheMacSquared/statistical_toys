@@ -123,8 +123,8 @@ function generateAnswerButtons() {
         // Stałe opcje (typy zmiennych, rozkłady)
         options = QUIZ_CONFIG.options;
     } else if (QUIZ_CONFIG.answer_type === 'multiple_choice_random') {
-        // Losowe 3 opcje z puli (testy statystyczne)
-        options = getRandomOptions(currentQuestion.all_options, 3);
+        // Losowe 3 opcje wybrane przez backend (zawsze zawierają poprawną odpowiedź)
+        options = currentQuestion.options;
     }
 
     // Dostosuj grid do liczby opcji
@@ -152,25 +152,6 @@ function generateAnswerButtons() {
         btn.addEventListener('click', handleAnswer);
         answersGrid.appendChild(btn);
     });
-}
-
-/**
- * Losuj n opcji z tablicy, zapewniając że correct jest w wyniku
- */
-function getRandomOptions(allOptions, n) {
-    // Znajdź poprawną odpowiedź (musi być w pytaniu)
-    const correctAnswer = currentQuestion.correct || allOptions[0];
-
-    // Usuń correct z puli
-    const otherOptions = allOptions.filter(opt => opt !== correctAnswer);
-
-    // Wylosuj (n-1) niepoprawnych odpowiedzi
-    const shuffled = otherOptions.sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, n - 1);
-
-    // Dodaj correct i wymieszaj wszystko
-    const result = [...selected, correctAnswer];
-    return result.sort(() => 0.5 - Math.random());
 }
 
 /**
