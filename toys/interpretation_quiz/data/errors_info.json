@@ -1,0 +1,70 @@
+{
+  "title": "Najczęstsze błędy w interpretacji wyników statystycznych",
+  "intro": "Zanim zaczniesz quiz, zapoznaj się z najczęstszymi błędami popełnianymi przy formułowaniu wniosków statystycznych. Pomoże Ci to unikać tych pułapek!",
+  "errors": [
+    {
+      "id": "lakoniczne",
+      "name": "Zbyt lakoniczne stwierdzenie",
+      "icon": "📝",
+      "description": "Wniosek nie odnosi się do konkretnych badanych parametrów, jest ogólnikowy.",
+      "example_bad": "Jest różnica między grupami.",
+      "example_good": "Średni czas reakcji był istotnie krótszy w grupie eksperymentalnej niż kontrolnej."
+    },
+    {
+      "id": "wartosciujace",
+      "name": "Wartościowanie zamiast opisu",
+      "icon": "⚖️",
+      "description": "Używanie słów wartościujących (lepszy, gorszy) zamiast obiektywnego opisu wyników.",
+      "example_bad": "Kobiety są lepsze w tym zadaniu.",
+      "example_good": "Kobiety uzyskały istotnie wyższe wyniki w teście pamięci roboczej."
+    },
+    {
+      "id": "przyczynowość",
+      "name": "Mylenie istotności z przyczynowością",
+      "icon": "🔗",
+      "description": "Sugerowanie związku przyczynowo-skutkowego na podstawie samej istotności statystycznej. Test statystyczny nie dowodzi przyczynowości!",
+      "example_bad": "Picie kawy powoduje lepszą koncentrację.",
+      "example_good": "Osoby pijące kawę uzyskały istotnie wyższe wyniki w teście koncentracji."
+    },
+    {
+      "id": "wielkosc_efektu",
+      "name": "Mylenie istotności z wielkością efektu",
+      "icon": "📏",
+      "description": "Wartość p nie mówi nic o wielkości różnicy. Mała wartość p nie oznacza dużej różnicy!",
+      "example_bad": "Nowy lek działa znacznie lepiej (p < 0.001).",
+      "example_good": "Wykazano istotną statystycznie różnicę w skuteczności leku (p < 0.001), jednak różnica średnich wynosiła tylko 2%."
+    },
+    {
+      "id": "potwierdzanie_h0",
+      "name": "Potwierdzanie hipotezy zerowej",
+      "icon": "🚫",
+      "description": "Brak istotności statystycznej (p > α) nie oznacza, że nie ma różnicy - oznacza tylko, że nie mamy wystarczających dowodów, by ją stwierdzić.",
+      "example_bad": "Nie ma różnicy między metodami nauczania.",
+      "example_good": "Nie wykazano istotnej statystycznie różnicy między metodami nauczania."
+    },
+    {
+      "id": "generalizacja",
+      "name": "Nadmierna generalizacja",
+      "icon": "🌍",
+      "description": "Wnioskowanie wykraczające poza badaną próbę i populację.",
+      "example_bad": "Wszyscy studenci preferują naukę online.",
+      "example_good": "W badanej grupie studentów informatyki większość preferowała naukę online."
+    },
+    {
+      "id": "dowodzi",
+      "name": "Używanie słowa 'dowodzi'",
+      "icon": "📜",
+      "description": "Wyniki statystyczne dostarczają dowodów, ale nie 'dowodzą' w sensie absolutnym. Lepiej używać: wskazuje, sugeruje, świadczy o.",
+      "example_bad": "Badanie dowodzi, że dieta wpływa na samopoczucie.",
+      "example_good": "Wyniki badania wskazują na istotny związek między dietą a samopoczuciem."
+    },
+    {
+      "id": "interpretacja_p",
+      "name": "Błędna interpretacja p-value",
+      "icon": "🎯",
+      "description": "Wartość p to NIE prawdopodobieństwo, że hipoteza zerowa jest prawdziwa. To prawdopodobieństwo uzyskania takich lub bardziej ekstremalnych wyników, JEŚLI H₀ byłaby prawdziwa.",
+      "example_bad": "Jest tylko 3% szans, że grupy są równe.",
+      "example_good": "Przy założeniu braku różnicy między grupami, prawdopodobieństwo uzyskania tak ekstremalnych wyników wynosi 3%."
+    }
+  ]
+}

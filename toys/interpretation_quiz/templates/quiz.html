@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Interpretacja Wyników</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="back-button">Menu</a>
+            <h1>Interpretacja Wyników</h1>
+            <p class="subtitle">Wybierz najlepszą interpretację statystyczną</p>
+        </header>
+
+        <main class="quiz-container">
+            <!-- Ekran startowy z listą błędów -->
+            <div id="errors-screen" class="screen active">
+                <div class="errors-intro">
+                    <h2 id="errors-title"></h2>
+                    <p id="errors-intro-text" class="errors-intro-text"></p>
+                </div>
+
+                <div id="errors-list" class="errors-list">
+                    <!-- Błędy będą wstawione przez JS -->
+                </div>
+
+                <button id="btn-start-quiz" class="btn-primary btn-large">
+                    Rozumiem, rozpocznij quiz!
+                </button>
+            </div>
+
+            <!-- Ekran pytania -->
+            <div id="question-screen" class="screen">
+                <div class="question-header">
+                    <span id="question-counter" class="question-counter"></span>
+                    <span id="test-type-badge" class="test-type-badge"></span>
+                </div>
+
+                <div class="question-box">
+                    <p id="context-text" class="context-text"></p>
+                    <div id="results-box" class="results-box">
+                        <!-- Wyniki będą wstawione przez JS -->
+                    </div>
+                </div>
+
+                <p class="question-prompt">Która interpretacja jest najbardziej poprawna?</p>
+
+                <div id="answers-container" class="answers-container">
+                    <!-- Odpowiedzi będą wstawione przez JS -->
+                </div>
+
+                <div id="feedback-box" class="feedback-box hidden">
+                    <div id="feedback-header" class="feedback-header"></div>
+                    <p id="feedback-text" class="feedback-text"></p>
+                    <div id="correct-answer-box" class="correct-answer-box hidden">
+                        <strong>Poprawna odpowiedź:</strong>
+                        <p id="correct-answer-text"></p>
+                    </div>
+                    <button id="btn-next" class="btn-primary">
+                        Następne pytanie
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ekran końcowy -->
+            <div id="finish-screen" class="screen">
+                <div class="finish-box">
+                    <h2>Gratulacje!</h2>
+                    <p>Ukończyłeś quiz dotyczący interpretacji wyników statystycznych.</p>
+                    <p class="finish-tip">
+                        Pamiętaj o kluczowych zasadach:
+                    </p>
+                    <ul class="finish-tips-list">
+                        <li>Odnoszenie się do konkretnych parametrów</li>
+                        <li>Unikanie wartościowania</li>
+                        <li>Nie mylenie korelacji z przyczynowością</li>
+                        <li>Właściwa interpretacja p-value</li>
+                    </ul>
+                    <div class="finish-buttons">
+                        <button id="btn-restart" class="btn-primary btn-large">
+                            Zacznij od nowa
+                        </button>
+                        <a href="/" class="btn-secondary btn-large">
+                            Menu
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading -->
+            <div id="loading" class="loading">Ładowanie...</div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
