@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpretacja Wyników Statystycznych</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Interpretacja Wyników Statystycznych</h1>
+            <p class="subtitle">Naucz się poprawnie formułować wnioski z analiz statystycznych</p>
+        </header>
+
+        <main class="menu-container">
+            <div class="intro-section">
+                <div class="intro-icon">📊</div>
+                <p class="intro-text">
+                    Ten quiz pomoże Ci nauczyć się prawidłowo interpretować wyniki testów statystycznych
+                    i unikać typowych błędów w formułowaniu wniosków.
+                </p>
+                <p class="intro-text">
+                    Każde pytanie przedstawia wynik badania statystycznego. Twoim zadaniem jest wybrać
+                    najbardziej poprawną interpretację spośród trzech propozycji.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧪</div>
+                    <h3>Różne testy</h3>
+                    <p>Test t, korelacja, chi-kwadrat, ANOVA i inne</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Typowe błędy</h3>
+                    <p>Poznaj najczęstsze pułapki interpretacyjne</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Szczegółowy feedback</h3>
+                    <p>Dowiedz się dlaczego dana odpowiedź jest poprawna lub błędna</p>
+                </div>
+            </div>
+
+            <a href="/quiz" class="btn-primary btn-large start-btn">
+                Rozpocznij Quiz
+            </a>
+        </main>
+
+        <footer class="menu-footer">
+            <p>Narzędzia do nauki statystyki</p>
+        </footer>
+    </div>
+</body>
+</html>
