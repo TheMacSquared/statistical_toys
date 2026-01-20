@@ -20,7 +20,7 @@
           "feedback": "To stwierdzenie zawiera wartościowanie ('gorsze'). Poprawna interpretacja powinna opisywać wyniki bez wartościowania."
         },
         {
-          "text": "Średni czas działania baterii w badanej próbie był istotnie krótszy od deklarowanych 50 godzin (M = 48.2, p = 0.031).",
+          "text": "Średni czas działania baterii w badanej próbie był istotnie krótszy od deklarowanych 50 godzin (średnia = 48.2, p = 0.031).",
           "correct": true,
           "error_type": null,
           "feedback": "Poprawnie! Ta interpretacja odnosi się do badanego parametru (średni czas), podaje kierunek różnicy i wartość p."
@@ -53,7 +53,7 @@
           "feedback": "Błąd! Brak istotności statystycznej nie oznacza braku różnicy - oznacza jedynie, że nie mamy wystarczających dowodów, by stwierdzić różnicę."
         },
         {
-          "text": "Nie wykazano istotnej statystycznie różnicy między średnim czasem dojazdu w badanym mieście (M = 36.8 min) a średnią krajową (p = 0.094).",
+          "text": "Nie wykazano istotnej statystycznie różnicy między średnim czasem dojazdu w badanym mieście (średnia = 36.8 min) a średnią krajową (p = 0.094).",
           "correct": true,
           "error_type": null,
           "feedback": "Poprawnie! Ta interpretacja właściwie opisuje brak istotności statystycznej, nie twierdząc że różnicy nie ma."
@@ -161,7 +161,7 @@
           "feedback": "Błąd przyczynowości! Test t pokazuje różnicę, ale nie dowodzi, że metoda nauki POWODUJE tę różnicę. Mogą istnieć inne czynniki."
         },
         {
-          "text": "Grupa ucząca się online rozwiązywała test istotnie szybciej (M = 38.1 min) niż grupa tradycyjna (M = 42.3 min), p = 0.033.",
+          "text": "Grupa ucząca się online rozwiązywała test istotnie szybciej (średnia = 38.1 min) niż grupa tradycyjna (średnia = 42.3 min), p = 0.033.",
           "correct": true,
           "error_type": null,
           "feedback": "Poprawnie! Ta interpretacja opisuje wyniki bez sugerowania przyczynowości i bez wartościowania."
@@ -193,7 +193,7 @@
           "feedback": "Błąd! Brak istotności statystycznej nie oznacza, że poziomy stresu są takie same - jedynie że nie wykazano istotnej różnicy."
         },
         {
-          "text": "Nie wykazano istotnej statystycznie różnicy w poziomie stresu między pracownikami biurowymi (M = 58.2) a pracownikami zdalnymi (M = 52.8), p = 0.091.",
+          "text": "Nie wykazano istotnej statystycznie różnicy w poziomie stresu między pracownikami biurowymi (średnia = 58.2) a pracownikami zdalnymi (średnia = 52.8), p = 0.091.",
           "correct": true,
           "error_type": null,
           "feedback": "Poprawnie! Ta interpretacja prawidłowo opisuje brak istotności, podając konkretne wartości średnich."
@@ -231,7 +231,7 @@
           "feedback": "Błąd przyczynowości! Różnica może wynikać z innych czynników (np. motywacja, zdolności). Badanie korelacyjne nie dowodzi przyczynowości."
         },
         {
-          "text": "Studenci uczęszczający na zajęcia uzyskali istotnie wyższe wyniki (M = 72.4) niż nieuczęszczający (M = 61.8), p < 0.001.",
+          "text": "Studenci uczęszczający na zajęcia uzyskali istotnie wyższe wyniki (średnia = 72.4) niż nieuczęszczający (średnia = 61.8), p < 0.001.",
           "correct": true,
           "error_type": null,
           "feedback": "Poprawnie! Ta interpretacja opisuje wyniki bez sugerowania, że uczęszczanie jest przyczyną lepszych wyników."
@@ -521,7 +521,7 @@
           "feedback": "Słowo 'znacznie' sugeruje dużą różnicę. ANOVA pokazuje istotność, ale nie wielkość efektu. Różnica może być niewielka praktycznie."
         },
         {
-          "text": "Wykazano istotne statystycznie różnice w czasie wykonania zadania w zależności od rodzaju muzyki, F(2, 87) = 5.12, p = 0.008. Najkrótszy średni czas odnotowano przy muzyce klasycznej (M = 45.2s).",
+          "text": "Wykazano istotne statystycznie różnice w czasie wykonania zadania w zależności od rodzaju muzyki, F(2, 87) = 5.12, p = 0.008. Najkrótszy średni czas odnotowano przy muzyce klasycznej (średnia = 45.2s).",
           "correct": true,
           "error_type": null,
           "feedback": "Poprawnie! Ta interpretacja opisuje wyniki ANOVA i podaje wartości średnich bez nadmiernego wnioskowania."
@@ -553,7 +553,7 @@
       "unit": "błędów",
       "answers": [
         {
-          "text": "Osoby pijące kawę popełniały istotnie mniej błędów (M = 4.2) niż osoby niepijące (M = 5.8), p = 0.007.",
+          "text": "Osoby pijące kawę popełniały istotnie mniej błędów (średnia = 4.2) niż osoby niepijące (średnia = 5.8), p = 0.007.",
           "correct": true,
           "error_type": null,
           "feedback": "Poprawnie! Ta interpretacja opisuje wyniki bez sugerowania przyczynowości."
@@ -586,7 +586,7 @@
       "unit": "pkt",
       "answers": [
         {
-          "text": "Średni wynik studentów (M = 67.5) był istotnie wyższy od progu zaliczenia 60 punktów, p < 0.001.",
+          "text": "Średni wynik studentów (średnia = 67.5) był istotnie wyższy od progu zaliczenia 60 punktów, p < 0.001.",
           "correct": true,
           "error_type": null,
           "feedback": "Poprawnie! Ta interpretacja odnosi się do konkretnych wartości i poprawnie opisuje kierunek różnicy."

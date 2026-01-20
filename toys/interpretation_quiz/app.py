@@ -153,8 +153,8 @@ def format_results(question):
     lines = []
 
     if test_type == 't_jednej_proby':
-        lines.append(f"• Średnia w próbie: M = {results['mean']}{unit_str}")
-        lines.append(f"• Odchylenie standardowe: SD = {results['sd']}{unit_str}")
+        lines.append(f"• Średnia w próbie: {results['mean']}{unit_str}")
+        lines.append(f"• Odchylenie standardowe: {results['sd']}{unit_str}")
         lines.append(f"• Liczebność próby: n = {results['n']}")
         lines.append(f"• Wynik testu: {results['test_stat']}, p = {results['p_value']}")
 
@@ -164,8 +164,8 @@ def format_results(question):
         lines.append(f"• Wynik testu: {results['test_stat']}, p = {results['p_value']}")
 
     elif test_type == 't_dwoch_prob':
-        lines.append(f"• Grupa '{results['label1']}': M = {results['mean1']}{unit_str} (SD = {results['sd1']}), n = {results['n1']}")
-        lines.append(f"• Grupa '{results['label2']}': M = {results['mean2']}{unit_str} (SD = {results['sd2']}), n = {results['n2']}")
+        lines.append(f"• Grupa '{results['label1']}': średnia = {results['mean1']}{unit_str} (odch. std. = {results['sd1']}), n = {results['n1']}")
+        lines.append(f"• Grupa '{results['label2']}': średnia = {results['mean2']}{unit_str} (odch. std. = {results['sd2']}), n = {results['n2']}")
         lines.append(f"• Wynik testu: {results['test_stat']}, p = {results['p_value']}")
 
     elif test_type == 'korelacja':
@@ -180,7 +180,7 @@ def format_results(question):
     elif test_type == 'anova':
         means = results.get('means', {})
         for group, mean in means.items():
-            lines.append(f"• Grupa '{group}': M = {mean}{unit_str}")
+            lines.append(f"• Grupa '{group}': średnia = {mean}{unit_str}")
         if 'n_per_group' in results:
             lines.append(f"• Liczebność grup: n = {results['n_per_group']} każda")
         lines.append(f"• Wynik testu: {results['test_stat']}, p = {results['p_value']}")
