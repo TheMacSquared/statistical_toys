@@ -1,0 +1,409 @@
+/* === Instrukcja === */
+.pc-instruction {
+    text-align: center;
+    padding: var(--st-space-sm) var(--st-space-md);
+    margin-bottom: var(--st-space-md);
+    background: var(--st-color-primary-bg);
+    border: 1px solid var(--st-color-primary-border);
+    border-radius: var(--st-radius-md);
+    font-size: var(--st-text-sm);
+    color: var(--st-color-text-secondary);
+    font-style: italic;
+}
+
+/* === Presety === */
+.pc-presets {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--st-space-xs);
+    margin-bottom: var(--st-space-lg);
+}
+
+.pc-presets__label {
+    font-size: var(--st-text-sm);
+    font-weight: 600;
+    color: var(--st-color-text-secondary);
+    margin-right: var(--st-space-xs);
+}
+
+.pc-preset-btn {
+    font-size: var(--st-text-xs) !important;
+    padding: var(--st-space-xs) var(--st-space-sm) !important;
+}
+
+/* === Glowny uklad === */
+.pc-main-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--st-space-lg);
+    margin-bottom: var(--st-space-xl);
+}
+
+@media (min-width: 1024px) {
+    .pc-main-layout {
+        grid-template-columns: 1fr 320px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .pc-main-layout {
+        grid-template-columns: 1fr 360px;
+    }
+}
+
+/* === Wykres === */
+.pc-plot-area {
+    min-width: 0;
+}
+
+.pc-plot {
+    min-height: 400px;
+    cursor: crosshair;
+}
+
+@media (min-width: 768px) {
+    .pc-plot {
+        min-height: 500px;
+    }
+}
+
+/* === Panel wynikow === */
+.pc-results-panel {
+    background: var(--st-color-background);
+    padding: var(--st-space-lg);
+    border-radius: var(--st-radius-lg);
+    height: fit-content;
+}
+
+@media (min-width: 1024px) {
+    .pc-results-panel {
+        position: sticky;
+        top: var(--st-space-lg);
+    }
+}
+
+.pc-results-panel__title {
+    font-size: var(--st-text-lg);
+    font-weight: 700;
+    color: var(--st-color-text);
+    margin-bottom: var(--st-space-md);
+}
+
+/* === Wyswietlanie r === */
+.pc-r-display {
+    text-align: center;
+    padding: var(--st-space-md);
+    margin-bottom: var(--st-space-md);
+    background: var(--st-color-surface);
+    border-radius: var(--st-radius-lg);
+    border: 2px solid var(--st-color-border);
+    transition: border-color var(--st-transition-base),
+                background var(--st-transition-base);
+}
+
+.pc-r-display__label {
+    font-size: var(--st-text-lg);
+    color: var(--st-color-text-secondary);
+    font-weight: 500;
+}
+
+.pc-r-display__value {
+    font-size: var(--st-text-3xl);
+    font-weight: 700;
+    color: var(--st-color-text);
+    font-family: 'Courier New', monospace;
+}
+
+.pc-r-display--positive {
+    border-color: var(--st-color-success);
+    background: var(--st-color-success-bg);
+}
+
+.pc-r-display--positive .pc-r-display__value {
+    color: var(--st-color-success-dark);
+}
+
+.pc-r-display--negative {
+    border-color: var(--st-color-error);
+    background: var(--st-color-error-bg);
+}
+
+.pc-r-display--negative .pc-r-display__value {
+    color: var(--st-color-error-dark);
+}
+
+.pc-r-display--neutral {
+    border-color: var(--st-color-text-muted);
+}
+
+.pc-r-display--neutral .pc-r-display__value {
+    color: var(--st-color-text-muted);
+}
+
+/* === Siatka statystyk === */
+.pc-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    margin-bottom: var(--st-space-md);
+}
+
+/* === Interpretacja === */
+.pc-interpretation {
+    padding: var(--st-space-sm) var(--st-space-md);
+    border-radius: var(--st-radius-md);
+    margin-bottom: var(--st-space-md);
+    font-size: var(--st-text-sm);
+    font-weight: 500;
+    text-align: center;
+    background: var(--st-color-background-alt);
+    color: var(--st-color-text-secondary);
+    border-left: 3px solid var(--st-color-border);
+    transition: all var(--st-transition-base);
+}
+
+.pc-interpretation--positive {
+    background: rgba(34, 197, 94, 0.08);
+    border-left-color: var(--st-color-success);
+    color: var(--st-color-success-dark);
+}
+
+.pc-interpretation--negative {
+    background: rgba(239, 68, 68, 0.08);
+    border-left-color: var(--st-color-error);
+    color: var(--st-color-error-dark);
+}
+
+.pc-interpretation--weak {
+    background: rgba(148, 163, 184, 0.1);
+    border-left-color: var(--st-color-text-muted);
+    color: var(--st-color-text-muted);
+}
+
+/* === Rownanie regresji === */
+.pc-regression-eq {
+    padding: var(--st-space-sm) var(--st-space-md);
+    margin-bottom: var(--st-space-md);
+    background: rgba(239, 68, 68, 0.06);
+    border-radius: var(--st-radius-sm);
+    border-left: 3px solid var(--st-color-error);
+}
+
+.pc-regression-eq__label {
+    display: block;
+    font-size: var(--st-text-xs);
+    color: var(--st-color-text-muted);
+    margin-bottom: 2px;
+}
+
+.pc-regression-eq__value {
+    font-size: var(--st-text-base);
+    font-weight: 600;
+    color: var(--st-color-error-dark);
+    font-family: 'Courier New', monospace;
+}
+
+/* === Srednie === */
+.pc-means {
+    display: flex;
+    gap: var(--st-space-md);
+    margin-bottom: var(--st-space-md);
+}
+
+.pc-means__item {
+    flex: 1;
+    text-align: center;
+    padding: var(--st-space-xs) var(--st-space-sm);
+    background: var(--st-color-surface);
+    border-radius: var(--st-radius-sm);
+}
+
+.pc-means__label {
+    font-size: var(--st-text-sm);
+    color: var(--st-color-text-muted);
+}
+
+.pc-means__value {
+    font-weight: 600;
+    color: var(--st-color-primary);
+    font-family: 'Courier New', monospace;
+}
+
+/* === Wzor === */
+.pc-formula {
+    padding: var(--st-space-md);
+    background: var(--st-color-surface);
+    border-radius: var(--st-radius-md);
+    border: 1px solid var(--st-color-border);
+}
+
+.pc-formula__title {
+    font-size: var(--st-text-xs);
+    font-weight: 600;
+    color: var(--st-color-text-muted);
+    margin-bottom: var(--st-space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.pc-formula__expr {
+    text-align: center;
+    font-size: var(--st-text-base);
+    color: var(--st-color-text);
+    margin-bottom: var(--st-space-sm);
+}
+
+.pc-formula__frac {
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0 4px;
+}
+
+.pc-formula__num {
+    border-bottom: 2px solid var(--st-color-text-secondary);
+    padding-bottom: 2px;
+    font-size: var(--st-text-sm);
+}
+
+.pc-formula__den {
+    padding-top: 2px;
+    font-size: var(--st-text-sm);
+}
+
+.pc-formula__computed {
+    text-align: center;
+    font-size: var(--st-text-sm);
+    color: var(--st-color-text-secondary);
+    padding-top: var(--st-space-sm);
+    border-top: 1px solid var(--st-color-border-light);
+    word-break: break-all;
+}
+
+.pc-formula__computed strong {
+    color: var(--st-color-primary);
+    font-size: var(--st-text-base);
+}
+
+/* === Sekcja danych === */
+.pc-data-section {
+    margin-top: var(--st-space-lg);
+}
+
+.pc-data-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--st-space-sm);
+    flex-wrap: wrap;
+    gap: var(--st-space-sm);
+}
+
+.pc-data-header h3 {
+    font-size: var(--st-text-base);
+    font-weight: 700;
+    color: var(--st-color-text);
+    margin: 0;
+}
+
+.pc-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--st-space-xs);
+    font-size: var(--st-text-xs);
+    color: var(--st-color-text-secondary);
+    cursor: pointer;
+}
+
+/* === Tabela przewijalna === */
+.pc-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: var(--st-space-md);
+}
+
+/* === Tabela danych === */
+.pc-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--st-text-sm);
+    min-width: 600px;
+}
+
+.pc-table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--st-color-background);
+    padding: var(--st-space-sm) var(--st-space-sm);
+    font-weight: 600;
+    color: var(--st-color-text-secondary);
+    text-align: center;
+    border-bottom: 2px solid var(--st-color-border);
+    font-size: var(--st-text-xs);
+    white-space: nowrap;
+}
+
+.pc-table tbody td {
+    padding: var(--st-space-xs) var(--st-space-sm);
+    text-align: center;
+    border-bottom: 1px solid var(--st-color-border-light);
+    font-family: 'Courier New', monospace;
+    font-size: var(--st-text-xs);
+    transition: background-color var(--st-transition-fast);
+}
+
+.pc-table tbody tr:hover td {
+    background: var(--st-color-primary-bg);
+}
+
+.pc-table__idx {
+    color: var(--st-color-text-muted);
+    font-weight: 600;
+}
+
+/* Kolorowanie iloczynow */
+.pc-table__product--positive {
+    background: rgba(34, 197, 94, 0.12) !important;
+    color: var(--st-color-success-dark);
+    font-weight: 600;
+}
+
+.pc-table__product--negative {
+    background: rgba(239, 68, 68, 0.12) !important;
+    color: var(--st-color-error-dark);
+    font-weight: 600;
+}
+
+/* Wiersz sumy */
+.pc-table__sum-row td {
+    border-top: 2px solid var(--st-color-border);
+    background: var(--st-color-background) !important;
+    font-weight: 700;
+    padding: var(--st-space-sm);
+}
+
+.pc-table tfoot td {
+    padding: var(--st-space-sm);
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: var(--st-text-xs);
+}
+
+/* === Eksperymenty === */
+.pc-experiments {
+    margin-top: var(--st-space-md);
+}
+
+.pc-experiments summary {
+    cursor: pointer;
+    color: var(--st-color-primary);
+}
+
+.pc-experiments ol {
+    margin-top: var(--st-space-sm);
+}
+
+.pc-experiments li {
+    margin-bottom: var(--st-space-sm);
+}

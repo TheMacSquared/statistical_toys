@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korelacja Pearsona</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <link rel="stylesheet" href="/common/shared.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="st-app st-page">
+    <div class="st-card st-card--wide">
+        <header class="st-header">
+            <h1 class="st-header__title">Korelacja Pearsona</h1>
+            <p class="st-header__subtitle">Interaktywna wizualizacja wspolczynnika korelacji liniowej</p>
+        </header>
+
+        <!-- Instrukcja -->
+        <div class="pc-instruction">
+            Kliknij na wykresie, by dodac punkt. Kliknij istniejacy punkt, by go usunac.
+        </div>
+
+        <!-- Przyciski przykladowych zbiorow danych -->
+        <div class="pc-presets">
+            <span class="pc-presets__label">Przykladowe dane:</span>
+            <button class="st-btn st-btn--secondary pc-preset-btn" data-type="perfect_positive">
+                Silna dodatnia
+            </button>
+            <button class="st-btn st-btn--secondary pc-preset-btn" data-type="perfect_negative">
+                Silna ujemna
+            </button>
+            <button class="st-btn st-btn--secondary pc-preset-btn" data-type="no_correlation">
+                Brak korelacji
+            </button>
+            <button class="st-btn st-btn--secondary pc-preset-btn" data-type="nonlinear">
+                Nieliniowa (U)
+            </button>
+            <button class="st-btn st-btn--secondary pc-preset-btn" data-type="outlier_effect">
+                Efekt outfiera
+            </button>
+            <button class="st-btn st-btn--ghost pc-preset-btn" data-type="clear">
+                Wyczysc
+            </button>
+        </div>
+
+        <!-- Glowny uklad: wykres + panel wynikow -->
+        <div class="pc-main-layout">
+            <!-- Wykres scatter -->
+            <div class="pc-plot-area">
+                <div class="st-plot pc-plot">
+                    <div id="plot" style="width: 100%; height: 100%;"></div>
+                    <div id="loading" class="st-loading">Obliczanie...</div>
+                </div>
+            </div>
+
+            <!-- Panel wynikow -->
+            <aside class="pc-results-panel">
+                <h2 class="pc-results-panel__title">Wyniki</h2>
+
+                <!-- Glowna wartosc r -->
+                <div class="pc-r-display" id="r-display">
+                    <span class="pc-r-display__label">r =</span>
+                    <span class="pc-r-display__value" id="stat-r">-</span>
+                </div>
+
+                <!-- Siatka statystyk -->
+                <div class="st-stats-grid pc-stats-grid">
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">r&sup2;</span>
+                        <span id="stat-r2" class="st-stat-item__value">-</span>
+                    </div>
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">Wartosc p</span>
+                        <span id="stat-pvalue" class="st-stat-item__value">-</span>
+                    </div>
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">n (punkty)</span>
+                        <span id="stat-n" class="st-stat-item__value">0</span>
+                    </div>
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">df</span>
+                        <span id="stat-df" class="st-stat-item__value">-</span>
+                    </div>
+                </div>
+
+                <!-- Interpretacja -->
+                <div class="pc-interpretation" id="interpretation-box">
+                    <span id="stat-interpretation">Dodaj co najmniej 3 punkty</span>
+                </div>
+
+                <!-- Rownanie regresji -->
+                <div class="pc-regression-eq" id="regression-box">
+                    <span class="pc-regression-eq__label">Linia regresji:</span>
+                    <span class="pc-regression-eq__value" id="stat-regression">-</span>
+                </div>
+
+                <!-- Srednie -->
+                <div class="pc-means">
+                    <div class="pc-means__item">
+                        <span class="pc-means__label">x&#772; =</span>
+                        <span class="pc-means__value" id="stat-mean-x">-</span>
+                    </div>
+                    <div class="pc-means__item">
+                        <span class="pc-means__label">y&#772; =</span>
+                        <span class="pc-means__value" id="stat-mean-y">-</span>
+                    </div>
+                </div>
+
+                <!-- Wzor Pearsona z wartosciami -->
+                <div class="pc-formula" id="formula-box">
+                    <div class="pc-formula__title">Wzor Pearsona:</div>
+                    <div class="pc-formula__expr">
+                        r = <span class="pc-formula__frac">
+                            <span class="pc-formula__num">&Sigma;(x<sub>i</sub> - x&#772;)(y<sub>i</sub> - y&#772;)</span>
+                            <span class="pc-formula__den">&radic;[&Sigma;(x<sub>i</sub> - x&#772;)&sup2; &middot; &Sigma;(y<sub>i</sub> - y&#772;)&sup2;]</span>
+                        </span>
+                    </div>
+                    <div class="pc-formula__values" id="formula-values">
+                        <!-- Wypelniane przez JS -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Tabela danych -->
+        <div class="pc-data-section" id="data-section" style="display: none;">
+            <div class="pc-data-header">
+                <h3>Tabela odchylen</h3>
+                <label class="pc-toggle">
+                    <input type="checkbox" id="show-deviations" checked>
+                    Pokaz odchylenia na wykresie
+                </label>
+            </div>
+            <div class="pc-table-scroll">
+                <table class="pc-table" id="data-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>x<sub>i</sub></th>
+                            <th>y<sub>i</sub></th>
+                            <th>x<sub>i</sub> - x&#772;</th>
+                            <th>y<sub>i</sub> - y&#772;</th>
+                            <th>(x<sub>i</sub> - x&#772;)(y<sub>i</sub> - y&#772;)</th>
+                            <th>(x<sub>i</sub> - x&#772;)&sup2;</th>
+                            <th>(y<sub>i</sub> - y&#772;)&sup2;</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-tbody">
+                    </tbody>
+                    <tfoot id="data-tfoot">
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <!-- Opis -->
+        <div class="st-description">
+            <h3>O wspolczynniku korelacji Pearsona</h3>
+            <p>
+                Wspolczynnik korelacji Pearsona (r) mierzy sile i kierunek
+                <strong>liniowej</strong> zaleznosci miedzy dwiema zmiennymi.
+                Przyjmuje wartosci od -1 (doskonala korelacja ujemna) do +1
+                (doskonala korelacja dodatnia). Wartosc 0 oznacza brak
+                korelacji liniowej.
+            </p>
+            <h4>Interpretacja wartosci |r|</h4>
+            <ul>
+                <li><strong>|r| &lt; 0.3</strong> — slaba korelacja</li>
+                <li><strong>0.3 &le; |r| &lt; 0.7</strong> — umiarkowana korelacja</li>
+                <li><strong>|r| &ge; 0.7</strong> — silna korelacja</li>
+            </ul>
+
+            <h4>Wazne ograniczenie</h4>
+            <p>
+                Pearson mierzy tylko zaleznosc <strong>liniowa</strong>.
+                Dwie zmienne moga byc silnie powiazane nieliniowo
+                (np. zaleznoscig kwadratowa), a wspolczynnik r moze
+                byc bliski 0. Wyprobuj przyklad „Nieliniowa (U)",
+                by to zobaczyc.
+            </p>
+
+            <details class="pc-experiments">
+                <summary><strong>Eksperymenty do wyprobowania</strong></summary>
+                <ol>
+                    <li><strong>Wrrazliwosc na outfiery:</strong> Zaladuj „Brak korelacji",
+                        potem dodaj jeden punkt daleko od reszty (np. w rogu).
+                        Obserwuj jak drastycznie zmienia sie r.</li>
+                    <li><strong>Nieliniowa zaleznosc:</strong> Zaladuj „Nieliniowa (U)" —
+                        r jest bliski 0, choc zaleznosc jest oczywista.</li>
+                    <li><strong>Dodawaj punkty jeden po drugim:</strong> Zacznij od pustego wykresu
+                        i buduj zbior danych punkt po punkcie, obserwujac jak zmienia sie r.</li>
+                    <li><strong>Kolorowanie tabeli:</strong> Obserwuj kolory w kolumnie iloczyn —
+                        zielone (dodatnie) i czerwone (ujemne) skladniki
+                        pokazuja jak kazdy punkt wplywa na wartosc r.</li>
+                </ol>
+            </details>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
