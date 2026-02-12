@@ -11,6 +11,8 @@ let currentQuestion = null;
 let answered = false;
 let questionCount = 0;
 let totalQuestions = 20;
+let correctCount = 0;
+let totalAnswered = 0;
 
 // Elementy DOM
 let startScreen, questionScreen, finishScreen, loadingEl;
@@ -18,6 +20,7 @@ let btnStart, btnNext, btnRestart;
 let questionText, feedbackBox, feedbackHeader, feedbackText;
 let answerButtons;
 let questionCounter;
+let scoreResult, scorePercent, scoreBar;
 
 document.addEventListener('DOMContentLoaded', function() {
     // Pobranie elementów
@@ -37,6 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     answerButtons = document.querySelectorAll('.btn-answer');
     questionCounter = document.getElementById('question-counter');
+    scoreResult = document.getElementById('score-result');
+    scorePercent = document.getElementById('score-percent');
+    scoreBar = document.getElementById('score-bar');
 
     // Event listeners
     btnStart.addEventListener('click', startQuiz);
@@ -66,9 +72,11 @@ async function startQuiz() {
         const data = await response.json();
 
         if (data.success) {
-            // Zapisz liczbę pytań
+            // Reset wyników
             totalQuestions = data.total_questions;
             questionCount = 0;
+            correctCount = 0;
+            totalAnswered = 0;
 
             // Przejdź do ekranu pytań
             showScreen('question');
@@ -105,8 +113,8 @@ async function loadNextQuestion() {
 
         if (data.success) {
             if (data.finished) {
-                // Koniec pytań
-                showScreen('finish');
+                // Koniec pytań - pokaż wynik
+                showFinishScreen();
             } else {
                 // Wyświetl pytanie
                 currentQuestion = data.question;
@@ -160,6 +168,8 @@ async function handleAnswer(event) {
 
         if (data.success) {
             answered = true;
+            totalAnswered++;
+            if (data.correct) correctCount++;
             disableAnswerButtons();
 
             // Pokaż feedback
@@ -253,4 +263,29 @@ function showLoading() {
 
 function hideLoading() {
     loadingEl.classList.remove('active');
+}
+
+/**
+ * Pokaż ekran końcowy z wynikiem
+ */
+function showFinishScreen() {
+    const percent = totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
+
+    // Tekst wyniku
+    scoreResult.textContent = `${correctCount} / ${totalAnswered}`;
+    scorePercent.textContent = `${percent}%`;
+
+    // Pasek postępu
+    scoreBar.style.width = `${percent}%`;
+
+    // Kolor paska w zależności od wyniku
+    if (percent >= 80) {
+        scoreBar.className = 'score-bar-fill excellent';
+    } else if (percent >= 50) {
+        scoreBar.className = 'score-bar-fill good';
+    } else {
+        scoreBar.className = 'score-bar-fill needs-work';
+    }
+
+    showScreen('finish');
 }

@@ -10,7 +10,10 @@
 <body data-quiz-id="{{ quiz.id }}">
     <div class="container">
         <header>
-            <a href="/" class="back-button">← Menu główne</a>
+            <div class="header-nav">
+                <a href="/" class="back-button">← Menu główne</a>
+                <span id="question-counter" class="question-counter"></span>
+            </div>
             <h1>{{ quiz.emoji }} {{ quiz.name }}</h1>
             <p class="subtitle">{{ quiz.description }}</p>
         </header>
@@ -50,11 +53,17 @@
             <!-- Stan: koniec -->
             <div id="finish-screen" class="screen">
                 <div class="finish-box">
-                    <h2>🎉 Gratulacje!</h2>
-                    <p>Przeszedłeś przez wszystkie pytania w quizie.</p>
+                    <h2>Koniec quizu!</h2>
+                    <div class="score-section">
+                        <div class="score-big" id="score-percent">0%</div>
+                        <p class="score-detail">Poprawne odpowiedzi: <strong id="score-result">0 / 0</strong></p>
+                        <div class="score-bar">
+                            <div class="score-bar-fill" id="score-bar"></div>
+                        </div>
+                    </div>
                     <div class="finish-buttons">
                         <button id="btn-restart" class="btn-primary btn-large">
-                            🔄 Zacznij od Nowa
+                            🔄 Spróbuj ponownie
                         </button>
                         <a href="/" class="btn-secondary btn-large">
                             📋 Menu główne

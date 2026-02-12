@@ -5,12 +5,16 @@ const QUIZ_ID = document.body.dataset.quizId;
 // Stan quizu
 let currentQuestion = null;
 let answered = false;
+let correctCount = 0;
+let totalAnswered = 0;
+let totalQuestions = 0;
 
 // Elementy DOM
 let startScreen, questionScreen, finishScreen, loadingEl;
 let btnStart, btnNext, btnRestart;
 let questionText, feedbackBox, feedbackHeader, feedbackText;
 let answersGrid;
+let questionCounter, scoreResult, scorePercent, scoreBar;
 
 document.addEventListener('DOMContentLoaded', function() {
     // Pobranie elementów
@@ -28,6 +32,10 @@ document.addEventListener('DOMContentLoaded', function() {
     feedbackHeader = document.getElementById('feedback-header');
     feedbackText = document.getElementById('feedback-text');
     answersGrid = document.getElementById('answers-grid');
+    questionCounter = document.getElementById('question-counter');
+    scoreResult = document.getElementById('score-result');
+    scorePercent = document.getElementById('score-percent');
+    scoreBar = document.getElementById('score-bar');
 
     // Event listeners
     btnStart.addEventListener('click', startQuiz);
@@ -53,6 +61,11 @@ async function startQuiz() {
         const data = await response.json();
 
         if (data.success) {
+            // Reset wyników
+            totalQuestions = data.total_questions;
+            correctCount = 0;
+            totalAnswered = 0;
+
             // Przejdź do ekranu pytań
             showScreen('question');
             loadNextQuestion();
@@ -87,12 +100,16 @@ async function loadNextQuestion() {
 
         if (data.success) {
             if (data.finished) {
-                // Koniec pytań
-                showScreen('finish');
+                // Koniec pytań - pokaż wynik
+                showFinishScreen();
             } else {
                 // Wyświetl pytanie
                 currentQuestion = data.question;
                 questionText.textContent = currentQuestion.question;
+
+                // Aktualizuj licznik pytań
+                const questionNum = totalAnswered + 1;
+                questionCounter.textContent = `Pytanie ${questionNum} / ${totalQuestions}`;
 
                 // Wygeneruj przyciski odpowiedzi
                 generateAnswerButtons();
@@ -181,6 +198,8 @@ async function handleAnswer(event) {
 
         if (data.success) {
             answered = true;
+            totalAnswered++;
+            if (data.correct) correctCount++;
             disableAnswerButtons();
 
             // Pokaż feedback
@@ -259,4 +278,29 @@ function showLoading() {
 
 function hideLoading() {
     loadingEl.classList.remove('active');
+}
+
+/**
+ * Pokaż ekran końcowy z wynikiem
+ */
+function showFinishScreen() {
+    const percent = totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
+
+    // Tekst wyniku
+    scoreResult.textContent = `${correctCount} / ${totalAnswered}`;
+    scorePercent.textContent = `${percent}%`;
+
+    // Pasek postępu
+    scoreBar.style.width = `${percent}%`;
+
+    // Kolor paska w zależności od wyniku
+    if (percent >= 80) {
+        scoreBar.className = 'score-bar-fill excellent';
+    } else if (percent >= 50) {
+        scoreBar.className = 'score-bar-fill good';
+    } else {
+        scoreBar.className = 'score-bar-fill needs-work';
+    }
+
+    showScreen('finish');
 }

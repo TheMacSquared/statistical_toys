@@ -56,11 +56,14 @@ QUESTIONS_CACHE = {}
 
 # === Sesja quizu (in-memory, per-user) ===
 # W uproszczeniu: jedna globalna sesja (wystarczy dla single-user desktop app)
+MAX_QUESTIONS = 10  # Liczba pytań w jednym podejściu
+
 quiz_session = {
     'current_quiz_id': None,
     'remaining_questions': [],  # ID pytań do wylosowania
     'shuffled': False,
-    'questions': []  # Aktualne pytania (cache dla bieżącego quizu)
+    'questions': [],  # Aktualne pytania (cache dla bieżącego quizu)
+    'total_in_round': 0  # Ile pytań w tym podejściu
 }
 
 # === ROUTING ===
@@ -98,15 +101,17 @@ def start_quiz(quiz_id):
 
         questions = QUESTIONS_CACHE[quiz_id]
 
-        # Tasuj wszystkie pytania
+        # Tasuj wszystkie pytania i wybierz MAX_QUESTIONS
         question_ids = [q['id'] for q in questions]
         random.shuffle(question_ids)
+        question_ids = question_ids[:MAX_QUESTIONS]
 
         # Zapisz w sesji
         quiz_session['current_quiz_id'] = quiz_id
         quiz_session['remaining_questions'] = question_ids
         quiz_session['shuffled'] = True
         quiz_session['questions'] = questions
+        quiz_session['total_in_round'] = len(question_ids)
 
         return jsonify({
             'success': True,

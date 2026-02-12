@@ -36,6 +36,8 @@ QUESTIONS = {
     'two_intervals': load_json('questions/two_intervals.json')['questions']
 }
 
+MAX_QUESTIONS = 10  # Liczba pytań w jednym podejściu
+
 # === Sesja quizu (in-memory, globalna dla single-user desktop app) ===
 quiz_session = {
     'mode_id': None,
@@ -75,9 +77,10 @@ def start_quiz(mode_id):
         if mode_id not in QUESTIONS:
             raise ValueError(f"Nieznany tryb: {mode_id}")
 
-        # Tasuj wszystkie pytania dla tego trybu
+        # Tasuj wszystkie pytania i wybierz MAX_QUESTIONS
         question_ids = [q['id'] for q in QUESTIONS[mode_id]]
         random.shuffle(question_ids)
+        question_ids = question_ids[:MAX_QUESTIONS]
 
         # Zapisz w sesji
         quiz_session['mode_id'] = mode_id
