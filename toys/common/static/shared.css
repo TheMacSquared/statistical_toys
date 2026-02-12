@@ -8,9 +8,6 @@
  * Unika konfliktów z Quarto/Bootstrap przy osadzaniu.
  */
 
-/* ==================== FONT ==================== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 /* ==================== DESIGN TOKENS ==================== */
 :root {
     /* --- Colors --- */
@@ -55,7 +52,7 @@
     --st-gradient-error: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
 
     /* --- Typography --- */
-    --st-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --st-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 
     --st-text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
     --st-text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.875rem);
