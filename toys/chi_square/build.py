@@ -9,6 +9,7 @@ def build():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     templates_dir = os.path.join(current_dir, 'templates')
     static_dir = os.path.join(current_dir, 'static')
+    common_static_dir = os.path.join(current_dir, '..', 'common', 'static')
 
     if not os.path.exists(templates_dir):
         print(f"ERROR: templates/ not found: {templates_dir}")
@@ -20,7 +21,7 @@ def build():
 
     print("Building ChiSquare.exe...")
 
-    PyInstaller.__main__.run([
+    args = [
         'main.py',
         '--onefile',
         '--windowed',
@@ -29,9 +30,15 @@ def build():
         add_data_arg(static_dir, 'static'),
         '--clean',
         '--noconfirm',
-        '--hidden-import=bottle',
         '--hidden-import=proxy_tools',
-    ])
+    ]
+
+    # Dodaj common/static jesli istnieje (shared.css)
+    if os.path.exists(common_static_dir):
+        args.append(add_data_arg(os.path.abspath(common_static_dir),
+                                 os.path.join('common', 'static')))
+
+    PyInstaller.__main__.run(args)
 
     print("Build complete: dist/ChiSquare.exe")
 

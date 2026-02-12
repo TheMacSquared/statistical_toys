@@ -95,10 +95,16 @@
                 <div class="chi-table-wrapper">
                     <div class="chi-table-header">
                         <h3>Tabela kontyngencji</h3>
-                        <label class="chi-toggle">
-                            <input type="checkbox" id="show-expected" checked>
-                            Pokaż wartości oczekiwane
-                        </label>
+                        <div style="display: flex; align-items: center; gap: var(--st-space-md); flex-wrap: wrap;">
+                            <span style="font-size: var(--st-text-xs); color: var(--st-color-text-muted);">
+                                <span style="background: rgba(239,68,68,0.3); padding: 1px 6px; border-radius: 3px;">▲ obs. &gt; ocz.</span>
+                                <span style="background: rgba(99,102,241,0.3); padding: 1px 6px; border-radius: 3px;">▼ obs. &lt; ocz.</span>
+                            </span>
+                            <label class="chi-toggle">
+                                <input type="checkbox" id="show-expected" checked>
+                                Pokaż wartości oczekiwane
+                            </label>
+                        </div>
                     </div>
                     <div id="table-container">
                         <!-- Generowane dynamicznie przez JS -->

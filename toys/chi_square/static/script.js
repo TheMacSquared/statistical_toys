@@ -472,11 +472,11 @@ async function triggerComputation() {
             plotGroupedBars();
             showWarnings(data.warnings || []);
         } else {
-            console.error('Backend error:', data.error);
+            showWarnings([data.error || 'Nieznany błąd']);
         }
 
     } catch (error) {
-        console.error('Error:', error);
+        showWarnings([error.message || 'Błąd połączenia z serwerem']);
     } finally {
         loadingEl.classList.remove('st-loading--active');
     }
@@ -535,7 +535,7 @@ function updateTableDisplay() {
             const pct = rowTotal > 0 ? (table[r][c] / rowTotal * 100).toFixed(1) : '0.0';
             pctEl.textContent = `${pct}%`;
 
-            // Kolorowanie wg wkladu
+            // Kolorowanie wg wkladu + znaczniki dla daltonistow
             if (contributions) {
                 const contrib = contributions[r][c];
                 const intensity = Math.min(contrib / Math.max(maxContrib, 3), 1) * 0.4;
@@ -544,10 +544,13 @@ function updateTableDisplay() {
 
                 if (obs > exp) {
                     cellEl.style.backgroundColor = `rgba(239, 68, 68, ${intensity})`;
+                    cellEl.title = `▲ Więcej niż oczekiwane (wkład: ${contrib.toFixed(2)})`;
                 } else if (obs < exp) {
                     cellEl.style.backgroundColor = `rgba(99, 102, 241, ${intensity})`;
+                    cellEl.title = `▼ Mniej niż oczekiwane (wkład: ${contrib.toFixed(2)})`;
                 } else {
                     cellEl.style.backgroundColor = '';
+                    cellEl.title = `= Zgodne z oczekiwanymi`;
                 }
             }
         }
@@ -598,7 +601,7 @@ function updateStats() {
 
     if (state.significant != null) {
         if (state.significant) {
-            verdictEl.textContent = `Odrzucamy H₀ (p < ${state.alpha}) — zmienne są zależne`;
+            verdictEl.textContent = `Odrzucamy H₀ (p < ${state.alpha}) — istnieją istotne przesłanki zależności`;
             container.classList.add('chi-verdict--significant');
         } else {
             verdictEl.textContent = `Brak podstaw do odrzucenia H₀ (p ≥ ${state.alpha})`;
@@ -684,14 +687,18 @@ function plotGroupedBars() {
         displaylogo: false
     };
 
-    Plotly.newPlot('plot', traces, layout, config);
+    Plotly.react('plot', traces, layout, config);
 }
 
 // === OSTRZEZENIA ===
 function showWarnings(warnings) {
     const box = document.getElementById('warnings-box');
     if (warnings.length > 0) {
-        box.innerHTML = warnings.join('<br>');
+        box.textContent = '';
+        warnings.forEach((w, i) => {
+            if (i > 0) box.appendChild(document.createElement('br'));
+            box.appendChild(document.createTextNode(w));
+        });
         box.style.display = '';
     } else {
         box.style.display = 'none';
