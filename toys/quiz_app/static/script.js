@@ -294,7 +294,7 @@ function showFinishScreen() {
     scoreBar.style.width = `${percent}%`;
 
     // Kolor paska w zależności od wyniku
-    if (percent >= 80) {
+    if (percent >= 70) {
         scoreBar.className = 'score-bar-fill excellent';
     } else if (percent >= 50) {
         scoreBar.className = 'score-bar-fill good';
