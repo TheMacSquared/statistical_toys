@@ -54,6 +54,60 @@ QUIZ_CONFIG = load_quiz_config()
 # Cache pytań dla każdego quizu
 QUESTIONS_CACHE = {}
 
+# Cache dla errors_info (quiz interpretacyjny)
+ERRORS_INFO_CACHE = {}
+
+def load_errors_info(errors_file):
+    """Wczytuje informacje o błędach interpretacyjnych"""
+    bundle_dir = get_bundle_dir()
+    errors_path = os.path.join(bundle_dir, 'questions', errors_file)
+    with open(errors_path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def format_interpretation_results(question):
+    """Formatuje wyniki testu do czytelnego wyświetlenia"""
+    results = question['results']
+    test_type = question['test_type']
+    unit = question.get('unit', '')
+    unit_str = f" {unit}" if unit else ""
+
+    lines = []
+
+    if test_type == 't_jednej_proby':
+        lines.append(f"Średnia w próbie: {results['mean']}{unit_str}")
+        lines.append(f"Odchylenie standardowe: {results['sd']}{unit_str}")
+        lines.append(f"Liczebność próby: n = {results['n']}")
+        lines.append(f"Wynik testu: {results['test_stat']}, p = {results['p_value']}")
+
+    elif test_type == 'proporcji':
+        lines.append(f"Odsetek w próbie: {int(results['proportion'] * 100)}%")
+        lines.append(f"Liczebność próby: n = {results['n']}")
+        lines.append(f"Wynik testu: {results['test_stat']}, p = {results['p_value']}")
+
+    elif test_type == 't_dwoch_prob':
+        lines.append(f"Grupa '{results['label1']}': średnia = {results['mean1']}{unit_str} (odch. std. = {results['sd1']}), n = {results['n1']}")
+        lines.append(f"Grupa '{results['label2']}': średnia = {results['mean2']}{unit_str} (odch. std. = {results['sd2']}), n = {results['n2']}")
+        lines.append(f"Wynik testu: {results['test_stat']}, p = {results['p_value']}")
+
+    elif test_type == 'korelacja':
+        lines.append(f"Współczynnik korelacji: r = {results['r']}")
+        lines.append(f"Liczebność próby: n = {results['n']}")
+        lines.append(f"Wynik testu: {results['test_stat']}, p = {results['p_value']}")
+
+    elif test_type == 'chi_kwadrat':
+        lines.append(f"Liczebność próby: n = {results['n']}")
+        lines.append(f"Wynik testu: {results['test_stat']}, p = {results['p_value']}")
+
+    elif test_type == 'anova':
+        means = results.get('means', {})
+        for group, mean in means.items():
+            lines.append(f"Grupa '{group}': średnia = {mean}{unit_str}")
+        if 'n_per_group' in results:
+            lines.append(f"Liczebność grup: n = {results['n_per_group']} każda")
+        lines.append(f"Wynik testu: {results['test_stat']}, p = {results['p_value']}")
+
+    return lines
+
 # === Sesja quizu (in-memory, per-user) ===
 # W uproszczeniu: jedna globalna sesja (wystarczy dla single-user desktop app)
 MAX_QUESTIONS = 10  # Liczba pytań w jednym podejściu
@@ -158,30 +212,51 @@ def next_question(quiz_id):
         if not question:
             raise ValueError(f"Pytanie ID {next_id} nie znalezione")
 
-        # Przygotuj odpowiedź (bez correct i explanation)
-        response_question = {
-            'id': question['id'],
-            'question': question['question']
-        }
+        # Znajdź konfigurację quizu
+        quiz_config = next((q for q in QUIZ_CONFIG if q['id'] == quiz_id), None)
 
-        # Dla quizów z losowaniem odpowiedzi (testy) - wybierz 3 losowe opcje
-        # zawsze włączając poprawną odpowiedź
-        if 'all_options' in question:
-            correct_answer = question['correct']
-            other_options = [opt for opt in question['all_options'] if opt != correct_answer]
+        # Przygotuj odpowiedź w zależności od typu quizu
+        if quiz_config and quiz_config.get('answer_type') == 'interpretation':
+            # Quiz interpretacyjny - inny format
+            answers = question['answers'].copy()
+            random.shuffle(answers)
 
-            # Wylosuj niepoprawne opcje (3 dla 4-opcyjnych pytań, 2 dla reszty)
-            random.shuffle(other_options)
-            if len(question['all_options']) <= 4:
-                selected_wrong = other_options
-            else:
+            sanitized_answers = []
+            for i, ans in enumerate(answers):
+                sanitized_answers.append({
+                    'index': i,
+                    'text': ans['text']
+                })
+
+            response_question = {
+                'id': question['id'],
+                'test_type': question['test_type'],
+                'context': question['context'],
+                'results': format_interpretation_results(question),
+                'answers': sanitized_answers
+            }
+        else:
+            # Standardowy quiz
+            response_question = {
+                'id': question['id'],
+                'question': question['question']
+            }
+
+            # Dla quizów z losowaniem odpowiedzi (testy) - wybierz 3 losowe opcje
+            # zawsze włączając poprawną odpowiedź
+            if 'all_options' in question:
+                correct_answer = question['correct']
+                other_options = [opt for opt in question['all_options'] if opt != correct_answer]
+
+                # Wylosuj 2 niepoprawne opcje
+                random.shuffle(other_options)
                 selected_wrong = other_options[:2]
 
-            # Połącz poprawną z nieprawiymi i wymieszaj
-            selected_options = selected_wrong + [correct_answer]
-            random.shuffle(selected_options)
+                # Połącz poprawną z nieprawiymi i wymieszaj
+                selected_options = selected_wrong + [correct_answer]
+                random.shuffle(selected_options)
 
-            response_question['options'] = selected_options
+                response_question['options'] = selected_options
 
         return jsonify({
             'success': True,
@@ -202,7 +277,7 @@ def check_answer(quiz_id):
     Sprawdza odpowiedź użytkownika
 
     Body:
-        {question_id: int, answer: str}
+        {question_id: int, answer: str} lub {question_id: int, answer_text: str}
 
     Returns:
         JSON: {
@@ -215,7 +290,6 @@ def check_answer(quiz_id):
     try:
         data = request.json
         question_id = int(data.get('question_id'))
-        user_answer = data.get('answer')
 
         # Znajdź pytanie
         question = next((q for q in quiz_session['questions'] if q['id'] == question_id), None)
@@ -223,19 +297,54 @@ def check_answer(quiz_id):
         if not question:
             raise ValueError(f"Pytanie ID {question_id} nie znalezione")
 
-        # Sprawdź odpowiedź
-        is_correct = (user_answer == question['correct'])
+        # Znajdź konfigurację quizu
+        quiz_config = next((q for q in QUIZ_CONFIG if q['id'] == quiz_id), None)
 
-        # Usuń pytanie z remaining (użytkownik już na nie odpowiedział)
-        if question_id in quiz_session['remaining_questions']:
-            quiz_session['remaining_questions'].remove(question_id)
+        if quiz_config and quiz_config.get('answer_type') == 'interpretation':
+            # Quiz interpretacyjny - odpowiedzi w formacie answers[]
+            answer_text = data.get('answer_text', '')
+            answers = question['answers']
 
-        return jsonify({
-            'success': True,
-            'correct': is_correct,
-            'explanation': question['explanation'],
-            'correct_answer': question['correct']
-        })
+            selected_answer = None
+            correct_answer = None
+            for ans in answers:
+                if ans['text'] == answer_text:
+                    selected_answer = ans
+                if ans['correct']:
+                    correct_answer = ans
+
+            if not selected_answer:
+                raise ValueError("Nie znaleziono wybranej odpowiedzi")
+
+            is_correct = selected_answer['correct']
+
+            # Usuń pytanie z remaining
+            if question_id in quiz_session['remaining_questions']:
+                quiz_session['remaining_questions'].remove(question_id)
+
+            return jsonify({
+                'success': True,
+                'correct': is_correct,
+                'explanation': selected_answer['feedback'],
+                'correct_answer': correct_answer['text']
+            })
+        else:
+            # Standardowy quiz
+            user_answer = data.get('answer')
+
+            # Sprawdź odpowiedź
+            is_correct = (user_answer == question['correct'])
+
+            # Usuń pytanie z remaining (użytkownik już na nie odpowiedział)
+            if question_id in quiz_session['remaining_questions']:
+                quiz_session['remaining_questions'].remove(question_id)
+
+            return jsonify({
+                'success': True,
+                'correct': is_correct,
+                'explanation': question['explanation'],
+                'correct_answer': question['correct']
+            })
 
     except ValueError as e:
         return jsonify({
@@ -265,6 +374,26 @@ def get_quiz_config():
     return jsonify({
         'success': True,
         'quiz': quiz_config
+    })
+
+@app.route('/api/quiz/<quiz_id>/errors-info')
+def get_errors_info(quiz_id):
+    """Zwraca informacje o błędach interpretacyjnych dla quizu"""
+    quiz_config = next((q for q in QUIZ_CONFIG if q['id'] == quiz_id), None)
+
+    if not quiz_config:
+        return jsonify({'success': False, 'error': 'Quiz nie znaleziony'}), 404
+
+    errors_file = quiz_config.get('errors_file')
+    if not errors_file:
+        return jsonify({'success': False, 'error': 'Quiz nie ma informacji o błędach'}), 404
+
+    if errors_file not in ERRORS_INFO_CACHE:
+        ERRORS_INFO_CACHE[errors_file] = load_errors_info(errors_file)
+
+    return jsonify({
+        'success': True,
+        'data': ERRORS_INFO_CACHE[errors_file]
     })
 
 if __name__ == '__main__':

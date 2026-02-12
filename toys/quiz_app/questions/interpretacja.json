@@ -1,0 +1,674 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "test_type": "t_jednej_proby",
+      "context": "Producent baterii twierdzi, że ich baterie działają średnio 50 godzin. Zbadano próbę 40 baterii.",
+      "results": {
+        "mean": 48.2,
+        "sd": 5.1,
+        "n": 40,
+        "test_stat": "t(39) = -2.23",
+        "p_value": 0.031
+      },
+      "unit": "godz.",
+      "answers": [
+        {
+          "text": "Baterie są gorsze niż deklaruje producent.",
+          "correct": false,
+          "error_type": "wartosciujace",
+          "feedback": "To stwierdzenie zawiera wartościowanie ('gorsze'). Poprawna interpretacja powinna opisywać wyniki bez wartościowania."
+        },
+        {
+          "text": "Średni czas działania baterii w badanej próbie był istotnie krótszy od deklarowanych 50 godzin (średnia = 48.2, p = 0.031).",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja odnosi się do badanego parametru (średni czas), podaje kierunek różnicy i wartość p."
+        },
+        {
+          "text": "Baterie nie działają 50 godzin.",
+          "correct": false,
+          "error_type": "lakoniczne",
+          "feedback": "To stwierdzenie jest zbyt lakoniczne - nie odnosi się do średniej, nie wspomina o istotności statystycznej ani o konkretnych wynikach."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "test_type": "t_jednej_proby",
+      "context": "Sprawdzono, czy średni czas dojazdu do pracy w pewnym mieście różni się od ogólnokrajowej średniej 35 minut. Przebadano 60 pracowników.",
+      "results": {
+        "mean": 36.8,
+        "sd": 8.2,
+        "n": 60,
+        "test_stat": "t(59) = 1.70",
+        "p_value": 0.094
+      },
+      "unit": "min",
+      "answers": [
+        {
+          "text": "Nie ma różnicy w czasie dojazdu między tym miastem a resztą kraju.",
+          "correct": false,
+          "error_type": "potwierdzanie_h0",
+          "feedback": "Błąd! Brak istotności statystycznej nie oznacza braku różnicy - oznacza jedynie, że nie mamy wystarczających dowodów, by stwierdzić różnicę."
+        },
+        {
+          "text": "Nie wykazano istotnej statystycznie różnicy między średnim czasem dojazdu w badanym mieście (średnia = 36.8 min) a średnią krajową (p = 0.094).",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja właściwie opisuje brak istotności statystycznej, nie twierdząc że różnicy nie ma."
+        },
+        {
+          "text": "Badanie dowodzi, że czas dojazdu w tym mieście jest taki sam jak w całym kraju.",
+          "correct": false,
+          "error_type": "dowodzi",
+          "feedback": "Słowo 'dowodzi' jest nieodpowiednie w kontekście statystycznym. Ponadto, brak istotności nie oznacza, że wartości są takie same."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "test_type": "proporcji",
+      "context": "Firma twierdzi, że 80% klientów jest zadowolonych z ich usług. Przeprowadzono ankietę wśród 200 klientów.",
+      "results": {
+        "proportion": 0.72,
+        "n": 200,
+        "test_stat": "z = -2.83",
+        "p_value": 0.005
+      },
+      "unit": "%",
+      "answers": [
+        {
+          "text": "Odsetek zadowolonych klientów (72%) był istotnie niższy od deklarowanych przez firmę 80% (p = 0.005).",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Interpretacja odnosi się do badanego parametru (odsetek), podaje konkretne wartości i wartość p."
+        },
+        {
+          "text": "Firma kłamie o zadowoleniu klientów.",
+          "correct": false,
+          "error_type": "wartosciujace",
+          "feedback": "To stwierdzenie jest wartościujące i wykracza poza to, co można wnioskować z testu statystycznego."
+        },
+        {
+          "text": "Wynik jest istotny statystycznie, więc różnica między 72% a 80% jest duża.",
+          "correct": false,
+          "error_type": "wielkosc_efektu",
+          "feedback": "Błąd! Istotność statystyczna nie informuje o wielkości efektu. Mała wartość p nie oznacza dużej różnicy - tu różnica to 8 punktów procentowych."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "test_type": "proporcji",
+      "context": "Sprawdzono, czy odsetek osób regularnie ćwiczących w pewnym mieście różni się od średniej krajowej 25%. Przebadano 150 mieszkańców.",
+      "results": {
+        "proportion": 0.28,
+        "n": 150,
+        "test_stat": "z = 0.85",
+        "p_value": 0.395
+      },
+      "unit": "%",
+      "answers": [
+        {
+          "text": "Mieszkańcy tego miasta ćwiczą tak samo jak reszta kraju.",
+          "correct": false,
+          "error_type": "potwierdzanie_h0",
+          "feedback": "Błąd! Brak istotności nie oznacza równości. Możemy tylko powiedzieć, że nie wykazano istotnej różnicy."
+        },
+        {
+          "text": "Nie wykazano istotnej statystycznie różnicy między odsetkiem regularnie ćwiczących w badanym mieście (28%) a średnią krajową 25% (p = 0.395).",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja prawidłowo opisuje brak istotności bez twierdzenia, że proporcje są równe."
+        },
+        {
+          "text": "Jest 39.5% szans, że odsetek ćwiczących w tym mieście jest taki sam jak w kraju.",
+          "correct": false,
+          "error_type": "interpretacja_p",
+          "feedback": "Błędna interpretacja p-value! Wartość p to nie prawdopodobieństwo, że hipoteza zerowa jest prawdziwa."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "test_type": "t_dwoch_prob",
+      "context": "Porównano czas rozwiązywania testu między grupą uczącą się metodą tradycyjną (n=35) a grupą uczącą się online (n=38).",
+      "results": {
+        "mean1": 42.3,
+        "sd1": 8.5,
+        "n1": 35,
+        "label1": "tradycyjna",
+        "mean2": 38.1,
+        "sd2": 7.9,
+        "n2": 38,
+        "label2": "online",
+        "test_stat": "t(71) = 2.18",
+        "p_value": 0.033
+      },
+      "unit": "min",
+      "answers": [
+        {
+          "text": "Metoda online jest lepsza niż tradycyjna.",
+          "correct": false,
+          "error_type": "wartosciujace",
+          "feedback": "To stwierdzenie jest wartościujące ('lepsza'). Krótszy czas nie musi oznaczać 'lepszości' - zależy od kontekstu."
+        },
+        {
+          "text": "Nauka online powoduje szybsze rozwiązywanie testów.",
+          "correct": false,
+          "error_type": "przyczynowość",
+          "feedback": "Błąd przyczynowości! Test t pokazuje różnicę, ale nie dowodzi, że metoda nauki POWODUJE tę różnicę. Mogą istnieć inne czynniki."
+        },
+        {
+          "text": "Grupa ucząca się online rozwiązywała test istotnie szybciej (średnia = 38.1 min) niż grupa tradycyjna (średnia = 42.3 min), p = 0.033.",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja opisuje wyniki bez sugerowania przyczynowości i bez wartościowania."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "test_type": "t_dwoch_prob",
+      "context": "Zbadano poziom stresu (skala 0-100) u pracowników biurowych (n=45) i pracowników zdalnych (n=42).",
+      "results": {
+        "mean1": 58.2,
+        "sd1": 15.3,
+        "n1": 45,
+        "label1": "biurowi",
+        "mean2": 52.8,
+        "sd2": 14.7,
+        "n2": 42,
+        "label2": "zdalni",
+        "test_stat": "t(85) = 1.71",
+        "p_value": 0.091
+      },
+      "unit": "pkt",
+      "answers": [
+        {
+          "text": "Praca zdalna i biurowa są tak samo stresujące.",
+          "correct": false,
+          "error_type": "potwierdzanie_h0",
+          "feedback": "Błąd! Brak istotności statystycznej nie oznacza, że poziomy stresu są takie same - jedynie że nie wykazano istotnej różnicy."
+        },
+        {
+          "text": "Nie wykazano istotnej statystycznie różnicy w poziomie stresu między pracownikami biurowymi (średnia = 58.2) a pracownikami zdalnymi (średnia = 52.8), p = 0.091.",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja prawidłowo opisuje brak istotności, podając konkretne wartości średnich."
+        },
+        {
+          "text": "Nie stwierdzono różnicy.",
+          "correct": false,
+          "error_type": "lakoniczne",
+          "feedback": "Zbyt lakoniczne stwierdzenie - nie odnosi się do badanego parametru, nie podaje wartości ani poziomu istotności."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "test_type": "t_dwoch_prob",
+      "context": "Porównano wyniki egzaminu (0-100 pkt) studentów uczęszczających na zajęcia (n=52) i nieuczęszczających (n=31).",
+      "results": {
+        "mean1": 72.4,
+        "sd1": 12.1,
+        "n1": 52,
+        "label1": "uczęszczający",
+        "mean2": 61.8,
+        "sd2": 14.5,
+        "n2": 31,
+        "label2": "nieuczęszczający",
+        "test_stat": "t(81) = 3.68",
+        "p_value": 0.0004
+      },
+      "unit": "pkt",
+      "answers": [
+        {
+          "text": "Uczęszczanie na zajęcia powoduje lepsze wyniki na egzaminie.",
+          "correct": false,
+          "error_type": "przyczynowość",
+          "feedback": "Błąd przyczynowości! Różnica może wynikać z innych czynników (np. motywacja, zdolności). Badanie korelacyjne nie dowodzi przyczynowości."
+        },
+        {
+          "text": "Studenci uczęszczający na zajęcia uzyskali istotnie wyższe wyniki (średnia = 72.4) niż nieuczęszczający (średnia = 61.8), p < 0.001.",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja opisuje wyniki bez sugerowania, że uczęszczanie jest przyczyną lepszych wyników."
+        },
+        {
+          "text": "Wszyscy studenci powinni uczęszczać na zajęcia, bo wtedy będą mieli lepsze wyniki.",
+          "correct": false,
+          "error_type": "generalizacja",
+          "feedback": "Nadmierna generalizacja! Wynik dotyczy badanej próby i nie można go automatycznie rozszerzać na wszystkich studentów."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "test_type": "korelacja",
+      "context": "Zbadano związek między liczbą godzin snu a wynikami testu koncentracji u 80 osób.",
+      "results": {
+        "r": 0.42,
+        "n": 80,
+        "test_stat": "t(78) = 4.09",
+        "p_value": 0.0001
+      },
+      "unit": null,
+      "answers": [
+        {
+          "text": "Więcej snu powoduje lepszą koncentrację.",
+          "correct": false,
+          "error_type": "przyczynowość",
+          "feedback": "Korelacja nie oznacza przyczynowości! Nie wiemy, czy sen wpływa na koncentrację, czy może inne czynniki wpływają na oba."
+        },
+        {
+          "text": "Wykazano istotny umiarkowanie dodatni związek między liczbą godzin snu a wynikami testu koncentracji (r = 0.42, p < 0.001).",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja opisuje siłę i kierunek korelacji bez sugerowania przyczynowości."
+        },
+        {
+          "text": "Sen i koncentracja są ze sobą silnie powiązane.",
+          "correct": false,
+          "error_type": "wielkosc_efektu",
+          "feedback": "Korelacja r = 0.42 jest umiarkowana, nie silna. Silna korelacja to r > 0.7. Należy precyzyjnie opisywać wielkość efektu."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "test_type": "korelacja",
+      "context": "Sprawdzono związek między wiekiem a czasem reakcji u 65 kierowców.",
+      "results": {
+        "r": 0.28,
+        "n": 65,
+        "test_stat": "t(63) = 2.32",
+        "p_value": 0.024
+      },
+      "unit": null,
+      "answers": [
+        {
+          "text": "Wykazano istotny słaby dodatni związek między wiekiem a czasem reakcji (r = 0.28, p = 0.024), co oznacza, że starsi kierowcy mieli dłuższy czas reakcji.",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Interpretacja właściwie opisuje siłę korelacji (słaba) i jej kierunek."
+        },
+        {
+          "text": "Wiek znacząco wpływa na czas reakcji kierowców.",
+          "correct": false,
+          "error_type": "wielkosc_efektu",
+          "feedback": "Korelacja r = 0.28 jest słaba. Słowo 'znacząco' sugeruje duży wpływ, co nie jest uzasadnione wielkością efektu."
+        },
+        {
+          "text": "Starzenie się powoduje wydłużenie czasu reakcji.",
+          "correct": false,
+          "error_type": "przyczynowość",
+          "feedback": "Korelacja nie dowodzi przyczynowości! Mogą istnieć inne czynniki związane z wiekiem, które wpływają na czas reakcji."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "test_type": "korelacja",
+      "context": "Zbadano związek między liczbą wypitych kaw dziennie a poziomem lęku (skala 0-50) u 55 osób.",
+      "results": {
+        "r": 0.15,
+        "n": 55,
+        "test_stat": "t(53) = 1.10",
+        "p_value": 0.276
+      },
+      "unit": null,
+      "answers": [
+        {
+          "text": "Kawa nie ma żadnego związku z poziomem lęku.",
+          "correct": false,
+          "error_type": "potwierdzanie_h0",
+          "feedback": "Brak istotności nie oznacza braku związku - oznacza tylko, że w tej próbie nie wykazano istotnego związku."
+        },
+        {
+          "text": "Nie wykazano istotnego statystycznie związku między liczbą wypitych kaw a poziomem lęku (r = 0.15, p = 0.276).",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja prawidłowo opisuje brak istotności statystycznej."
+        },
+        {
+          "text": "Badanie dowodzi, że picie kawy jest bezpieczne dla zdrowia psychicznego.",
+          "correct": false,
+          "error_type": "dowodzi",
+          "feedback": "Podwójny błąd! Słowo 'dowodzi' jest nieodpowiednie, a wnioskowanie o 'bezpieczeństwie' wykracza daleko poza wyniki badania."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "test_type": "chi_kwadrat",
+      "context": "Zbadano, czy preferencje dotyczące formy pracy (stacjonarna/hybrydowa/zdalna) różnią się w zależności od pokolenia (młodsi <35 lat / starsi ≥35 lat). Przebadano 180 pracowników.",
+      "results": {
+        "chi2": 12.45,
+        "df": 2,
+        "n": 180,
+        "test_stat": "χ²(2) = 12.45",
+        "p_value": 0.002
+      },
+      "unit": null,
+      "answers": [
+        {
+          "text": "Młodsi pracownicy wolą pracę zdalną.",
+          "correct": false,
+          "error_type": "lakoniczne",
+          "feedback": "Zbyt lakoniczne i uproszczone. Test chi-kwadrat pokazuje ogólną zależność, nie konkretny kierunek preferencji."
+        },
+        {
+          "text": "Wykazano istotny statystycznie związek między wiekiem (pokoleniem) a preferencjami dotyczącymi formy pracy, χ²(2) = 12.45, p = 0.002.",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja prawidłowo opisuje wynik testu chi-kwadrat jako związek między zmiennymi."
+        },
+        {
+          "text": "Wiek powoduje różnice w preferencjach dotyczących pracy.",
+          "correct": false,
+          "error_type": "przyczynowość",
+          "feedback": "Test chi-kwadrat pokazuje związek, ale nie przyczynowość. Różnice mogą wynikać z innych czynników związanych z pokoleniem."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "test_type": "chi_kwadrat",
+      "context": "Sprawdzono, czy występuje związek między płcią a wyborem kierunku studiów (humanistyczne/ścisłe/przyrodnicze) wśród 250 studentów.",
+      "results": {
+        "chi2": 18.72,
+        "df": 2,
+        "n": 250,
+        "test_stat": "χ²(2) = 18.72",
+        "p_value": 0.00009
+      },
+      "unit": null,
+      "answers": [
+        {
+          "text": "Wykazano istotny statystycznie związek między płcią a wyborem kierunku studiów, χ²(2) = 18.72, p < 0.001.",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja prawidłowo opisuje wynik testu chi-kwadrat."
+        },
+        {
+          "text": "Płeć determinuje wybór kierunku studiów.",
+          "correct": false,
+          "error_type": "przyczynowość",
+          "feedback": "Błąd przyczynowości! Test pokazuje związek, ale nie możemy twierdzić, że płeć 'determinuje' wybór. Na wybór wpływa wiele czynników."
+        },
+        {
+          "text": "Wszyscy mężczyźni wybierają kierunki ścisłe, a kobiety humanistyczne.",
+          "correct": false,
+          "error_type": "generalizacja",
+          "feedback": "Rażąca generalizacja! Test pokazuje jedynie, że rozkład wyborów różni się między płciami, nie że wszyscy zachowują się tak samo."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "test_type": "chi_kwadrat",
+      "context": "Zbadano, czy istnieje związek między wykształceniem (podstawowe/średnie/wyższe) a stosowaniem diety wegetariańskiej wśród 320 osób.",
+      "results": {
+        "chi2": 3.21,
+        "df": 2,
+        "n": 320,
+        "test_stat": "χ²(2) = 3.21",
+        "p_value": 0.201
+      },
+      "unit": null,
+      "answers": [
+        {
+          "text": "Wykształcenie nie ma związku z dietą.",
+          "correct": false,
+          "error_type": "potwierdzanie_h0",
+          "feedback": "Brak istotności nie oznacza braku związku - oznacza jedynie, że nie wykazano go w tej próbie."
+        },
+        {
+          "text": "Jest tylko 20% szans, że wykształcenie wpływa na wybór diety.",
+          "correct": false,
+          "error_type": "interpretacja_p",
+          "feedback": "Błędna interpretacja p-value! Wartość p nie jest prawdopodobieństwem prawdziwości hipotezy."
+        },
+        {
+          "text": "Nie wykazano istotnego statystycznie związku między poziomem wykształcenia a stosowaniem diety wegetariańskiej, χ²(2) = 3.21, p = 0.201.",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja prawidłowo opisuje brak istotności statystycznej."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "test_type": "anova",
+      "context": "Porównano skuteczność trzech metod nauki języka obcego (tradycyjna, z aplikacją, z native speakerem) mierzoną wynikiem testu (0-100 pkt). W każdej grupie było 25 osób.",
+      "results": {
+        "means": {"tradycyjna": 62.3, "aplikacja": 68.7, "native": 71.2},
+        "n_per_group": 25,
+        "test_stat": "F(2, 72) = 4.85",
+        "p_value": 0.011
+      },
+      "unit": "pkt",
+      "answers": [
+        {
+          "text": "Nauka z native speakerem jest najlepsza.",
+          "correct": false,
+          "error_type": "wartosciujace",
+          "feedback": "Wartościowanie! ANOVA pokazuje, że są różnice, ale określenie 'najlepsza' jest wartościujące. Ponadto, potrzebne są testy post-hoc."
+        },
+        {
+          "text": "Wykazano istotne statystycznie różnice w wynikach testu między metodami nauki, F(2, 72) = 4.85, p = 0.011.",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! ANOVA wskazuje na istnienie różnic między grupami, ale nie mówi które konkretnie grupy się różnią."
+        },
+        {
+          "text": "Metoda nauki powoduje różnice w wynikach.",
+          "correct": false,
+          "error_type": "przyczynowość",
+          "feedback": "Błąd przyczynowości! ANOVA pokazuje różnice między grupami, ale bez randomizacji nie możemy wnioskować o przyczynowości."
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "test_type": "anova",
+      "context": "Porównano poziom satysfakcji z życia (skala 1-10) między trzema grupami wiekowymi: 20-35 lat (n=40), 36-50 lat (n=45), 51+ lat (n=38).",
+      "results": {
+        "means": {"20-35": 6.8, "36-50": 6.2, "51+": 7.1},
+        "test_stat": "F(2, 120) = 2.54",
+        "p_value": 0.083
+      },
+      "unit": "pkt",
+      "answers": [
+        {
+          "text": "Osoby starsze są szczęśliwsze od młodszych.",
+          "correct": false,
+          "error_type": "wartosciujace",
+          "feedback": "Wartościowanie ('szczęśliwsze') i dodatkowo wynik nie jest istotny statystycznie!"
+        },
+        {
+          "text": "Nie ma różnic w satysfakcji między grupami wiekowymi.",
+          "correct": false,
+          "error_type": "potwierdzanie_h0",
+          "feedback": "Brak istotności nie oznacza braku różnic - oznacza tylko, że nie wykazano ich w tej próbie."
+        },
+        {
+          "text": "Nie wykazano istotnych statystycznie różnic w poziomie satysfakcji z życia między grupami wiekowymi, F(2, 120) = 2.54, p = 0.083.",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja prawidłowo opisuje brak istotności statystycznej."
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "test_type": "anova",
+      "context": "Zbadano wpływ rodzaju muzyki (klasyczna/pop/brak) na czas wykonania zadania poznawczego. W każdej grupie było 30 osób.",
+      "results": {
+        "means": {"klasyczna": 45.2, "pop": 52.8, "brak": 48.5},
+        "n_per_group": 30,
+        "test_stat": "F(2, 87) = 5.12",
+        "p_value": 0.008
+      },
+      "unit": "sek",
+      "answers": [
+        {
+          "text": "Muzyka klasyczna znacznie przyspiesza wykonywanie zadań.",
+          "correct": false,
+          "error_type": "wielkosc_efektu",
+          "feedback": "Słowo 'znacznie' sugeruje dużą różnicę. ANOVA pokazuje istotność, ale nie wielkość efektu. Różnica może być niewielka praktycznie."
+        },
+        {
+          "text": "Wykazano istotne statystycznie różnice w czasie wykonania zadania w zależności od rodzaju muzyki, F(2, 87) = 5.12, p = 0.008. Najkrótszy średni czas odnotowano przy muzyce klasycznej (średnia = 45.2s).",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja opisuje wyniki ANOVA i podaje wartości średnich bez nadmiernego wnioskowania."
+        },
+        {
+          "text": "Słuchanie muzyki klasycznej powoduje lepszą koncentrację.",
+          "correct": false,
+          "error_type": "przyczynowość",
+          "feedback": "Podwójny błąd! Wnioskowanie o przyczynowości i o 'koncentracji', podczas gdy mierzono tylko czas wykonania zadania."
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "test_type": "t_dwoch_prob",
+      "context": "Porównano liczbę popełnianych błędów w teście między osobami pijącymi kawę (n=28) i niepijącymi (n=32).",
+      "results": {
+        "mean1": 4.2,
+        "sd1": 2.1,
+        "n1": 28,
+        "label1": "pijący kawę",
+        "mean2": 5.8,
+        "sd2": 2.4,
+        "n2": 32,
+        "label2": "niepijący",
+        "test_stat": "t(58) = -2.78",
+        "p_value": 0.007
+      },
+      "unit": "błędów",
+      "answers": [
+        {
+          "text": "Osoby pijące kawę popełniały istotnie mniej błędów (średnia = 4.2) niż osoby niepijące (średnia = 5.8), p = 0.007.",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja opisuje wyniki bez sugerowania przyczynowości."
+        },
+        {
+          "text": "Kawa poprawia funkcje poznawcze.",
+          "correct": false,
+          "error_type": "przyczynowość",
+          "feedback": "Błąd przyczynowości! Różnica może wynikać z innych czynników. Bez eksperymentu nie możemy wnioskować o wpływie kawy."
+        },
+        {
+          "text": "Picie kawy zmniejsza błędy niemal o połowę.",
+          "correct": false,
+          "error_type": "wielkosc_efektu",
+          "feedback": "Przesadzone twierdzenie! Różnica to 1.6 błędu (z 5.8 do 4.2), co stanowi ok. 28%, nie 'niemal połowę'. Należy precyzyjnie opisywać wielkość efektu."
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "test_type": "t_jednej_proby",
+      "context": "Sprawdzono, czy średni wynik studentów na egzaminie różni się od progu zaliczenia wynoszącego 60 punktów. Przebadano 48 studentów.",
+      "results": {
+        "mean": 67.5,
+        "sd": 12.3,
+        "n": 48,
+        "test_stat": "t(47) = 4.22",
+        "p_value": 0.0001
+      },
+      "unit": "pkt",
+      "answers": [
+        {
+          "text": "Średni wynik studentów (średnia = 67.5) był istotnie wyższy od progu zaliczenia 60 punktów, p < 0.001.",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja odnosi się do konkretnych wartości i poprawnie opisuje kierunek różnicy."
+        },
+        {
+          "text": "Studenci zdali egzamin.",
+          "correct": false,
+          "error_type": "lakoniczne",
+          "feedback": "Zbyt lakoniczne. Nie odnosi się do średniej, istotności statystycznej ani konkretnych wyników."
+        },
+        {
+          "text": "Badanie dowodzi, że egzamin był łatwy.",
+          "correct": false,
+          "error_type": "dowodzi",
+          "feedback": "Słowo 'dowodzi' jest nieodpowiednie, a wniosek o 'łatwości' egzaminu wykracza poza to, co można wnioskować z testu."
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "test_type": "korelacja",
+      "context": "Zbadano związek między czasem spędzonym w mediach społecznościowych a samooceną (skala 10-50) u 95 nastolatków.",
+      "results": {
+        "r": -0.35,
+        "n": 95,
+        "test_stat": "t(93) = -3.61",
+        "p_value": 0.0005
+      },
+      "unit": null,
+      "answers": [
+        {
+          "text": "Media społecznościowe obniżają samoocenę nastolatków.",
+          "correct": false,
+          "error_type": "przyczynowość",
+          "feedback": "Korelacja nie oznacza przyczynowości! Możliwe, że osoby z niższą samooceną więcej korzystają z mediów, lub oba czynniki mają wspólną przyczynę."
+        },
+        {
+          "text": "Wykazano istotny umiarkowanie ujemny związek między czasem w mediach społecznościowych a samooceną (r = -0.35, p < 0.001).",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja prawidłowo opisuje kierunek i siłę korelacji bez sugerowania przyczynowości."
+        },
+        {
+          "text": "Istnieje silny negatywny związek między mediami a samooceną.",
+          "correct": false,
+          "error_type": "wielkosc_efektu",
+          "feedback": "Korelacja r = -0.35 jest umiarkowana, nie silna. Silna korelacja ujemna to r < -0.7."
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "test_type": "chi_kwadrat",
+      "context": "Sprawdzono, czy istnieje związek między posiadaniem zwierzęcia domowego (tak/nie) a deklarowanym poziomem szczęścia (niski/średni/wysoki) wśród 200 osób.",
+      "results": {
+        "chi2": 8.92,
+        "df": 2,
+        "n": 200,
+        "test_stat": "χ²(2) = 8.92",
+        "p_value": 0.012
+      },
+      "unit": null,
+      "answers": [
+        {
+          "text": "Posiadanie zwierzęcia sprawia, że ludzie są szczęśliwsi.",
+          "correct": false,
+          "error_type": "przyczynowość",
+          "feedback": "Błąd przyczynowości! Test chi-kwadrat pokazuje związek, ale nie możemy wnioskować, że posiadanie zwierzęcia POWODUJE szczęście."
+        },
+        {
+          "text": "Wykazano istotny statystycznie związek między posiadaniem zwierzęcia domowego a deklarowanym poziomem szczęścia, χ²(2) = 8.92, p = 0.012.",
+          "correct": true,
+          "error_type": null,
+          "feedback": "Poprawnie! Ta interpretacja opisuje związek bez sugerowania kierunku przyczynowego."
+        },
+        {
+          "text": "Wszyscy właściciele zwierząt są szczęśliwi.",
+          "correct": false,
+          "error_type": "generalizacja",
+          "feedback": "Rażąca generalizacja! Test pokazuje jedynie związek w badanej próbie, nie że wszyscy właściciele są szczęśliwi."
+        }
+      ]
+    }
+  ]
+}

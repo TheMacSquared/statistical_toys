@@ -76,6 +76,15 @@
       "description": "Dobierz poprawną parę hipotez H₀/Hₐ i test statystyczny do sytuacji badawczej",
       "file": "hipotezy.json",
       "answer_type": "multiple_choice_random"
+    },
+    {
+      "id": "interpretacja",
+      "name": "Interpretacja Wyników",
+      "emoji": "📝",
+      "description": "Naucz się poprawnie formułować wnioski statystyczne",
+      "file": "interpretacja.json",
+      "answer_type": "interpretation",
+      "errors_file": "errors_info.json"
     }
   ]
 }
