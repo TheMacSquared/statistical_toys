@@ -253,9 +253,12 @@ def next_question(quiz_id):
                 correct_answer = question['correct']
                 other_options = [opt for opt in question['all_options'] if opt != correct_answer]
 
-                # Wylosuj 2 niepoprawne opcje
+                # Wylosuj niepoprawne opcje (3 dla 4-opcyjnych pytań, 2 dla reszty)
                 random.shuffle(other_options)
-                selected_wrong = other_options[:2]
+                if len(question['all_options']) <= 4:
+                    selected_wrong = other_options
+                else:
+                    selected_wrong = other_options[:2]
 
                 # Połącz poprawną z nieprawiymi i wymieszaj
                 selected_options = selected_wrong + [correct_answer]
