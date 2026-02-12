@@ -148,7 +148,9 @@ function generateAnswerButtons() {
     if (options.length === 3) {
         answersGrid.className = 'answers-grid grid-3';
     } else if (options.length === 4) {
-        answersGrid.className = 'answers-grid grid-4';
+        // Długie opcje (np. hipotezy) → layout jednokolumnowy
+        const maxLen = Math.max(...options.map(o => (typeof o === 'string' ? o : o.label).length));
+        answersGrid.className = maxLen > 50 ? 'answers-grid grid-4-list' : 'answers-grid grid-4';
     }
 
     // Utwórz przyciski

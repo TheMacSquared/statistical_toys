@@ -68,6 +68,14 @@
         "Test Manna-Whitneya",
         "Test Kruskala-Wallisa"
       ]
+    },
+    {
+      "id": "hipotezy",
+      "name": "Hipotezy Statystyczne (H₀/Hₐ)",
+      "emoji": "🎯",
+      "description": "Dobierz poprawną parę hipotez H₀/Hₐ i test statystyczny do sytuacji badawczej",
+      "file": "hipotezy.json",
+      "answer_type": "multiple_choice_random"
     }
   ]
 }
