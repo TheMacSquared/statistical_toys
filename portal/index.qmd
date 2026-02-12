@@ -1,0 +1,160 @@
+---
+title: "Statystyczne Zabawki"
+toc: false
+page-layout: full
+---
+
+::: {.hero-banner}
+# Statystyczne Zabawki
+
+Interaktywne narzedzia do nauki statystyki --- quizy, wizualizacje i skrypty analityczne w jednym miejscu.
+:::
+
+::: {.section-header}
+## Interaktywne zabawki
+
+Aplikacje edukacyjne, ktore pomagaja zrozumiec statystyke przez eksploracje.
+:::
+
+::: {.card-grid}
+
+::: {.portal-card}
+::: {.card-emoji}
+📊
+:::
+### Quiz Statystyczny
+Sprawdz swoja wiedze z typow zmiennych, rozkladow prawdopodobienstwa, wyboru testow statystycznych, hipotez i interpretacji wynikow. 5 trybow quizu z wyjasnieniami.
+
+[Przejdz do quizu &rarr;]{.card-cta}
+
+[Dostepna]{.badge-available}
+:::
+
+::: {.portal-card}
+::: {.card-emoji}
+📈
+:::
+### Histogram
+Interaktywna wizualizacja rozkladu normalnego. Przesuwaj suwaki i obserwuj jak srednia, odchylenie standardowe i wielkosc proby wplywaja na ksztalt histogramu.
+
+[Zobacz wizualizacje &rarr;]{.card-cta}
+
+[Dostepna]{.badge-available}
+:::
+
+::: {.portal-card}
+::: {.card-emoji}
+🎯
+:::
+### Przedzialy Ufnosci
+Naucz sie poprawnie interpretowac przedzialy ufnosci. Quiz z wizualizacja D3.js --- porownuj wartosci i grupy.
+
+[Cwicz interpretacje &rarr;]{.card-cta}
+
+[Dostepna]{.badge-available}
+:::
+
+:::
+
+::: {.section-header}
+## Skrypty statystyczne
+
+Materialy dydaktyczne w formacie Quarto --- kod, wykresy i interpretacje w jednym dokumencie.
+:::
+
+::: {.card-grid}
+
+::: {.portal-card}
+::: {.card-emoji}
+📋
+:::
+### Statystyka opisowa
+Podstawowe miary tendencji centralnej i rozproszenia z przykladami w R. Srednia, mediana, wariancja, odchylenie standardowe.
+
+[Otworz skrypt &rarr;]{.card-cta}
+
+[Przykladowy]{.badge-demo}
+:::
+
+::: {.portal-card}
+::: {.card-emoji}
+🔬
+:::
+### Testy statystyczne
+Przewodnik po najczesciej uzywanych testach statystycznych z przykladami kodu i interpretacja wynikow.
+
+[Wkrotce &rarr;]{.card-cta}
+
+[Planowany]{.badge-planned}
+:::
+
+::: {.portal-card}
+::: {.card-emoji}
+📉
+:::
+### Regresja liniowa
+Wprowadzenie do regresji liniowej --- od prostej do wielorakiej. Diagnostyka modelu i wizualizacja reszt.
+
+[Wkrotce &rarr;]{.card-cta}
+
+[Planowany]{.badge-planned}
+:::
+
+:::
+
+::: {.section-header}
+## Demo Shinylive
+
+Interaktywne aplikacje dzialajace bezposrednio w przegladarce --- bez serwera!
+:::
+
+::: {.card-grid}
+
+::: {.portal-card}
+::: {.card-emoji}
+🌐
+:::
+### Histogram w przegladarce
+Proof-of-concept: interaktywny histogram zbudowany w Shiny for Python, dzialajacy calkowicie w przegladarce dzieki technologii WebAssembly (Shinylive).
+
+[Wyprobuj demo &rarr;]{.card-cta}
+
+[Demo]{.badge-demo}
+:::
+
+:::
+
+---
+
+::: {.section-header}
+## Mapa drogowa
+:::
+
+::: {.roadmap}
+
+::: {.roadmap-item .done}
+#### Aplikacje desktopowe (.exe)
+Quiz statystyczny, histogram i przedzialy ufnosci jako samodzielne aplikacje do pobrania.
+:::
+
+::: {.roadmap-item .current}
+#### Portal webowy (mockup)
+Strona laczaca zabawki i skrypty w jednym miejscu. GitHub Pages + Quarto.
+:::
+
+::: {.roadmap-item}
+#### Skrypty dydaktyczne w Quarto
+Materialy ze statystyki: kod R/Python, wykresy, interpretacje --- wszystko w jednym dokumencie.
+:::
+
+::: {.roadmap-item}
+#### Shinylive --- zabawki w przegladarce
+Migracja interaktywnych zabawek do Shinylive (WebAssembly) --- dzialaja bez serwera.
+:::
+
+::: {.roadmap-item}
+#### Serwer z pelna integracja
+Wlasny serwer z Shiny Server / Posit Connect. Pelna interaktywnosc, bazy danych, zaawansowane wizualizacje.
+:::
+
+:::

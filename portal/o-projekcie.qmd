@@ -1,0 +1,74 @@
+---
+title: "O projekcie"
+toc: true
+---
+
+## Statystyczne Zabawki
+
+**Statystyczne Zabawki** to projekt edukacyjny tworzacy interaktywne narzedzia do nauki statystyki. Powstal z potrzeby dydaktycznej --- studenci ucza sie lepiej, gdy moga **eksplorowac i eksperymentowac**, a nie tylko czytac.
+
+## Cel projektu
+
+1. **Uczynic statystyke przystepna** --- interaktywne zabawki zamiast suchej teorii
+2. **Umozliwic nauke przez eksploracje** --- zmien parametr, zobacz co sie stanie
+3. **Byc bezprogowym** --- pobierz, kliknij, dziala. Bez instalacji srodowisk
+4. **Laczyc teorie z praktyka** --- wzory + kod + wizualizacje w jednym miejscu
+
+## Technologie
+
+### Obecne (aplikacje desktopowe)
+
+| Technologia | Zastosowanie |
+|-------------|-------------|
+| **Python / Flask** | Backend REST API |
+| **Vanilla JavaScript** | Interfejs uzytkownika |
+| **PyWebView** | Natywne okno desktopowe |
+| **PyInstaller** | Pakowanie do .exe |
+| **Plotly.js** | Wykresy interaktywne |
+| **D3.js** | Wizualizacje przedzialow ufnosci |
+
+### Portal (ten mockup)
+
+| Technologia | Zastosowanie |
+|-------------|-------------|
+| **Quarto** | Generator statycznej strony |
+| **Shinylive** | Aplikacje interaktywne w przegladarce |
+| **GitHub Pages** | Hosting |
+| **R / Python** | Skrypty dydaktyczne |
+
+### Przyszlosc (z serwerem)
+
+| Technologia | Zastosowanie |
+|-------------|-------------|
+| **Shiny Server / Posit Connect** | Hosting aplikacji interaktywnych |
+| **Quarto** | Skrypty i dokumenty dydaktyczne |
+| **R / Python** | Obliczenia po stronie serwera |
+
+## Licencja
+
+Projekt jest udostepniony na licencji [**CC BY 4.0**](https://creativecommons.org/licenses/by/4.0/) --- mozesz swobodnie uzywac, modyfikowac i udostepniac, pod warunkiem podania autorstwa.
+
+## Kontakt
+
+Projekt tworzony dla potrzeb dydaktycznych. Feedback, sugestie i kontrybucje mile widziane!
+
+- GitHub: [TheMacSquared/statistical_toys](https://github.com/TheMacSquared/statistical_toys)
+- Issues: [Zglaszanie bledow i pomyslow](https://github.com/TheMacSquared/statistical_toys/issues)
+
+## Struktura repozytorium
+
+```
+statistical_toys/
+├── toys/                    # Aplikacje desktopowe
+│   ├── quiz_app/            #   Quiz statystyczny
+│   ├── histogram/           #   Histogram interaktywny
+│   ├── confidence_intervals/#   Przedzialy ufnosci
+│   └── common/              #   Wspolne zasoby (CSS, utils)
+├── portal/                  # Portal Quarto (ta strona)
+│   ├── zabawki/             #   Opisy zabawek
+│   ├── skrypty/             #   Skrypty dydaktyczne
+│   └── demo/                #   Demo Shinylive
+├── build/                   # Konfiguracja budowania
+├── docs/                    # Dokumentacja deweloperska
+└── .github/workflows/       # CI/CD
+```

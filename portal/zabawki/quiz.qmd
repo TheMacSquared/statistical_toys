@@ -1,0 +1,81 @@
+---
+title: "Quiz Statystyczny"
+toc: true
+---
+
+::: {.toy-header}
+# 📊 Quiz Statystyczny
+Sprawdz i poglebij swoja wiedze z roznych dziedzin statystyki
+:::
+
+::: {.toy-info-grid}
+
+::: {.toy-info-item}
+[Tryby quizu]{.label}
+[5]{.value}
+:::
+
+::: {.toy-info-item}
+[Liczba pytan]{.label}
+[100+]{.value}
+:::
+
+::: {.toy-info-item}
+[Technologia]{.label}
+[Flask + JS]{.value}
+:::
+
+::: {.toy-info-item}
+[Status]{.label}
+[[Dostepna]{.badge-available}]{.value}
+:::
+
+:::
+
+## Tryby quizu
+
+### 1. Typy Zmiennych
+Rozpoznawanie zmiennych: dyskretne vs ciagle, nominalne vs porzadkowe vs ilosciowe.
+
+**Przyklad pytania:** *"Kolor oczu (niebieski, brazowy, zielony) to zmienna..."*
+
+### 2. Rozklady Prawdopodobienstwa
+Dopasowywanie zjawisk do odpowiednich rozkladow prawdopodobienstwa (normalny, Poissona, dwumianowy, itp.).
+
+**Przyklad pytania:** *"Liczba bledow drukarskich na stronie gazety najlepiej opisuje rozklad..."*
+
+### 3. Wybor Testu Statystycznego
+Dobieranie odpowiedniego testu statystycznego do danej sytuacji badawczej.
+
+**Przyklad pytania:** *"Chcemy porownac srednie z dwoch niezaleznych grup o rozkladzie normalnym..."*
+
+### 4. Hipotezy Statystyczne (H₀/Hₐ)
+Formulowanie hipotez zerowych i alternatywnych oraz dobor testow.
+
+**Przyklad pytania:** *"Badamy, czy nowy lek obniza cisnienie krwi. Jaka jest hipoteza zerowa?"*
+
+### 5. Interpretacja Wynikow
+Poprawna interpretacja wartosci p, przedzialow ufnosci i statystyk testowych.
+
+**Przyklad pytania:** *"p = 0.03 przy poziomie istotnosci 0.05 oznacza..."*
+
+## Jak to dziala?
+
+1. Wybierasz tryb quizu z menu glownego
+2. Odpowiadasz na pytania wielokrotnego wyboru (4 opcje)
+3. Po kazdej odpowiedzi widzisz, czy odpowiedziales poprawnie
+4. Dostajesz szczegolowe wyjasnienie --- niezaleznie od tego, czy trafisz
+5. Na koncu widzisz podsumowanie z wynikiem procentowym
+
+## Pobierz
+
+<a href="https://github.com/TheMacSquared/statistical_toys/releases" class="btn-primary-portal">
+Pobierz Quiz (.exe)
+</a>
+
+::: {.callout-tip}
+## Planowane rozszerzenia
+- Tryb losowy (pytania z roznych kategorii)
+- Statystyki trudnosci pytan
+- Eksport wynikow
+:::

@@ -1,0 +1,102 @@
+---
+title: "Skrypty statystyczne"
+toc: true
+---
+
+::: {.toy-header}
+# 📋 Skrypty statystyczne
+Materialy dydaktyczne w formacie Quarto
+:::
+
+## Idea
+
+Ta sekcja to miejsce na **skrypty ze statystyki** --- dokumenty Quarto (.qmd), ktore lacza:
+
+- **Kod** (R i/lub Python) --- reprodukowalne analizy
+- **Wykresy** --- wizualizacje generowane bezposrednio z kodu
+- **Interpretacje** --- komentarze i wyjasnienia w tekscie
+- **Wzory** --- notacja matematyczna LaTeX
+
+Wszystko w jednym dokumencie, ktory mozna czytac jak podrecznik, ale tez uruchomic i modyfikowac.
+
+## Dostepne skrypty
+
+::: {.card-grid}
+
+::: {.portal-card}
+::: {.card-emoji}
+📋
+:::
+### [Statystyka opisowa](statystyka-opisowa.qmd)
+Podstawowe miary tendencji centralnej i rozproszenia. Srednia, mediana, moda, wariancja, odchylenie standardowe.
+
+[Otworz skrypt &rarr;]{.card-cta}
+
+[Przykladowy]{.badge-demo}
+:::
+
+::: {.portal-card}
+::: {.card-emoji}
+🔬
+:::
+### Testy statystyczne
+Przewodnik po najczesciej uzywanych testach: t-test, chi-kwadrat, ANOVA, korelacja Pearsona i Spearmana.
+
+[Wkrotce]{.card-cta}
+
+[Planowany]{.badge-planned}
+:::
+
+::: {.portal-card}
+::: {.card-emoji}
+📉
+:::
+### Regresja liniowa
+Od prostej regresji po wieloraka. Diagnostyka modelu, reszty, wspolczynnik determinacji.
+
+[Wkrotce]{.card-cta}
+
+[Planowany]{.badge-planned}
+:::
+
+::: {.portal-card}
+::: {.card-emoji}
+📊
+:::
+### Wizualizacja danych
+Tworzenie profesjonalnych wykresow w R (ggplot2) i Pythonie (matplotlib, seaborn).
+
+[Wkrotce]{.card-cta}
+
+[Planowany]{.badge-planned}
+:::
+
+:::
+
+## Jak dodac wlasny skrypt?
+
+Kazdy skrypt to plik `.qmd` (Quarto Markdown). Aby dodac nowy:
+
+1. Utworz plik `portal/skrypty/nazwa-skryptu.qmd`
+2. Dodaj naglowek YAML z tytlem
+3. Napisz tresc laczac tekst, kod i wzory
+4. Dodaj link na tej stronie
+
+Przyklad minimalnego skryptu:
+
+````markdown
+---
+title: "Moj skrypt"
+---
+
+## Wprowadzenie
+
+Tekst wyjasniajacy...
+
+```{{r}}
+# Kod R
+mean(c(1, 2, 3, 4, 5))
+```
+
+Wzor: $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$
+````

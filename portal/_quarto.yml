@@ -1,0 +1,47 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Statystyczne Zabawki"
+  description: "Portal edukacyjny ze statystycznymi zabawkami interaktywnymi"
+  favicon: favicon.png
+
+  navbar:
+    background: "#6366f1"
+    foreground: "#ffffff"
+    logo: false
+    left:
+      - href: index.qmd
+        text: Start
+      - href: zabawki/index.qmd
+        text: Zabawki
+      - href: skrypty/index.qmd
+        text: Skrypty
+      - href: demo/index.qmd
+        text: Demo Shinylive
+    right:
+      - href: o-projekcie.qmd
+        text: O projekcie
+      - icon: github
+        href: https://github.com/TheMacSquared/statistical_toys
+        aria-label: GitHub
+
+  page-footer:
+    center: |
+      Statystyczne Zabawki | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+    background: "#1e293b"
+
+  page-navigation: true
+  bread-crumbs: true
+
+format:
+  html:
+    theme:
+      - cosmo
+      - styles.css
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    lang: pl

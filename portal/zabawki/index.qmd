@@ -1,0 +1,82 @@
+---
+title: "Zabawki statystyczne"
+toc: true
+---
+
+Kazda zabawka to samodzielna aplikacja edukacyjna. Obecnie dostepne sa jako pliki `.exe` do pobrania (Windows) lub do uruchomienia z kodu zrodlowego (Mac/Linux).
+
+::: {.callout-tip}
+## Przyszlosc
+
+Docelowo zabawki beda dostepne bezposrednio w przegladarce dzieki technologii Shinylive (WebAssembly). Zobacz [demo](/demo/index.qmd) aby zobaczyc jak to bedzie wygladac!
+:::
+
+## Dostepne zabawki
+
+::: {.card-grid}
+
+::: {.portal-card}
+::: {.card-emoji}
+📊
+:::
+### [Quiz Statystyczny](quiz.qmd)
+5 trybow quizu sprawdzajacych wiedze z roznych dziedzin statystyki. Kazde pytanie z wyjasnieniem.
+
+[Szczegoly &rarr;]{.card-cta}
+:::
+
+::: {.portal-card}
+::: {.card-emoji}
+📈
+:::
+### [Histogram](histogram.qmd)
+Interaktywna wizualizacja rozkladu normalnego z suwakami parametrow.
+
+[Szczegoly &rarr;]{.card-cta}
+:::
+
+::: {.portal-card}
+::: {.card-emoji}
+🎯
+:::
+### [Przedzialy Ufnosci](przedzialy-ufnosci.qmd)
+Quiz z wizualizacja D3.js do nauki interpretacji przedzialow ufnosci.
+
+[Szczegoly &rarr;]{.card-cta}
+:::
+
+:::
+
+## Jak pobrac i uruchomic?
+
+### Windows
+
+1. Przejdz do [Releases](https://github.com/TheMacSquared/statistical_toys/releases) na GitHub
+2. Pobierz plik `.exe` wybranej zabawki
+3. Dwuklik --- aplikacja sie uruchomi
+
+::: {.callout-note}
+## Windows Defender
+Przy pierwszym uruchomieniu moze pojawic sie ostrzezenie SmartScreen. Kliknij "Wiecej informacji" &rarr; "Uruchom mimo to". To normalne dla aplikacji bez platnego certyfikatu cyfrowego.
+:::
+
+### Mac / Linux
+
+```bash
+cd toys/nazwa_zabawki
+pip install -r requirements.txt
+python main.py
+```
+
+## Architektura zabawek
+
+Kazda zabawka zbudowana jest wedlug tego samego wzorca:
+
+| Warstwa | Technologia | Opis |
+|---------|-------------|------|
+| Backend | Flask (Python) | REST API, logika quizu/obliczen |
+| Frontend | Vanilla JS + HTML/CSS | Interfejs uzytkownika |
+| Desktop | PyWebView | Natywne okno z wbudowana przegladarka |
+| Build | PyInstaller | Pakowanie do pojedynczego `.exe` |
+
+Wspolny design system (`st-*` namespace) zapewnia spojny wyglad wszystkich zabawek.

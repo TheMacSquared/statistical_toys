@@ -1,0 +1,375 @@
+/*
+ * Statystyczne Zabawki - Portal Styles
+ * =====================================
+ * Custom styles for the Quarto portal, inspired by the st-* design system.
+ */
+
+/* === Design Tokens (from shared.css) === */
+:root {
+    --st-primary: #6366f1;
+    --st-primary-light: #818cf8;
+    --st-primary-dark: #4f46e5;
+    --st-accent: #8b5cf6;
+    --st-accent-dark: #7c3aed;
+    --st-success: #22c55e;
+    --st-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    --st-gradient-bg: linear-gradient(135deg, #6366f1 0%, #7c3aed 50%, #8b5cf6 100%);
+    --st-shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 6px 24px rgba(0,0,0,0.06);
+    --st-shadow-hover: 0 8px 30px rgba(99,102,241,0.15), 0 2px 8px rgba(0,0,0,0.06);
+    --st-radius: 14px;
+}
+
+/* === Navbar === */
+.navbar {
+    box-shadow: 0 2px 12px rgba(99, 102, 241, 0.2);
+}
+
+/* === Hero Section === */
+.hero-banner {
+    background: var(--st-gradient-bg);
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: var(--st-radius);
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-banner h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.hero-banner p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    opacity: 0.92;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* === Card Grid === */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.portal-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--st-radius);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.portal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--st-gradient);
+    transition: height 250ms ease;
+}
+
+.portal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--st-shadow-hover);
+    border-color: rgba(99, 102, 241, 0.2);
+    text-decoration: none;
+    color: inherit;
+}
+
+.portal-card:hover::before {
+    height: 5px;
+}
+
+.portal-card .card-emoji {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+.portal-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.portal-card p {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.portal-card .card-cta {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--st-primary);
+    font-size: 0.9rem;
+}
+
+.portal-card:hover .card-cta {
+    color: var(--st-accent-dark);
+}
+
+/* === Section Headers === */
+.section-header {
+    text-align: center;
+    margin: 3rem 0 2rem;
+}
+
+.section-header h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    color: #475569;
+    font-size: 1.05rem;
+}
+
+/* === Feature List === */
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    background: #f8fafc;
+    padding: 1.25rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--st-primary);
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.feature-list li strong {
+    color: var(--st-primary);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+/* === Status Badges === */
+.badge-available {
+    display: inline-block;
+    padding: 4px 12px;
+    background: #f0fdf4;
+    color: #16a34a;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid #bbf7d0;
+}
+
+.badge-planned {
+    display: inline-block;
+    padding: 4px 12px;
+    background: #fffbeb;
+    color: #d97706;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid #fde68a;
+}
+
+.badge-demo {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(99, 102, 241, 0.08);
+    color: var(--st-primary);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* === Toy Detail Pages === */
+.toy-header {
+    background: var(--st-gradient-bg);
+    color: white;
+    padding: 2.5rem 2rem;
+    border-radius: var(--st-radius);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.toy-header h1 {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.toy-header p {
+    opacity: 0.9;
+}
+
+.toy-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.toy-info-item {
+    background: #f8fafc;
+    padding: 1.25rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.toy-info-item .label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.toy-info-item .value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--st-primary);
+}
+
+/* === Button styles === */
+.btn-primary-portal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 12px 28px;
+    background: var(--st-gradient);
+    color: white !important;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+    transition: all 150ms ease;
+}
+
+.btn-primary-portal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+    color: white !important;
+    text-decoration: none;
+}
+
+/* === Roadmap / Timeline === */
+.roadmap {
+    position: relative;
+    padding-left: 2rem;
+    margin: 2rem 0;
+}
+
+.roadmap::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e2e8f0;
+}
+
+.roadmap-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+}
+
+.roadmap-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 3px solid var(--st-primary);
+    background: white;
+}
+
+.roadmap-item.done::before {
+    background: var(--st-primary);
+}
+
+.roadmap-item.current::before {
+    background: var(--st-accent);
+    border-color: var(--st-accent);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+}
+
+.roadmap-item h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+}
+
+.roadmap-item p {
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+/* === Callout customization === */
+div.callout-note {
+    border-left-color: var(--st-primary) !important;
+}
+
+div.callout-tip {
+    border-left-color: var(--st-success) !important;
+}
+
+/* === Code blocks === */
+div.sourceCode {
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    .hero-banner {
+        padding: 2.5rem 1.25rem;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}

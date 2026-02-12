@@ -1,0 +1,72 @@
+---
+title: "Przedzialy Ufnosci"
+toc: true
+---
+
+::: {.toy-header}
+# 🎯 Przedzialy Ufnosci
+Naucz sie poprawnie interpretowac przedzialy ufnosci
+:::
+
+::: {.toy-info-grid}
+
+::: {.toy-info-item}
+[Tryby]{.label}
+[2]{.value}
+:::
+
+::: {.toy-info-item}
+[Liczba pytan]{.label}
+[48]{.value}
+:::
+
+::: {.toy-info-item}
+[Wizualizacja]{.label}
+[D3.js]{.value}
+:::
+
+::: {.toy-info-item}
+[Status]{.label}
+[[Dostepna]{.badge-available}]{.value}
+:::
+
+:::
+
+## Tryby quizu
+
+### 1. Pojedynczy przedzial vs wartosc (20 pytan)
+
+Widzisz przedzial ufnosci na osi liczbowej i konkretna wartosc. Musisz ocenic, czy na podstawie tego przedzialu mozna wnioskowac o tej wartosci.
+
+**Wizualizacja:**
+
+- 🔵 Niebieski --- przedzial ufnosci
+- 🟠 Pomaranczowy --- testowana wartosc
+- 🟢 Zielony --- poprawna odpowiedz
+- 🔴 Czerwony --- bledna odpowiedz
+
+### 2. Porownanie dwoch grup (28 pytan)
+
+Widzisz dwa przedzialy ufnosci i oceniasz, czy mozna stwierdzic roznice miedzy grupami na podstawie ich wzajemnego polozenia.
+
+**Kluczowa koncepcja:** Zachodzace na siebie przedzialy NIE zawsze oznaczaja brak istotnej roznicy --- to jeden z najczestszych bledow interpretacyjnych!
+
+**Wizualizacja:**
+
+- 🔵 Niebieski --- pierwszy przedzial
+- 🟠 Pomaranczowy --- drugi przedzial
+- 🟡 Zolty --- obszar pokrywania sie przedzialow
+
+## Dlaczego to wazne?
+
+Przedzialy ufnosci sa jednym z najczesciej blednie interpretowanych narzedzi statystycznych. Typowe bledy:
+
+1. **"95% CI oznacza, ze prawdziwa wartosc jest w przedziale z prawdopodobienstwem 95%"** --- to nie jest poprawna interpretacja frequentystyczna!
+2. **"Nachodzace na siebie CI = brak istotnej roznicy"** --- zachodzenie nie wyklucza istotnej roznicy
+3. **"Waski CI = duzy efekt"** --- szerokosc CI mowi o precyzji, nie o sile efektu
+
+## Pobierz
+
+<a href="https://github.com/TheMacSquared/statistical_toys/releases" class="btn-primary-portal">
+Pobierz Przedzialy Ufnosci (.exe)
+</a>

@@ -1,0 +1,80 @@
+---
+title: "Histogram"
+toc: true
+---
+
+::: {.toy-header}
+# 📈 Histogram
+Interaktywna wizualizacja rozkladu normalnego
+:::
+
+::: {.toy-info-grid}
+
+::: {.toy-info-item}
+[Parametry]{.label}
+[μ, σ, n]{.value}
+:::
+
+::: {.toy-info-item}
+[Wizualizacja]{.label}
+[Plotly.js]{.value}
+:::
+
+::: {.toy-info-item}
+[Technologia]{.label}
+[Flask + NumPy]{.value}
+:::
+
+::: {.toy-info-item}
+[Status]{.label}
+[[Dostepna]{.badge-available}]{.value}
+:::
+
+:::
+
+## Co mozesz eksplorowac?
+
+Ta zabawka pozwala interaktywnie badac, jak parametry wplywaja na ksztalt histogramu i rozklad normalny:
+
+### Srednia (μ)
+Przesun suwak i obserwuj, jak srodek rozkladu przesuwa sie w lewo lub prawo. Ksztalt sie nie zmienia --- zmienia sie tylko polozenie.
+
+### Odchylenie standardowe (σ)
+Zmien "szerokosc" rozkladu. Male σ daje waski, wysoki rozklad. Duze σ --- szeroki i plaski.
+
+### Wielkosc proby (n)
+Zwieksz liczbe obserwacji i obserwuj:
+
+- Przy **malym n** (np. 10--30): histogram jest "poszarpany", nie przypomina krzywej normalnej
+- Przy **duzym n** (np. 500--1000): histogram gladko przybliza teoretyczna krzywa normalna
+
+To praktyczna demonstracja **Centralnego Twierdzenia Granicznego**!
+
+## Koncepcje edukacyjne
+
+::: {.feature-list}
+
+- **Centralne Twierdzenie Graniczne**
+  Przy duzej probie rozklad sredniej z proby zbliza sie do normalnego
+
+- **Regula 68--95--99.7**
+  W obrebie 1σ, 2σ, 3σ od sredniej znajduje sie odpowiednio ~68%, ~95%, ~99.7% obserwacji
+
+- **Rozklad empiryczny vs teoretyczny**
+  Histogram (dane) vs krzywa (model) --- jak blisko sie pokrywaja?
+
+- **Wplyw wielkosci proby**
+  Im wieksza proba, tym rozklad z proby jest blizszy rozkladowi teoretycznemu
+
+:::
+
+## Pobierz
+
+<a href="https://github.com/TheMacSquared/statistical_toys/releases" class="btn-primary-portal">
+Pobierz Histogram (.exe)
+</a>
+
+::: {.callout-note}
+## Wersja przegladarkowa
+Uproszczona wersja tej zabawki jest dostepna jako [demo Shinylive](/demo/index.qmd) --- dziala bezposrednio w przegladarce, bez pobierania!
+:::

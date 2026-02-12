@@ -1,0 +1,187 @@
+---
+title: "Statystyka opisowa"
+toc: true
+format:
+  html:
+    code-fold: false
+---
+
+::: {.callout-note}
+## Przykladowy skrypt
+To jest przykladowy dokument Quarto demonstrujacy, jak moga wygladac skrypty dydaktyczne w portalu. Kod R jest renderowany przez Quarto podczas budowania strony.
+:::
+
+## Wprowadzenie
+
+**Statystyka opisowa** to galaz statystyki zajmujaca sie podsumowywaniem i prezentacja danych. Zanim przejdziemy do wnioskowania statystycznego (testy, przedzialy ufnosci), musimy dobrze poznac nasze dane.
+
+Glowne kategorie miar:
+
+1. **Miary tendencji centralnej** --- gdzie jest "srodek" danych?
+2. **Miary rozproszenia** --- jak bardzo dane sa rozproszone?
+3. **Miary pozycyjne** --- kwartyle, percentyle
+4. **Miary asymetrii i kurtozy** --- ksztalt rozkladu
+
+## Przykladowe dane
+
+Wyobrazmy sobie, ze mamy wyniki egzaminu ze statystyki dla 30 studentow (w skali 0--100):
+
+```{r}
+set.seed(42)
+wyniki <- round(rnorm(30, mean = 68, sd = 12))
+wyniki <- pmin(pmax(wyniki, 20), 100)  # ograniczenie do zakresu 20-100
+print(wyniki)
+```
+
+## Miary tendencji centralnej
+
+### Srednia arytmetyczna
+
+$$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$$
+
+```{r}
+srednia <- mean(wyniki)
+cat("Srednia:", round(srednia, 2))
+```
+
+**Interpretacja:** Przecietny wynik egzaminu wynosil `r round(srednia, 1)` punktow.
+
+::: {.callout-tip}
+## Wlasnosc sredniej
+Srednia jest wrazliwa na wartosci odstajace (outliers). Pojedynczy bardzo wysoki lub niski wynik moze ja znaczaco zmienic.
+:::
+
+### Mediana
+
+Mediana to wartosc dzielaca posortowane dane na dwie rowne polowy.
+
+```{r}
+mediana <- median(wyniki)
+cat("Mediana:", mediana)
+```
+
+**Interpretacja:** Polowa studentow uzyskala wynik ponizej `r mediana` pkt, a polowa --- powyzej.
+
+### Moda (dominanta)
+
+Wartosc wystepujaca najczesciej:
+
+```{r}
+tab <- table(wyniki)
+moda <- as.numeric(names(tab)[which.max(tab)])
+cat("Moda:", moda)
+```
+
+### Porownanie miar
+
+```{r}
+cat("Srednia: ", round(srednia, 2), "\n")
+cat("Mediana:", mediana, "\n")
+cat("Moda:   ", moda, "\n")
+```
+
+Gdy srednia $\approx$ mediana, rozklad jest w przyblizeniu symetryczny. Gdy srednia > mediana --- rozklad jest prawoskosny (ogon w prawo).
+
+## Miary rozproszenia
+
+### Wariancja i odchylenie standardowe
+
+**Wariancja** (z proby):
+$$s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2$$
+
+**Odchylenie standardowe**: $s = \sqrt{s^2}$
+
+```{r}
+wariancja <- var(wyniki)
+odch_std <- sd(wyniki)
+cat("Wariancja:", round(wariancja, 2), "\n")
+cat("Odchylenie standardowe:", round(odch_std, 2))
+```
+
+::: {.callout-note}
+## Dlaczego dzielimy przez n-1?
+Uzywamy $n-1$ zamiast $n$ (tzw. **korekta Bessela**), poniewaz estymujemy wariancje populacji na podstawie proby. Dzielenie przez $n$ dawaloby systematycznie zanizona ocene (estymator obciazony).
+:::
+
+### Rozstep (range)
+
+```{r}
+rozstep <- diff(range(wyniki))
+cat("Minimum:", min(wyniki), "\n")
+cat("Maksimum:", max(wyniki), "\n")
+cat("Rozstep:", rozstep)
+```
+
+### Rozstep miedzykwartylowy (IQR)
+
+```{r}
+Q1 <- quantile(wyniki, 0.25)
+Q3 <- quantile(wyniki, 0.75)
+IQR_val <- IQR(wyniki)
+cat("Q1 (25. percentyl):", Q1, "\n")
+cat("Q3 (75. percentyl):", Q3, "\n")
+cat("IQR (Q3 - Q1):", IQR_val)
+```
+
+## Wizualizacja
+
+### Histogram
+
+```{r}
+#| fig-width: 8
+#| fig-height: 4
+hist(wyniki,
+     breaks = 10,
+     col = "#818cf8",
+     border = "#6366f1",
+     main = "Rozklad wynikow egzaminu",
+     xlab = "Wynik (punkty)",
+     ylab = "Liczba studentow",
+     las = 1)
+abline(v = srednia, col = "#ef4444", lwd = 2, lty = 2)
+abline(v = mediana, col = "#22c55e", lwd = 2, lty = 2)
+legend("topright",
+       legend = c(paste("Srednia =", round(srednia, 1)),
+                  paste("Mediana =", mediana)),
+       col = c("#ef4444", "#22c55e"),
+       lwd = 2, lty = 2, cex = 0.9)
+```
+
+### Boxplot
+
+```{r}
+#| fig-width: 8
+#| fig-height: 3
+boxplot(wyniki,
+        horizontal = TRUE,
+        col = "#818cf8",
+        border = "#6366f1",
+        main = "Boxplot wynikow egzaminu",
+        xlab = "Wynik (punkty)",
+        las = 1,
+        outcol = "#ef4444",
+        outpch = 19)
+```
+
+## Podsumowanie
+
+```{r}
+cat("=== Podsumowanie statystyk opisowych ===\n\n")
+cat("n (liczba obserwacji):", length(wyniki), "\n")
+cat("Srednia:              ", round(mean(wyniki), 2), "\n")
+cat("Mediana:              ", median(wyniki), "\n")
+cat("Odchylenie std.:      ", round(sd(wyniki), 2), "\n")
+cat("Min:                  ", min(wyniki), "\n")
+cat("Q1:                   ", quantile(wyniki, 0.25), "\n")
+cat("Q3:                   ", quantile(wyniki, 0.75), "\n")
+cat("Max:                  ", max(wyniki), "\n")
+cat("IQR:                  ", IQR(wyniki), "\n")
+cat("Rozstep:              ", diff(range(wyniki)), "\n")
+```
+
+---
+
+::: {.callout-tip}
+## Nastepne kroki
+Gdy juz znamy nasze dane dzieki statystyce opisowej, mozemy przejsc do **wnioskowania statystycznego** --- testowania hipotez i budowania przedzialow ufnosci. Wiecej w przyszlych skryptach!
+:::
