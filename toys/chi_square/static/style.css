@@ -1,0 +1,239 @@
+/* === Tryb toggle === */
+.chi-mode-toggle {
+    display: flex;
+    gap: var(--st-space-xs);
+    margin-bottom: var(--st-space-lg);
+}
+
+.chi-mode-btn {
+    flex: 1;
+    font-size: var(--st-text-xs) !important;
+    padding: var(--st-space-xs) var(--st-space-sm) !important;
+}
+
+/* === Range slider === */
+.chi-range {
+    width: 100%;
+    margin: var(--st-space-xs) 0;
+    accent-color: var(--st-color-primary);
+}
+
+.chi-range-value {
+    display: block;
+    text-align: center;
+    font-size: var(--st-text-sm);
+    font-weight: 600;
+    color: var(--st-color-primary);
+}
+
+/* === Slider rows === */
+.chi-slider-row {
+    margin-bottom: var(--st-space-md);
+    padding: var(--st-space-sm);
+    background: var(--st-color-background);
+    border-radius: var(--st-radius-md);
+}
+
+.chi-slider-row__title {
+    font-size: var(--st-text-sm);
+    font-weight: 600;
+    margin-bottom: var(--st-space-xs);
+    color: var(--st-color-text);
+}
+
+.chi-slider-group {
+    margin-bottom: var(--st-space-xs);
+}
+
+.chi-slider-group label {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--st-text-xs);
+    color: var(--st-color-text-secondary);
+}
+
+.chi-slider-group input[type="range"] {
+    width: 100%;
+    margin: 2px 0;
+    accent-color: var(--st-color-primary);
+}
+
+.chi-pct-computed {
+    font-size: var(--st-text-xs);
+    color: var(--st-color-text-muted);
+    text-align: right;
+}
+
+/* === Tabela kontyngencji === */
+.chi-table-wrapper {
+    margin-bottom: var(--st-space-lg);
+}
+
+.chi-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--st-space-sm);
+}
+
+.chi-table-header h3 {
+    margin: 0;
+    font-size: var(--st-text-base);
+}
+
+.chi-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--st-space-xs);
+    font-size: var(--st-text-xs);
+    color: var(--st-color-text-secondary);
+    cursor: pointer;
+}
+
+.chi-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 3px;
+    margin-bottom: var(--st-space-sm);
+}
+
+.chi-table th {
+    padding: var(--st-space-xs) var(--st-space-sm);
+    font-size: var(--st-text-sm);
+    font-weight: 600;
+    text-align: center;
+    color: var(--st-color-text-secondary);
+}
+
+.chi-cell {
+    position: relative;
+    padding: 0;
+    border-radius: var(--st-radius-sm);
+    transition: background-color var(--st-transition-fast);
+    text-align: center;
+    min-width: 80px;
+}
+
+.chi-cell-input {
+    width: 100%;
+    padding: var(--st-space-sm) var(--st-space-xs);
+    border: 2px solid var(--st-color-border);
+    border-radius: var(--st-radius-sm);
+    font-size: var(--st-text-lg);
+    font-weight: 700;
+    text-align: center;
+    background: transparent;
+    color: var(--st-color-text);
+    font-family: var(--st-font-sans);
+    box-sizing: border-box;
+}
+
+.chi-cell-input:focus {
+    outline: none;
+    border-color: var(--st-color-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    z-index: 1;
+    position: relative;
+}
+
+.chi-cell-input:read-only {
+    border-color: transparent;
+    cursor: default;
+}
+
+.chi-expected {
+    display: block;
+    font-size: var(--st-text-xs);
+    color: var(--st-color-text-muted);
+    text-align: center;
+    padding: 1px 0;
+    line-height: 1.2;
+}
+
+.chi-expected--hidden {
+    display: none;
+}
+
+.chi-pct {
+    display: block;
+    font-size: var(--st-text-xs);
+    color: var(--st-color-text-secondary);
+    text-align: center;
+}
+
+.chi-total {
+    font-weight: 700;
+    text-align: center;
+    padding: var(--st-space-sm);
+    color: var(--st-color-text-secondary);
+    background: var(--st-color-background);
+    border-radius: var(--st-radius-sm);
+    font-size: var(--st-text-base);
+}
+
+.chi-grand-total {
+    font-weight: 700;
+    text-align: center;
+    padding: var(--st-space-sm);
+    color: var(--st-color-primary);
+    background: rgba(99, 102, 241, 0.08);
+    border-radius: var(--st-radius-sm);
+    font-size: var(--st-text-base);
+}
+
+/* === Werdykt === */
+.chi-verdict--significant {
+    background: rgba(239, 68, 68, 0.08) !important;
+    border-left: 3px solid var(--st-color-error);
+}
+
+.chi-verdict--significant .st-stat-item__value {
+    color: var(--st-color-error) !important;
+    font-size: var(--st-text-sm);
+}
+
+.chi-verdict--not-significant {
+    background: rgba(34, 197, 94, 0.08) !important;
+    border-left: 3px solid var(--st-color-success);
+}
+
+.chi-verdict--not-significant .st-stat-item__value {
+    color: var(--st-color-success) !important;
+    font-size: var(--st-text-sm);
+}
+
+/* === Ostrzezenia === */
+.chi-warnings {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-left: 3px solid var(--st-color-warning);
+    border-radius: var(--st-radius-sm);
+    padding: var(--st-space-sm) var(--st-space-md);
+    margin-bottom: var(--st-space-md);
+    font-size: var(--st-text-sm);
+    color: #92400e;
+}
+
+/* === Eksperymenty === */
+.chi-experiments {
+    margin-top: var(--st-space-md);
+}
+
+.chi-experiments summary {
+    cursor: pointer;
+    color: var(--st-color-primary);
+}
+
+.chi-experiments ol {
+    margin-top: var(--st-space-sm);
+}
+
+.chi-experiments li {
+    margin-bottom: var(--st-space-sm);
+}
+
+/* === Preset buttons === */
+.chi-preset-btn {
+    margin-bottom: var(--st-space-xs);
+    font-size: var(--st-text-xs) !important;
+}

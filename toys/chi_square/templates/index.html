@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Chi-Kwadrat Niezależności</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <link rel="stylesheet" href="/common/shared.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="st-app st-page">
+    <div class="st-card st-card--wide">
+        <header class="st-header">
+            <h1 class="st-header__title">Test Chi-Kwadrat Niezależności</h1>
+            <p class="st-header__subtitle">Zbadaj relację między rozkładem w tabeli a wynikiem testu statystycznego</p>
+        </header>
+
+        <div class="st-layout-2col">
+            <aside class="st-sidebar">
+                <h2 class="st-sidebar__title">Tryb</h2>
+
+                <div class="chi-mode-toggle">
+                    <button id="btn-mode-exploration" class="st-btn st-btn--primary st-btn--block chi-mode-btn chi-mode-btn--active" data-mode="exploration">
+                        Eksploracja
+                    </button>
+                    <button id="btn-mode-custom" class="st-btn st-btn--secondary st-btn--block chi-mode-btn" data-mode="custom">
+                        Własne dane
+                    </button>
+                </div>
+
+                <!-- Kontrolki trybu Eksploracja -->
+                <div id="exploration-controls">
+                    <h2 class="st-sidebar__title">Rozkład procentowy</h2>
+
+                    <div id="slider-rows-container">
+                        <!-- Generowane dynamicznie przez JS -->
+                    </div>
+
+                    <div class="st-input-group">
+                        <label for="param-n">Wielkość próby (N)</label>
+                        <input type="range" id="param-n" class="chi-range" min="20" max="2000" value="200" step="10">
+                        <span class="chi-range-value" id="param-n-value">200</span>
+                    </div>
+
+                    <div class="st-input-group">
+                        <label for="param-split">Podział wierszy</label>
+                        <input type="range" id="param-split" class="chi-range" min="20" max="80" value="50" step="5">
+                        <span class="chi-range-value" id="param-split-value">50% / 50%</span>
+                    </div>
+                </div>
+
+                <!-- Kontrolki trybu Wlasne dane -->
+                <div id="custom-controls" style="display: none;">
+                    <h2 class="st-sidebar__title">Wymiary tabeli</h2>
+                    <div class="st-input-group">
+                        <label for="param-rows">Wiersze</label>
+                        <input type="number" id="param-rows" class="st-input" value="2" min="2" max="4" step="1">
+                    </div>
+                    <div class="st-input-group">
+                        <label for="param-cols">Kolumny</label>
+                        <input type="number" id="param-cols" class="st-input" value="3" min="2" max="5" step="1">
+                    </div>
+                </div>
+
+                <div class="st-input-group">
+                    <label for="param-alpha">Poziom istotności (α)</label>
+                    <select id="param-alpha" class="st-input">
+                        <option value="0.01">0.01</option>
+                        <option value="0.05" selected>0.05</option>
+                        <option value="0.10">0.10</option>
+                    </select>
+                </div>
+
+                <h2 class="st-sidebar__title">Scenariusze</h2>
+                <button class="st-btn st-btn--secondary st-btn--block chi-preset-btn" data-preset="independent">
+                    Brak zależności
+                </button>
+                <button class="st-btn st-btn--secondary st-btn--block chi-preset-btn" data-preset="weak">
+                    Słaba zależność
+                </button>
+                <button class="st-btn st-btn--secondary st-btn--block chi-preset-btn" data-preset="strong">
+                    Silna zależność
+                </button>
+                <button class="st-btn st-btn--secondary st-btn--block chi-preset-btn" data-preset="medicine">
+                    Lek vs placebo
+                </button>
+            </aside>
+
+            <main>
+                <!-- Ostrzezenia -->
+                <div id="warnings-box" class="chi-warnings" style="display: none;"></div>
+
+                <!-- Tabela kontyngencji -->
+                <div class="chi-table-wrapper">
+                    <div class="chi-table-header">
+                        <h3>Tabela kontyngencji</h3>
+                        <label class="chi-toggle">
+                            <input type="checkbox" id="show-expected" checked>
+                            Pokaż wartości oczekiwane
+                        </label>
+                    </div>
+                    <div id="table-container">
+                        <!-- Generowane dynamicznie przez JS -->
+                    </div>
+                </div>
+
+                <!-- Wyniki testu -->
+                <div class="st-stats">
+                    <h3 class="st-stats__title">Wynik testu Chi-kwadrat</h3>
+                    <div class="st-stats-grid">
+                        <div class="st-stat-item">
+                            <span class="st-stat-item__label">χ² (chi-kwadrat)</span>
+                            <span id="stat-chi2" class="st-stat-item__value">-</span>
+                        </div>
+                        <div class="st-stat-item">
+                            <span class="st-stat-item__label">Stopnie swobody (df)</span>
+                            <span id="stat-df" class="st-stat-item__value">-</span>
+                        </div>
+                        <div class="st-stat-item">
+                            <span class="st-stat-item__label">Wartość p</span>
+                            <span id="stat-pvalue" class="st-stat-item__value">-</span>
+                        </div>
+                        <div class="st-stat-item">
+                            <span class="st-stat-item__label">V Craméra</span>
+                            <span id="stat-cramers" class="st-stat-item__value">-</span>
+                        </div>
+                        <div class="st-stat-item chi-verdict" id="verdict-container">
+                            <span class="st-stat-item__label">Werdykt</span>
+                            <span id="stat-verdict" class="st-stat-item__value">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wykres -->
+                <div class="st-plot">
+                    <div id="plot" style="width: 100%; height: 400px;"></div>
+                    <div id="loading" class="st-loading">Obliczanie...</div>
+                </div>
+            </main>
+        </div>
+
+        <div class="st-description">
+            <h3>O teście Chi-kwadrat niezależności</h3>
+            <p>
+                Test chi-kwadrat niezależności sprawdza, czy dwie zmienne kategoryczne są od siebie niezależne.
+                Porównuje <strong>obserwowane</strong> częstości w tabeli kontyngencji z częstościami
+                <strong>oczekiwanymi</strong> przy założeniu niezależności.
+            </p>
+            <ul>
+                <li><strong>χ²</strong> — mierzy odległość między obserwowanymi a oczekiwanymi częstościami. Im większa różnica w rozkładach procentowych między wierszami, tym większe χ².</li>
+                <li><strong>Wartość p</strong> — prawdopodobieństwo zaobserwowania tak dużej (lub większej) wartości χ² gdyby zmienne były niezależne.</li>
+                <li><strong>V Craméra</strong> — miara siły związku (0 = brak, 1 = doskonały). W przeciwieństwie do χ², nie zależy od wielkości próby.</li>
+            </ul>
+
+            <details class="chi-experiments">
+                <summary><strong>Eksperymenty do wypróbowania</strong></summary>
+                <ol>
+                    <li><strong>Zburz niezależność:</strong> Załaduj scenariusz „Brak zależności", potem zmień suwaki jednego wiersza. Obserwuj jak rośnie χ².</li>
+                    <li><strong>Wpływ wielkości próby:</strong> Ustaw słabą różnicę między wierszami, potem zwiększaj N. Czy wartość p się zmienia? A V Craméra?</li>
+                    <li><strong>Które komórki „ciągną"?:</strong> Obserwuj kolorowanie komórek — czerwone i niebieskie mają największy wkład w χ².</li>
+                </ol>
+            </details>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
