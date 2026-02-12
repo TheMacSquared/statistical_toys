@@ -47,7 +47,8 @@ MAX_QUESTIONS = 10  # Liczba pytań w jednym podejściu
 quiz_session = {
     'mode_id': None,
     'remaining_questions': [],
-    'shuffled': False
+    'shuffled': False,
+    'hints_used': 0
 }
 
 # === Routing ===
@@ -91,6 +92,7 @@ def start_quiz(mode_id):
         quiz_session['mode_id'] = mode_id
         quiz_session['remaining_questions'] = question_ids
         quiz_session['shuffled'] = True
+        quiz_session['hints_used'] = 0
 
         return jsonify({
             'success': True,
@@ -207,6 +209,63 @@ def check_answer(mode_id):
         return jsonify({
             'success': False,
             'error': f'Błąd sprawdzania odpowiedzi: {str(e)}'
+        }), 500
+
+@app.route('/api/quiz/<mode_id>/hint', methods=['GET'])
+def get_hint(mode_id):
+    """
+    Zwraca podpowiedź do aktualnego pytania
+
+    Returns:
+        JSON: {success: bool, hint: str, hints_used: int}
+    """
+    try:
+        # Sprawdź czy sesja jest zainicjalizowana
+        if not quiz_session['shuffled'] or quiz_session['mode_id'] != mode_id:
+            return jsonify({
+                'success': False,
+                'error': 'Sesja nie została zainicjalizowana. Wywołaj /start najpierw.'
+            }), 400
+
+        # Sprawdź czy są pytania
+        if not quiz_session['remaining_questions']:
+            return jsonify({
+                'success': False,
+                'error': 'Brak aktywnego pytania.'
+            }), 400
+
+        # Pobierz aktualne pytanie
+        next_id = quiz_session['remaining_questions'][0]
+        question = next((q for q in QUESTIONS[mode_id] if q['id'] == next_id), None)
+
+        if not question:
+            raise ValueError(f"Pytanie ID {next_id} nie znalezione w trybie {mode_id}")
+
+        # Generuj podpowiedź w zależności od trybu
+        if mode_id == 'single_interval':
+            hint = (
+                f"Sprawdź, czy wartość testowana {question['tested_value']} "
+                f"{question['unit']} znajduje się wewnątrz przedziału "
+                f"[{question['ci_lower']}; {question['ci_upper']}]"
+            )
+        elif mode_id == 'two_intervals':
+            hint = "Sprawdź, czy przedziały się nakładają"
+        else:
+            hint = "Brak podpowiedzi dla tego trybu"
+
+        # Zlicz użyte podpowiedzi
+        quiz_session['hints_used'] += 1
+
+        return jsonify({
+            'success': True,
+            'hint': hint,
+            'hints_used': quiz_session['hints_used']
+        })
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'Błąd pobierania podpowiedzi: {str(e)}'
         }), 500
 
 if __name__ == '__main__':

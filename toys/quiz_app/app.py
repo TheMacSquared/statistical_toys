@@ -122,7 +122,9 @@ quiz_session = {
     'remaining_questions': [],  # ID pytań do wylosowania
     'shuffled': False,
     'questions': [],  # Aktualne pytania (cache dla bieżącego quizu)
-    'total_in_round': 0  # Ile pytań w tym podejściu
+    'total_in_round': 0,  # Ile pytań w tym podejściu
+    'correct_count': 0,  # Liczba poprawnych odpowiedzi
+    'wrong_count': 0  # Liczba błędnych odpowiedzi
 }
 
 # === ROUTING ===
@@ -171,6 +173,8 @@ def start_quiz(quiz_id):
         quiz_session['shuffled'] = True
         quiz_session['questions'] = questions
         quiz_session['total_in_round'] = len(question_ids)
+        quiz_session['correct_count'] = 0
+        quiz_session['wrong_count'] = 0
 
         return jsonify({
             'success': True,
@@ -326,6 +330,12 @@ def check_answer(quiz_id):
 
             is_correct = selected_answer['correct']
 
+            # Aktualizuj liczniki wyników
+            if is_correct:
+                quiz_session['correct_count'] += 1
+            else:
+                quiz_session['wrong_count'] += 1
+
             # Usuń pytanie z remaining
             if question_id in quiz_session['remaining_questions']:
                 quiz_session['remaining_questions'].remove(question_id)
@@ -342,6 +352,12 @@ def check_answer(quiz_id):
 
             # Sprawdź odpowiedź
             is_correct = (user_answer == question['correct'])
+
+            # Aktualizuj liczniki wyników
+            if is_correct:
+                quiz_session['correct_count'] += 1
+            else:
+                quiz_session['wrong_count'] += 1
 
             # Usuń pytanie z remaining (użytkownik już na nie odpowiedział)
             if question_id in quiz_session['remaining_questions']:
@@ -365,6 +381,49 @@ def check_answer(quiz_id):
             'success': False,
             'error': f'Błąd sprawdzania odpowiedzi: {str(e)}'
         }), 500
+
+@app.route('/api/quiz/<quiz_id>/summary', methods=['GET'])
+def quiz_summary(quiz_id):
+    """
+    Zwraca podsumowanie wyników quizu
+
+    Returns:
+        JSON: {
+            success: bool,
+            summary: {
+                total_questions: int,
+                answered: int,
+                correct: int,
+                wrong: int,
+                remaining: int,
+                score_percent: float
+            }
+        }
+    """
+    if quiz_session['current_quiz_id'] != quiz_id:
+        return jsonify({
+            'success': False,
+            'error': 'Brak aktywnej sesji dla tego quizu'
+        }), 400
+
+    total = quiz_session['total_in_round']
+    correct = quiz_session['correct_count']
+    wrong = quiz_session['wrong_count']
+    answered = correct + wrong
+    remaining = total - answered
+    score_percent = round((correct / answered) * 100, 1) if answered > 0 else 0.0
+
+    return jsonify({
+        'success': True,
+        'summary': {
+            'total_questions': total,
+            'answered': answered,
+            'correct': correct,
+            'wrong': wrong,
+            'remaining': remaining,
+            'score_percent': score_percent
+        }
+    })
 
 @app.route('/api/quiz-config')
 def get_quiz_config():

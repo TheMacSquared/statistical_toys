@@ -10,3 +10,29 @@
     height: 200px;
     max-width: 100%;
 }
+
+/* Hint container */
+.st-hint-container {
+    text-align: center;
+    margin-bottom: var(--st-space-lg);
+}
+
+.st-hint {
+    background: var(--st-color-warning-bg);
+    border-left: 4px solid var(--st-color-warning);
+    border-radius: var(--st-radius-md);
+    padding: var(--st-space-md) var(--st-space-lg);
+    margin-top: var(--st-space-md);
+    text-align: left;
+    animation: st-slideDown 0.35s ease-out;
+}
+
+.st-hint--hidden {
+    display: none;
+}
+
+.st-hint__text {
+    font-size: var(--st-text-base);
+    color: var(--st-color-text-secondary);
+    line-height: 1.6;
+}

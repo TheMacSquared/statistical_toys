@@ -21,6 +21,7 @@ let answerButtons;
 let questionCounter;
 let scoreResult, scorePercent, scoreBar;
 let progressBar, progressFill;
+let btnHint, hintBox, hintText;
 
 document.addEventListener('DOMContentLoaded', function() {
     startScreen = document.getElementById('start-screen');
@@ -44,10 +45,14 @@ document.addEventListener('DOMContentLoaded', function() {
     scoreBar = document.getElementById('score-bar');
     progressBar = document.getElementById('progress-bar');
     progressFill = document.getElementById('progress-fill');
+    btnHint = document.getElementById('btn-hint');
+    hintBox = document.getElementById('hint-box');
+    hintText = document.getElementById('hint-text');
 
     btnStart.addEventListener('click', startQuiz);
     btnRestart.addEventListener('click', startQuiz);
     btnNext.addEventListener('click', loadNextQuestion);
+    btnHint.addEventListener('click', fetchHint);
 
     answerButtons.forEach(btn => {
         btn.addEventListener('click', handleAnswer);
@@ -105,6 +110,8 @@ async function loadNextQuestion() {
 
         answered = false;
         feedbackBox.classList.add('st-feedback--hidden');
+        hintBox.classList.add('st-hint--hidden');
+        btnHint.disabled = false;
         enableAnswerButtons();
 
         const response = await fetch(`/api/quiz/${MODE_ID}/next`);
@@ -196,6 +203,30 @@ async function handleAnswer(event) {
         alert('Błąd połączenia: ' + error.message);
     } finally {
         hideLoading();
+    }
+}
+
+async function fetchHint() {
+    try {
+        btnHint.disabled = true;
+
+        const response = await fetch(`/api/quiz/${MODE_ID}/hint`);
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const data = await response.json();
+
+        if (data.success) {
+            hintText.textContent = data.hint;
+            hintBox.classList.remove('st-hint--hidden');
+        } else {
+            alert('Błąd: ' + data.error);
+            btnHint.disabled = false;
+        }
+    } catch (error) {
+        console.error('Błąd pobierania podpowiedzi:', error);
+        alert('Błąd połączenia: ' + error.message);
+        btnHint.disabled = false;
     }
 }
 

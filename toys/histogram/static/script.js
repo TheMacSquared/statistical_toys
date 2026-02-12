@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
         updatePlot();
     });
 
+    // Podpięcie przycisku eksportu CSV
+    document.getElementById('btn-export-csv').addEventListener('click', function() {
+        window.location.href = '/api/export-csv';
+    });
+
     // Wygeneruj pierwszy wykres
     updatePlot();
 });

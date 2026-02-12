@@ -17,7 +17,7 @@ let startScreen, errorsScreen, questionScreen, finishScreen, loadingEl;
 let btnStart, btnStartAfterErrors, btnNext, btnRestart;
 let questionText, questionBox, feedbackBox, feedbackHeader, feedbackText;
 let answersGrid;
-let questionCounter, scoreResult, scorePercent, scoreBar;
+let questionCounter, scoreCounter, scoreResult, scorePercent, scoreBar;
 let progressBar, progressFill;
 
 // Etykiety odpowiedzi (A, B, C, D...)
@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     feedbackText = document.getElementById('feedback-text');
     answersGrid = document.getElementById('answers-grid');
     questionCounter = document.getElementById('question-counter');
+    scoreCounter = document.getElementById('score-counter');
     scoreResult = document.getElementById('score-result');
     scorePercent = document.getElementById('score-percent');
     scoreBar = document.getElementById('score-bar');
@@ -176,9 +177,10 @@ async function startQuiz() {
             correctCount = 0;
             totalAnswered = 0;
 
-            // Pokaż progress bar
+            // Pokaż progress bar i zresetuj wynik
             progressBar.style.display = '';
             updateProgress();
+            updateScoreCounter();
 
             showScreen('question');
             loadNextQuestion();
@@ -252,6 +254,19 @@ function updateProgress() {
         ? ((totalAnswered) / totalQuestions) * 100
         : 0;
     progressFill.style.width = `${progress}%`;
+}
+
+/**
+ * Aktualizuj wyświetlanie wyniku (poprawne / odpowiedzi)
+ */
+function updateScoreCounter() {
+    if (!scoreCounter) return;
+    if (totalAnswered > 0) {
+        scoreCounter.textContent = `Wynik: ${correctCount}/${totalAnswered}`;
+        scoreCounter.style.display = '';
+    } else {
+        scoreCounter.style.display = 'none';
+    }
 }
 
 /**
@@ -393,6 +408,7 @@ async function handleAnswer(event) {
             if (data.correct) correctCount++;
             disableAnswerButtons();
             updateProgress();
+            updateScoreCounter();
 
             // Feedback with SVG icons
             const icon = data.correct
@@ -499,14 +515,45 @@ function hideLoading() {
 }
 
 /**
- * Pokaż ekran końcowy
+ * Pokaż ekran końcowy z podsumowaniem z serwera
  */
-function showFinishScreen() {
+async function showFinishScreen() {
+    // Pobierz podsumowanie z backendu
+    try {
+        const response = await fetch(`/api/quiz/${QUIZ_ID}/summary`);
+        if (response.ok) {
+            const data = await response.json();
+            if (data.success) {
+                const s = data.summary;
+                scoreResult.textContent = `${s.correct} / ${s.answered}`;
+                scorePercent.textContent = `${s.score_percent}%`;
+                scoreBar.style.width = `${s.score_percent}%`;
+
+                if (s.score_percent >= 70) {
+                    scoreBar.className = 'st-score__bar-fill st-score__bar-fill--excellent';
+                } else if (s.score_percent >= 50) {
+                    scoreBar.className = 'st-score__bar-fill st-score__bar-fill--good';
+                } else {
+                    scoreBar.className = 'st-score__bar-fill st-score__bar-fill--needs-work';
+                }
+
+                // Ukryj progress bar i wynik na ekranie końcowym
+                progressBar.style.display = 'none';
+                if (scoreCounter) scoreCounter.style.display = 'none';
+
+                showScreen('finish');
+                return;
+            }
+        }
+    } catch (error) {
+        console.error('Błąd pobierania podsumowania:', error);
+    }
+
+    // Fallback - użyj danych klienckich jeśli serwer niedostępny
     const percent = totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
 
     scoreResult.textContent = `${correctCount} / ${totalAnswered}`;
     scorePercent.textContent = `${percent}%`;
-
     scoreBar.style.width = `${percent}%`;
 
     if (percent >= 70) {
@@ -517,8 +564,9 @@ function showFinishScreen() {
         scoreBar.className = 'st-score__bar-fill st-score__bar-fill--needs-work';
     }
 
-    // Ukryj progress bar na ekranie końcowym
+    // Ukryj progress bar i wynik na ekranie końcowym
     progressBar.style.display = 'none';
+    if (scoreCounter) scoreCounter.style.display = 'none';
 
     showScreen('finish');
 }

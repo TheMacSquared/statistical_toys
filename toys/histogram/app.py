@@ -1,5 +1,7 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, Response
 import numpy as np
+import io
+import csv
 
 from common.flask_app import register_common_static
 
@@ -7,6 +9,9 @@ app = Flask(__name__)
 
 # Wspólne pliki statyczne (shared.css)
 register_common_static(app)
+
+# Ostatnio wygenerowana próbka (do eksportu CSV)
+_last_samples = None
 
 @app.route('/')
 def index():
@@ -45,6 +50,10 @@ def generate_histogram():
         # Generuj próbkę z rozkładu normalnego
         np.random.seed()  # Zapewnij różne wyniki przy każdym wywołaniu
         samples = np.random.normal(mean, sd, n)
+
+        # Zapisz próbkę do eksportu CSV
+        global _last_samples
+        _last_samples = samples.copy()
 
         # Oblicz histogram
         if binwidth is not None:
@@ -114,6 +123,36 @@ def generate_histogram():
             'success': False,
             'error': f'Nieoczekiwany błąd: {str(e)}'
         }), 500
+
+@app.route('/api/export-csv')
+def export_csv():
+    """
+    Eksportuje ostatnio wygenerowaną próbkę jako plik CSV.
+
+    Zwraca plik CSV z kolumnami: index, value
+    Jeśli nie wygenerowano jeszcze danych, zwraca błąd 400.
+    """
+    if _last_samples is None:
+        return jsonify({
+            'success': False,
+            'error': 'Brak danych do eksportu. Najpierw wygeneruj próbkę.'
+        }), 400
+
+    # Przygotuj CSV w pamięci
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(['index', 'value'])
+    for i, value in enumerate(_last_samples):
+        writer.writerow([i, value])
+
+    csv_content = output.getvalue()
+    output.close()
+
+    return Response(
+        csv_content,
+        mimetype='text/csv',
+        headers={'Content-Disposition': 'attachment; filename=histogram_data.csv'}
+    )
 
 if __name__ == '__main__':
     # Uruchom serwer Flask (tylko dla testów - w produkcji używamy PyWebView)
