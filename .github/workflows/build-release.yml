@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pyinstaller pywebview flask numpy
+          pip install pyinstaller pywebview flask numpy scipy
 
       - name: Build Histogram
         working-directory: toys/histogram
@@ -38,6 +38,14 @@ jobs:
 
       - name: Build Confidence Intervals
         working-directory: toys/confidence_intervals
+        run: python build.py
+
+      - name: Build Chi-Square
+        working-directory: toys/chi_square
+        run: python build.py
+
+      - name: Build Pearson Correlation
+        working-directory: toys/pearson_correlation
         run: python build.py
 
       - name: Upload Histogram to Release
@@ -58,5 +66,19 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: toys/confidence_intervals/dist/confidence_intervals.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Chi-Square to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: toys/chi_square/dist/ChiSquare.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Pearson Correlation to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: toys/pearson_correlation/dist/PearsonCorrelation.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

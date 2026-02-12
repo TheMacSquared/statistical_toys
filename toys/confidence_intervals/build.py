@@ -11,9 +11,12 @@ def build_exe():
             print(f"ERROR: {path} not found!")
             sys.exit(1)
 
+    common_static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                     '..', 'common', 'static')
+
     print("Building confidence_intervals.exe...")
 
-    PyInstaller.__main__.run([
+    args = [
         'main.py',
         '--name=confidence_intervals',
         '--onefile',
@@ -26,7 +29,14 @@ def build_exe():
         '--hidden-import=proxy_tools',
         '--clean',
         '--noconfirm'
-    ])
+    ]
+
+    # Dodaj common/static jesli istnieje (shared.css)
+    if os.path.exists(common_static_dir):
+        args.append(add_data_arg(os.path.abspath(common_static_dir),
+                                 os.path.join('common', 'static')))
+
+    PyInstaller.__main__.run(args)
 
     print("Build complete: dist/confidence_intervals.exe")
 
