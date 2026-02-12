@@ -20,6 +20,8 @@ Interaktywne aplikacje do nauki statystyki. Pobierz, uruchom i ucz sie przez eks
 | **Quiz Statystyczny** | Sprawdz swoja wiedze: typy zmiennych, rozklady, wybor testu | [Pobierz](../../releases) |
 | **Przedzialy Ufnosci** | Naucz sie interpretowac przedzialy ufnosci | [Pobierz](../../releases) |
 | **Histogram** | Zobacz jak parametry wplywaja na ksztalt histogramu | [Pobierz](../../releases) |
+| **Test Chi-Kwadrat** | Interaktywna eksploracja testu niezaleznosci chi-kwadrat | [Pobierz](../../releases) |
+| **Korelacja Pearsona** | Wykres rozrzutu, regresja i wspolczynnik korelacji na zywo | [Pobierz](../../releases) |
 
 ## Zobacz jak wygladaja
 
@@ -36,6 +38,12 @@ Kazde pytanie zawiera wyjasnienie poprawnej odpowiedzi:
 Interaktywna nauka interpretacji przedzialow ufnosci z wizualizacja:
 
 ![Przedzialy ufnosci](images/CI.png)
+
+### Test Chi-Kwadrat
+Eksploruj test niezaleznosci chi-kwadrat: suwaki procentowe lub edycja komorek tabeli kontyngencji, wykres slupkowy (obserwowane vs oczekiwane), statystyki na zywo (chi-kwadrat, p-value, V Cramera).
+
+### Korelacja Pearsona
+Dodawaj i usuwaj punkty na wykresie rozrzutu, obserwuj jak zmienia sie wspolczynnik korelacji, prosta regresji i przedzialy ufnosci. Gotowe eksperymenty: wplyw outlierow, pulapki Anscombe'a, ograniczenie zakresu.
 
 ## Jak pobrac i uruchomic?
 
