@@ -2,15 +2,15 @@
 const state = {
     mode: 'exploration',  // 'exploration' | 'custom'
     nRows: 2,
-    nCols: 3,
+    nCols: 2,
     rowLabels: ['Kobiety', 'Mężczyźni'],
-    colLabels: ['Zadowolony', 'Neutralny', 'Niezadowolony'],
+    colLabels: ['Zadowolony', 'Niezadowolony'],
     // Tryb exploration
-    rowPercentages: [[40, 35, 25], [35, 35, 30]],
+    rowPercentages: [[60, 40], [55, 45]],
     sampleSize: 200,
     rowSplitPct: 50,  // procent dla pierwszego wiersza
     // Tryb custom
-    table: [[48, 42, 30], [28, 28, 24]],
+    table: [[48, 30], [28, 24]],
     // Wyniki z backendu
     expected: null,
     contributions: null,
@@ -32,31 +32,31 @@ const ROW_COLORS_LIGHT = ['rgba(99,102,241,0.35)', 'rgba(245,158,11,0.35)', 'rgb
 // === PRESETY ===
 const PRESETS = {
     independent: {
-        nRows: 2, nCols: 3,
+        nRows: 2, nCols: 2,
         rowLabels: ['Kobiety', 'Mężczyźni'],
-        colLabels: ['Zadowolony', 'Neutralny', 'Niezadowolony'],
-        rowPercentages: [[40, 35, 25], [40, 35, 25]],
+        colLabels: ['Zadowolony', 'Niezadowolony'],
+        rowPercentages: [[60, 40], [60, 40]],
         sampleSize: 200, rowSplitPct: 50
     },
     weak: {
-        nRows: 2, nCols: 3,
+        nRows: 2, nCols: 2,
         rowLabels: ['Kobiety', 'Mężczyźni'],
-        colLabels: ['Zadowolony', 'Neutralny', 'Niezadowolony'],
-        rowPercentages: [[40, 35, 25], [33, 35, 32]],
+        colLabels: ['Zadowolony', 'Niezadowolony'],
+        rowPercentages: [[60, 40], [50, 50]],
         sampleSize: 200, rowSplitPct: 50
     },
     strong: {
-        nRows: 2, nCols: 3,
+        nRows: 2, nCols: 2,
         rowLabels: ['Kobiety', 'Mężczyźni'],
-        colLabels: ['Zadowolony', 'Neutralny', 'Niezadowolony'],
-        rowPercentages: [[60, 25, 15], [20, 30, 50]],
+        colLabels: ['Zadowolony', 'Niezadowolony'],
+        rowPercentages: [[75, 25], [30, 70]],
         sampleSize: 200, rowSplitPct: 50
     },
     medicine: {
-        nRows: 2, nCols: 3,
+        nRows: 2, nCols: 2,
         rowLabels: ['Lek', 'Placebo'],
-        colLabels: ['Poprawa', 'Bez zmian', 'Pogorszenie'],
-        rowPercentages: [[55, 35, 10], [30, 40, 30]],
+        colLabels: ['Poprawa', 'Brak poprawy'],
+        rowPercentages: [[70, 30], [40, 60]],
         sampleSize: 300, rowSplitPct: 50
     }
 };
@@ -374,7 +374,7 @@ function buildTable() {
     // Footer
     html += '<tfoot><tr><th>Suma</th>';
     for (let c = 0; c < nCols; c++) {
-        html += `<td class="chi-total" id="col-total-${c}">-</td>`;
+        html += `<td class="chi-total" id="col-total-${c}">-<span class="chi-pct chi-pct--footer" id="pct-col-${c}"></span></td>`;
     }
     html += `<td class="chi-grand-total" id="grand-total">-</td>`;
     html += '</tr></tfoot>';
@@ -562,10 +562,19 @@ function updateTableDisplay() {
         if (el) el.textContent = rowTotals[r];
     }
 
-    // Sumy kolumn
+    // Sumy kolumn z procentami brzegowymi
     for (let c = 0; c < nCols; c++) {
         const el = document.getElementById(`col-total-${c}`);
-        if (el) el.textContent = colTotals[c];
+        const pctEl = document.getElementById(`pct-col-${c}`);
+        if (el) {
+            el.textContent = '';
+            el.appendChild(document.createTextNode(colTotals[c]));
+            if (pctEl) {
+                const marginalPct = grandTotal > 0 ? (colTotals[c] / grandTotal * 100).toFixed(1) : '0.0';
+                pctEl.textContent = `${marginalPct}%`;
+                el.appendChild(pctEl);
+            }
+        }
     }
 
     // Suma calkowita
@@ -626,9 +635,8 @@ function plotGroupedBars() {
     for (let r = 0; r < nRows; r++) {
         const rowLabel = state.rowLabels[r] || `Wiersz ${r + 1}`;
         const color = ROW_COLORS[r % ROW_COLORS.length];
-        const colorLight = ROW_COLORS_LIGHT[r % ROW_COLORS_LIGHT.length];
 
-        // Obserwowane
+        // Obserwowane - slupki
         traces.push({
             x: state.colLabels.slice(0, nCols),
             y: table[r],
@@ -639,15 +647,18 @@ function plotGroupedBars() {
             hovertemplate: `<b>${rowLabel}</b><br>Obserwowane: %{y}<extra></extra>`
         });
 
-        // Oczekiwane
+        // Oczekiwane - kropki z linia pozioma
         traces.push({
             x: state.colLabels.slice(0, nCols),
             y: expected[r],
             name: `${rowLabel} (ocz.)`,
-            type: 'bar',
+            type: 'scatter',
+            mode: 'markers',
             marker: {
-                color: colorLight,
-                line: { color: color, width: 2 }
+                symbol: 'line-ew-open',
+                size: 18,
+                color: color,
+                line: { width: 3, color: color }
             },
             legendgroup: rowLabel,
             hovertemplate: `<b>${rowLabel}</b><br>Oczekiwane: %{y:.1f}<extra></extra>`

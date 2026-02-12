@@ -161,6 +161,11 @@
     text-align: center;
 }
 
+.chi-pct--footer {
+    font-weight: 600;
+    color: var(--st-color-primary);
+}
+
 .chi-total {
     font-weight: 700;
     text-align: center;
