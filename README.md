@@ -17,7 +17,7 @@ Interaktywne aplikacje do nauki statystyki. Pobierz, uruchom i ucz sie przez eks
 
 | Aplikacja | Co robi? | Pobierz |
 |-----------|----------|---------|
-| **Quiz Statystyczny** | Sprawdz swoja wiedze: typy zmiennych, rozklady, wybor testu | [Pobierz](../../releases) |
+| **Quiz Statystyczny** | Sprawdz swoja wiedze: typy zmiennych, rozklady, wybor testu, hipotezy, interpretacja wynikow | [Pobierz](../../releases) |
 | **Przedzialy Ufnosci** | Naucz sie interpretowac przedzialy ufnosci | [Pobierz](../../releases) |
 | **Histogram** | Zobacz jak parametry wplywaja na ksztalt histogramu | [Pobierz](../../releases) |
 | **Test Chi-Kwadrat** | Interaktywna eksploracja testu niezaleznosci chi-kwadrat | [Pobierz](../../releases) |
@@ -26,7 +26,7 @@ Interaktywne aplikacje do nauki statystyki. Pobierz, uruchom i ucz sie przez eks
 ## Zobacz jak wygladaja
 
 ### Quiz Statystyczny
-Wybierz jeden z trzech trybow i sprawdz swoja wiedze:
+Wybierz jeden z pieciu quizow i sprawdz swoja wiedze:
 
 ![Quiz - menu glowne](images/quiz.png)
 

@@ -76,7 +76,7 @@ python main.py
 **Uwaga WSL**: PyWebView wymaga X servera na WSL. Alternatywnie uruchom samo Flask:
 ```bash
 python app.py
-# Otwórz http://localhost:5000 w przeglądarce
+# Otwórz http://localhost:15000 w przeglądarce
 ```
 
 ### Budowanie .exe
@@ -86,7 +86,7 @@ python app.py
 python build.py
 ```
 
-Wynikowy plik: `dist/Histogram.exe` (~50-60MB)
+Wynikowy plik: `dist/Histogram.exe`
 
 ### Testowanie
 
@@ -112,7 +112,7 @@ with app.test_client() as client:
 - **Desktop**: PyWebView (natywny webview systemu)
 - **Build**: PyInstaller
 
-### API Endpoint
+### API Endpoints
 
 **POST /api/generate**
 
@@ -121,7 +121,8 @@ Request:
 {
     "n": 100,      // liczba próbek (10-10000)
     "mean": 0.0,   // średnia
-    "sd": 1.0      // odchylenie standardowe (> 0)
+    "sd": 1.0,     // odchylenie standardowe (> 0)
+    "binwidth": null // szerokość binu (null = auto wg reguły Sturgesa)
 }
 ```
 
@@ -151,6 +152,10 @@ Response:
 }
 ```
 
+**GET /api/export-csv**
+
+Eksportuje ostatnio wygenerowaną próbkę do formatu CSV. Zwraca 400 jeśli nie wygenerowano jeszcze danych.
+
 ## Licencja
 
-MIT - swobodne użycie w celach edukacyjnych.
+CC BY 4.0 (patrz [LICENSE](../../LICENSE) w katalogu głównym)

@@ -60,7 +60,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Aplikacja otworzy się w oknie PyWebView na porcie 5002.
+Aplikacja otworzy się w oknie PyWebView na porcie **15002**.
 
 ## Build (Windows)
 
@@ -84,7 +84,7 @@ confidence_intervals/
 ├── ci_config.json            # Konfiguracja trybów quizu
 ├── questions/
 │   ├── single_interval.json  # 20 pytań - tryb 1
-│   └── two_intervals.json    # 20 pytań - tryb 2
+│   └── two_intervals.json    # 28 pytań - tryb 2
 ├── templates/
 │   ├── menu.html             # Menu wyboru trybu
 │   └── quiz.html             # Strona quizu
@@ -250,4 +250,4 @@ Aplikacja stworzona na potrzeby zajęć ze statystyki (SGGW 2025).
 
 ## Licencja
 
-MIT
+CC BY 4.0 (patrz [LICENSE](../../LICENSE) w katalogu głównym)

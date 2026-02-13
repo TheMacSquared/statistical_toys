@@ -23,13 +23,14 @@ toys/nazwa_zabawki/
 
 ### Gotowe
 - [x] **histogram** - Histogram z rozkładem normalnym
-- [x] **quiz_app** - Quiz statystyczny (typy zmiennych, rozkłady, wybór testu)
+- [x] **quiz_app** - Quiz statystyczny (5 quizów: typy zmiennych, rozkłady, testy, hipotezy, interpretacja)
 - [x] **confidence_intervals** - Przedziały ufności
+- [x] **chi_square** - Test niezależności chi-kwadrat
+- [x] **pearson_correlation** - Korelacja Pearsona i regresja liniowa
 
 ### Przyszłe Pomysły
 - Test t-Studenta
 - Centralne Twierdzenie Graniczne
-- Regresja liniowa
 - Porównanie rozkładów prawdopodobieństwa
 - ANOVA wizualizacja
 - Power analysis

@@ -1,137 +1,161 @@
-# Quiz - Typy Zmiennych Losowych
+# Quiz Statystyczny
 
-Interaktywny quiz do nauki rozróżniania czterech typów zmiennych statystycznych:
-- **Ilościowa dyskretna** - wartości przeliczalne (liczby całkowite)
-- **Ilościowa ciągła** - wartości z przedziału (nieprzeliczalne)
-- **Jakościowa porządkowa** - kategorie z naturalnym porządkiem
-- **Jakościowa nominalna** - kategorie bez porządku
+Interaktywna aplikacja quizowa do nauki statystyki. Zawiera 5 roznych quizow obejmujacych typy zmiennych, rozklady prawdopodobienstwa, wybor testu, formowanie hipotez i interpretacje wynikow.
 
-## Funkcje
+## Dostepne quizy
 
-- 25 przykładowych pytań z różnych dziedzin
-- Losowa kolejność pytań (bez powtórzeń w sesji)
-- Natychmiastowy feedback z wyjaśnieniem
-- Podświetlenie poprawnej odpowiedzi
-- Responsywny interfejs
-- Spójny styl wizualny z pozostałymi zabawkami
+| Quiz | Pytania | Typ odpowiedzi | Opis |
+|------|---------|----------------|------|
+| **Typy Zmiennych** | 75 | Wybor z 4 opcji | Rozpoznaj typ zmiennej: ilosciowa/jakosciowa, dyskretna/ciagla |
+| **Rozklady Prawdopodobienstwa** | 30 | Wybor z 3 opcji | Dopasuj zjawisko do rozkladu (dwumianowy, Poissona, normalny) |
+| **Wybor Testu Statystycznego** | 35 | Losowe 3 z puli 11 | Dobierz test do sytuacji badawczej |
+| **Hipotezy Statystyczne** | 24 | Losowe opcje | Dobierz poprawna pare H0/Ha i test |
+| **Interpretacja Wynikow** | 20 | Interpretacja tekstu | Sformuluj poprawne wnioski statystyczne |
 
-## Uruchomienie (Development Mode)
+Kazda sesja losuje **10 pytan** z wybranego quizu (stala `MAX_QUESTIONS`).
+
+## Uruchomienie (Development)
 
 ### Windows PowerShell
 
 ```powershell
-# Utwórz środowisko wirtualne
 python -m venv venv
-
-# Aktywuj venv
 .\venv\Scripts\Activate.ps1
-
-# Zainstaluj zależności
 pip install -r requirements.txt
-
-# Uruchom aplikację
 python main.py
 ```
 
 ### Linux/Mac
 
 ```bash
-# Utwórz środowisko wirtualne
 python3 -m venv venv
-
-# Aktywuj venv
 source venv/bin/activate
-
-# Zainstaluj zależności
 pip install -r requirements.txt
-
-# Uruchom aplikację
 python main.py
 ```
+
+Aplikacja otworzy sie w oknie PyWebView na porcie **15001**.
 
 ## Budowanie .exe (Windows)
 
 ```powershell
-# Upewnij się, że venv jest aktywny
 python build.py
 ```
 
-Plik `.exe` zostanie utworzony w `dist/typ_zmiennych_quiz.exe`.
+Plik `.exe` zostanie utworzony w `dist/quiz_app.exe`.
 
-## Dodawanie Nowych Pytań
-
-1. Edytuj plik `questions.json`
-2. Dodaj nowe pytanie w formacie:
-```json
-{
-  "id": 26,
-  "question": "Opis zmiennej (np. wartości przykładowe)",
-  "correct": "ilosciowa_dyskretna",
-  "explanation": "Wyjaśnienie dlaczego ta odpowiedź jest poprawna."
-}
-```
-3. Sprawdź poprawność składni JSON
-4. Przebuduj .exe: `python build.py`
-
-**Dostępne wartości dla `correct`:**
-- `ilosciowa_dyskretna`
-- `ilosciowa_ciagla`
-- `jakosciowa_porzadkowa`
-- `jakosciowa_nominalna`
-
-## Struktura Projektu
+## Struktura projektu
 
 ```
-typ_zmiennych_quiz/
-├── app.py                  # Flask backend (3 endpointy API)
-├── main.py                 # PyWebView wrapper
+quiz_app/
+├── app.py                  # Flask backend (6 endpointow API)
+├── main.py                 # PyWebView wrapper (port 15001)
 ├── build.py                # Skrypt budowania .exe
-├── questions.json          # Bank pytań (25 pytań)
-├── requirements.txt        # Zależności Python
+├── quiz_config.json        # Konfiguracja quizow (typy, pliki pytan, opcje)
+├── requirements.txt        # Zaleznosci Python
+├── questions/
+│   ├── typy_zmiennych.json # 75 pytan - typy zmiennych
+│   ├── rozklady.json       # 30 pytan - rozklady prawdopodobienstwa
+│   ├── testy.json          # 35 pytan - wybor testu statystycznego
+│   ├── hipotezy.json       # 24 pytania - hipotezy H0/Ha
+│   ├── interpretacja.json  # 20 pytan - interpretacja wynikow
+│   └── errors_info.json    # Info o bledach interpretacyjnych
 ├── templates/
-│   └── index.html          # UI quizu
+│   ├── menu.html           # Menu wyboru quizu
+│   └── quiz.html           # Strona quizu
 └── static/
-    ├── style.css           # Style (spójne z histogramem)
-    └── script.js           # Logika quizu (fetch API)
+    ├── style.css           # Style
+    ├── script.js           # Logika quizu (fetch API)
+    └── favicon.svg         # Ikona
 ```
+
+## Konfiguracja quizow
+
+Plik `quiz_config.json` definiuje dostepne quizy. Kazdy quiz ma:
+- `id` - identyfikator uzywany w URL-ach API
+- `name` - nazwa wyswietlana w menu
+- `file` - plik z pytaniami w katalogu `questions/`
+- `answer_type` - typ odpowiedzi (`multiple_choice_4`, `multiple_choice_3`, `multiple_choice_random`, `interpretation`)
+- `options` (opcjonalnie) - stale opcje odpowiedzi
+- `errors_file` (opcjonalnie) - plik z informacjami o bledach (quiz interpretacyjny)
 
 ## API Endpoints
 
-### `POST /api/start`
-Inicjalizuje sesję quizu (shuffluje pytania).
+### `GET /`
+Menu glowne - lista quizow z `quiz_config.json`.
+
+### `GET /quiz/<quiz_id>`
+Strona quizu. Zwraca 404 jesli `quiz_id` nie istnieje w konfiguracji.
+
+### `POST /api/quiz/<quiz_id>/start`
+Inicjalizuje sesje quizu: losuje pytania, resetuje liczniki.
 
 **Response:**
 ```json
 {
   "success": true,
-  "total_questions": 25
+  "total_questions": 10
 }
 ```
 
-### `GET /api/next`
-Zwraca kolejne pytanie (bez poprawnej odpowiedzi).
+### `GET /api/quiz/<quiz_id>/next`
+Zwraca kolejne pytanie (bez odpowiedzi `correct` i `explanation`).
 
-**Response:**
+**Response (quiz standardowy):**
 ```json
 {
   "success": true,
   "finished": false,
   "question": {
     "id": 5,
-    "question": "Liczba dzieci w rodzinie (0, 1, 2, 3, ...)"
+    "question": "Liczba dzieci w rodzinie (0, 1, 2, 3, ...)",
+    "options": ["Ilosciowa dyskretna", "Ilosciowa ciagla", "Jakosciowa porzadkowa", "Jakosciowa nominalna"]
   },
-  "remaining": 20
+  "remaining": 9
 }
 ```
 
-### `POST /api/check`
-Sprawdza odpowiedź użytkownika.
+**Response (quiz interpretacyjny):**
+```json
+{
+  "success": true,
+  "finished": false,
+  "question": {
+    "id": 1,
+    "test_type": "t_jednej_proby",
+    "context": "Badacz chce sprawdzic...",
+    "results": ["Srednia w probie: 15.2 kg", "Wynik testu: t(29) = 2.34, p = 0.026"],
+    "answers": [{"index": 0, "text": "Odrzucamy H0..."}]
+  },
+  "remaining": 9
+}
+```
 
-**Request:**
+**Response (koniec pytan):**
+```json
+{
+  "success": true,
+  "finished": true,
+  "message": "Gratulacje! Przeszedles przez wszystkie pytania."
+}
+```
+
+### `POST /api/quiz/<quiz_id>/check`
+Sprawdza odpowiedz uzytkownika.
+
+**Request (quiz standardowy):**
 ```json
 {
   "question_id": 5,
   "answer": "ilosciowa_dyskretna"
+}
+```
+
+**Request (quiz interpretacyjny):**
+```json
+{
+  "question_id": 1,
+  "answer_text": "Odrzucamy H0..."
 }
 ```
 
@@ -140,10 +164,78 @@ Sprawdza odpowiedź użytkownika.
 {
   "success": true,
   "correct": true,
-  "explanation": "Liczba dzieci to wartości przeliczalne (liczby całkowite nieujemne). To zmienna ilościowa dyskretna.",
+  "explanation": "Wyjasnienie dlaczego ta odpowiedz jest poprawna.",
   "correct_answer": "ilosciowa_dyskretna"
 }
 ```
+
+### `GET /api/quiz/<quiz_id>/summary`
+Zwraca podsumowanie wynikow sesji.
+
+**Response:**
+```json
+{
+  "success": true,
+  "summary": {
+    "total_questions": 10,
+    "answered": 10,
+    "correct": 7,
+    "wrong": 3,
+    "remaining": 0,
+    "score_percent": 70.0
+  }
+}
+```
+
+### `GET /api/quiz-config`
+Zwraca konfiguracje aktywnego quizu.
+
+### `GET /api/quiz/<quiz_id>/errors-info`
+Zwraca informacje o bledach interpretacyjnych (tylko dla quizu `interpretacja`).
+
+## Dodawanie nowych pytan
+
+1. Znajdz odpowiedni plik w `questions/` (np. `typy_zmiennych.json`)
+2. Dodaj nowe pytanie w formacie:
+
+**Quiz standardowy (typy_zmiennych, rozklady):**
+```json
+{
+  "id": 76,
+  "question": "Opis zmiennej (np. wartosci przykladowe)",
+  "correct": "ilosciowa_dyskretna",
+  "explanation": "Wyjasnienie dlaczego ta odpowiedz jest poprawna."
+}
+```
+
+**Quiz z losowaniem opcji (testy, hipotezy):**
+```json
+{
+  "id": 36,
+  "question": "Opis sytuacji badawczej...",
+  "correct": "Test t dla dwoch prob niezaleznych",
+  "all_options": ["Test t dla dwoch prob niezaleznych", "ANOVA", "Test chi-kwadrat"],
+  "explanation": "Wyjasnienie wyboru testu."
+}
+```
+
+**Quiz interpretacyjny:**
+```json
+{
+  "id": 21,
+  "test_type": "t_jednej_proby",
+  "context": "Kontekst badania...",
+  "results": {"mean": 15.2, "sd": 3.1, "n": 30, "test_stat": "t(29) = 2.34", "p_value": "0.026"},
+  "unit": "kg",
+  "answers": [
+    {"text": "Odrzucamy H0...", "correct": true, "feedback": "Poprawnie! Poniewaz p < 0.05..."},
+    {"text": "Nie odrzucamy H0...", "correct": false, "feedback": "Niepoprawnie. p = 0.026 < 0.05..."}
+  ]
+}
+```
+
+3. Sprawdz poprawnosc skladni JSON
+4. Przebuduj .exe: `python build.py`
 
 ## Technologie
 
@@ -154,4 +246,4 @@ Sprawdza odpowiedź użytkownika.
 
 ## Licencja
 
-Część projektu "Statystyczne Zabawki" - narzędzia do nauczania statystyki.
+CC BY 4.0 (patrz [LICENSE](../../LICENSE) w katalogu glownym)

@@ -167,7 +167,7 @@ def calculate():
 
 # Do testowania (uruchom tylko jeśli wywołane bezpośrednio)
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=15000)  # Porty 15000+ - mniejsze ryzyko blokady przez firewall
 ```
 
 **Kluczowe punkty**:
@@ -552,7 +552,7 @@ from app import app
 
 def start_flask():
     """Uruchom Flask server w tle"""
-    app.run(port=5000, debug=False, use_reloader=False)
+    app.run(port=15000, debug=False, use_reloader=False)  # Porty 15000+
 
 if __name__ == '__main__':
     # Uruchom Flask w osobnym wątku
@@ -566,7 +566,7 @@ if __name__ == '__main__':
     # Otwórz natywne okno aplikacji
     webview.create_window(
         title='Nazwa Zabawki',
-        url='http://127.0.0.1:5000',
+        url='http://127.0.0.1:15000',
         width=1200,
         height=800,
         resizable=True
@@ -605,7 +605,7 @@ Powinna otworzyć się okno aplikacji. Przetestuj:
 - [ ] Brak błędów w konsoli
 
 **Debugowanie**: Jeśli coś nie działa:
-1. Uruchom samego Flask: `python app.py` i otwórz http://localhost:5000
+1. Uruchom samego Flask: `python app.py` i otwórz http://localhost:15000
 2. Sprawdź konsole Python (błędy backend)
 3. Sprawdź Console w przeglądarce F12 (błędy JavaScript)
 
