@@ -75,6 +75,10 @@ jobs:
         working-directory: toys/pearson_correlation
         run: python build.py
 
+      - name: Build Biased Sampling
+        working-directory: toys/biased_sampling
+        run: python build.py
+
       - name: Upload Histogram to Release
         uses: softprops/action-gh-release@v1
         with:
@@ -107,5 +111,12 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: toys/pearson_correlation/dist/PearsonCorrelation.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Biased Sampling to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: toys/biased_sampling/dist/BiasedSampling.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
