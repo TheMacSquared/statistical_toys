@@ -82,4 +82,4 @@ Projekt na licencji [CC BY 4.0](LICENSE) - mozesz swobodnie uzywac i udostepniac
 
 ## Kontakt
 
-Projekt tworzony dla potrzeb dydaktycznych. Feedback i sugestie mile widziane!
+Projekt tworzony przez Macieja Karczewskiego (Uniwersytet Przyrodniczy we Wrocławiu) dla potrzeb dydaktycznych. Feedback i sugestie mile widziane!

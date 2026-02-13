@@ -246,7 +246,7 @@ Aby dodać/edytować pytania:
 
 ## Autor
 
-Aplikacja stworzona na potrzeby zajęć ze statystyki (SGGW 2025).
+Aplikacja stworzona na potrzeby zajęć ze statystyki - Maciej Karczewski, Uniwersytet Przyrodniczy we Wrocławiu (2025).
 
 ## Licencja
 
