@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obciazenie probkowania</title>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <link rel="stylesheet" href="/common/shared.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="st-app st-page">
+    <div class="st-card st-card--wide">
+        <header class="st-header">
+            <h1 class="st-header__title">Obciazenie probkowania</h1>
+            <p class="st-header__subtitle">Jak niereprezentatywna proba prowadzi do blednych wnioskow</p>
+        </header>
+
+        <!-- Wybor scenariusza -->
+        <div class="bs-scenarios">
+            <span class="bs-scenarios__label">Wybierz scenariusz:</span>
+            <div class="bs-scenarios__buttons" id="scenario-buttons">
+                <!-- Wypelniane z JS -->
+            </div>
+        </div>
+
+        <!-- Historia scenariusza -->
+        <div class="bs-story" id="story-box" style="display: none;">
+            <div class="bs-story__title" id="story-title"></div>
+            <p class="bs-story__text" id="story-text"></p>
+            <p class="bs-story__bias" id="story-bias"></p>
+        </div>
+
+        <!-- Kontrolki -->
+        <div class="bs-controls" id="controls" style="display: none;">
+            <label class="bs-toggle">
+                <input type="checkbox" id="reveal-toggle">
+                <span class="bs-toggle__label">Tryb odkrywania</span>
+                <span class="bs-toggle__hint">(najpierw proba, potem populacja)</span>
+            </label>
+            <button class="st-btn st-btn--primary bs-reveal-btn" id="reveal-btn" style="display: none;">
+                Odkryj populacje
+            </button>
+            <label class="bs-toggle">
+                <input type="checkbox" id="custom-toggle">
+                <span class="bs-toggle__label">Zaznacz wlasny region</span>
+                <span class="bs-toggle__hint">(narysuj prostokat na wykresie)</span>
+            </label>
+            <button class="st-btn st-btn--ghost" id="new-data-btn">
+                Nowe losowanie
+            </button>
+        </div>
+
+        <!-- Wykres -->
+        <div class="bs-plot-area" id="plot-area" style="display: none;">
+            <div class="st-plot bs-plot">
+                <div id="plot" style="width: 100%; height: 100%;"></div>
+            </div>
+        </div>
+
+        <!-- Porownanie statystyk -->
+        <div class="bs-stats-comparison" id="stats-panel" style="display: none;">
+            <div class="bs-stats-column bs-stats-column--pop">
+                <h3 class="bs-stats-column__title">Populacja</h3>
+                <div class="st-stats-grid">
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">r</span>
+                        <span id="pop-r" class="st-stat-item__value">-</span>
+                    </div>
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">Wartosc p</span>
+                        <span id="pop-p" class="st-stat-item__value">-</span>
+                    </div>
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">n</span>
+                        <span id="pop-n" class="st-stat-item__value">-</span>
+                    </div>
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">Regresja</span>
+                        <span id="pop-eq" class="st-stat-item__value bs-stat-eq">-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bs-stats-column bs-stats-column--sample">
+                <h3 class="bs-stats-column__title">Proba</h3>
+                <div class="st-stats-grid">
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">r</span>
+                        <span id="sample-r" class="st-stat-item__value">-</span>
+                    </div>
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">Wartosc p</span>
+                        <span id="sample-p" class="st-stat-item__value">-</span>
+                    </div>
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">n</span>
+                        <span id="sample-n" class="st-stat-item__value">-</span>
+                    </div>
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">Regresja</span>
+                        <span id="sample-eq" class="st-stat-item__value bs-stat-eq">-</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Trzecia kolumna dla custom selection -->
+            <div class="bs-stats-column bs-stats-column--custom" id="custom-stats" style="display: none;">
+                <h3 class="bs-stats-column__title">Twoj wybor</h3>
+                <div class="st-stats-grid">
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">r</span>
+                        <span id="custom-r" class="st-stat-item__value">-</span>
+                    </div>
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">Wartosc p</span>
+                        <span id="custom-p" class="st-stat-item__value">-</span>
+                    </div>
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">n</span>
+                        <span id="custom-n" class="st-stat-item__value">-</span>
+                    </div>
+                    <div class="st-stat-item">
+                        <span class="st-stat-item__label">Regresja</span>
+                        <span id="custom-eq" class="st-stat-item__value bs-stat-eq">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opis edukacyjny -->
+        <div class="st-description" id="edu-description" style="display: none;">
+            <h3>Czym jest obciazenie probkowania?</h3>
+            <p>
+                <strong>Obciazenie probkowania</strong> (sampling bias) wystepuje, gdy proba
+                nie jest reprezentatywna dla calej populacji. Moze to prowadzic do zupelemnie
+                blednych wnioskow statystycznych — nawet jesli analiza jest przeprowadzona
+                poprawnie.
+            </p>
+            <h4>Przyklady obciazen:</h4>
+            <ul>
+                <li><strong>Ograniczenie zakresu</strong> — badanie tylko czesci populacji
+                    (np. tylko bogatych) moze ukryc istniejaca korelacje.</li>
+                <li><strong>Obcinanie proby</strong> — wykluczenie obserwacji ponizej pewnego
+                    progu (np. studentow, ktorzy nie zdali) osliabia widoczna zaleznosc.</li>
+                <li><strong>Paradoks Simpsona</strong> — trend widoczny w podgrupach
+                    moze calkowicie odwrocic sie w polaczonych danych.</li>
+            </ul>
+            <h4>Jak tego uniknac?</h4>
+            <p>
+                Kluczem jest <strong>losowe probkowanie</strong> z calej populacji.
+                Proba powinna byc dobrana tak, aby kazdy element populacji mial
+                znana i niezerowa szanse na wlaczenie do proby.
+            </p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
