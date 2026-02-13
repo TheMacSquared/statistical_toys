@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Liczba orłów w 10 rzutach monetą",
+      "correct": "dwumianowy",
+      "explanation": "Rzut monetą to doświadczenie Bernoulliego (sukces/porażka). Liczba sukcesów w n próbach ma rozkład dwumianowy B(n,p). Tu: n=10, p=0.5."
+    },
+    {
+      "id": 2,
+      "question": "Liczba usterek w metrze bieżącym kabla",
+      "correct": "poissona",
+      "explanation": "Rozkład Poissona modeluje liczbę zdarzeń w stałym przedziale (czasu/przestrzeni), gdy zdarzenia występują ze stałą średnią częstością (λ), niezależnie od siebie i bez górnego ograniczenia. Usterki spełniają te założenia."
+    },
+    {
+      "id": 3,
+      "question": "Wzrost dorosłych mężczyzn w populacji",
+      "correct": "normalny",
+      "explanation": "Cechy biologiczne w dużych populacjach mają rozkład normalny (Centralne Twierdzenie Graniczne). Wzrost jest sumą wielu czynników genetycznych i środowiskowych."
+    },
+    {
+      "id": 4,
+      "question": "Liczba sześćek w 20 rzutach kostką",
+      "correct": "dwumianowy",
+      "explanation": "Każdy rzut: sukces (6) lub porażka (1-5) z prawdopodobieństwem p=1/6. To schemat Bernoulliego, więc liczba sześćek ~ B(20, 1/6)."
+    },
+    {
+      "id": 5,
+      "question": "Liczba zgłoszeń na infolinię w ciągu godziny",
+      "correct": "poissona",
+      "explanation": "Zgłoszenia przychodzą ze stałą średnią częstością (λ zgłoszeń/godz), niezależnie od siebie, bez górnego limitu. To klasyczne założenia Poissona: zdarzenia w stałym czasie ze znaną λ."
+    },
+    {
+      "id": 6,
+      "question": "Wynik testu IQ w populacji",
+      "correct": "normalny",
+      "explanation": "Testy IQ są skonstruowane tak, by mieć rozkład normalny z średnią 100 i odchyleniem standardowym 15. To założenie projektowe."
+    },
+    {
+      "id": 7,
+      "question": "Liczba poprawnych odpowiedzi w teście z 30 pytań (prawda/fałsz), zgadywanie losowe",
+      "correct": "dwumianowy",
+      "explanation": "Każda odpowiedź: sukces (poprawna) z p=0.5 lub porażka. Niezależne próby Bernoulliego, więc liczba poprawnych ~ B(30, 0.5)."
+    },
+    {
+      "id": 8,
+      "question": "Liczba wypadków drogowych na skrzyżowaniu w ciągu tygodnia",
+      "correct": "poissona",
+      "explanation": "Wypadki zachodzą ze stałą średnią częstością (λ wypadków/tydzień), niezależnie od siebie, w każdym momencie z równym prawdopodobieństwem. Teoretycznie bez górnego limitu. To Poisson."
+    },
+    {
+      "id": 9,
+      "question": "Błąd pomiaru masy w laboratorium",
+      "correct": "normalny",
+      "explanation": "Błędy pomiarowe są sumą wielu małych losowych czynników. Centralne Twierdzenie Graniczne mówi, że taka suma ma rozkład normalny."
+    },
+    {
+      "id": 10,
+      "question": "Liczba ósemek wylosowanych z talii 52 kart (losowanie ze zwracaniem, 10 razy)",
+      "correct": "dwumianowy",
+      "explanation": "Każde losowanie: sukces (ósemka) z p=4/52=1/13. Ze zwracaniem = niezależne próby Bernoulliego, liczba ósemek ~ B(10, 1/13)."
+    },
+    {
+      "id": 11,
+      "question": "Liczba literówek na stronie książki",
+      "correct": "poissona",
+      "explanation": "Literówki występują ze stałą średnią częstością (λ literówek/stronę), niezależnie od siebie, w dowolnym miejscu tekstu. Brak górnego ograniczenia. Rozkład Poissona."
+    },
+    {
+      "id": 12,
+      "question": "Temperatura powietrza w południe (w stałej lokalizacji, w tym samym miesiącu różnych lat)",
+      "correct": "normalny",
+      "explanation": "Temperatura jest wypadkową wielu czynników atmosferycznych. W dłuższym okresie (np. 30 lat) ma rozkład zbliżony do normalnego."
+    },
+    {
+      "id": 13,
+      "question": "Liczba sukcesów w 15 próbach, gdy P(sukces)=0.3",
+      "correct": "dwumianowy",
+      "explanation": "Schemat Bernoulliego: n=15 niezależnych prób z prawdopodobieństwem sukcesu p=0.3. Liczba sukcesów ~ B(15, 0.3)."
+    },
+    {
+      "id": 14,
+      "question": "Liczba błędów w 1000 liniach kodu programu",
+      "correct": "poissona",
+      "explanation": "Błędy występują ze stałą średnią częstością (λ błędów/1000 linii), niezależnie od siebie, w dowolnym miejscu kodu. Brak górnego limitu (nie ma ustalonej liczby prób jak w dwumianowym). To Poisson."
+    },
+    {
+      "id": 15,
+      "question": "Średnia ocen ze egzaminu w dużej grupie studentów",
+      "correct": "normalny",
+      "explanation": "Dla dużej grupy (n>30) średnia z dowolnego rozkładu ma rozkład zbliżony do normalnego (Centralne Twierdzenie Graniczne)."
+    },
+    {
+      "id": 16,
+      "question": "Liczba defektów w partii 100 sztuk, gdy p(defekt)=0.05",
+      "correct": "dwumianowy",
+      "explanation": "Każda sztuka: defekt (sukces) lub nie (porażka) z p=0.05. Niezależne kontrole 100 sztuk ~ B(100, 0.05). (Uwaga: przy małym p można aproksymować Poissonem)"
+    },
+    {
+      "id": 17,
+      "question": "Liczba klientów wchodzących do sklepu w ciągu 10 minut",
+      "correct": "poissona",
+      "explanation": "Klienci przychodzą ze stałą średnią częstością (λ klientów/10 min), niezależnie od siebie, bez pamięci (każda chwila równie prawdopodobna). Brak górnego limitu. Klasyczny Poisson."
+    },
+    {
+      "id": 18,
+      "question": "Czas życia żarówki produkowanej przez daną firmę",
+      "correct": "normalny",
+      "explanation": "Czas życia produktów często ma rozkład normalny (lub log-normalny). Dla żarówek standardowych rozkład normalny jest dobrym przybliżeniem."
+    },
+    {
+      "id": 19,
+      "question": "Liczba wygranych losów w loterii (30 losów, p(wygrana)=0.01)",
+      "correct": "dwumianowy",
+      "explanation": "Każdy los: wygrana (p=0.01) lub przegrana. Niezależne próby ~ B(30, 0.01). (Przy małym p × dużym n można użyć aproksymacji Poissona)."
+    },
+    {
+      "id": 20,
+      "question": "Liczba połączeń telefonicznych w centrali w ciągu minuty",
+      "correct": "poissona",
+      "explanation": "Połączenia przychodzą ze stałą średnią częstością (λ połączeń/min), niezależnie od siebie, w dowolnej chwili. Teoretycznie bez górnego limitu. Klasyczny Poisson w telekomunikacji."
+    },
+    {
+      "id": 21,
+      "question": "Waga jabłek w skrzynce (średnia 150g)",
+      "correct": "normalny",
+      "explanation": "Waga owoców jest zmienną ciągłą zależną od wielu czynników (genetyka, warunki wzrostu). W dużej partii ma rozkład normalny."
+    },
+    {
+      "id": 22,
+      "question": "Liczba awarii serwera w ciągu miesiąca (średnio 3 awarie/miesiąc)",
+      "correct": "poissona",
+      "explanation": "Awarie występują ze stałą średnią częstością (λ=3/miesiąc), niezależnie od siebie, w dowolnym momencie z równym prawdopodobieństwem. Brak górnego ograniczenia. Rozkład Poissona."
+    },
+    {
+      "id": 23,
+      "question": "Liczba głów w 50 rzutach monetą",
+      "correct": "dwumianowy",
+      "explanation": "Rzut monetą: głowa (sukces) z p=0.5. Liczba głów w n=50 rzutach ~ B(50, 0.5)."
+    },
+    {
+      "id": 24,
+      "question": "Ciśnienie krwi skurczowe w populacji dorosłych",
+      "correct": "normalny",
+      "explanation": "Parametry fizjologiczne w dużych populacjach mają zazwyczaj rozkład normalny. Ciśnienie skurczowe też ma rozkład zbliżony do normalnego."
+    },
+    {
+      "id": 25,
+      "question": "Liczba bakterii na płytce Petriego (gdy średnio jest 20 kolonii)",
+      "correct": "poissona",
+      "explanation": "Kolonie pojawiają się ze stałą średnią częstością (λ=20 kolonii/płytka), niezależnie od siebie, w dowolnym miejscu płytki. Brak górnego limitu liczby kolonii. Rozkład Poissona."
+    },
+    {
+      "id": 26,
+      "question": "Liczba studentów zdających egzamin (80 osób pisze, każdy p(zdał)=0.7)",
+      "correct": "dwumianowy",
+      "explanation": "Każdy student: zdał (sukces) z p=0.7 lub nie. Zakładając niezależność (brak ściągania), liczba zdających ~ B(80, 0.7)."
+    },
+    {
+      "id": 27,
+      "question": "Liczba meteorów obserwowanych w nocy (średnio 5/godzinę)",
+      "correct": "poissona",
+      "explanation": "Meteory pojawiają się ze stałą średnią częstością (λ=5/godz), niezależnie od siebie, w dowolnej chwili z równym prawdopodobieństwem. Brak górnego limitu. Rozkład Poissona."
+    },
+    {
+      "id": 28,
+      "question": "Wynik pojedynczego rzutu 100-ścienną kostką (D100)",
+      "correct": "dwumianowy",
+      "explanation": "UWAGA: To pytanie jest mylące. Pojedynczy rzut kostką ma rozkład JEDNOSTAJNY DYSKRETNY, nie dwumianowy. Dwumianowy dotyczy LICZBY sukcesów w próbach, a nie wyniku rzutu. [TO PYTANIE NALEŻY POPRAWIĆ]"
+    },
+    {
+      "id": 29,
+      "question": "Czas oczekiwania na autobus (rozkład czasu przyjazdu autobusów jest losowy wokół średniej)",
+      "correct": "normalny",
+      "explanation": "Przy losowych opóźnieniach/wyprzedzeniach wokół rozkładu, czas oczekiwania może mieć rozkład normalny (jeśli autobusy jeżdżą regularnie z małymi odchyleniami)."
+    },
+    {
+      "id": 30,
+      "question": "Liczba wypadków przy pracy w fabryce w ciągu roku (średnio 12/rok)",
+      "correct": "poissona",
+      "explanation": "Wypadki zachodzą ze stałą średnią częstością (λ=12/rok), niezależnie od siebie, w dowolnym momencie roku z równym prawdopodobieństwem. Brak górnego limitu. Rozkład Poissona."
+    }
+  ]
+}

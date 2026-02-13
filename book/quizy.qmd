@@ -1,0 +1,27 @@
+# Quizy
+
+## Sprawdź swoją wiedzę
+
+Poniższe quizy pozwalają sprawdzić zrozumienie podstawowych koncepcji statystycznych. Każdy quiz losuje pytania z puli i podaje wyjaśnienia do odpowiedzi.
+
+### Dostępne quizy
+
+1. **Typy zmiennych** — rozpoznawanie zmiennych ilościowych, jakościowych, dyskretnych i ciągłych
+2. **Rozkłady prawdopodobieństwa** — dopasowywanie rozkładów do opisanych sytuacji
+3. **Dobór testu statystycznego** — wybór odpowiedniego testu do podanego problemu badawczego
+4. **Formułowanie hipotez** — poprawne zapisywanie $H_0$ i $H_a$
+5. **Interpretacja wyników** — odczytywanie i interpretowanie wyników testów statystycznych
+
+::: {.callout-tip}
+## Wskazówki
+- Każdy quiz losuje maksymalnie 10 pytań z większej puli
+- Po każdej odpowiedzi zobaczysz wyjaśnienie
+- Możesz powtarzać quizy wielokrotnie — pytania będą inne
+:::
+
+```{=html}
+<iframe src="/shiny/quiz/"
+        height="700px"
+        frameborder="0">
+</iframe>
+```

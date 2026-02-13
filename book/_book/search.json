@@ -1,0 +1,212 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Statystyczne Zabawki",
+    "section": "",
+    "text": "Wstęp\nStatystyczne Zabawki to zbiór interaktywnych narzędzi do nauki statystyki. Każdy rozdział zawiera materiał wykładowy oraz osadzoną aplikację, która pozwala samodzielnie eksperymentować z omawianymi koncepcjami.",
+    "crumbs": [
+      "Wstęp"
+    ]
+  },
+  {
+    "objectID": "index.html#jak-korzystać",
+    "href": "index.html#jak-korzystać",
+    "title": "Statystyczne Zabawki",
+    "section": "Jak korzystać",
+    "text": "Jak korzystać\nKażdy rozdział składa się z:\n\nMateriału teoretycznego — wyjaśnienie koncepcji statystycznej\nInteraktywnej aplikacji — narzędzie do samodzielnego eksperymentowania\nĆwiczeń i pytań — sprawdzenie zrozumienia materiału\n\nAplikacje działają bezpośrednio w przeglądarce — wystarczy zmienić parametry i obserwować wyniki.",
+    "crumbs": [
+      "Wstęp"
+    ]
+  },
+  {
+    "objectID": "index.html#zawartość",
+    "href": "index.html#zawartość",
+    "title": "Statystyczne Zabawki",
+    "section": "Zawartość",
+    "text": "Zawartość\n\nRozkład normalny — generowanie próbek, histogram, krzywa gęstości\nTest chi-kwadrat — tabele kontyngencji, test niezależności\nKorelacja Pearsona — wykres rozrzutu, współczynnik korelacji, regresja\nPrzedziały ufności — interpretacja i porównywanie przedziałów ufności\nQuizy — sprawdzenie wiedzy z różnych obszarów statystyki",
+    "crumbs": [
+      "Wstęp"
+    ]
+  },
+  {
+    "objectID": "rozklad-normalny.html",
+    "href": "rozklad-normalny.html",
+    "title": "1  Rozkład normalny",
+    "section": "",
+    "text": "1.1 Wprowadzenie\nRozkład normalny (Gaussa) jest najważniejszym rozkładem prawdopodobieństwa w statystyce. Opisywany jest dwoma parametrami: średnią \\(\\mu\\) i odchyleniem standardowym \\(\\sigma\\).\nFunkcja gęstości prawdopodobieństwa:\n\\[f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}\\]",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Rozkład normalny</span>"
+    ]
+  },
+  {
+    "objectID": "rozklad-normalny.html#właściwości",
+    "href": "rozklad-normalny.html#właściwości",
+    "title": "1  Rozkład normalny",
+    "section": "1.2 Właściwości",
+    "text": "1.2 Właściwości\n\nKrzywa jest symetryczna względem średniej \\(\\mu\\)\nOkoło 68% obserwacji mieści się w przedziale \\(\\mu \\pm \\sigma\\)\nOkoło 95% obserwacji mieści się w przedziale \\(\\mu \\pm 2\\sigma\\)\nOkoło 99.7% obserwacji mieści się w przedziale \\(\\mu \\pm 3\\sigma\\)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Rozkład normalny</span>"
+    ]
+  },
+  {
+    "objectID": "rozklad-normalny.html#centralne-twierdzenie-graniczne",
+    "href": "rozklad-normalny.html#centralne-twierdzenie-graniczne",
+    "title": "1  Rozkład normalny",
+    "section": "1.3 Centralne twierdzenie graniczne",
+    "text": "1.3 Centralne twierdzenie graniczne\nNiezależnie od rozkładu populacji, rozkład średnich z prób zbliża się do rozkładu normalnego wraz ze wzrostem wielkości próby.\n\n\n\n\n\n\nWypróbuj samodzielnie\n\n\n\nZmień parametry i obserwuj jak zmienia się kształt rozkładu. Zwróć uwagę na:\n\nJak wielkość próby wpływa na kształt histogramu?\nJak zmiana odchylenia standardowego wpływa na rozpiętość danych?\nCzy histogram dobrze przybliża krzywą teoretyczną?",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Rozkład normalny</span>"
+    ]
+  },
+  {
+    "objectID": "chi-kwadrat.html",
+    "href": "chi-kwadrat.html",
+    "title": "2  Test chi-kwadrat",
+    "section": "",
+    "text": "2.1 Wprowadzenie\nTest chi-kwadrat (\\(\\chi^2\\)) niezależności służy do badania zależności między dwiema zmiennymi jakościowymi (kategorialnymi). Porównuje częstości obserwowane z oczekiwanymi przy założeniu niezależności.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Test chi-kwadrat</span>"
+    ]
+  },
+  {
+    "objectID": "chi-kwadrat.html#statystyka-testowa",
+    "href": "chi-kwadrat.html#statystyka-testowa",
+    "title": "2  Test chi-kwadrat",
+    "section": "2.2 Statystyka testowa",
+    "text": "2.2 Statystyka testowa\n\\[\\chi^2 = \\sum_{i,j} \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}\\]\ngdzie:\n\n\\(O_{ij}\\) — częstość obserwowana w komórce \\((i,j)\\)\n\\(E_{ij}\\) — częstość oczekiwana: \\(E_{ij} = \\frac{n_{i\\cdot} \\cdot n_{\\cdot j}}{n}\\)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Test chi-kwadrat</span>"
+    ]
+  },
+  {
+    "objectID": "chi-kwadrat.html#założenia-testu",
+    "href": "chi-kwadrat.html#założenia-testu",
+    "title": "2  Test chi-kwadrat",
+    "section": "2.3 Założenia testu",
+    "text": "2.3 Założenia testu\n\nDane są częstościami (nie procentami czy proporcjami)\nObserwacje są niezależne\nOczekiwane częstości \\(\\geq 5\\) w każdej komórce (reguła Cochrana)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Test chi-kwadrat</span>"
+    ]
+  },
+  {
+    "objectID": "chi-kwadrat.html#siła-związku-v-craméra",
+    "href": "chi-kwadrat.html#siła-związku-v-craméra",
+    "title": "2  Test chi-kwadrat",
+    "section": "2.4 Siła związku — V Craméra",
+    "text": "2.4 Siła związku — V Craméra\n\\[V = \\sqrt{\\frac{\\chi^2}{n \\cdot \\min(r-1, c-1)}}\\]\n\n\\(V &lt; 0.1\\) — brak lub bardzo słaby związek\n\\(0.1 \\leq V &lt; 0.3\\) — słaby związek\n\\(0.3 \\leq V &lt; 0.5\\) — umiarkowany związek\n\\(V \\geq 0.5\\) — silny związek\n\n\n\n\n\n\n\nWypróbuj samodzielnie\n\n\n\nEksploruj test chi-kwadrat w dwóch trybach:\n\nTryb eksploracji — użyj suwaków do zmiany procentów i obserwuj wyniki\nTryb własnych danych — wpisz własne dane do tabeli kontyngencji\n\nWypróbuj też gotowe presety, aby zobaczyć jak wyglądają różne siły zależności.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Test chi-kwadrat</span>"
+    ]
+  },
+  {
+    "objectID": "korelacja.html",
+    "href": "korelacja.html",
+    "title": "3  Korelacja Pearsona",
+    "section": "",
+    "text": "3.1 Wprowadzenie\nWspółczynnik korelacji Pearsona (\\(r\\)) mierzy siłę i kierunek liniowej zależności między dwiema zmiennymi ilościowymi. Przyjmuje wartości od \\(-1\\) do \\(+1\\).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Korelacja Pearsona</span>"
+    ]
+  },
+  {
+    "objectID": "korelacja.html#wzór",
+    "href": "korelacja.html#wzór",
+    "title": "3  Korelacja Pearsona",
+    "section": "3.2 Wzór",
+    "text": "3.2 Wzór\n\\[r = \\frac{\\sum_{i=1}^{n}(x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\cdot \\sum_{i=1}^{n}(y_i - \\bar{y})^2}}\\]",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Korelacja Pearsona</span>"
+    ]
+  },
+  {
+    "objectID": "korelacja.html#interpretacja",
+    "href": "korelacja.html#interpretacja",
+    "title": "3  Korelacja Pearsona",
+    "section": "3.3 Interpretacja",
+    "text": "3.3 Interpretacja\n\n\n\nWartość \\(|r|\\)\nSiła zależności\n\n\n\n\n\\(&lt; 0.3\\)\nSłaba\n\n\n\\(0.3 - 0.7\\)\nUmiarkowana\n\n\n\\(&gt; 0.7\\)\nSilna",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Korelacja Pearsona</span>"
+    ]
+  },
+  {
+    "objectID": "korelacja.html#współczynnik-determinacji",
+    "href": "korelacja.html#współczynnik-determinacji",
+    "title": "3  Korelacja Pearsona",
+    "section": "3.4 Współczynnik determinacji",
+    "text": "3.4 Współczynnik determinacji\n\\(r^2\\) — informuje jaka część zmienności \\(Y\\) jest wyjaśniona przez \\(X\\).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Korelacja Pearsona</span>"
+    ]
+  },
+  {
+    "objectID": "korelacja.html#regresja-liniowa",
+    "href": "korelacja.html#regresja-liniowa",
+    "title": "3  Korelacja Pearsona",
+    "section": "3.5 Regresja liniowa",
+    "text": "3.5 Regresja liniowa\nRównanie prostej regresji: \\(\\hat{y} = a + bx\\)\n\n\n\n\n\n\nWypróbuj samodzielnie\n\n\n\nKliknij na wykresie, aby dodać punkty danych i obserwuj jak zmienia się korelacja. Możesz też:\n\nUżyć presetów, aby zobaczyć typowe wzorce korelacji\nWłączyć prostokąty odchyleń, aby zrozumieć formułę Pearsona\nSprawdzić efekt outlierów na wartość korelacji",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Korelacja Pearsona</span>"
+    ]
+  },
+  {
+    "objectID": "przedzialy-ufnosci.html",
+    "href": "przedzialy-ufnosci.html",
+    "title": "4  Przedziały ufności",
+    "section": "",
+    "text": "4.1 Wprowadzenie\nPrzedział ufności (CI) to zakres wartości, który z określonym prawdopodobieństwem (np. 95%) zawiera prawdziwą wartość parametru populacji.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Przedziały ufności</span>"
+    ]
+  },
+  {
+    "objectID": "przedzialy-ufnosci.html#przedział-ufności-dla-średniej",
+    "href": "przedzialy-ufnosci.html#przedział-ufności-dla-średniej",
+    "title": "4  Przedziały ufności",
+    "section": "4.2 Przedział ufności dla średniej",
+    "text": "4.2 Przedział ufności dla średniej\n\\[\\bar{x} \\pm t_{\\alpha/2, df} \\cdot \\frac{s}{\\sqrt{n}}\\]\ngdzie:\n\n\\(\\bar{x}\\) — średnia z próby\n\\(t_{\\alpha/2, df}\\) — wartość krytyczna rozkładu t-Studenta\n\\(s\\) — odchylenie standardowe z próby\n\\(n\\) — wielkość próby",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Przedziały ufności</span>"
+    ]
+  },
+  {
+    "objectID": "przedzialy-ufnosci.html#interpretacja",
+    "href": "przedzialy-ufnosci.html#interpretacja",
+    "title": "4  Przedziały ufności",
+    "section": "4.3 Interpretacja",
+    "text": "4.3 Interpretacja\nJeśli 95% CI dla średniej wynosi \\([14; 22]\\):\n\nJesteśmy w 95% pewni, że prawdziwa średnia populacji mieści się w tym przedziale\nNie oznacza to, że 95% obserwacji mieści się w tym przedziale\nJeśli testowana wartość leży wewnątrz CI — nie ma podstaw do odrzucenia \\(H_0\\)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Przedziały ufności</span>"
+    ]
+  },
+  {
+    "objectID": "przedzialy-ufnosci.html#porównywanie-przedziałów",
+    "href": "przedzialy-ufnosci.html#porównywanie-przedziałów",
+    "title": "4  Przedziały ufności",
+    "section": "4.4 Porównywanie przedziałów",
+    "text": "4.4 Porównywanie przedziałów\n\nJeśli dwa CI nie nachodzą na siebie — różnica jest istotna statystycznie\nJeśli dwa CI nachodzą na siebie — nie można jednoznacznie stwierdzić różnicy\n\n\n\n\n\n\n\nWypróbuj samodzielnie\n\n\n\nSprawdź swoją umiejętność interpretacji przedziałów ufności w dwóch trybach:\n\nPojedynczy przedział — czy wartość testowa mieści się w przedziale?\nDwa przedziały — czy przedziały nachodzą na siebie?",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Przedziały ufności</span>"
+    ]
+  },
+  {
+    "objectID": "quizy.html",
+    "href": "quizy.html",
+    "title": "5  Quizy",
+    "section": "",
+    "text": "5.1 Sprawdź swoją wiedzę\nPoniższe quizy pozwalają sprawdzić zrozumienie podstawowych koncepcji statystycznych. Każdy quiz losuje pytania z puli i podaje wyjaśnienia do odpowiedzi.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Quizy</span>"
+    ]
+  },
+  {
+    "objectID": "quizy.html#sprawdź-swoją-wiedzę",
+    "href": "quizy.html#sprawdź-swoją-wiedzę",
+    "title": "5  Quizy",
+    "section": "",
+    "text": "5.1.1 Dostępne quizy\n\nTypy zmiennych — rozpoznawanie zmiennych ilościowych, jakościowych, dyskretnych i ciągłych\nRozkłady prawdopodobieństwa — dopasowywanie rozkładów do opisanych sytuacji\nDobór testu statystycznego — wybór odpowiedniego testu do podanego problemu badawczego\nFormułowanie hipotez — poprawne zapisywanie \\(H_0\\) i \\(H_a\\)\nInterpretacja wyników — odczytywanie i interpretowanie wyników testów statystycznych\n\n\n\n\n\n\n\nWskazówki\n\n\n\n\nKażdy quiz losuje maksymalnie 10 pytań z większej puli\nPo każdej odpowiedzi zobaczysz wyjaśnienie\nMożesz powtarzać quizy wielokrotnie — pytania będą inne",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Quizy</span>"
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+# Przedziały ufności
+
+## Wprowadzenie
+
+Przedział ufności (CI) to zakres wartości, który z określonym prawdopodobieństwem (np. 95%) zawiera prawdziwą wartość parametru populacji.
+
+## Przedział ufności dla średniej
+
+$$\bar{x} \pm t_{\alpha/2, df} \cdot \frac{s}{\sqrt{n}}$$
+
+gdzie:
+
+- $\bar{x}$ — średnia z próby
+- $t_{\alpha/2, df}$ — wartość krytyczna rozkładu t-Studenta
+- $s$ — odchylenie standardowe z próby
+- $n$ — wielkość próby
+
+## Interpretacja
+
+Jeśli 95% CI dla średniej wynosi $[14; 22]$:
+
+- Jesteśmy w 95% pewni, że prawdziwa średnia populacji mieści się w tym przedziale
+- **Nie** oznacza to, że 95% obserwacji mieści się w tym przedziale
+- Jeśli testowana wartość leży wewnątrz CI — nie ma podstaw do odrzucenia $H_0$
+
+## Porównywanie przedziałów
+
+- Jeśli dwa CI **nie nachodzą** na siebie — różnica jest istotna statystycznie
+- Jeśli dwa CI **nachodzą** na siebie — nie można jednoznacznie stwierdzić różnicy
+
+::: {.callout-tip}
+## Wypróbuj samodzielnie
+Sprawdź swoją umiejętność interpretacji przedziałów ufności w dwóch trybach:
+
+- **Pojedynczy przedział** — czy wartość testowa mieści się w przedziale?
+- **Dwa przedziały** — czy przedziały nachodzą na siebie?
+:::
+
+```{=html}
+<iframe src="/shiny/ci/"
+        height="700px"
+        frameborder="0">
+</iframe>
+```

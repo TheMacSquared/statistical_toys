@@ -1,0 +1,18 @@
+{
+  "modes": [
+    {
+      "id": "single_interval",
+      "name": "Pojedynczy przedział vs wartość",
+      "emoji": "📊",
+      "description": "Naucz się interpretować przedziały ufności: kiedy przedział pozwala na wnioskowanie o wartości parametru?",
+      "answers": ["TAK", "NIE", "NIE MOŻNA POWIEDZIEĆ"]
+    },
+    {
+      "id": "two_intervals",
+      "name": "Porównanie dwóch grup",
+      "emoji": "📈",
+      "description": "Porównuj przedziały ufności dla dwóch grup: kiedy możemy stwierdzić różnicę między średnimi?",
+      "answers": ["TAK", "NIE", "NIE MOŻNA POWIEDZIEĆ"]
+    }
+  ]
+}

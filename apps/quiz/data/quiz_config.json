@@ -1,0 +1,90 @@
+{
+  "quizzes": [
+    {
+      "id": "typy_zmiennych",
+      "name": "Typy Zmiennych",
+      "emoji": "📊",
+      "description": "Rozpoznaj typ zmiennej: ilościowa czy jakościowa",
+      "file": "typy_zmiennych.json",
+      "answer_type": "multiple_choice_4",
+      "options": [
+        {
+          "value": "ilosciowa_dyskretna",
+          "label": "📊 Ilościowa dyskretna"
+        },
+        {
+          "value": "ilosciowa_ciagla",
+          "label": "📈 Ilościowa ciągła"
+        },
+        {
+          "value": "jakosciowa_porzadkowa",
+          "label": "🎚️ Jakościowa porządkowa"
+        },
+        {
+          "value": "jakosciowa_nominalna",
+          "label": "🏷️ Jakościowa nominalna"
+        }
+      ]
+    },
+    {
+      "id": "rozklady",
+      "name": "Rozkłady Prawdopodobieństwa",
+      "emoji": "📈",
+      "description": "Dopasuj zjawisko do rozkładu prawdopodobieństwa",
+      "file": "rozklady.json",
+      "answer_type": "multiple_choice_3",
+      "options": [
+        {
+          "value": "dwumianowy",
+          "label": "🎲 Rozkład dwumianowy"
+        },
+        {
+          "value": "poissona",
+          "label": "⚡ Rozkład Poissona"
+        },
+        {
+          "value": "normalny",
+          "label": "📊 Rozkład normalny"
+        }
+      ]
+    },
+    {
+      "id": "testy",
+      "name": "Wybór Testu Statystycznego",
+      "emoji": "🧪",
+      "description": "Dobierz odpowiedni test statystyczny do sytuacji badawczej",
+      "file": "testy.json",
+      "answer_type": "multiple_choice_random",
+      "all_options": [
+        "Test t dla jednej próby",
+        "Test t dla dwóch prób niezależnych",
+        "Test t dla prób zależnych",
+        "ANOVA jednoczynnikowa",
+        "ANOVA dwuczynnikowa",
+        "Test chi-kwadrat",
+        "Korelacja Pearsona",
+        "Korelacja Spearmana",
+        "Test proporcji",
+        "Test Manna-Whitneya",
+        "Test Kruskala-Wallisa"
+      ]
+    },
+    {
+      "id": "hipotezy",
+      "name": "Hipotezy Statystyczne (H₀/Hₐ)",
+      "emoji": "🎯",
+      "description": "Dobierz poprawną parę hipotez H₀/Hₐ i test statystyczny do sytuacji badawczej",
+      "file": "hipotezy.json",
+      "answer_type": "multiple_choice_random"
+    },
+    {
+      "id": "interpretacja",
+      "name": "Interpretacja Wyników",
+      "emoji": "📝",
+      "description": "Naucz się poprawnie formułować wnioski statystyczne",
+      "file": "interpretacja.json",
+      "answer_type": "interpretation",
+      "errors_file": "errors_info.json"
+    }
+  ]
+}

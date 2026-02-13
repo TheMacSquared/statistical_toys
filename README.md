@@ -2,84 +2,118 @@
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-Interaktywne aplikacje do nauki statystyki. Pobierz, uruchom i ucz sie przez eksploracje - bez instalacji dodatkowego oprogramowania!
+Interaktywny podręcznik do nauki statystyki z osadzonymi aplikacjami Shiny. Quarto book + R Shiny Server — studenci otwierają stronę w przeglądarce, serwer liczy.
 
 ## Co to jest?
 
-**Statystyczne Zabawki** to zestaw prostych aplikacji edukacyjnych dla studentow. Kazda aplikacja to jeden plik `.exe`, ktory:
+**Statystyczne Zabawki** to Quarto book (interaktywny skrypt wykładowy) z 5 aplikacjami R Shiny osadzonymi w rozdziałach. Każdy rozdział zawiera:
 
-- Dziala offline - nie wymaga internetu
-- Nie wymaga instalacji - pobierasz i uruchamiasz
-- Jest interaktywna - suwaki, przyciski, wykresy na zywo
-- Pomaga zrozumiec statystyke przez zabaw
+- Materiał wykładowy (wzory, definicje, interpretacje)
+- Interaktywną aplikację do eksploracji koncepcji
+- Callout-y z wskazówkami dla studentów
 
-## Dostepne aplikacje
+## Aplikacje
 
-| Aplikacja | Co robi? | Pobierz |
-|-----------|----------|---------|
-| **Quiz Statystyczny** | Sprawdz swoja wiedze: typy zmiennych, rozklady, wybor testu, hipotezy, interpretacja wynikow | [Pobierz](../../releases) |
-| **Przedzialy Ufnosci** | Naucz sie interpretowac przedzialy ufnosci | [Pobierz](../../releases) |
-| **Histogram** | Zobacz jak parametry wplywaja na ksztalt histogramu | [Pobierz](../../releases) |
-| **Test Chi-Kwadrat** | Interaktywna eksploracja testu niezaleznosci chi-kwadrat | [Pobierz](../../releases) |
-| **Korelacja Pearsona** | Wykres rozrzutu, regresja i wspolczynnik korelacji na zywo | [Pobierz](../../releases) |
+| Aplikacja | Rozdział | Co robi? |
+|-----------|----------|----------|
+| **Histogram** | Rozkład normalny | Generuj próbki, obserwuj histogram i krzywą teoretyczną |
+| **Test Chi-Kwadrat** | Test niezależności | Eksploracja/własne dane, tabela kontyngencji, V Craméra |
+| **Korelacja Pearsona** | Korelacja | Klikaj by dodawać punkty, regresja, odchylenia, wzór Pearsona |
+| **Przedziały Ufności** | Przedziały ufności | Quiz z wizualizacją CI — interpretacja przedziałów |
+| **Quiz Statystyczny** | Quizy | 5 quizów: zmienne, rozkłady, testy, hipotezy, interpretacja |
 
-## Zobacz jak wygladaja
+## Architektura
 
-### Quiz Statystyczny
-Wybierz jeden z pieciu quizow i sprawdz swoja wiedze:
+```
+Serwer
+├── nginx (port 80/443)
+│   ├── /              → Quarto book (statyczny HTML)
+│   └── /shiny/        → reverse proxy do Shiny Server
+│
+└── Shiny Server (port 3838)
+    ├── histogram/app.R
+    ├── chi_square/app.R
+    ├── pearson/app.R
+    ├── quiz/app.R
+    └── ci/app.R
+```
 
-![Quiz - menu glowne](images/quiz.png)
+## Struktura repozytorium
 
-Kazde pytanie zawiera wyjasnienie poprawnej odpowiedzi:
+```
+statistical_toys/
+├── book/                    # Quarto book
+│   ├── _quarto.yml          # Konfiguracja booka
+│   ├── index.qmd            # Strona tytułowa
+│   ├── rozklad-normalny.qmd # Rozdział + embed histogram
+│   ├── chi-kwadrat.qmd      # Rozdział + embed chi_square
+│   ├── korelacja.qmd        # Rozdział + embed pearson
+│   ├── przedzialy-ufnosci.qmd
+│   ├── quizy.qmd
+│   └── custom.css
+│
+├── apps/                    # Aplikacje Shiny
+│   ├── shared/              # Wspólny kod
+│   │   ├── theme.R          # bslib theme + CSS
+│   │   └── helpers.R        # Funkcje pomocnicze
+│   ├── histogram/app.R
+│   ├── chi_square/app.R
+│   ├── pearson/app.R
+│   ├── quiz/app.R + data/
+│   └── ci/app.R + data/
+│
+├── toys/                    # Stary kod Flask (archiwum/referencja)
+├── DEPLOYMENT.md            # Instrukcja wdrożenia na serwerze
+└── docs/TWORZENIE_ZABAWKI.md # Jak dodać nową zabawkę
+```
 
-![Quiz - przyklad pytania](images/quiz2.png)
+## Uruchomienie lokalne
 
-### Przedzialy Ufnosci
-Interaktywna nauka interpretacji przedzialow ufnosci z wizualizacja:
+### Wymagania
 
-![Przedzialy ufnosci](images/CI.png)
-
-### Test Chi-Kwadrat
-Eksploruj test niezaleznosci chi-kwadrat: suwaki procentowe lub edycja komorek tabeli kontyngencji, wykres slupkowy (obserwowane vs oczekiwane), statystyki na zywo (chi-kwadrat, p-value, V Cramera).
-
-### Korelacja Pearsona
-Dodawaj i usuwaj punkty na wykresie rozrzutu, obserwuj jak zmienia sie wspolczynnik korelacji, prosta regresji i przedzialy ufnosci. Gotowe eksperymenty: wplyw outlierow, pulapki Anscombe'a, ograniczenie zakresu.
-
-## Jak pobrac i uruchomic?
-
-1. Kliknij **[Releases](../../releases)** (lub link "Pobierz" przy wybranej aplikacji)
-2. Znajdz najnowsza wersje i pobierz plik `.exe`
-3. Dwuklik na pobranym pliku - aplikacja sie uruchomi
-4. Gotowe!
-
-## Czy to bezpieczne?
-
-**Tak, aplikacje sa bezpieczne.**
-
-Przy pierwszym uruchomieniu Windows Defender lub SmartScreen moga wyswietlic ostrzezenie. To normalne i nie oznacza, ze aplikacja jest niebezpieczna.
-
-**Dlaczego pojawia sie ostrzezenie?**
-
-Windows wyswietla takie komunikaty dla aplikacji, ktore nie maja platnego certyfikatu cyfrowego (kosztuje kilkaset dolarow rocznie). To samo ostrzezenie zobaczysz przy wielu darmowych programach edukacyjnych i open-source.
-
-**Co mozesz zrobic:**
-- Kliknij "Wiecej informacji" -> "Uruchom mimo to"
-- Caly kod zrodlowy jest dostepny publicznie w tym repozytorium - mozesz go przejrzec
-
-## Dla Mac/Linux
-
-Obecnie aplikacje sa dostepne tylko dla Windows. Uzytownicy Mac/Linux moga uruchomic aplikacje z kodu zrodlowego:
+- R >= 4.3
+- Quarto >= 1.4
+- Pakiety R: `shiny`, `bslib`, `plotly`, `jsonlite`, `htmlwidgets`, `htmltools`
 
 ```bash
-cd toys/nazwa_zabawki
-pip install -r requirements.txt
-python main.py
+# Instalacja pakietów R
+Rscript -e 'install.packages(c("shiny", "bslib", "plotly", "jsonlite", "htmlwidgets", "htmltools"))'
 ```
+
+### Podgląd Quarto book
+
+```bash
+cd book/
+quarto preview
+```
+
+### Testowanie pojedynczej aplikacji Shiny
+
+```bash
+Rscript -e 'shiny::runApp("apps/histogram/")'
+Rscript -e 'shiny::runApp("apps/chi_square/")'
+Rscript -e 'shiny::runApp("apps/pearson/")'
+Rscript -e 'shiny::runApp("apps/quiz/")'
+Rscript -e 'shiny::runApp("apps/ci/")'
+```
+
+## Deployment
+
+Instrukcja wdrożenia na serwerze uczelni (nginx + Shiny Server): [DEPLOYMENT.md](DEPLOYMENT.md)
+
+## Technologie
+
+- **R Shiny** — aplikacje interaktywne (server-side rendering)
+- **Quarto** — podręcznik/book ze statycznym HTML
+- **bslib** — Bootstrap 5 theme
+- **plotly** — wykresy interaktywne
+- **nginx** — reverse proxy
+- **Shiny Server Open Source** — hosting aplikacji Shiny
 
 ## Licencja
 
-Projekt na licencji [CC BY 4.0](LICENSE) - mozesz swobodnie uzywac i udostepniac, pod warunkiem podania autorstwa.
+Projekt na licencji [CC BY 4.0](LICENSE) — możesz swobodnie używać i udostępniać, pod warunkiem podania autorstwa.
 
-## Kontakt
+## Autor
 
-Projekt tworzony przez Macieja Karczewskiego (Uniwersytet Przyrodniczy we Wrocławiu) dla potrzeb dydaktycznych. Feedback i sugestie mile widziane!
+Maciej Karczewski, Uniwersytet Przyrodniczy we Wrocławiu

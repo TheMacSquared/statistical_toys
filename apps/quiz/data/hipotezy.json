@@ -1,0 +1,292 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Producent twierdzi, że średnia waga opakowania wynosi 500g. Kontrola jakości zbadała 40 opakowań. Dane mają rozkład normalny.",
+      "correct": "H₀: μ = 500, Hₐ: μ ≠ 500",
+      "all_options": [
+        "H₀: μ = 500, Hₐ: μ ≠ 500",
+        "H₀: μ ≠ 500, Hₐ: μ = 500",
+        "H₀: p = 0.5, Hₐ: p ≠ 0.5",
+        "H₀: p ≠ 0.5, Hₐ: p = 0.5"
+      ],
+      "explanation": "Zmienna ilościowa (waga w gramach), jedna próba, rozkład normalny → test t dla jednej próby. Porównujemy średnią z wartością referencyjną 500g. H₀ zakłada brak różnicy (μ = 500), Hₐ to hipoteza badawcza (μ ≠ 500). Test dwustronny — pytamy czy 'różni się', nie czy jest większa/mniejsza. Waga to nie proporcja, więc test proporcji nie pasuje."
+    },
+    {
+      "id": 2,
+      "question": "Badacz sprawdza, czy nowy lek obniża ciśnienie skurczowe poniżej normy 120 mmHg. Zbadano 30 pacjentów. Rozkład normalny.",
+      "correct": "H₀: μ ≥ 120, Hₐ: μ < 120",
+      "all_options": [
+        "H₀: μ ≥ 120, Hₐ: μ < 120",
+        "H₀: μ < 120, Hₐ: μ ≥ 120",
+        "H₀: μ₁ ≥ μ₂, Hₐ: μ₁ < μ₂",
+        "H₀: μ₁ < μ₂, Hₐ: μ₁ ≥ μ₂"
+      ],
+      "explanation": "Zmienna ilościowa (ciśnienie), jedna próba vs wartość referencyjna, normalny → test t dla jednej próby. 'Obniża poniżej 120' = test jednostronny lewostronny. H₀ zawiera równość (μ ≥ 120), Hₐ to hipoteza badawcza (μ < 120). Nie porównujemy dwóch grup — mamy jedną próbę i wartość referencyjną."
+    },
+    {
+      "id": 3,
+      "question": "Nauczyciel chce wykazać, że średni wynik egzaminu w jego klasie jest wyższy niż krajowa średnia 65 pkt. Zbadał 35 uczniów. Rozkład normalny.",
+      "correct": "H₀: μ ≤ 65, Hₐ: μ > 65",
+      "all_options": [
+        "H₀: μ ≤ 65, Hₐ: μ > 65",
+        "H₀: μ > 65, Hₐ: μ ≤ 65",
+        "H₀: p ≤ 0.65, Hₐ: p > 0.65",
+        "H₀: p > 0.65, Hₐ: p ≤ 0.65"
+      ],
+      "explanation": "Zmienna ilościowa (punkty), jedna próba, normalny → test t dla jednej próby. 'Wyższy niż 65' = test jednostronny prawostronny. H₀: μ ≤ 65 (średnia co najwyżej 65), Hₐ: μ > 65. Wynik w punktach to zmienna ilościowa, nie proporcja — test proporcji nie pasuje."
+    },
+    {
+      "id": 4,
+      "question": "Firma farmaceutyczna sprawdza, czy średni czas działania leku wynosi 8 godzin (tyle deklaruje producent). Zbadano 50 pacjentów. Rozkład normalny.",
+      "correct": "H₀: μ = 8, Hₐ: μ ≠ 8",
+      "all_options": [
+        "H₀: μ = 8, Hₐ: μ ≠ 8",
+        "H₀: μ ≠ 8, Hₐ: μ = 8",
+        "H₀: μ_d = 0, Hₐ: μ_d ≠ 0",
+        "H₀: μ_d ≠ 0, Hₐ: μ_d = 0"
+      ],
+      "explanation": "Zmienna ilościowa (czas w godzinach), jedna próba vs wartość deklarowana, normalny → test t dla jednej próby. Pytamy 'czy wynosi 8h' = test dwustronny. H₀: μ = 8, Hₐ: μ ≠ 8. Nie ma pomiaru przed/po — to jedna próba i wartość referencyjna, nie próby zależne."
+    },
+    {
+      "id": 5,
+      "question": "Firma sprawdza, czy odsetek wadliwych produktów różni się od deklarowanych 5%. Zbadano 500 sztuk.",
+      "correct": "H₀: p = 0.05, Hₐ: p ≠ 0.05",
+      "all_options": [
+        "H₀: p = 0.05, Hₐ: p ≠ 0.05",
+        "H₀: p ≠ 0.05, Hₐ: p = 0.05",
+        "H₀: μ = 0.05, Hₐ: μ ≠ 0.05",
+        "H₀: μ ≠ 0.05, Hₐ: μ = 0.05"
+      ],
+      "explanation": "Zmienna jakościowa (wadliwy: tak/nie), badamy odsetek → test proporcji. Nie liczymy średniej, tylko proporcję (p). H₀: p = 0.05, Hₐ: p ≠ 0.05 (dwustronny: 'różni się od 5%'). Duża próba (n=500) spełnia warunki testu proporcji. Test t jest dla średnich zmiennych ilościowych."
+    },
+    {
+      "id": 6,
+      "question": "Polityk twierdzi, że poparcie dla jego partii przekracza 30%. Przeprowadzono sondaż na 1000 respondentach.",
+      "correct": "H₀: p ≤ 0.30, Hₐ: p > 0.30",
+      "all_options": [
+        "H₀: p ≤ 0.30, Hₐ: p > 0.30",
+        "H₀: p > 0.30, Hₐ: p ≤ 0.30",
+        "H₀: μ ≤ 30, Hₐ: μ > 30",
+        "H₀: μ > 30, Hₐ: μ ≤ 30"
+      ],
+      "explanation": "Zmienna jakościowa (popiera: tak/nie), badamy proporcję → test proporcji. 'Przekracza 30%' = test jednostronny prawostronny. H₀: p ≤ 0.30, Hₐ: p > 0.30. Poparcie to odsetek (proporcja), nie średnia — test t nie jest odpowiedni."
+    },
+    {
+      "id": 7,
+      "question": "Inżynier jakości chce wykazać, że nowy proces produkcyjny zmniejsza odsetek braków poniżej dotychczasowych 8%. Zbadano 400 sztuk.",
+      "correct": "H₀: p ≥ 0.08, Hₐ: p < 0.08",
+      "all_options": [
+        "H₀: p ≥ 0.08, Hₐ: p < 0.08",
+        "H₀: p < 0.08, Hₐ: p ≥ 0.08",
+        "H₀: μ ≥ 0.08, Hₐ: μ < 0.08",
+        "H₀: μ < 0.08, Hₐ: μ ≥ 0.08"
+      ],
+      "explanation": "Zmienna jakościowa (brak: tak/nie), badamy odsetek → test proporcji. 'Zmniejsza poniżej 8%' = test jednostronny lewostronny. H₀: p ≥ 0.08, Hₐ: p < 0.08. Odsetek braków to proporcja, nie średnia zmiennej ilościowej."
+    },
+    {
+      "id": 8,
+      "question": "Badacz sprawdza, czy istnieje liniowy związek między wzrostem a wagą u dorosłych. Oba rozkłady normalne, zależność liniowa. n=80.",
+      "correct": "H₀: ρ = 0, Hₐ: ρ ≠ 0",
+      "all_options": [
+        "H₀: ρ = 0, Hₐ: ρ ≠ 0",
+        "H₀: ρ ≠ 0, Hₐ: ρ = 0",
+        "H₀: zmienne niezależne, Hₐ: zmienne zależne",
+        "H₀: zmienne zależne, Hₐ: zmienne niezależne"
+      ],
+      "explanation": "Dwie zmienne ilościowe (wzrost, waga), rozkłady normalne, badamy zależność liniową → korelacja Pearsona. H₀: ρ = 0 (brak korelacji), Hₐ: ρ ≠ 0 (dwustronny: 'czy istnieje związek'). Chi-kwadrat jest dla zmiennych jakościowych — wzrost i waga są ilościowe."
+    },
+    {
+      "id": 9,
+      "question": "Psycholog stawia hipotezę, że im więcej godzin nauki, tym wyższy wynik testu. Oba rozkłady normalne, zależność liniowa. n=60.",
+      "correct": "H₀: ρ ≤ 0, Hₐ: ρ > 0",
+      "all_options": [
+        "H₀: ρ ≤ 0, Hₐ: ρ > 0",
+        "H₀: ρ > 0, Hₐ: ρ ≤ 0",
+        "H₀: μ₁ ≤ μ₂, Hₐ: μ₁ > μ₂",
+        "H₀: μ₁ > μ₂, Hₐ: μ₁ ≤ μ₂"
+      ],
+      "explanation": "Dwie zmienne ilościowe ciągłe, normalne, liniowa zależność → korelacja Pearsona. 'Im więcej X, tym więcej Y' = korelacja dodatnia = test jednostronny. H₀: ρ ≤ 0, Hₐ: ρ > 0. Nie porównujemy średnich dwóch grup — badamy siłę i kierunek związku liniowego dwóch zmiennych."
+    },
+    {
+      "id": 10,
+      "question": "Badacz analizuje związek między rankingiem uczelni a satysfakcją studentów (skala 1-5). Dane porządkowe, brak rozkładu normalnego. n=50.",
+      "correct": "H₀: ρₛ = 0, Hₐ: ρₛ ≠ 0",
+      "all_options": [
+        "H₀: ρₛ = 0, Hₐ: ρₛ ≠ 0",
+        "H₀: ρₛ ≠ 0, Hₐ: ρₛ = 0",
+        "H₀: ρ = 0, Hₐ: ρ ≠ 0",
+        "H₀: ρ ≠ 0, Hₐ: ρ = 0"
+      ],
+      "explanation": "Dane porządkowe (ranking, skala 1-5) i brak normalności → korelacja Spearmana (nieparametryczna). Pearson wymaga danych ilościowych ciągłych i rozkładu normalnego. H₀: ρₛ = 0 (brak korelacji), Hₐ: ρₛ ≠ 0 (dwustronny: 'czy istnieje związek')."
+    },
+    {
+      "id": 11,
+      "question": "Dietetyk zakłada, że wyższe spożycie cukru wiąże się z wyższym BMI. Dane nie mają rozkładu normalnego. n=45.",
+      "correct": "H₀: ρₛ ≤ 0, Hₐ: ρₛ > 0",
+      "all_options": [
+        "H₀: ρₛ ≤ 0, Hₐ: ρₛ > 0",
+        "H₀: ρₛ > 0, Hₐ: ρₛ ≤ 0",
+        "H₀: ρ ≤ 0, Hₐ: ρ > 0",
+        "H₀: ρ > 0, Hₐ: ρ ≤ 0"
+      ],
+      "explanation": "Dwie zmienne ilościowe, ale brak rozkładu normalnego → korelacja Spearmana. 'Wyższe cukier → wyższe BMI' = korelacja dodatnia = test jednostronny. H₀: ρₛ ≤ 0, Hₐ: ρₛ > 0. Pearson wymaga normalności, która tu nie jest spełniona."
+    },
+    {
+      "id": 12,
+      "question": "Badacz sprawdza, czy preferencja środka transportu (autobus/tramwaj/rower) zależy od dzielnicy zamieszkania (A/B/C). n=300.",
+      "correct": "H₀: zmienne niezależne, Hₐ: zmienne zależne",
+      "all_options": [
+        "H₀: zmienne niezależne, Hₐ: zmienne zależne",
+        "H₀: zmienne zależne, Hₐ: zmienne niezależne",
+        "H₀: μ₁ = μ₂ = μ₃, Hₐ: nie wszystkie μ równe",
+        "H₀: nie wszystkie μ równe, Hₐ: μ₁ = μ₂ = μ₃"
+      ],
+      "explanation": "Dwie zmienne jakościowe (transport: 3 kategorie, dzielnica: 3 kategorie) → test chi-kwadrat niezależności. H₀: zmienne niezależne (brak związku), Hₐ: zmienne zależne. ANOVA porównuje średnie zmiennej ilościowej między grupami — tu obie zmienne są jakościowe nominalne."
+    },
+    {
+      "id": 13,
+      "question": "Lekarz bada, czy palenie papierosów (tak/nie) jest związane z występowaniem choroby płuc (tak/nie). n=200.",
+      "correct": "H₀: zmienne niezależne, Hₐ: zmienne zależne",
+      "all_options": [
+        "H₀: zmienne niezależne, Hₐ: zmienne zależne",
+        "H₀: zmienne zależne, Hₐ: zmienne niezależne",
+        "H₀: μ₁ = μ₂, Hₐ: μ₁ ≠ μ₂",
+        "H₀: μ₁ ≠ μ₂, Hₐ: μ₁ = μ₂"
+      ],
+      "explanation": "Dwie zmienne jakościowe binarne (palenie: tak/nie, choroba: tak/nie) → test chi-kwadrat niezależności (tabela 2×2). Nie porównujemy średnich — obie zmienne są kategoryczne. H₀: niezależność (brak związku), Hₐ: zależność (istnieje związek)."
+    },
+    {
+      "id": 14,
+      "question": "Ankieta bada związek między grupą krwi (A/B/AB/0) a preferencją diety (wegetariańska/mięsna/wegańska). n=400.",
+      "correct": "H₀: zmienne niezależne, Hₐ: zmienne zależne",
+      "all_options": [
+        "H₀: zmienne niezależne, Hₐ: zmienne zależne",
+        "H₀: zmienne zależne, Hₐ: zmienne niezależne",
+        "H₀: μ₁ = μ₂ = μ₃ = μ₄, Hₐ: nie wszystkie μ równe",
+        "H₀: nie wszystkie μ równe, Hₐ: μ₁ = μ₂ = μ₃ = μ₄"
+      ],
+      "explanation": "Dwie zmienne jakościowe nominalne (grupa krwi: 4 kategorie, dieta: 3 kategorie) → test chi-kwadrat niezależności (tabela 4×3). H₀: zmienne niezależne, Hₐ: zmienne zależne. ANOVA wymaga zmiennej zależnej ilościowej — tutaj obie zmienne są jakościowe."
+    },
+    {
+      "id": 15,
+      "question": "Porównanie średniego czasu reakcji kierowców pijących kawę vs niepijących. Dwie niezależne grupy, rozkład normalny, jednorodne wariancje. n=40+40.",
+      "correct": "H₀: μ₁ = μ₂, Hₐ: μ₁ ≠ μ₂",
+      "all_options": [
+        "H₀: μ₁ = μ₂, Hₐ: μ₁ ≠ μ₂",
+        "H₀: μ₁ ≠ μ₂, Hₐ: μ₁ = μ₂",
+        "H₀: ρ = 0, Hₐ: ρ ≠ 0",
+        "H₀: ρ ≠ 0, Hₐ: ρ = 0"
+      ],
+      "explanation": "Zmienna ilościowa (czas reakcji), dwie niezależne grupy, normalność i jednorodne wariancje → test t dla dwóch prób niezależnych. H₀: μ₁ = μ₂ (brak różnicy), Hₐ: μ₁ ≠ μ₂ (dwustronny). Nie badamy korelacji — porównujemy średnie dwóch grup."
+    },
+    {
+      "id": 16,
+      "question": "Dietetyk chce wykazać, że osoby na diecie śródziemnomorskiej mają niższe ciśnienie niż osoby na diecie zachodniej. Dwie niezależne grupy, rozkład normalny. n=35+35.",
+      "correct": "H₀: μ_śr ≥ μ_zach, Hₐ: μ_śr < μ_zach",
+      "all_options": [
+        "H₀: μ_śr ≥ μ_zach, Hₐ: μ_śr < μ_zach",
+        "H₀: μ_śr < μ_zach, Hₐ: μ_śr ≥ μ_zach",
+        "H₀: μ_d ≥ 0, Hₐ: μ_d < 0",
+        "H₀: μ_d < 0, Hₐ: μ_d ≥ 0"
+      ],
+      "explanation": "Zmienna ilościowa (ciśnienie), dwie niezależne grupy (różne osoby na różnych dietach), normalność → test t dla dwóch prób niezależnych. 'Niższe ciśnienie' = test jednostronny. H₀: μ_śr ≥ μ_zach, Hₐ: μ_śr < μ_zach. Grupy są niezależne (różni ludzie) — test prób zależnych jest dla pomiarów na tych samych osobach."
+    },
+    {
+      "id": 17,
+      "question": "Porównanie ocen satysfakcji klientów (skala 1-10) sklepu online vs stacjonarnego. Dane nie mają rozkładu normalnego. n=30+25.",
+      "correct": "H₀: rozkłady obu grup jednakowe, Hₐ: rozkłady się różnią",
+      "all_options": [
+        "H₀: rozkłady obu grup jednakowe, Hₐ: rozkłady się różnią",
+        "H₀: rozkłady się różnią, Hₐ: rozkłady obu grup jednakowe",
+        "H₀: μ₁ = μ₂, Hₐ: μ₁ ≠ μ₂",
+        "H₀: μ₁ ≠ μ₂, Hₐ: μ₁ = μ₂"
+      ],
+      "explanation": "Dane ilościowe, dwie niezależne grupy, ale BRAK normalności → test Manna-Whitneya (nieparametryczny odpowiednik testu t). H₀: rozkłady jednakowe (brak różnicy), Hₐ: rozkłady się różnią (dwustronny). Test t wymaga normalności, która tu nie jest spełniona."
+    },
+    {
+      "id": 18,
+      "question": "Trener sprawdza, czy zawodnicy grupy A biegają szybciej (krótszy czas) niż grupy B. Dane mocno skośne. n=20+20.",
+      "correct": "H₀: rozkłady obu grup jednakowe, Hₐ: czasy grupy A mniejsze",
+      "all_options": [
+        "H₀: rozkłady obu grup jednakowe, Hₐ: czasy grupy A mniejsze",
+        "H₀: czasy grupy A mniejsze, Hₐ: rozkłady obu grup jednakowe",
+        "H₀: μ_A ≥ μ_B, Hₐ: μ_A < μ_B",
+        "H₀: μ_A < μ_B, Hₐ: μ_A ≥ μ_B"
+      ],
+      "explanation": "Dane ilościowe, dwie niezależne grupy, dane mocno skośne (brak normalności) → test Manna-Whitneya. 'Biegają szybciej' = test jednostronny. H₀: rozkłady jednakowe (brak różnicy), Hₐ: czasy A mniejsze. Test t nie jest odpowiedni przy braku normalności i silnej skośności danych."
+    },
+    {
+      "id": 19,
+      "question": "Badanie, czy kurs szybkiego czytania zmienia prędkość czytania. Ci sami uczestnicy testowani przed i po kursie. Różnice mają rozkład normalny. n=25.",
+      "correct": "H₀: μ_d = 0, Hₐ: μ_d ≠ 0",
+      "all_options": [
+        "H₀: μ_d = 0, Hₐ: μ_d ≠ 0",
+        "H₀: μ_d ≠ 0, Hₐ: μ_d = 0",
+        "H₀: μ₁ = μ₂, Hₐ: μ₁ ≠ μ₂",
+        "H₀: μ₁ ≠ μ₂, Hₐ: μ₁ = μ₂"
+      ],
+      "explanation": "Pomiar przed i po na tych samych osobach = próby zależne (sparowane). Różnice normalne → test t dla prób zależnych. H₀: μ_d = 0 (średnia różnic = 0, brak zmiany), Hₐ: μ_d ≠ 0 (dwustronny: 'zmienia', nie kierunkowo). Grupy NIE są niezależne — to te same osoby mierzone dwukrotnie."
+    },
+    {
+      "id": 20,
+      "question": "Fizjoterapeuta chce wykazać, że terapia zmniejsza poziom bólu. Ci sami pacjenci przed i po terapii. Różnice (przed − po) mają rozkład normalny. n=20.",
+      "correct": "H₀: μ_d ≤ 0, Hₐ: μ_d > 0 (d = przed − po)",
+      "all_options": [
+        "H₀: μ_d ≤ 0, Hₐ: μ_d > 0 (d = przed − po)",
+        "H₀: μ_d > 0, Hₐ: μ_d ≤ 0 (d = przed − po)",
+        "H₀: μ₁ ≤ μ₂, Hₐ: μ₁ > μ₂",
+        "H₀: μ₁ > μ₂, Hₐ: μ₁ ≤ μ₂"
+      ],
+      "explanation": "Ci sami pacjenci przed/po = próby zależne. Różnice normalne → test t dla prób zależnych. d = przed − po, więc 'zmniejsza ból' oznacza d > 0 (ból przed > ból po). H₀: μ_d ≤ 0, Hₐ: μ_d > 0. Próby nie są niezależne — to ci sami pacjenci, nie dwie różne grupy."
+    },
+    {
+      "id": 21,
+      "question": "Badanie efektu medytacji na poziom stresu (skala 1-10). Ci sami uczestnicy mierzeni przed i po programie. Różnice NIE mają rozkładu normalnego. n=15.",
+      "correct": "H₀: mediana różnic = 0, Hₐ: mediana różnic ≠ 0",
+      "all_options": [
+        "H₀: mediana różnic = 0, Hₐ: mediana różnic ≠ 0",
+        "H₀: mediana różnic ≠ 0, Hₐ: mediana różnic = 0",
+        "H₀: μ_d = 0, Hₐ: μ_d ≠ 0",
+        "H₀: μ_d ≠ 0, Hₐ: μ_d = 0"
+      ],
+      "explanation": "Ci sami uczestnicy przed/po = próby zależne, ale różnice NIE mają rozkładu normalnego → test Wilcoxona (nieparametryczny odpowiednik testu t dla prób zależnych). H₀: mediana różnic = 0, Hₐ: mediana różnic ≠ 0. Test t wymaga normalności różnic, która tu nie jest spełniona."
+    },
+    {
+      "id": 22,
+      "question": "Porównanie średniej liczby godzin snu w 3 grupach wiekowych (młodzi/średni/starsi). Rozkłady normalne, wariancje jednorodne. n=30 na grupę.",
+      "correct": "H₀: μ₁ = μ₂ = μ₃, Hₐ: nie wszystkie średnie są równe",
+      "all_options": [
+        "H₀: μ₁ = μ₂ = μ₃, Hₐ: nie wszystkie średnie są równe",
+        "H₀: nie wszystkie średnie są równe, Hₐ: μ₁ = μ₂ = μ₃",
+        "H₀: μ₁ = μ₂, Hₐ: μ₁ ≠ μ₂",
+        "H₀: μ₁ ≠ μ₂, Hₐ: μ₁ = μ₂"
+      ],
+      "explanation": "Zmienna ilościowa (godziny snu), 3 niezależne grupy, normalność i jednorodne wariancje → ANOVA jednoczynnikowa. H₀: wszystkie średnie równe, Hₐ: nie wszystkie równe (co najmniej jedna para się różni). Mamy 3 grupy — test t porównuje tylko 2 grupy, nie nadaje się do porównania 3+."
+    },
+    {
+      "id": 23,
+      "question": "Agronom bada, czy typ nawozu (A/B/C/D) wpływa na plony pszenicy (tony/ha). Rozkłady normalne, wariancje jednorodne. n=20 na typ nawozu.",
+      "correct": "H₀: μ_A = μ_B = μ_C = μ_D, Hₐ: nie wszystkie średnie są równe",
+      "all_options": [
+        "H₀: μ_A = μ_B = μ_C = μ_D, Hₐ: nie wszystkie średnie są równe",
+        "H₀: nie wszystkie średnie są równe, Hₐ: μ_A = μ_B = μ_C = μ_D",
+        "H₀: zmienne niezależne, Hₐ: zmienne zależne",
+        "H₀: zmienne zależne, Hₐ: zmienne niezależne"
+      ],
+      "explanation": "Zmienna ilościowa (plony t/ha), 4 niezależne grupy (typy nawozu), normalność i jednorodne wariancje → ANOVA jednoczynnikowa. H₀: μ_A = μ_B = μ_C = μ_D, Hₐ: nie wszystkie równe. Chi-kwadrat jest dla zmiennych jakościowych — plony to zmienna ilościowa ciągła."
+    },
+    {
+      "id": 24,
+      "question": "Porównanie poziomu satysfakcji z pracy (skala Likerta 1-7) w 4 działach firmy. Dane porządkowe, brak rozkładu normalnego. n=15 na dział.",
+      "correct": "H₀: rozkłady we wszystkich grupach jednakowe, Hₐ: co najmniej jeden rozkład się różni",
+      "all_options": [
+        "H₀: rozkłady we wszystkich grupach jednakowe, Hₐ: co najmniej jeden rozkład się różni",
+        "H₀: co najmniej jeden rozkład się różni, Hₐ: rozkłady we wszystkich grupach jednakowe",
+        "H₀: μ₁ = μ₂ = μ₃ = μ₄, Hₐ: nie wszystkie μ równe",
+        "H₀: nie wszystkie μ równe, Hₐ: μ₁ = μ₂ = μ₃ = μ₄"
+      ],
+      "explanation": "Dane porządkowe (skala Likerta), 4 grupy, brak normalności → test Kruskala-Wallisa (nieparametryczny odpowiednik ANOVA). H₀: rozkłady jednakowe, Hₐ: co najmniej jeden się różni. ANOVA wymaga danych ilościowych ciągłych i rozkładu normalnego."
+    }
+  ]
+}

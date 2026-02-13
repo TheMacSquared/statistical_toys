@@ -1,0 +1,41 @@
+# Korelacja Pearsona
+
+## Wprowadzenie
+
+Współczynnik korelacji Pearsona ($r$) mierzy siłę i kierunek liniowej zależności między dwiema zmiennymi ilościowymi. Przyjmuje wartości od $-1$ do $+1$.
+
+## Wzór
+
+$$r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2 \cdot \sum_{i=1}^{n}(y_i - \bar{y})^2}}$$
+
+## Interpretacja
+
+| Wartość $|r|$ | Siła zależności |
+|:---:|:---|
+| $< 0.3$ | Słaba |
+| $0.3 - 0.7$ | Umiarkowana |
+| $> 0.7$ | Silna |
+
+## Współczynnik determinacji
+
+$r^2$ — informuje jaka część zmienności $Y$ jest wyjaśniona przez $X$.
+
+## Regresja liniowa
+
+Równanie prostej regresji: $\hat{y} = a + bx$
+
+::: {.callout-tip}
+## Wypróbuj samodzielnie
+Kliknij na wykresie, aby dodać punkty danych i obserwuj jak zmienia się korelacja. Możesz też:
+
+- Użyć presetów, aby zobaczyć typowe wzorce korelacji
+- Włączyć prostokąty odchyleń, aby zrozumieć formułę Pearsona
+- Sprawdzić efekt outlierów na wartość korelacji
+:::
+
+```{=html}
+<iframe src="/shiny/pearson/"
+        height="800px"
+        frameborder="0">
+</iframe>
+```

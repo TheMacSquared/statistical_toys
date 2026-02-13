@@ -1,0 +1,46 @@
+# Test chi-kwadrat
+
+## Wprowadzenie
+
+Test chi-kwadrat ($\chi^2$) niezależności służy do badania zależności między dwiema zmiennymi jakościowymi (kategorialnymi). Porównuje częstości obserwowane z oczekiwanymi przy założeniu niezależności.
+
+## Statystyka testowa
+
+$$\chi^2 = \sum_{i,j} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$$
+
+gdzie:
+
+- $O_{ij}$ — częstość obserwowana w komórce $(i,j)$
+- $E_{ij}$ — częstość oczekiwana: $E_{ij} = \frac{n_{i\cdot} \cdot n_{\cdot j}}{n}$
+
+## Założenia testu
+
+1. Dane są częstościami (nie procentami czy proporcjami)
+2. Obserwacje są niezależne
+3. Oczekiwane częstości $\geq 5$ w każdej komórce (reguła Cochrana)
+
+## Siła związku — V Craméra
+
+$$V = \sqrt{\frac{\chi^2}{n \cdot \min(r-1, c-1)}}$$
+
+- $V < 0.1$ — brak lub bardzo słaby związek
+- $0.1 \leq V < 0.3$ — słaby związek
+- $0.3 \leq V < 0.5$ — umiarkowany związek
+- $V \geq 0.5$ — silny związek
+
+::: {.callout-tip}
+## Wypróbuj samodzielnie
+Eksploruj test chi-kwadrat w dwóch trybach:
+
+- **Tryb eksploracji** — użyj suwaków do zmiany procentów i obserwuj wyniki
+- **Tryb własnych danych** — wpisz własne dane do tabeli kontyngencji
+
+Wypróbuj też gotowe presety, aby zobaczyć jak wyglądają różne siły zależności.
+:::
+
+```{=html}
+<iframe src="/shiny/chi_square/"
+        height="800px"
+        frameborder="0">
+</iframe>
+```

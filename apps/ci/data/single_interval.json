@@ -1,0 +1,224 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Przedział ufności 95% dla średniej ceny kawy w mieście wynosi [14; 22] zł. Czy można powiedzieć z ufnością 95%, że średnia cena kawy przekracza 20 zł?",
+      "ci_lower": 14,
+      "ci_upper": 22,
+      "tested_value": 20,
+      "unit": "zł",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 20 zł znajduje się WEWNĄTRZ przedziału ufności [14; 22]. Przedział ufności nie pozwala na jednoznaczne stwierdzenie, czy średnia jest większa czy mniejsza od wartości znajdującej się wewnątrz tego przedziału. Możemy tylko stwierdzić z 95% ufnością, że średnia znajduje się gdzieś w przedziale [14; 22], ale nie wiemy dokładnie gdzie.",
+      "comparison": "greater"
+    },
+    {
+      "id": 2,
+      "question": "Przedział ufności 95% dla średniej wagi paczek wynosi [5.2; 6.8] kg. Czy można powiedzieć z ufnością 95%, że średnia waga przekracza 7 kg?",
+      "ci_lower": 5.2,
+      "ci_upper": 6.8,
+      "tested_value": 7,
+      "unit": "kg",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 7 kg znajduje się POWYŻEJ górnej granicy przedziału ufności (6.8 kg). Z ufnością 95% możemy stwierdzić, że średnia waga NIE PRZEKRACZA 7 kg, ponieważ cały przedział [5.2; 6.8] jest poniżej 7 kg.",
+      "comparison": "greater"
+    },
+    {
+      "id": 3,
+      "question": "Przedział ufności 95% dla średniego ciśnienia krwi wynosi [120; 140] mmHg. Czy można powiedzieć z ufnością 95%, że średnie ciśnienie przekracza 110 mmHg?",
+      "ci_lower": 120,
+      "ci_upper": 140,
+      "tested_value": 110,
+      "unit": "mmHg",
+      "correct": "tak_wieksze",
+      "explanation": "Wartość 110 mmHg znajduje się PONIŻEJ dolnej granicy przedziału ufności (120 mmHg). Z ufnością 95% możemy stwierdzić, że średnie ciśnienie PRZEKRACZA 110 mmHg, ponieważ cały przedział [120; 140] jest powyżej 110 mmHg.",
+      "comparison": "greater"
+    },
+    {
+      "id": 4,
+      "question": "Przedział ufności 95% dla średniej temperatury w lipcu wynosi [100; 150] dni. Czy można powiedzieć z ufnością 95%, że średnia przekracza 90 dni?",
+      "ci_lower": 100,
+      "ci_upper": 150,
+      "tested_value": 90,
+      "unit": "dni",
+      "correct": "tak_wieksze",
+      "explanation": "Wartość 90 dni znajduje się PONIŻEJ dolnej granicy przedziału ufności (100 dni). Z ufnością 95% możemy stwierdzić, że średnia PRZEKRACZA 90 dni, ponieważ cały przedział [100; 150] jest powyżej 90 dni.",
+      "comparison": "greater"
+    },
+    {
+      "id": 5,
+      "question": "Przedział ufności 95% dla średniej ceny kawy wynosi [14; 22] zł. Czy można powiedzieć z ufnością 95%, że średnia cena przekracza 13.95 zł?",
+      "ci_lower": 14,
+      "ci_upper": 22,
+      "tested_value": 13.95,
+      "unit": "zł",
+      "correct": "tak_wieksze",
+      "explanation": "Wartość 13.95 zł znajduje się PONIŻEJ dolnej granicy przedziału ufności (14 zł). Z ufnością 95% możemy stwierdzić, że średnia cena PRZEKRACZA 13.95 zł, ponieważ cały przedział [14; 22] jest powyżej 13.95 zł.",
+      "comparison": "greater"
+    },
+    {
+      "id": 6,
+      "question": "Przedział ufności 95% dla średniej ceny kawy wynosi [14; 22] zł. Czy można powiedzieć z ufnością 95%, że średnia cena przekracza 22.05 zł?",
+      "ci_lower": 14,
+      "ci_upper": 22,
+      "tested_value": 22.05,
+      "unit": "zł",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 22.05 zł znajduje się POWYŻEJ górnej granicy przedziału ufności (22 zł). Z ufnością 95% możemy stwierdzić, że średnia cena NIE PRZEKRACZA 22.05 zł, ponieważ cały przedział [14; 22] jest poniżej 22.05 zł.",
+      "comparison": "greater"
+    },
+    {
+      "id": 7,
+      "question": "Przedział ufności 95% dla średniej ceny kawy wynosi [14; 22] zł. Czy można powiedzieć z ufnością 95%, że średnia cena przekracza 18 zł?",
+      "ci_lower": 14,
+      "ci_upper": 22,
+      "tested_value": 18,
+      "unit": "zł",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 18 zł znajduje się W ŚRODKU przedziału ufności [14; 22]. Nie możemy z ufnością 95% stwierdzić, czy średnia jest większa czy mniejsza od wartości znajdującej się wewnątrz przedziału. Średnia może wynosić np. 16 zł (< 18) lub 20 zł (> 18).",
+      "comparison": "greater"
+    },
+    {
+      "id": 8,
+      "question": "Przedział ufności 95% dla średniego BMI wynosi [50; 80] kg/m². Czy można powiedzieć z ufnością 95%, że średnie BMI przekracza 40 kg/m²?",
+      "ci_lower": 50,
+      "ci_upper": 80,
+      "tested_value": 40,
+      "unit": "kg/m²",
+      "correct": "tak_wieksze",
+      "explanation": "Wartość 40 kg/m² znajduje się PONIŻEJ dolnej granicy przedziału ufności (50 kg/m²). Z ufnością 95% możemy stwierdzić, że średnie BMI PRZEKRACZA 40 kg/m².",
+      "comparison": "greater"
+    },
+    {
+      "id": 9,
+      "question": "Przedział ufności 95% dla średniej ceny wynosi [14; 22] zł. Czy można powiedzieć z ufnością 95%, że średnia cena jest MNIEJSZA niż 12 zł?",
+      "ci_lower": 14,
+      "ci_upper": 22,
+      "tested_value": 12,
+      "unit": "zł",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 12 zł znajduje się PONIŻEJ dolnej granicy przedziału ufności (14 zł). Z ufnością 95% możemy stwierdzić, że średnia NIE JEST MNIEJSZA niż 12 zł (czyli średnia > 12 zł), ponieważ cały przedział [14; 22] jest powyżej 12 zł.",
+      "comparison": "less"
+    },
+    {
+      "id": 10,
+      "question": "Przedział ufności 95% dla średniej ceny wynosi [14; 22] zł. Czy można powiedzieć z ufnością 95%, że średnia cena jest MNIEJSZA niż 25 zł?",
+      "ci_lower": 14,
+      "ci_upper": 22,
+      "tested_value": 25,
+      "unit": "zł",
+      "correct": "tak_mniejsze",
+      "explanation": "Wartość 25 zł znajduje się POWYŻEJ górnej granicy przedziału ufności (22 zł). Z ufnością 95% możemy stwierdzić, że średnia JEST MNIEJSZA niż 25 zł, ponieważ cały przedział [14; 22] jest poniżej 25 zł.",
+      "comparison": "less"
+    },
+    {
+      "id": 11,
+      "question": "Przedział ufności 95% dla średniej ceny wynosi [14; 22] zł. Czy można powiedzieć z ufnością 95%, że średnia cena jest MNIEJSZA niż 30 zł?",
+      "ci_lower": 14,
+      "ci_upper": 22,
+      "tested_value": 30,
+      "unit": "zł",
+      "correct": "tak_mniejsze",
+      "explanation": "Wartość 30 zł znajduje się POWYŻEJ górnej granicy przedziału ufności (22 zł). Z ufnością 95% możemy stwierdzić, że średnia JEST MNIEJSZA niż 30 zł.",
+      "comparison": "less"
+    },
+    {
+      "id": 12,
+      "question": "Przedział ufności 95% dla średniej ceny wynosi [14.0; 22.0] zł. Czy można powiedzieć z ufnością 95%, że średnia cena przekracza 14.1 zł?",
+      "ci_lower": 14.0,
+      "ci_upper": 22.0,
+      "tested_value": 14.1,
+      "unit": "zł",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 14.1 zł znajduje się TUŻ NAD DOLNĄ GRANICĄ przedziału ufności [14.0; 22.0], ale wciąż WEWNĄTRZ przedziału. Nie możemy z ufnością 95% stwierdzić, czy średnia przekracza 14.1 zł, ponieważ średnia może wynosić np. 14.05 zł (< 14.1).",
+      "comparison": "greater"
+    },
+    {
+      "id": 13,
+      "question": "Przedział ufności 95% dla średniej ceny wynosi [14.0; 22.0] zł. Czy można powiedzieć z ufnością 95%, że średnia cena przekracza 21.9 zł?",
+      "ci_lower": 14.0,
+      "ci_upper": 22.0,
+      "tested_value": 21.9,
+      "unit": "zł",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 21.9 zł znajduje się TUŻ POD GÓRNĄ GRANICĄ przedziału ufności [14.0; 22.0], ale wciąż WEWNĄTRZ przedziału. Nie możemy z ufnością 95% stwierdzić, czy średnia przekracza 21.9 zł.",
+      "comparison": "greater"
+    },
+    {
+      "id": 14,
+      "question": "Przedział ufności 95% dla średniej wydajności wynosi [18; 19] jednostek. Czy można powiedzieć z ufnością 95%, że średnia wydajność przekracza 20 jednostek?",
+      "ci_lower": 18,
+      "ci_upper": 19,
+      "tested_value": 20,
+      "unit": "jednostek",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 20 znajduje się POWYŻEJ górnej granicy wąskiego przedziału ufności [18; 19]. Z ufnością 95% możemy stwierdzić, że średnia NIE PRZEKRACZA 20 jednostek. Wąski przedział oznacza większą precyzję pomiaru.",
+      "comparison": "greater"
+    },
+    {
+      "id": 15,
+      "question": "Przedział ufności 95% dla średniej wynosi [10; 30] jednostek. Czy można powiedzieć z ufnością 95%, że średnia przekracza 20 jednostek?",
+      "ci_lower": 10,
+      "ci_upper": 30,
+      "tested_value": 20,
+      "unit": "jednostek",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 20 znajduje się W ŚRODKU szerokiego przedziału ufności [10; 30]. Nie możemy z ufnością 95% stwierdzić, czy średnia przekracza 20. Szeroki przedział oznacza większą niepewność - średnia może wynosić zarówno 15 (< 20) jak i 25 (> 20).",
+      "comparison": "greater"
+    },
+    {
+      "id": 16,
+      "question": "Przedział ufności 95% dla średniej różnicy wynosi [-5; 5] punktów. Czy można powiedzieć z ufnością 95%, że średnia różnica przekracza 0 punktów?",
+      "ci_lower": -5,
+      "ci_upper": 5,
+      "tested_value": 0,
+      "unit": "punktów",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 0 znajduje się W ŚRODKU przedziału ufności [-5; 5]. Nie możemy z ufnością 95% stwierdzić, czy średnia różnica jest dodatnia (> 0) czy ujemna (< 0). Przedział zawierający 0 oznacza brak statystycznie istotnej różnicy.",
+      "comparison": "greater"
+    },
+    {
+      "id": 17,
+      "question": "Przedział ufności 95% dla średniej różnicy wynosi [-10; -2] punktów. Czy można powiedzieć z ufnością 95%, że średnia różnica przekracza 0 punktów?",
+      "ci_lower": -10,
+      "ci_upper": -2,
+      "tested_value": 0,
+      "unit": "punktów",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 0 znajduje się POWYŻEJ górnej granicy przedziału ufności [-10; -2]. Z ufnością 95% możemy stwierdzić, że średnia różnica NIE PRZEKRACZA 0 (jest ujemna), ponieważ cały przedział jest poniżej 0.",
+      "comparison": "greater"
+    },
+    {
+      "id": 18,
+      "question": "Przedział ufności 95% dla średniej różnicy wynosi [2; 10] punktów. Czy można powiedzieć z ufnością 95%, że średnia różnica przekracza 0 punktów?",
+      "ci_lower": 2,
+      "ci_upper": 10,
+      "tested_value": 0,
+      "unit": "punktów",
+      "correct": "tak_wieksze",
+      "explanation": "Wartość 0 znajduje się PONIŻEJ dolnej granicy przedziału ufności [2; 10]. Z ufnością 95% możemy stwierdzić, że średnia różnica PRZEKRACZA 0 (jest dodatnia), ponieważ cały przedział jest powyżej 0.",
+      "comparison": "greater"
+    },
+    {
+      "id": 19,
+      "question": "Przedział ufności 95% dla średniego odsetka poparcia wynosi [85; 95]%. Czy można powiedzieć z ufnością 95%, że średni odsetek przekracza 90%?",
+      "ci_lower": 85,
+      "ci_upper": 95,
+      "tested_value": 90,
+      "unit": "%",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 90% znajduje się W ŚRODKU przedziału ufności [85%; 95%]. Nie możemy z ufnością 95% stwierdzić, czy średni odsetek przekracza 90%, ponieważ średnia może wynosić zarówno 87% (< 90%) jak i 93% (> 90%).",
+      "comparison": "greater"
+    },
+    {
+      "id": 20,
+      "question": "Przedział ufności 95% dla średniej temperatury wynosi [22.5; 24.5]°C. Czy można powiedzieć z ufnością 95%, że średnia temperatura przekracza 25°C?",
+      "ci_lower": 22.5,
+      "ci_upper": 24.5,
+      "tested_value": 25,
+      "unit": "°C",
+      "correct": "nie_mozna_powiedziec",
+      "explanation": "Wartość 25°C znajduje się POWYŻEJ górnej granicy przedziału ufności [22.5; 24.5]°C. Z ufnością 95% możemy stwierdzić, że średnia temperatura NIE PRZEKRACZA 25°C, ponieważ cały przedział jest poniżej 25°C.",
+      "comparison": "greater"
+    }
+  ]
+}

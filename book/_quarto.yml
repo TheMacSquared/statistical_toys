@@ -1,0 +1,21 @@
+project:
+  type: book
+
+book:
+  title: "Statystyczne Zabawki"
+  author: "Maciej Karczewski"
+  date: today
+  chapters:
+    - index.qmd
+    - rozklad-normalny.qmd
+    - chi-kwadrat.qmd
+    - korelacja.qmd
+    - przedzialy-ufnosci.qmd
+    - quizy.qmd
+
+format:
+  html:
+    theme: flatly
+    css: custom.css
+    toc: true
+    number-sections: true

@@ -1,0 +1,15 @@
+/* Statystyczne Zabawki - Quarto book custom styles */
+
+iframe {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+/* Responsive iframe heights */
+@media (max-width: 768px) {
+  iframe {
+    min-height: 500px;
+  }
+}

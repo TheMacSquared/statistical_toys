@@ -1,0 +1,36 @@
+# Rozkład normalny
+
+## Wprowadzenie
+
+Rozkład normalny (Gaussa) jest najważniejszym rozkładem prawdopodobieństwa w statystyce. Opisywany jest dwoma parametrami: średnią $\mu$ i odchyleniem standardowym $\sigma$.
+
+Funkcja gęstości prawdopodobieństwa:
+
+$$f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
+
+## Właściwości
+
+- Krzywa jest symetryczna względem średniej $\mu$
+- Około 68% obserwacji mieści się w przedziale $\mu \pm \sigma$
+- Około 95% obserwacji mieści się w przedziale $\mu \pm 2\sigma$
+- Około 99.7% obserwacji mieści się w przedziale $\mu \pm 3\sigma$
+
+## Centralne twierdzenie graniczne
+
+Niezależnie od rozkładu populacji, rozkład średnich z prób zbliża się do rozkładu normalnego wraz ze wzrostem wielkości próby.
+
+::: {.callout-tip}
+## Wypróbuj samodzielnie
+Zmień parametry i obserwuj jak zmienia się kształt rozkładu. Zwróć uwagę na:
+
+- Jak wielkość próby wpływa na kształt histogramu?
+- Jak zmiana odchylenia standardowego wpływa na rozpiętość danych?
+- Czy histogram dobrze przybliża krzywą teoretyczną?
+:::
+
+```{=html}
+<iframe src="/shiny/histogram/"
+        height="700px"
+        frameborder="0">
+</iframe>
+```

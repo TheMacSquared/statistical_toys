@@ -1,0 +1,454 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Wiek pacjenta w pełnych latach (np. 25, 34, 67)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Wiek w pełnych latach to liczba całkowita, którą można policzyć. To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 2,
+      "question": "Wzrost osoby w metrach (np. 1.75, 1.82, 1.65)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Wzrost może przyjmować dowolne wartości z przedziału, ograniczone tylko dokładnością pomiaru. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 3,
+      "question": "Poziom wykształcenia (podstawowe, średnie, wyższe)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Poziom wykształcenia można uporządkować, ale różnice między kategoriami nie są równe. To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 4,
+      "question": "Kolor oczu (niebieski, brązowy, zielony)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Kolor oczu to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 5,
+      "question": "Liczba dzieci w rodzinie (0, 1, 2, 3, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba dzieci to wartości przeliczalne (liczby całkowite nieujemne). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 6,
+      "question": "Temperatura ciała w °C (np. 36.6, 37.2, 38.5)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Temperatura może przyjmować dowolne wartości w zakresie, z dokładnością do dziesiętnych miejsc. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 7,
+      "question": "Ocena w szkole (niedostateczny, dostateczny, dobry, bardzo dobry, celujący)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Oceny mają naturalny porządek (celujący > bardzo dobry > ...), ale odstępy między nimi nie są równe. To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 8,
+      "question": "Marka samochodu (Toyota, Ford, BMW, Audi)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Marki samochodów to kategorie bez porządku. Nie można powiedzieć, że jedna marka jest 'większa' od drugiej. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 9,
+      "question": "Liczba goli strzelonych w meczu (0, 1, 2, 3, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba goli to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 10,
+      "question": "Czas biegu na 100m w sekundach (np. 10.23, 11.05, 12.87)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Czas może przyjmować dowolne wartości z przedziału, mierzone z dokładnością do setnych sekundy. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 11,
+      "question": "Rozmiar koszulki (XS, S, M, L, XL, XXL)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Rozmiary koszulek mają naturalny porządek (XXL > XL > L > ...). To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 12,
+      "question": "Płeć biologiczna (męska, żeńska)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Płeć to kategoria bez porządku. To zmienna jakościowa nominalna (dwie kategorie)."
+    },
+    {
+      "id": 13,
+      "question": "Liczba błędów w teście (0, 1, 2, 3, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba błędów to wartości przeliczalne. To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 14,
+      "question": "Ciśnienie krwi w mmHg (np. 120.5, 135.2, 110.8)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Ciśnienie może przyjmować dowolne wartości z przedziału. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 15,
+      "question": "Poziom zadowolenia (bardzo niezadowolony, niezadowolony, neutralny, zadowolony, bardzo zadowolony)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Poziom zadowolenia można uporządkować, ale różnice między kategoriami nie są równe. To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 16,
+      "question": "Grupa krwi (A, B, AB, 0)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Grupy krwi to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 17,
+      "question": "Liczba stron w książce (200, 350, 487, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba stron to wartości przeliczalne (liczby całkowite dodatnie). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 18,
+      "question": "Waga produktu w kilogramach (np. 0.5, 1.2, 3.7)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Waga może przyjmować dowolne wartości, ograniczone tylko dokładnością wagi. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 19,
+      "question": "Stopień wojskowy (szeregowy, kapral, sierżant, chorąży, podporucznik, ...)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Stopnie wojskowe mają ścisłą hierarchię (porządek), ale różnice między nimi nie są liczbowe. To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 20,
+      "question": "Narodowość (polska, niemiecka, francuska, ...)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Narodowości to kategorie bez porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 21,
+      "question": "Liczba pokoi w mieszkaniu (1, 2, 3, 4, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba pokoi to wartości przeliczalne. To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 22,
+      "question": "Stężenie glukozy we krwi w mg/dl (np. 85.3, 120.7, 95.1)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Stężenie może przyjmować dowolne wartości z przedziału. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 23,
+      "question": "Etap nowotworu (I, II, III, IV)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Etapy nowotworu mają naturalny porządek (IV > III > II > I), określający zaawansowanie choroby. To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 24,
+      "question": "Typ silnika (benzynowy, diesel, elektryczny, hybrydowy)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Typy silników to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 25,
+      "question": "Liczba wypadków na skrzyżowaniu w ciągu roku (0, 1, 2, 3, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba wypadków to wartości przeliczalne. To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 26,
+      "question": "Stężenie azotanów w wodzie pitnej w mg/L (np. 15.3, 22.8, 8.1)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Stężenie azotanów może przyjmować dowolne wartości z przedziału, mierzone z dokładnością aparatury. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 27,
+      "question": "Klasa czystości rzeki (I, II, III, IV, V)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Klasy czystości wód mają naturalny porządek (I - najczystsza, V - najbardziej zanieczyszczona), ale różnice między klasami nie są liczbowe. To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 28,
+      "question": "Typ kolektora słonecznego (płaski, próżniowy, powietrzny)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Typy kolektorów słonecznych to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 29,
+      "question": "Liczba turbin wiatrowych na farmie (5, 12, 23, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba turbin to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 30,
+      "question": "Suma opadów rocznych w mm (np. 567.2, 823.5, 412.8)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Suma opadów może przyjmować dowolne wartości z przedziału, mierzone z dokładnością deszczomierza. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 31,
+      "question": "Przeznaczenie działki w planie zagospodarowania (mieszkaniowe, przemysłowe, rolne, leśne)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Przeznaczenie działki to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 32,
+      "question": "Klasa bonitacyjna gleby (I, II, III, IV, V, VI)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Klasy bonitacyjne gleb mają naturalny porządek (I - najlepsza, VI - najsłabsza), określający przydatność rolniczą, ale różnice nie są równe. To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 33,
+      "question": "Zawartość azotu w glebie w mg/kg (np. 45.2, 67.8, 31.5)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Zawartość azotu może przyjmować dowolne wartości z przedziału, mierzone analitycznie. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 34,
+      "question": "Liczba hodowanych krów na farmie (15, 28, 42, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba zwierząt to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 35,
+      "question": "pH gleby (np. 5.8, 6.2, 7.1)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "pH może przyjmować dowolne wartości w zakresie 0-14, z dokładnością pomiaru. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 36,
+      "question": "Gatunek drzewa (dąb, sosna, świerk, brzoza)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Gatunki drzew to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 37,
+      "question": "Stopień zagrożenia gatunku (LC, NT, VU, EN, CR, EX)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Kategorie zagrożenia IUCN (Least Concern, Near Threatened, Vulnerable, Endangered, Critically Endangered, Extinct) mają ścisły porządek określający poziom zagrożenia. To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 38,
+      "question": "Natężenie przepływu rzeki w m³/s (np. 15.7, 42.3, 8.9)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Natężenie przepływu może przyjmować dowolne wartości z przedziału, mierzone hydrometrycznie. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 39,
+      "question": "Liczba dni z opadem w miesiącu (5, 12, 18, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba dni to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 40,
+      "question": "Poziom retencji zlewni (niski, średni, wysoki)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Poziomy retencji można uporządkować (wysoki > średni > niski), ale różnice między kategoriami nie są precyzyjnie określone. To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 41,
+      "question": "Moc zainstalowana elektrowni wiatrowej w MW (np. 2.5, 3.8, 5.2)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Moc zainstalowana może przyjmować dowolne wartości z przedziału. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 42,
+      "question": "Typ panelu fotowoltaicznego (monokrystaliczny, polikrystaliczny, cienkowarstwowy)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Typy paneli to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 43,
+      "question": "Wskaźnik cen konsumpcyjnych CPI w % (np. 102.3, 105.7, 98.2)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "CPI może przyjmować dowolne wartości, obliczane z dokładnością dziesiętną. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 44,
+      "question": "Sektor gospodarki (rolnictwo, przemysł, usługi)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Sektory gospodarki to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 45,
+      "question": "Liczba zatrudnionych pracowników w firmie (45, 120, 287, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba pracowników to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 46,
+      "question": "Rating kredytowy (AAA, AA, A, BBB, BB, B, CCC, CC, C, D)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Ratingi kredytowe mają ścisły porządek określający wiarygodność kredytową (AAA - najwyższy, D - default). To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 47,
+      "question": "Liczba bakterii E. coli w 100 ml wody (0, 5, 23, 150, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba bakterii to wartości przeliczalne (liczby całkowite), zliczane metodami mikrobiologicznymi. To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 48,
+      "question": "Stężenie tlenu rozpuszczonego w wodzie w mg/L (np. 5.2, 8.7, 11.3)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Stężenie tlenu może przyjmować dowolne wartości z przedziału, mierzone sondy tlenowe. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 49,
+      "question": "Kondycja zwierzęcia gospodarskiego (wyniszczona, słaba, dobra, bardzo dobra, doskonała)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Kondycja ma naturalny porządek (doskonała > bardzo dobra > dobra > słaba > wyniszczona), ale różnice nie są precyzyjnie zmierzone. To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 50,
+      "question": "Rasa bydła (polska czerwona, limousine, hereford, angus)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Rasy bydła to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 51,
+      "question": "Wydajność mleczna krowy w litrach dziennie (np. 18.5, 24.2, 32.7)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Wydajność mleczna może przyjmować dowolne wartości, mierzone z dokładnością dziesiętną. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 52,
+      "question": "Powierzchnia użytków zielonych w hektarach (np. 12.3, 45.8, 120.5)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Powierzchnia może przyjmować dowolne wartości, mierzone geodezyjnie z dużą dokładnością. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 53,
+      "question": "Funkcja ochronna obszaru (park narodowy, rezerwat przyrody, park krajobrazowy, obszar chronionego krajobrazu)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Formy ochrony przyrody mają hierarchię stopnia ochrony (park narodowy > rezerwat > park krajobrazowy > obszar chronionego krajobrazu). To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 54,
+      "question": "Temperatura wody w zbiorniku wodnym w °C (np. 12.4, 18.7, 23.2)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Temperatura może przyjmować dowolne wartości z przedziału, mierzone z dokładnością termometrów. To zmienna ilościowa ciągła. (gospodarka wodna, inżynieria środowiska)"
+    },
+    {
+      "id": 55,
+      "question": "Liczba gatunków ptaków zaobserwowanych na obszarze (15, 28, 42, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba gatunków to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 56,
+      "question": "Liczba polubień posta na Instagramie (45, 230, 1582, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba polubień to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 57,
+      "question": "Czas spędzony na TikToku w godzinach dziennie (np. 1.5, 3.2, 0.8)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Czas może przyjmować dowolne wartości z przedziału, mierzony z dokładnością do minut. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 58,
+      "question": "Platforma social media (Instagram, TikTok, YouTube, Twitter/X, Snapchat)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Platformy to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 59,
+      "question": "Poziom zaangażowania na social mediach (niski, średni, wysoki, bardzo wysoki)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Poziomy zaangażowania można uporządkować (bardzo wysoki > wysoki > średni > niski), ale różnice między nimi nie są precyzyjnie określone. To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 60,
+      "question": "Liczba obserwujących na Instagramie (523, 1240, 5890, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba obserwujących to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 61,
+      "question": "Rating gry w sklepie App Store (1, 2, 3, 4, 5 gwiazdek)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Rating ma naturalny porządek (5 > 4 > 3 > 2 > 1), ale różnice między gwiazdkami nie są równe (różnica między 1 a 2 może być postrzegana inaczej niż między 4 a 5). To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 62,
+      "question": "Gatunek filmu (akcja, komedia, horror, dramat, science fiction)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Gatunki filmów to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 63,
+      "question": "Czas trwania filmu w minutach (np. 95.0, 122.0, 148.0)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Czas może przyjmować dowolne wartości (choć zwykle zaokrąglane do pełnych minut, technicznie są to wartości ciągłe). To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 64,
+      "question": "Liczba gier rozegranych w League of Legends w sezonie (45, 230, 587, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba gier to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 65,
+      "question": "Ranga w CS:GO (Silver, Gold Nova, Master Guardian, Legendary Eagle, Global Elite)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Rangi w grze mają ścisły porządek określający poziom umiejętności (Global Elite > Legendary Eagle > ... > Silver). To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 66,
+      "question": "Typ postaci w grze RPG (wojownik, mag, łucznik, kleryk)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Klasy postaci to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 67,
+      "question": "Procent ukończenia gry (np. 45.5%, 78.3%, 100.0%)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Procent ukończenia może przyjmować dowolne wartości z przedziału 0-100%. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 68,
+      "question": "Liczba wyświetleń filmu na YouTube (1520, 45890, 1234567, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba wyświetleń to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 69,
+      "question": "Preferowana muzyka (pop, rock, hip-hop, jazz, elektroniczna)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Gatunki muzyczne to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 70,
+      "question": "Poziom trudności gry (łatwy, normalny, trudny, bardzo trudny, ekstremalny)",
+      "correct": "jakosciowa_porzadkowa",
+      "explanation": "Poziomy trudności mają naturalny porządek (ekstremalny > bardzo trudny > trudny > normalny > łatwy). To zmienna jakościowa porządkowa."
+    },
+    {
+      "id": 71,
+      "question": "Średni czas reakcji w grze FPS w milisekundach (np. 185.3, 210.7, 245.2)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Czas reakcji może przyjmować dowolne wartości z przedziału, mierzony z dużą dokładnością. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 72,
+      "question": "Liczba przyjaciół na Facebooku (123, 456, 789, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba przyjaciół to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna."
+    },
+    {
+      "id": 73,
+      "question": "Rozmiar ekranu smartfona w calach (np. 5.8, 6.1, 6.7)",
+      "correct": "ilosciowa_ciagla",
+      "explanation": "Rozmiar ekranu może przyjmować dowolne wartości z przedziału, mierzony po przekątnej. To zmienna ilościowa ciągła."
+    },
+    {
+      "id": 74,
+      "question": "Marka smartfona (iPhone, Samsung, Xiaomi, Huawei, OnePlus)",
+      "correct": "jakosciowa_nominalna",
+      "explanation": "Marki telefonów to kategorie bez naturalnego porządku. To zmienna jakościowa nominalna."
+    },
+    {
+      "id": 75,
+      "question": "Liczba zrobionych zdjęć na wakacjach (45, 230, 578, ...)",
+      "correct": "ilosciowa_dyskretna",
+      "explanation": "Liczba zdjęć to wartości przeliczalne (liczby całkowite). To zmienna ilościowa dyskretna."
+    }
+  ]
+}

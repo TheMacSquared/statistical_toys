@@ -1,0 +1,21 @@
+# Wstęp {.unnumbered}
+
+**Statystyczne Zabawki** to zbiór interaktywnych narzędzi do nauki statystyki. Każdy rozdział zawiera materiał wykładowy oraz osadzoną aplikację, która pozwala samodzielnie eksperymentować z omawianymi koncepcjami.
+
+## Jak korzystać
+
+Każdy rozdział składa się z:
+
+1. **Materiału teoretycznego** — wyjaśnienie koncepcji statystycznej
+2. **Interaktywnej aplikacji** — narzędzie do samodzielnego eksperymentowania
+3. **Ćwiczeń i pytań** — sprawdzenie zrozumienia materiału
+
+Aplikacje działają bezpośrednio w przeglądarce — wystarczy zmienić parametry i obserwować wyniki.
+
+## Zawartość
+
+- **Rozkład normalny** — generowanie próbek, histogram, krzywa gęstości
+- **Test chi-kwadrat** — tabele kontyngencji, test niezależności
+- **Korelacja Pearsona** — wykres rozrzutu, współczynnik korelacji, regresja
+- **Przedziały ufności** — interpretacja i porównywanie przedziałów ufności
+- **Quizy** — sprawdzenie wiedzy z różnych obszarów statystyki
