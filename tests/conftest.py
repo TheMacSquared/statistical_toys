@@ -114,6 +114,19 @@ def pearson_client(pearson_correlation_module):
         yield client
 
 
+@pytest.fixture(scope="session")
+def biased_sampling_module():
+    return _load_toy_module("biased_sampling")
+
+
+@pytest.fixture
+def biased_sampling_client(biased_sampling_module):
+    """Flask test client for biased_sampling (stateless)."""
+    biased_sampling_module.app.config['TESTING'] = True
+    with biased_sampling_module.app.test_client() as client:
+        yield client
+
+
 # ── Helpers ────────────────────────────────────────────────────────
 
 def _reset_quiz_session(module):

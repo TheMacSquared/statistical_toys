@@ -44,3 +44,13 @@ def test_pearson_correlation_module_loads(pearson_correlation_module):
     rules = [r.rule for r in pearson_correlation_module.app.url_map.iter_rules()]
     assert '/api/compute' in rules
     assert '/api/generate' in rules
+
+
+def test_biased_sampling_module_loads(biased_sampling_module):
+    assert hasattr(biased_sampling_module, 'app')
+    assert isinstance(biased_sampling_module.app, Flask)
+    rules = [r.rule for r in biased_sampling_module.app.url_map.iter_rules()]
+    assert '/' in rules
+    assert '/api/scenarios' in rules
+    assert '/api/generate' in rules
+    assert '/api/compute' in rules
