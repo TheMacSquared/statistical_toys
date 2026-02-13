@@ -22,6 +22,7 @@ Interaktywne aplikacje do nauki statystyki. Pobierz, uruchom i ucz sie przez eks
 | **Histogram** | Zobacz jak parametry wplywaja na ksztalt histogramu | [Pobierz](../../releases) |
 | **Test Chi-Kwadrat** | Interaktywna eksploracja testu niezaleznosci chi-kwadrat | [Pobierz](../../releases) |
 | **Korelacja Pearsona** | Wykres rozrzutu, regresja i wspolczynnik korelacji na zywo | [Pobierz](../../releases) |
+| **Obciazenie probkowania** | Jak niereprezentatywna proba prowadzi do blednych wnioskow | [Pobierz](../../releases) |
 
 ## Zobacz jak wygladaja
 
@@ -44,6 +45,9 @@ Eksploruj test niezaleznosci chi-kwadrat: suwaki procentowe lub edycja komorek t
 
 ### Korelacja Pearsona
 Dodawaj i usuwaj punkty na wykresie rozrzutu, obserwuj jak zmienia sie wspolczynnik korelacji, prosta regresji i przedzialy ufnosci. Gotowe eksperymenty: wplyw outlierow, pulapki Anscombe'a, ograniczenie zakresu.
+
+### Obciazenie probkowania
+Zobacz jak niereprezentatywna proba prowadzi do blednych wnioskow statystycznych. Trzy interaktywne scenariusze z historiami: ograniczenie zakresu (ankieta w luksusowym hotelu), obcinanie proby (tylko studenci, ktorzy zdali), paradoks Simpsona (badanie w domu seniora). Porownuj korelacje w populacji i obciazonej probie, rysuj wlasny region selekcji.
 
 ## Jak pobrac i uruchomic?
 
