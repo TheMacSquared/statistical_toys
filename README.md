@@ -23,6 +23,7 @@ Interaktywne aplikacje do nauki statystyki. Pobierz, uruchom i ucz sie przez eks
 | **Test Chi-Kwadrat** | Interaktywna eksploracja testu niezaleznosci chi-kwadrat | [Pobierz](../../releases) |
 | **Korelacja Pearsona** | Wykres rozrzutu, regresja i wspolczynnik korelacji na zywo | [Pobierz](../../releases) |
 | **Obciazenie probkowania** | Jak niereprezentatywna proba prowadzi do blednych wnioskow | [Pobierz](../../releases) |
+| **Przewodnik Wyboru Testu** | Krok po kroku dobierz test statystyczny i wariant hipotez z drzewa decyzyjnego | [Pobierz](../../releases) |
 
 ## Zobacz jak wygladaja
 

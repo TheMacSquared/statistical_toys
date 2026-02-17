@@ -54,3 +54,14 @@ def test_biased_sampling_module_loads(biased_sampling_module):
     assert '/api/scenarios' in rules
     assert '/api/generate' in rules
     assert '/api/compute' in rules
+
+
+def test_test_selector_module_loads(test_selector_module):
+    assert hasattr(test_selector_module, 'app')
+    assert isinstance(test_selector_module.app, Flask)
+    assert hasattr(test_selector_module, 'TREE_CONFIG')
+    assert hasattr(test_selector_module, 'wizard_session')
+    rules = [r.rule for r in test_selector_module.app.url_map.iter_rules()]
+    assert '/api/tree' in rules
+    assert '/api/resolve' in rules
+    assert '/api/reset' in rules

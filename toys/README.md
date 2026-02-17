@@ -28,6 +28,7 @@ toys/nazwa_zabawki/
 - [x] **chi_square** - Test niezależności chi-kwadrat
 - [x] **pearson_correlation** - Korelacja Pearsona i regresja liniowa
 - [x] **biased_sampling** - Obciazenie probkowania (wizualizacja bledow z niereprezentatywnej proby)
+- [x] **test_selector** - Interaktywny wybor testu i hipotez na podstawie drzewa decyzyjnego
 
 ### Przyszłe Pomysły
 - Test t-Studenta

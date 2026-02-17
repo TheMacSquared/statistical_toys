@@ -119,12 +119,27 @@ def biased_sampling_module():
     return _load_toy_module("biased_sampling")
 
 
+@pytest.fixture(scope="session")
+def test_selector_module():
+    return _load_toy_module("test_selector")
+
+
 @pytest.fixture
 def biased_sampling_client(biased_sampling_module):
     """Flask test client for biased_sampling (stateless)."""
     biased_sampling_module.app.config['TESTING'] = True
     with biased_sampling_module.app.test_client() as client:
         yield client
+
+
+@pytest.fixture
+def test_selector_client(test_selector_module):
+    """Flask test client for test_selector. Resets wizard_session."""
+    test_selector_module.wizard_session['answers'] = {}
+    test_selector_module.app.config['TESTING'] = True
+    with test_selector_module.app.test_client() as client:
+        yield client
+    test_selector_module.wizard_session['answers'] = {}
 
 
 # ── Helpers ────────────────────────────────────────────────────────
