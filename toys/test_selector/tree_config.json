@@ -18,13 +18,13 @@
       "type": "single_choice",
       "when": {"scope": "one_variable"},
       "options": [
-        {"value": "quantitative", "label": "Ilosciowe / ciagle"},
-        {"value": "categorical_proportion", "label": "Nominalne / porzadkowe (proporcja)"}
+        {"value": "quantitative", "label": "Ilościowe / ciągłe"},
+        {"value": "categorical_proportion", "label": "Nominalne / porządkowe (proporcja)"}
       ]
     },
     {
       "id": "one_quant_normality",
-      "label": "Czy normalnosc (lub normalnosc roznic) jest spelniona?",
+      "label": "Czy normalność (lub normalność różnic) jest spełniona?",
       "type": "single_choice",
       "when": {"scope": "one_variable", "one_data_type": "quantitative"},
       "options": [
@@ -34,28 +34,28 @@
     },
     {
       "id": "one_prop_approx",
-      "label": "Czy przyblizenie normalne dla proporcji jest wiarygodne?",
+      "label": "Czy przybliżenie normalne dla proporcji jest wiarygodne?",
       "type": "single_choice",
       "when": {"scope": "one_variable", "one_data_type": "categorical_proportion"},
       "options": [
-        {"value": "ok", "label": "Tak (duza proba)"},
-        {"value": "violated", "label": "Nie (mala proba / skrajna proporcja)"}
+        {"value": "ok", "label": "Tak (duża próba)"},
+        {"value": "violated", "label": "Nie (mała próba / skrajna proporcja)"}
       ]
     },
     {
       "id": "two_data_pattern",
-      "label": "Jaka kombinacja typow zmiennych?",
+      "label": "Jaka kombinacja typów zmiennych?",
       "type": "single_choice",
       "when": {"scope": "two_variables"},
       "options": [
-        {"value": "two_nominal", "label": "Dwie nominalne / porzadkowe"},
-        {"value": "nominal_continuous", "label": "Jedna nominalna + jedna ciagla"},
-        {"value": "two_continuous", "label": "Dwie ciagle"}
+        {"value": "two_nominal", "label": "Dwie nominalne / porządkowe"},
+        {"value": "nominal_continuous", "label": "Jedna nominalna + jedna ciągła"},
+        {"value": "two_continuous", "label": "Dwie ciągłe"}
       ]
     },
     {
       "id": "two_nominal_expected",
-      "label": "Czy oczekiwane liczebnosci w tabeli sa wystarczajace (>=5)?",
+      "label": "Czy oczekiwane liczebności w tabeli są wystarczające (>=5)?",
       "type": "single_choice",
       "when": {"scope": "two_variables", "two_data_pattern": "two_nominal"},
       "options": [
@@ -65,17 +65,17 @@
     },
     {
       "id": "two_nomcont_groups",
-      "label": "Ile grup porownujesz?",
+      "label": "Ile grup porównujesz?",
       "type": "single_choice",
       "when": {"scope": "two_variables", "two_data_pattern": "nominal_continuous"},
       "options": [
         {"value": "two", "label": "2 grupy"},
-        {"value": "more_than_two", "label": "Wiecej niz 2 grupy"}
+        {"value": "more_than_two", "label": "Więcej niż 2 grupy"}
       ]
     },
     {
       "id": "two_nomcont_dependency",
-      "label": "Czy grupy sa niezalezne czy zalezne (parowane)?",
+      "label": "Czy grupy są niezależne czy zależne (parowane)?",
       "type": "single_choice",
       "when": {
         "scope": "two_variables",
@@ -83,13 +83,13 @@
         "two_nomcont_groups": "two"
       },
       "options": [
-        {"value": "independent", "label": "Niezalezne"},
-        {"value": "paired", "label": "Zalezne (parowane)"}
+        {"value": "independent", "label": "Niezależne"},
+        {"value": "paired", "label": "Zależne (parowane)"}
       ]
     },
     {
       "id": "two_nomcont_normality",
-      "label": "Czy zalozenie normalnosci jest spelnione?",
+      "label": "Czy założenie normalności jest spełnione?",
       "type": "single_choice",
       "when": {"scope": "two_variables", "two_data_pattern": "nominal_continuous"},
       "options": [
@@ -99,7 +99,7 @@
     },
     {
       "id": "two_nomcont_variance",
-      "label": "Czy homogenicznosc wariancji jest spelniona?",
+      "label": "Czy homogeniczność wariancji jest spełniona?",
       "type": "single_choice",
       "when": {
         "scope": "two_variables",
@@ -113,7 +113,7 @@
     },
     {
       "id": "two_continuous_normality",
-      "label": "Czy normalnosc i liniowosc dla korelacji Pearsona sa spelnione?",
+      "label": "Czy normalność i liniowość dla korelacji Pearsona są spełnione?",
       "type": "single_choice",
       "when": {"scope": "two_variables", "two_data_pattern": "two_continuous"},
       "options": [
@@ -158,7 +158,7 @@
     "anova": {
       "parameter": "group_means",
       "variants": [
-        {"tail": "global", "h0": "H₀: μ₁ = μ₂ = ... = μk", "ha": "Hₐ: przynajmniej jedna srednia rozna"}
+        {"tail": "global", "h0": "H₀: μ₁ = μ₂ = ... = μk", "ha": "Hₐ: przynajmniej jedna średnia różna"}
       ]
     },
     "correlation": {
@@ -172,23 +172,23 @@
     "independence": {
       "parameter": "association",
       "variants": [
-        {"tail": "global", "h0": "H₀: zmienne sa niezalezne", "ha": "Hₐ: zmienne sa zalezne"}
+        {"tail": "global", "h0": "H₀: zmienne są niezależne", "ha": "Hₐ: zmienne są zależne"}
       ]
     },
     "rank_two_independent": {
       "parameter": "distribution_shift",
       "variants": [
-        {"tail": "two_sided", "h0": "H₀: rozklady grup sa takie same", "ha": "Hₐ: rozklady grup roznia sie"},
-        {"tail": "left", "h0": "H₀: rozklad grupy 1 nie jest mniejszy", "ha": "Hₐ: grupa 1 ma mniejsze wartosci"},
-        {"tail": "right", "h0": "H₀: rozklad grupy 1 nie jest wiekszy", "ha": "Hₐ: grupa 1 ma wieksze wartosci"}
+        {"tail": "two_sided", "h0": "H₀: rozkłady grup są takie same", "ha": "Hₐ: rozkłady grup różnią się"},
+        {"tail": "left", "h0": "H₀: rozkład grupy 1 nie jest mniejszy", "ha": "Hₐ: grupa 1 ma mniejsze wartości"},
+        {"tail": "right", "h0": "H₀: rozkład grupy 1 nie jest większy", "ha": "Hₐ: grupa 1 ma większe wartości"}
       ]
     },
     "rank_paired": {
       "parameter": "median_diff",
       "variants": [
-        {"tail": "two_sided", "h0": "H₀: mediana roznic = 0", "ha": "Hₐ: mediana roznic ≠ 0"},
-        {"tail": "left", "h0": "H₀: mediana roznic ≥ 0", "ha": "Hₐ: mediana roznic < 0"},
-        {"tail": "right", "h0": "H₀: mediana roznic ≤ 0", "ha": "Hₐ: mediana roznic > 0"}
+        {"tail": "two_sided", "h0": "H₀: mediana różnic = 0", "ha": "Hₐ: mediana różnic ≠ 0"},
+        {"tail": "left", "h0": "H₀: mediana różnic ≥ 0", "ha": "Hₐ: mediana różnic < 0"},
+        {"tail": "right", "h0": "H₀: mediana różnic ≤ 0", "ha": "Hₐ: mediana różnic > 0"}
       ]
     }
   },
@@ -197,13 +197,13 @@
       "rule_id": "one_quant_normal",
       "conditions": {"scope": "one_variable", "one_data_type": "quantitative", "one_quant_normality": "ok"},
       "result": {
-        "test_primary": "Test t dla jednej proby",
+        "test_primary": "Test t dla jednej próby",
         "test_alternatives": [
-          {"condition": "Normalnosc naruszona", "test": "Wilcoxon signed-rank"}
+          {"condition": "Normalność naruszona", "test": "Wilcoxon signed-rank"}
         ],
         "hypothesis_template": "mean_one_sample",
-        "example": "Czy srednia zawartosc soli w posilkach firmy X jest rowna 20 g?",
-        "assumptions": ["Zmienne ilosciowe", "Obserwacje niezalezne", "Normalnosc w populacji lub wystarczajaco duza proba"]
+        "example": "Czy średnia zawartość soli w posiłkach firmy X jest równa 20 g?",
+        "assumptions": ["Zmienne ilościowe", "Obserwacje niezależne", "Normalność w populacji lub wystarczająco duża próba"]
       }
     },
     {
@@ -212,11 +212,11 @@
       "result": {
         "test_primary": "Wilcoxon signed-rank",
         "test_alternatives": [
-          {"condition": "Normalnosc spelniona", "test": "Test t dla jednej proby"}
+          {"condition": "Normalność spełniona", "test": "Test t dla jednej próby"}
         ],
         "hypothesis_template": "rank_paired",
-        "example": "Czy mediana wyniku czasu reakcji rozni sie od wartosci referencyjnej?",
-        "assumptions": ["Zmienne co najmniej porzadkowe", "Obserwacje niezalezne"]
+        "example": "Czy mediana wyniku czasu reakcji różni się od wartości referencyjnej?",
+        "assumptions": ["Zmienne co najmniej porządkowe", "Obserwacje niezależne"]
       }
     },
     {
@@ -225,76 +225,76 @@
       "result": {
         "test_primary": "Test proporcji (z)",
         "test_alternatives": [
-          {"condition": "Mala proba lub skrajna proporcja", "test": "Dokladny test dwumianowy"}
+          {"condition": "Mała próba lub skrajna proporcja", "test": "Dokładny test dwumianowy"}
         ],
         "hypothesis_template": "proportion_one_sample",
-        "example": "Czy odsetek osob popierajacych nowa premie przekracza 50%?",
-        "assumptions": ["Zmienne binarne", "Losowa proba", "n*p0 i n*(1-p0) wystarczajaco duze"]
+        "example": "Czy odsetek osob popierających nową premię przekracza 50%?",
+        "assumptions": ["Zmienne binarne", "Losowa próba", "n*p0 i n*(1-p0) wystarczająco duże"]
       }
     },
     {
       "rule_id": "one_proportion_small_sample",
       "conditions": {"scope": "one_variable", "one_data_type": "categorical_proportion", "one_prop_approx": "violated"},
       "result": {
-        "test_primary": "Dokladny test dwumianowy",
+        "test_primary": "Dokładny test dwumianowy",
         "test_alternatives": [
-          {"condition": "Duza proba", "test": "Test proporcji (z)"}
+          {"condition": "Duza próba", "test": "Test proporcji (z)"}
         ],
         "hypothesis_template": "proportion_one_sample",
-        "example": "Czy udzial odpowiedzi \"tak\" rozni sie od 0.5 przy malej probie?",
-        "assumptions": ["Zmienne binarne", "Losowa proba", "Model Bernoulliego"]
+        "example": "Czy udział odpowiedzi \"tak\" różni się od 0.5 przy małej probie?",
+        "assumptions": ["Zmienne binarne", "Losowa próba", "Model Bernoulliego"]
       }
     },
     {
       "rule_id": "two_nominal_ok_counts",
       "conditions": {"scope": "two_variables", "two_data_pattern": "two_nominal", "two_nominal_expected": "ok"},
       "result": {
-        "test_primary": "Test chi-kwadrat niezaleznosci",
+        "test_primary": "Test chi-kwadrat niezależności",
         "test_alternatives": [
-          {"condition": "Niskie oczekiwane liczebnosci", "test": "Dokladny test Fishera"}
+          {"condition": "Niskie oczekiwane liczebności", "test": "Dokładny test Fishera"}
         ],
         "hypothesis_template": "independence",
-        "example": "Czy istnieje zwiazek pomiedzy prywatnym ubezpieczeniem a plcia?",
-        "assumptions": ["Dwie zmienne kategoryczne", "Niezalezne obserwacje", "Oczekiwane liczebnosci zwykle >= 5"]
+        "example": "Czy istnieje związek pomiędzy prywatnym ubezpieczeniem a płcią?",
+        "assumptions": ["Dwie zmienne kategoryczne", "Niezależne obserwacje", "Oczekiwane liczebności zwykle >= 5"]
       }
     },
     {
       "rule_id": "two_nominal_low_counts",
       "conditions": {"scope": "two_variables", "two_data_pattern": "two_nominal", "two_nominal_expected": "low"},
       "result": {
-        "test_primary": "Dokladny test Fishera",
+        "test_primary": "Dokładny test Fishera",
         "test_alternatives": [
-          {"condition": "Wystarczajace oczekiwane liczebnosci", "test": "Test chi-kwadrat niezaleznosci"}
+          {"condition": "Wystarczające oczekiwane liczebności", "test": "Test chi-kwadrat niezależności"}
         ],
         "hypothesis_template": "independence",
-        "example": "Czy istnieje zwiazek miedzy ekspozycja na czynnik a choroba w malej probie?",
-        "assumptions": ["Dwie zmienne kategoryczne", "Niezalezne obserwacje", "Male liczebnosci komorek"]
+        "example": "Czy istnieje związek między ekspozycją na czynnik a chorobą w małej probie?",
+        "assumptions": ["Dwie zmienne kategoryczne", "Niezależne obserwacje", "Małe liczebności komórek"]
       }
     },
     {
       "rule_id": "two_continuous_normal",
       "conditions": {"scope": "two_variables", "two_data_pattern": "two_continuous", "two_continuous_normality": "ok"},
       "result": {
-        "test_primary": "Wspolczynnik korelacji Pearsona",
+        "test_primary": "Współczynnik korelacji Pearsona",
         "test_alternatives": [
-          {"condition": "Brak normalnosci lub monotoniczny zwiazek", "test": "Wspolczynnik korelacji Spearmana"}
+          {"condition": "Brak normalności lub monotoniczny związek", "test": "Współczynnik korelacji Spearmana"}
         ],
         "hypothesis_template": "correlation",
-        "example": "Czy wraz ze wzrostem sredniej zawartosci soli rosnie srednia kalorycznosc posilkow?",
-        "assumptions": ["Dwie zmienne ciagle", "W przyblizeniu liniowy zwiazek", "Brak silnych outlierow"]
+        "example": "Czy wraz ze wzrostem średniej zawartości soli rośnie średnia kaloryczność posiłków?",
+        "assumptions": ["Dwie zmienne ciągłe", "W przybliżeniu liniowy związek", "Brak silnych outlierów"]
       }
     },
     {
       "rule_id": "two_continuous_non_normal",
       "conditions": {"scope": "two_variables", "two_data_pattern": "two_continuous", "two_continuous_normality": "violated"},
       "result": {
-        "test_primary": "Wspolczynnik korelacji Spearmana",
+        "test_primary": "Współczynnik korelacji Spearmana",
         "test_alternatives": [
-          {"condition": "Normalnosc i liniowosc spelnione", "test": "Wspolczynnik korelacji Pearsona"}
+          {"condition": "Normalność i liniowość spełnione", "test": "Współczynnik korelacji Pearsona"}
         ],
         "hypothesis_template": "correlation",
-        "example": "Czy wyzszy ranking sklepu idzie w parze z wyzsza ocena klientow?",
-        "assumptions": ["Dwie zmienne co najmniej porzadkowe", "Relacja monotoniczna"]
+        "example": "Czy wyższy ranking sklepu idzie w parze z wyższa ocena klientów?",
+        "assumptions": ["Dwie zmienne co najmniej porządkowe", "Relacja monotoniczna"]
       }
     },
     {
@@ -308,14 +308,14 @@
         "two_nomcont_variance": "ok"
       },
       "result": {
-        "test_primary": "Test t Studenta dla dwoch prob niezaleznych",
+        "test_primary": "Test t Studenta dla dwóch prób niezależnych",
         "test_alternatives": [
           {"condition": "Wariancja naruszona", "test": "Test t Welcha"},
-          {"condition": "Normalnosc naruszona", "test": "Test Manna-Whitneya U"}
+          {"condition": "Normalność naruszona", "test": "Test Manna-Whitneya U"}
         ],
         "hypothesis_template": "means_two_independent",
-        "example": "Czy srednia zawartosc soli w posilkach firmy X jest rowna sredniej firmy Y?",
-        "assumptions": ["Dwie niezalezne grupy", "Normalnosc", "Jednorodnosc wariancji"]
+        "example": "Czy średnia zawartość soli w posiłkach firmy X jest równa średniej firmy Y?",
+        "assumptions": ["Dwie niezależne grupy", "Normalność", "Jednorodnosc wariancji"]
       }
     },
     {
@@ -331,11 +331,11 @@
       "result": {
         "test_primary": "Test t Welcha",
         "test_alternatives": [
-          {"condition": "Normalnosc naruszona", "test": "Test Manna-Whitneya U"}
+          {"condition": "Normalność naruszona", "test": "Test Manna-Whitneya U"}
         ],
         "hypothesis_template": "means_two_independent",
-        "example": "Czy srednia w grupie A i B rozni sie przy nierownych wariancjach?",
-        "assumptions": ["Dwie niezalezne grupy", "Normalnosc", "Brak zalozenia rownosci wariancji"]
+        "example": "Czy średnia w grupie A i B różni się przy nierównych wariancjach?",
+        "assumptions": ["Dwie niezależne grupy", "Normalność", "Brak założenia równości wariancji"]
       }
     },
     {
@@ -350,11 +350,11 @@
       "result": {
         "test_primary": "Test Manna-Whitneya U",
         "test_alternatives": [
-          {"condition": "Normalnosc i duza proba", "test": "Test t Welcha"}
+          {"condition": "Normalność i duża próba", "test": "Test t Welcha"}
         ],
         "hypothesis_template": "rank_two_independent",
-        "example": "Czy rozklad wynikow grupy A rozni sie od grupy B bez normalnosci?",
-        "assumptions": ["Dwie niezalezne grupy", "Dane co najmniej porzadkowe"]
+        "example": "Czy rozkład wyników grupy A różni się od grupy B bez normalności?",
+        "assumptions": ["Dwie niezależne grupy", "Dane co najmniej porządkowe"]
       }
     },
     {
@@ -367,13 +367,13 @@
         "two_nomcont_normality": "ok"
       },
       "result": {
-        "test_primary": "Test t dla prob zaleznych",
+        "test_primary": "Test t dla prób zależnych",
         "test_alternatives": [
-          {"condition": "Normalnosc roznic naruszona", "test": "Wilcoxon signed-rank"}
+          {"condition": "Normalność różnic naruszona", "test": "Wilcoxon signed-rank"}
         ],
         "hypothesis_template": "means_paired",
-        "example": "Czy sredni wynik przed i po szkoleniu (te same osoby) jest rozny?",
-        "assumptions": ["Pomiary sparowane", "Normalnosc roznic"]
+        "example": "Czy sredni wynik przed i po szkoleniu (te same osoby) jest różny?",
+        "assumptions": ["Pomiary sparowane", "Normalność różnic"]
       }
     },
     {
@@ -388,11 +388,11 @@
       "result": {
         "test_primary": "Wilcoxon signed-rank",
         "test_alternatives": [
-          {"condition": "Normalnosc roznic spelniona", "test": "Test t dla prob zaleznych"}
+          {"condition": "Normalność różnic spełniona", "test": "Test t dla prób zależnych"}
         ],
         "hypothesis_template": "rank_paired",
-        "example": "Czy mediana roznic przed i po terapii jest rozna od zera?",
-        "assumptions": ["Pomiary sparowane", "Dane co najmniej porzadkowe"]
+        "example": "Czy mediana różnic przed i po terapii jest różna od zera?",
+        "assumptions": ["Pomiary sparowane", "Dane co najmniej porządkowe"]
       }
     },
     {
@@ -408,11 +408,11 @@
         "test_primary": "ANOVA jednoczynnikowa",
         "test_alternatives": [
           {"condition": "Wariancja naruszona", "test": "ANOVA Welcha"},
-          {"condition": "Normalnosc naruszona", "test": "Test Kruskala-Wallisa"}
+          {"condition": "Normalność naruszona", "test": "Test Kruskala-Wallisa"}
         ],
         "hypothesis_template": "anova",
-        "example": "Czy srednia zawartosc soli jest taka sama w wiecej niz dwoch grupach?",
-        "assumptions": ["Niezalezne grupy", "Normalnosc", "Jednorodnosc wariancji"]
+        "example": "Czy średnia zawartość soli jest taka sama w więcej niż dwóch grupach?",
+        "assumptions": ["Niezależne grupy", "Normalność", "Jednorodnosc wariancji"]
       }
     },
     {
@@ -427,11 +427,11 @@
       "result": {
         "test_primary": "ANOVA Welcha",
         "test_alternatives": [
-          {"condition": "Normalnosc naruszona", "test": "Test Kruskala-Wallisa"}
+          {"condition": "Normalność naruszona", "test": "Test Kruskala-Wallisa"}
         ],
         "hypothesis_template": "anova",
-        "example": "Czy srednie kilku grup roznia sie przy nierownych wariancjach?",
-        "assumptions": ["Niezalezne grupy", "Normalnosc", "Brak zalozenia rownosci wariancji"]
+        "example": "Czy średnie kilku grup różnią się przy nierównych wariancjach?",
+        "assumptions": ["Niezależne grupy", "Normalność", "Brak założenia równości wariancji"]
       }
     },
     {
@@ -445,11 +445,11 @@
       "result": {
         "test_primary": "Test Kruskala-Wallisa",
         "test_alternatives": [
-          {"condition": "Normalnosc i duze liczebnosci", "test": "ANOVA Welcha"}
+          {"condition": "Normalność i duże liczebności", "test": "ANOVA Welcha"}
         ],
         "hypothesis_template": "anova",
-        "example": "Czy rozklady kilku grup roznia sie bez zalozenia normalnosci?",
-        "assumptions": ["Niezalezne grupy", "Dane co najmniej porzadkowe"]
+        "example": "Czy rozkłady kilku grup różnią się bez założenia normalności?",
+        "assumptions": ["Niezależne grupy", "Dane co najmniej porządkowe"]
       }
     }
   ]

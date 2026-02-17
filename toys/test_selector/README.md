@@ -1,22 +1,23 @@
 # Test Selector - Przewodnik wyboru testu
 
-Interaktywna aplikacja typu wizard, ktora prowadzi krok po kroku przez drzewo wyboru testu statystycznego i pomaga zapisac hipotezy H0/Ha.
+Interaktywna aplikacja typu wizard, która prowadzi krok po kroku przez drzewo wyboru testu statystycznego i pomaga zapisać hipotezy H0/Ha.
 
 ## Co robi aplikacja
 
 - prowadzi przez drzewo decyzji (jedna zmienna / dwie zmienne)
 - rekomenduje test podstawowy
-- pokazuje alternatywy przy naruszeniu zalozen (normalnosc, wariancja)
-- wyswietla gotowe szablony hipotez
-- podaje przyklad problemu i liste zalozen
+- pokazuje alternatywy przy naruszeniu założeń (normalność, wariancja)
+- wyświetla gotowe szablony hipotez
+- podaje przykład problemu i listę założeń
+- zawiera dwa widoki UI: `wizard` (`/`) i `interaktywne drzewo` (`/tree-ui`)
 
-## Zakres testow
+## Zakres testów
 
-- test t dla jednej proby
-- test proporcji (z) i dokladny test dwumianowy
-- test chi-kwadrat niezaleznosci i test Fishera
+- test t dla jednej próby
+- test proporcji (z) i dokładny test dwumianowy
+- test chi-kwadrat niezależności i test Fishera
 - test t Studenta / test t Welcha / test Manna-Whitneya U
-- test t dla prob zaleznych / Wilcoxon signed-rank
+- test t dla prób zależnych / Wilcoxon signed-rank
 - ANOVA jednoczynnikowa / ANOVA Welcha / Kruskal-Wallis
 - korelacja Pearsona / Spearmana
 
@@ -43,13 +44,13 @@ Wynik: `dist/test_selector.exe`
 
 - `GET /api/tree` - zwraca drzewo decyzyjne
 - `POST /api/resolve` - mapuje `answers` na wynik
-- `POST /api/reset` - resetuje sesje wizarda
+- `POST /api/reset` - resetuje sesję wizarda
 - `GET /api/health` - prosty health-check
 
 ## Pliki kluczowe
 
-- `tree_config.json` - definicje pytan, reguly i szablony hipotez
-- `app.py` - backend Flask + engine wyboru reguly
+- `tree_config.json` - definicje pytań, reguły i szablony hipotez
+- `app.py` - backend Flask + engine wyboru reguły
 - `templates/index.html` - UI wizarda
 - `static/script.js` - logika frontendu
 - `static/style.css` - style aplikacji

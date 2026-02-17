@@ -53,7 +53,7 @@ async function initialize() {
         const response = await fetch('/api/tree');
         const data = await response.json();
         if (!data.success) {
-            throw new Error('Nie udalo sie pobrac konfiguracji drzewa.');
+            throw new Error('Nie udało się pobrać konfiguracji drzewa.');
         }
         tree = data.tree;
         alphaInputEl.value = tree.default_alpha || 0.05;
@@ -131,7 +131,7 @@ function updateProgress(activeQuestions) {
     const answered = activeQuestions.filter((q) => q.id in answers).length;
     const total = activeQuestions.length || 1;
     const percent = Math.round((answered / total) * 100);
-    progressLabelEl.textContent = `Postep: ${percent}%`;
+    progressLabelEl.textContent = `Postęp: ${percent}%`;
     progressFillEl.style.width = `${percent}%`;
 }
 
@@ -217,7 +217,7 @@ async function resolveResult() {
         const data = await response.json();
 
         if (!response.ok || !data.success) {
-            const reason = data.error || 'Nie udalo sie wyznaczyc testu.';
+            const reason = data.error || 'Nie udało się wyznaczyć testu.';
             setError(reason);
             return;
         }
@@ -234,7 +234,7 @@ async function resolveResult() {
 
 function renderResult(result) {
     document.getElementById('primary-test').textContent = result.test_primary;
-    document.getElementById('rule-id').textContent = `Regula: ${result.rule_id}`;
+    document.getElementById('rule-id').textContent = `Reguła: ${result.rule_id}`;
     document.getElementById('example').textContent = result.example;
 
     const alternativesEl = document.getElementById('alternatives');
@@ -246,7 +246,7 @@ function renderResult(result) {
     });
     if ((result.test_alternatives || []).length === 0) {
         const li = document.createElement('li');
-        li.textContent = 'Brak alternatyw dla tej sciezki.';
+        li.textContent = 'Brak alternatyw dla tej ścieżki.';
         alternativesEl.appendChild(li);
     }
 
@@ -288,7 +288,7 @@ function renderResult(result) {
     if (!Number.isNaN(alpha) && alpha > 0 && alpha < 1) {
         const alphaCard = document.createElement('div');
         alphaCard.className = 'ts-hypothesis';
-        alphaCard.innerHTML = `<div class="ts-tail">Poziom istotnosci pomocniczo</div><div class="ts-equation">alpha = ${alpha.toFixed(3)}</div>`;
+        alphaCard.innerHTML = `<div class="ts-tail">Poziom istotności pomocniczo</div><div class="ts-equation">alpha = ${alpha.toFixed(3)}</div>`;
         hypothesesEl.appendChild(alphaCard);
     }
 }

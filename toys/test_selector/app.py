@@ -112,6 +112,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/tree-ui')
+def tree_ui():
+    return render_template('tree.html')
+
+
 @app.route('/api/health')
 def health():
     return jsonify({'success': True, 'status': 'ok'})

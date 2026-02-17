@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przewodnik wyboru testu - Interaktywne drzewo</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="stylesheet" href="/common/shared.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tree.css') }}">
+</head>
+<body class="st-app st-page">
+    <div class="st-card ts-tree-shell">
+        <header class="st-header">
+            <div class="ts-tree-nav">
+                <a href="/" class="st-btn st-btn--ghost">Wersja wizard</a>
+                <span class="st-badge st-badge--muted">Wersja: interaktywne drzewo</span>
+            </div>
+            <h1 class="st-header__title">Interaktywne drzewo wyboru testu</h1>
+            <p class="st-header__subtitle">Klikaj gałęzie drzewa i obserwuj, jak zmienia się rekomendacja testu.</p>
+        </header>
+
+        <main class="ts-tree-main">
+            <section class="ts-tree-canvas-wrap">
+                <div class="ts-tree-tools">
+                    <div id="path" class="ts-path"></div>
+                    <button id="btn-reset-tree" class="st-btn st-btn--secondary">Reset drzewa</button>
+                </div>
+                <div id="tree-canvas" class="ts-tree-canvas"></div>
+                <section id="tree-error" class="ts-tree-error ts-hidden"></section>
+            </section>
+
+            <aside class="ts-result-sidebar">
+                <h2>Wynik</h2>
+                <div id="result-placeholder" class="ts-muted">Wybierz gałęzie drzewa, aby zobaczyć rekomendowany test.</div>
+
+                <div id="result-box" class="ts-hidden">
+                    <p class="ts-result-label">Rekomendowany test</p>
+                    <p id="primary-test" class="ts-primary-test"></p>
+                    <p id="rule-id" class="ts-rule-id"></p>
+
+                    <h3>Alternatywy</h3>
+                    <ul id="alternatives" class="ts-list"></ul>
+
+                    <h3>Hipotezy</h3>
+                    <div id="hypotheses" class="ts-hypotheses"></div>
+
+                    <h3>Przykład problemu</h3>
+                    <p id="example" class="ts-text"></p>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='tree.js') }}"></script>
+</body>
+</html>

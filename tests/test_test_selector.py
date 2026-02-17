@@ -6,6 +6,11 @@ def test_index_returns_200(test_selector_client):
     assert resp.status_code == 200
 
 
+def test_tree_ui_returns_200(test_selector_client):
+    resp = test_selector_client.get('/tree-ui')
+    assert resp.status_code == 200
+
+
 def test_tree_endpoint_contract(test_selector_client):
     resp = test_selector_client.get('/api/tree')
     assert resp.status_code == 200
@@ -64,7 +69,7 @@ def test_resolve_one_variable_quantitative_normal(test_selector_client):
     assert resp.status_code == 200
     data = resp.get_json()
     assert data['success'] is True
-    assert data['result']['test_primary'] == 'Test t dla jednej proby'
+    assert data['result']['test_primary'] == 'Test t dla jednej próby'
 
 
 def test_resolve_one_variable_proportion_small_sample(test_selector_client):
@@ -79,7 +84,7 @@ def test_resolve_one_variable_proportion_small_sample(test_selector_client):
     data = resp.get_json()
     assert resp.status_code == 200
     assert data['success'] is True
-    assert data['result']['test_primary'] == 'Dokladny test dwumianowy'
+    assert data['result']['test_primary'] == 'Dokładny test dwumianowy'
 
 
 def test_resolve_two_nominal_low_counts(test_selector_client):
@@ -93,7 +98,7 @@ def test_resolve_two_nominal_low_counts(test_selector_client):
     resp = test_selector_client.post('/api/resolve', json=payload)
     data = resp.get_json()
     assert resp.status_code == 200
-    assert data['result']['test_primary'] == 'Dokladny test Fishera'
+    assert data['result']['test_primary'] == 'Dokładny test Fishera'
 
 
 def test_resolve_two_continuous_normal(test_selector_client):
@@ -107,7 +112,7 @@ def test_resolve_two_continuous_normal(test_selector_client):
     resp = test_selector_client.post('/api/resolve', json=payload)
     data = resp.get_json()
     assert resp.status_code == 200
-    assert data['result']['test_primary'] == 'Wspolczynnik korelacji Pearsona'
+    assert data['result']['test_primary'] == 'Współczynnik korelacji Pearsona'
 
 
 def test_resolve_two_groups_independent_unequal_variance(test_selector_client):

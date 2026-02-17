@@ -14,6 +14,13 @@
     flex-wrap: wrap;
 }
 
+.ts-top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 .ts-alpha-label {
     margin-left: auto;
     font-size: 0.9rem;

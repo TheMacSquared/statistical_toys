@@ -11,10 +11,14 @@
 <body class="st-app st-page">
     <div class="st-card st-card--narrow ts-shell">
         <header class="st-header">
+            <div class="ts-top-nav">
+                <span class="st-badge st-badge--muted">Wersja: wizard</span>
+                <a href="/tree-ui" class="st-btn st-btn--ghost">Wersja drzewo</a>
+            </div>
             <h1 class="st-header__title">Przewodnik wyboru testu</h1>
-            <p class="st-header__subtitle">Wybierz sciezke decyzyjna i uzyskaj rekomendacje testu oraz szablony hipotez.</p>
+            <p class="st-header__subtitle">Wybierz ścieżkę decyzyjną i uzyskaj rekomendację testu oraz szablony hipotez.</p>
             <div class="ts-top-row">
-                <div id="progress-label" class="st-badge st-badge--muted">Postep: 0%</div>
+                <div id="progress-label" class="st-badge st-badge--muted">Postęp: 0%</div>
                 <label class="ts-alpha-label" for="alpha-input">Poziom alfa:</label>
                 <input id="alpha-input" class="ts-alpha-input" type="number" step="0.001" min="0.001" max="0.5" value="0.05">
             </div>
@@ -24,7 +28,7 @@
         </header>
 
         <main>
-            <div id="loading" class="st-loading st-loading--visible">Ladowanie drzewa...</div>
+            <div id="loading" class="st-loading st-loading--visible">Ładowanie drzewa...</div>
 
             <section id="wizard" class="ts-section ts-hidden">
                 <div id="breadcrumbs" class="ts-breadcrumbs"></div>
@@ -47,7 +51,7 @@
 
                 <div class="ts-grid">
                     <article class="ts-panel">
-                        <h3>Gdy zalozenia naruszone</h3>
+                        <h3>Gdy założenia naruszone</h3>
                         <ul id="alternatives" class="ts-list"></ul>
                     </article>
 
@@ -57,18 +61,18 @@
                     </article>
 
                     <article class="ts-panel">
-                        <h3>Przyklad problemu</h3>
+                        <h3>Przykład problemu</h3>
                         <p id="example" class="ts-text"></p>
                     </article>
 
                     <article class="ts-panel">
-                        <h3>Najwazniejsze zalozenia</h3>
+                        <h3>Najważniejsze założenia</h3>
                         <ul id="assumptions" class="ts-list"></ul>
                     </article>
                 </div>
 
                 <div class="ts-actions">
-                    <button id="btn-edit" class="st-btn st-btn--ghost">Wroc do odpowiedzi</button>
+                    <button id="btn-edit" class="st-btn st-btn--ghost">Wróć do odpowiedzi</button>
                     <button id="btn-reset-result" class="st-btn st-btn--primary">Rozpocznij od nowa</button>
                 </div>
             </section>
