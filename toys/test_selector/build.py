@@ -8,7 +8,7 @@ from common.build_utils import add_data_arg
 
 
 def build_exe():
-    for path in ['templates', 'static', 'tree_config.json']:
+    for path in ['templates', 'static', 'tree_config.json', 'tree_config_full.json']:
         if not os.path.exists(path):
             print(f'ERROR: {path} not found!')
             sys.exit(1)
@@ -28,6 +28,7 @@ def build_exe():
         add_data_arg('templates', 'templates'),
         add_data_arg('static', 'static'),
         add_data_arg('tree_config.json', '.'),
+        add_data_arg('tree_config_full.json', '.'),
         '--hidden-import=bottle',
         '--hidden-import=proxy_tools',
         '--clean',

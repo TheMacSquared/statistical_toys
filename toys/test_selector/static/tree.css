@@ -31,6 +31,26 @@
     margin-bottom: 10px;
 }
 
+.ts-tree-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.ts-select-label {
+    font-size: 0.85rem;
+    color: var(--st-color-text-secondary);
+}
+
+.ts-select {
+    border: 1px solid var(--st-color-border);
+    border-radius: 8px;
+    background: #fff;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+}
+
 .ts-path {
     display: flex;
     flex-wrap: wrap;

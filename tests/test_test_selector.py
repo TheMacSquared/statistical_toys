@@ -16,10 +16,23 @@ def test_tree_endpoint_contract(test_selector_client):
     assert resp.status_code == 200
     data = resp.get_json()
     assert data['success'] is True
+    assert data['profile'] == 'basic'
+    assert data['default_profile'] == 'basic'
+    assert 'full' in data['available_profiles']
     assert data['version'] == '1.0'
     assert 'tree' in data
     assert 'questions' in data['tree']
     assert 'rules' in data['tree']
+
+
+def test_tree_endpoint_full_profile(test_selector_client):
+    resp = test_selector_client.get('/api/tree?profile=full')
+    assert resp.status_code == 200
+    data = resp.get_json()
+    assert data['success'] is True
+    assert data['profile'] == 'full'
+    question_ids = {q['id'] for q in data['tree']['questions']}
+    assert 'two_nominal_expected' in question_ids
 
 
 def test_health_ok(test_selector_client):
@@ -61,8 +74,7 @@ def test_resolve_one_variable_quantitative_normal(test_selector_client):
     payload = {
         'answers': {
             'scope': 'one_variable',
-            'one_data_type': 'quantitative',
-            'one_quant_normality': 'ok'
+            'one_data_type': 'quantitative'
         }
     }
     resp = test_selector_client.post('/api/resolve', json=payload)
@@ -86,8 +98,23 @@ def test_resolve_one_variable_proportion_binomial(test_selector_client):
     assert data['result']['test_primary'] == 'Dokładny test dwumianowy'
 
 
-def test_resolve_two_nominal_low_counts(test_selector_client):
+def test_resolve_two_nominal_basic_default(test_selector_client):
     payload = {
+        'answers': {
+            'scope': 'two_variables',
+            'two_data_pattern': 'two_nominal'
+        }
+    }
+    resp = test_selector_client.post('/api/resolve', json=payload)
+    data = resp.get_json()
+    assert resp.status_code == 200
+    assert data['profile'] == 'basic'
+    assert data['result']['test_primary'] == 'Test chi-kwadrat niezależności'
+
+
+def test_resolve_two_nominal_low_counts_full_profile(test_selector_client):
+    payload = {
+        'profile': 'full',
         'answers': {
             'scope': 'two_variables',
             'two_data_pattern': 'two_nominal',
@@ -97,6 +124,7 @@ def test_resolve_two_nominal_low_counts(test_selector_client):
     resp = test_selector_client.post('/api/resolve', json=payload)
     data = resp.get_json()
     assert resp.status_code == 200
+    assert data['profile'] == 'full'
     assert data['result']['test_primary'] == 'Dokładny test Fishera'
 
 
@@ -104,8 +132,7 @@ def test_resolve_two_continuous_normal(test_selector_client):
     payload = {
         'answers': {
             'scope': 'two_variables',
-            'two_data_pattern': 'two_continuous',
-            'two_continuous_normality': 'ok'
+            'two_data_pattern': 'two_continuous'
         }
     }
     resp = test_selector_client.post('/api/resolve', json=payload)
@@ -116,6 +143,7 @@ def test_resolve_two_continuous_normal(test_selector_client):
 
 def test_resolve_two_groups_independent_unequal_variance(test_selector_client):
     payload = {
+        'profile': 'full',
         'answers': {
             'scope': 'two_variables',
             'two_data_pattern': 'nominal_continuous',
@@ -133,6 +161,7 @@ def test_resolve_two_groups_independent_unequal_variance(test_selector_client):
 
 def test_resolve_more_than_two_groups_non_normal(test_selector_client):
     payload = {
+        'profile': 'full',
         'answers': {
             'scope': 'two_variables',
             'two_data_pattern': 'nominal_continuous',
@@ -148,6 +177,7 @@ def test_resolve_more_than_two_groups_non_normal(test_selector_client):
 
 def test_resolve_two_groups_paired_non_normal(test_selector_client):
     payload = {
+        'profile': 'full',
         'answers': {
             'scope': 'two_variables',
             'two_data_pattern': 'nominal_continuous',

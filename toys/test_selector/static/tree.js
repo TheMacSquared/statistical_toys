@@ -1,5 +1,6 @@
 let tree = null;
 let answers = {};
+let selectedProfile = 'basic';
 
 const TAIL_LABELS = {
     two_sided: 'Dwustronna',
@@ -10,18 +11,21 @@ const TAIL_LABELS = {
 
 document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('btn-reset-tree').addEventListener('click', resetTree);
+    document.getElementById('profile-select').addEventListener('change', handleProfileChange);
     await loadTree();
     renderTree();
 });
 
 async function loadTree() {
     try {
-        const response = await fetch('/api/tree');
+        const response = await fetch(`/api/tree?profile=${encodeURIComponent(selectedProfile)}`);
         const data = await response.json();
         if (!response.ok || !data.success) {
             throw new Error('Nie udało się wczytać konfiguracji drzewa.');
         }
         tree = data.tree;
+        selectedProfile = data.profile || data.default_profile || 'basic';
+        document.getElementById('profile-select').value = selectedProfile;
     } catch (error) {
         setError(error.message);
     }
@@ -145,7 +149,10 @@ async function maybeResolve() {
         const response = await fetch('/api/resolve', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ answers })
+            body: JSON.stringify({
+                profile: selectedProfile,
+                answers
+            })
         });
         const data = await response.json();
 
@@ -205,5 +212,12 @@ function showResult(result) {
 async function resetTree() {
     answers = {};
     await fetch('/api/reset', { method: 'POST' });
+    renderTree();
+}
+
+async function handleProfileChange(event) {
+    selectedProfile = event.target.value;
+    answers = {};
+    await loadTree();
     renderTree();
 }

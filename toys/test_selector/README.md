@@ -10,6 +10,9 @@ Interaktywna aplikacja z drzewem decyzyjnym, która prowadzi przez wybór testu 
 - wyświetla gotowe szablony hipotez
 - podaje przykład problemu i listę założeń
 - zawiera jeden widok UI: interaktywne drzewo (`/`)
+- obsługuje dwa profile:
+  - `basic` (domyślny) - uproszczony wariant na środek semestru
+  - `full` - pełny wariant na koniec semestru
 
 ## Zakres testów
 
@@ -20,6 +23,8 @@ Interaktywna aplikacja z drzewem decyzyjnym, która prowadzi przez wybór testu 
 - test t dla prób zależnych / Wilcoxon signed-rank
 - ANOVA jednoczynnikowa / ANOVA Welcha / Kruskal-Wallis
 - korelacja Pearsona / Spearmana
+
+W profilu `basic` aplikacja upraszcza ścieżki (bez niuansów typu Fisher/Welch/Wilcoxon), a profil `full` zachowuje pełne drzewo.
 
 ## Uruchomienie (development)
 
@@ -42,14 +47,15 @@ Wynik: `dist/test_selector.exe`
 
 ## API
 
-- `GET /api/tree` - zwraca drzewo decyzyjne
-- `POST /api/resolve` - mapuje `answers` na wynik
+- `GET /api/tree?profile=basic|full` - zwraca drzewo dla wybranego profilu (domyślnie `basic`)
+- `POST /api/resolve` - mapuje `answers` na wynik (opcjonalnie z polem `profile`)
 - `POST /api/reset` - resetuje aktualny wybór gałęzi
 - `GET /api/health` - prosty health-check
 
 ## Pliki kluczowe
 
-- `tree_config.json` - definicje pytań, reguły i szablony hipotez
+- `tree_config.json` - profil `basic` (domyślny)
+- `tree_config_full.json` - profil `full`
 - `app.py` - backend Flask + engine wyboru reguły
 - `templates/tree.html` - UI interaktywnego drzewa
 - `static/tree.js` - logika frontendu

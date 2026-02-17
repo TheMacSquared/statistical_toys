@@ -19,7 +19,14 @@
             <section class="ts-tree-canvas-wrap">
                 <div class="ts-tree-tools">
                     <div id="path" class="ts-path"></div>
-                    <button id="btn-reset-tree" class="st-btn st-btn--secondary">Reset drzewa</button>
+                    <div class="ts-tree-controls">
+                        <label for="profile-select" class="ts-select-label">Wariant kursu:</label>
+                        <select id="profile-select" class="ts-select">
+                            <option value="basic">Podstawowy</option>
+                            <option value="full">Pełny</option>
+                        </select>
+                        <button id="btn-reset-tree" class="st-btn st-btn--secondary">Reset drzewa</button>
+                    </div>
                 </div>
                 <div id="tree-canvas" class="ts-tree-canvas"></div>
                 <section id="tree-error" class="ts-tree-error ts-hidden"></section>

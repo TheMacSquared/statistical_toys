@@ -35,11 +35,31 @@ def load_tree_config():
         return json.load(f)
 
 
-TREE_CONFIG = load_tree_config()
-QUESTION_MAP = {q['id']: q for q in TREE_CONFIG['questions']}
-VALID_OPTIONS = {
-    q['id']: {opt['value'] for opt in q['options']}
-    for q in TREE_CONFIG['questions']
+def load_profiled_configs():
+    base_dir = get_bundle_dir()
+    files = {
+        'basic': 'tree_config.json',
+        'full': 'tree_config_full.json'
+    }
+    configs = {}
+    for profile, filename in files.items():
+        path = os.path.join(base_dir, filename)
+        with open(path, 'r', encoding='utf-8') as f:
+            configs[profile] = json.load(f)
+    return configs
+
+
+DEFAULT_PROFILE = 'basic'
+TREE_CONFIGS = load_profiled_configs()
+TREE_CONFIG = TREE_CONFIGS[DEFAULT_PROFILE]
+QUESTION_MAPS = {
+    profile: {q['id']: q for q in config['questions']}
+    for profile, config in TREE_CONFIGS.items()
+}
+VALID_OPTIONS_BY_PROFILE = {
+    profile: {q['id']: {opt['value'] for opt in q['options']}
+              for q in config['questions']}
+    for profile, config in TREE_CONFIGS.items()
 }
 
 wizard_session = {
@@ -68,43 +88,54 @@ def _question_is_active(question, answers):
     return _matches_constraints(answers, when)
 
 
-def _active_questions(answers):
+def _active_questions(tree_config, answers):
     active = []
-    for question in TREE_CONFIG['questions']:
+    for question in tree_config['questions']:
         if _question_is_active(question, answers):
             active.append(question)
     return active
 
 
-def _validate_answers_shape(answers):
+def _validate_answers_shape(profile, answers):
     if not isinstance(answers, dict):
         return 'Pole "answers" musi byc obiektem JSON.'
 
-    unknown = [qid for qid in answers.keys() if qid not in QUESTION_MAP]
+    question_map = QUESTION_MAPS[profile]
+    valid_options = VALID_OPTIONS_BY_PROFILE[profile]
+
+    unknown = [qid for qid in answers.keys() if qid not in question_map]
     if unknown:
         return f'Nieznane pytania w answers: {", ".join(sorted(unknown))}'
 
     for qid, value in answers.items():
-        if value not in VALID_OPTIONS[qid]:
+        if value not in valid_options[qid]:
             return f'Niepoprawna odpowiedz dla "{qid}": {value}'
 
     return None
 
 
-def _find_matching_rule(answers):
-    for rule in TREE_CONFIG['rules']:
+def _find_matching_rule(tree_config, answers):
+    for rule in tree_config['rules']:
         if _matches_constraints(answers, rule['conditions']):
             return rule
     return None
 
 
-def _build_result_payload(rule):
+def _build_result_payload(tree_config, rule):
     result = deepcopy(rule['result'])
     template_id = result.get('hypothesis_template')
-    result['hypotheses'] = deepcopy(TREE_CONFIG['hypothesis_templates'].get(template_id, {}))
+    result['hypotheses'] = deepcopy(tree_config['hypothesis_templates'].get(template_id, {}))
     result['rule_id'] = rule['rule_id']
-    result['alpha_default'] = TREE_CONFIG.get('default_alpha', 0.05)
+    result['alpha_default'] = tree_config.get('default_alpha', 0.05)
     return result
+
+
+def _select_profile(profile):
+    if profile is None:
+        return DEFAULT_PROFILE
+    if profile not in TREE_CONFIGS:
+        return None
+    return profile
 
 
 @app.route('/')
@@ -119,10 +150,17 @@ def health():
 
 @app.route('/api/tree')
 def tree():
+    selected_profile = _select_profile(request.args.get('profile', DEFAULT_PROFILE))
+    if selected_profile is None:
+        return jsonify({'success': False, 'error': 'Nieznany profil drzewa.'}), 400
+    tree_config = TREE_CONFIGS[selected_profile]
     return jsonify({
         'success': True,
-        'version': TREE_CONFIG.get('version', '1.0'),
-        'tree': TREE_CONFIG
+        'profile': selected_profile,
+        'default_profile': DEFAULT_PROFILE,
+        'available_profiles': ['basic', 'full'],
+        'version': tree_config.get('version', '1.0'),
+        'tree': tree_config
     })
 
 
@@ -135,15 +173,20 @@ def reset():
 @app.route('/api/resolve', methods=['POST'])
 def resolve():
     payload = request.get_json(silent=True) or {}
+    selected_profile = _select_profile(payload.get('profile', DEFAULT_PROFILE))
+    if selected_profile is None:
+        return jsonify({'success': False, 'error': 'Nieznany profil drzewa.'}), 400
+
+    tree_config = TREE_CONFIGS[selected_profile]
     answers = payload.get('answers', wizard_session['answers'])
 
-    shape_error = _validate_answers_shape(answers)
+    shape_error = _validate_answers_shape(selected_profile, answers)
     if shape_error:
         return jsonify({'success': False, 'error': shape_error}), 400
 
     wizard_session['answers'] = dict(answers)
 
-    active_questions = _active_questions(answers)
+    active_questions = _active_questions(tree_config, answers)
     missing = [q['id'] for q in active_questions if q['id'] not in answers]
     if missing:
         return jsonify({
@@ -153,7 +196,7 @@ def resolve():
             'active_questions': [q['id'] for q in active_questions]
         }), 400
 
-    rule = _find_matching_rule(answers)
+    rule = _find_matching_rule(tree_config, answers)
     if not rule:
         return jsonify({
             'success': False,
@@ -163,7 +206,8 @@ def resolve():
 
     return jsonify({
         'success': True,
-        'result': _build_result_payload(rule),
+        'profile': selected_profile,
+        'result': _build_result_payload(tree_config, rule),
         'answers': answers
     })
 

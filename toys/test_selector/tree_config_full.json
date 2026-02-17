@@ -1,0 +1,431 @@
+{
+  "version": "1.0",
+  "default_alpha": 0.05,
+  "app_title": "Przewodnik wyboru testu statystycznego",
+  "questions": [
+    {
+      "id": "scope",
+      "label": "Ile zmiennych analizujesz?",
+      "type": "single_choice",
+      "options": [
+        {"value": "one_variable", "label": "Jedna zmienna"},
+        {"value": "two_variables", "label": "Dwie zmienne"}
+      ]
+    },
+    {
+      "id": "one_data_type",
+      "label": "Jaki typ danych ma zmienna?",
+      "type": "single_choice",
+      "when": {"scope": "one_variable"},
+      "options": [
+        {"value": "quantitative", "label": "Ilościowe / ciągłe"},
+        {"value": "categorical_proportion", "label": "Nominalne / porządkowe (proporcja)"}
+      ]
+    },
+    {
+      "id": "one_quant_normality",
+      "label": "Czy normalność (lub normalność różnic) jest spełniona?",
+      "type": "single_choice",
+      "when": {"scope": "one_variable", "one_data_type": "quantitative"},
+      "options": [
+        {"value": "ok", "label": "Tak"},
+        {"value": "violated", "label": "Nie"}
+      ]
+    },
+    {
+      "id": "two_data_pattern",
+      "label": "Jaka kombinacja typów zmiennych?",
+      "type": "single_choice",
+      "when": {"scope": "two_variables"},
+      "options": [
+        {"value": "two_nominal", "label": "Dwie nominalne / porządkowe"},
+        {"value": "nominal_continuous", "label": "Jedna nominalna + jedna ciągła"},
+        {"value": "two_continuous", "label": "Dwie ciągłe"}
+      ]
+    },
+    {
+      "id": "two_nominal_expected",
+      "label": "Czy oczekiwane liczebności w tabeli są wystarczające (>=5)?",
+      "type": "single_choice",
+      "when": {"scope": "two_variables", "two_data_pattern": "two_nominal"},
+      "options": [
+        {"value": "ok", "label": "Tak"},
+        {"value": "low", "label": "Nie"}
+      ]
+    },
+    {
+      "id": "two_nomcont_groups",
+      "label": "Ile grup porównujesz?",
+      "type": "single_choice",
+      "when": {"scope": "two_variables", "two_data_pattern": "nominal_continuous"},
+      "options": [
+        {"value": "two", "label": "2 grupy"},
+        {"value": "more_than_two", "label": "Więcej niż 2 grupy"}
+      ]
+    },
+    {
+      "id": "two_nomcont_dependency",
+      "label": "Czy grupy są niezależne czy zależne (parowane)?",
+      "type": "single_choice",
+      "when": {
+        "scope": "two_variables",
+        "two_data_pattern": "nominal_continuous",
+        "two_nomcont_groups": "two"
+      },
+      "options": [
+        {"value": "independent", "label": "Niezależne"},
+        {"value": "paired", "label": "Zależne (parowane)"}
+      ]
+    },
+    {
+      "id": "two_nomcont_normality",
+      "label": "Czy założenie normalności jest spełnione?",
+      "type": "single_choice",
+      "when": {"scope": "two_variables", "two_data_pattern": "nominal_continuous"},
+      "options": [
+        {"value": "ok", "label": "Tak"},
+        {"value": "violated", "label": "Nie"}
+      ]
+    },
+    {
+      "id": "two_nomcont_variance",
+      "label": "Czy homogeniczność wariancji jest spełniona?",
+      "type": "single_choice",
+      "when": {
+        "scope": "two_variables",
+        "two_data_pattern": "nominal_continuous",
+        "two_nomcont_normality": "ok"
+      },
+      "options": [
+        {"value": "ok", "label": "Tak"},
+        {"value": "violated", "label": "Nie"}
+      ]
+    },
+    {
+      "id": "two_continuous_normality",
+      "label": "Czy normalność i liniowość dla korelacji Pearsona są spełnione?",
+      "type": "single_choice",
+      "when": {"scope": "two_variables", "two_data_pattern": "two_continuous"},
+      "options": [
+        {"value": "ok", "label": "Tak"},
+        {"value": "violated", "label": "Nie"}
+      ]
+    }
+  ],
+  "hypothesis_templates": {
+    "mean_one_sample": {
+      "parameter": "mu",
+      "variants": [
+        {"tail": "two_sided", "h0": "H₀: μ = μ₀", "ha": "Hₐ: μ ≠ μ₀"},
+        {"tail": "left", "h0": "H₀: μ ≥ μ₀", "ha": "Hₐ: μ < μ₀"},
+        {"tail": "right", "h0": "H₀: μ ≤ μ₀", "ha": "Hₐ: μ > μ₀"}
+      ]
+    },
+    "proportion_one_sample": {
+      "parameter": "p",
+      "variants": [
+        {"tail": "two_sided", "h0": "H₀: p = p₀", "ha": "Hₐ: p ≠ p₀"},
+        {"tail": "left", "h0": "H₀: p ≥ p₀", "ha": "Hₐ: p < p₀"},
+        {"tail": "right", "h0": "H₀: p ≤ p₀", "ha": "Hₐ: p > p₀"}
+      ]
+    },
+    "means_two_independent": {
+      "parameter": "mu1_minus_mu2",
+      "variants": [
+        {"tail": "two_sided", "h0": "H₀: μ₁ - μ₂ = 0", "ha": "Hₐ: μ₁ - μ₂ ≠ 0"},
+        {"tail": "left", "h0": "H₀: μ₁ - μ₂ ≥ 0", "ha": "Hₐ: μ₁ - μ₂ < 0"},
+        {"tail": "right", "h0": "H₀: μ₁ - μ₂ ≤ 0", "ha": "Hₐ: μ₁ - μ₂ > 0"}
+      ]
+    },
+    "means_paired": {
+      "parameter": "mu_d",
+      "variants": [
+        {"tail": "two_sided", "h0": "H₀: μd = 0", "ha": "Hₐ: μd ≠ 0"},
+        {"tail": "left", "h0": "H₀: μd ≥ 0", "ha": "Hₐ: μd < 0"},
+        {"tail": "right", "h0": "H₀: μd ≤ 0", "ha": "Hₐ: μd > 0"}
+      ]
+    },
+    "anova": {
+      "parameter": "group_means",
+      "variants": [
+        {"tail": "global", "h0": "H₀: μ₁ = μ₂ = ... = μk", "ha": "Hₐ: przynajmniej jedna średnia różna"}
+      ]
+    },
+    "correlation": {
+      "parameter": "rho",
+      "variants": [
+        {"tail": "two_sided", "h0": "H₀: ρ = 0", "ha": "Hₐ: ρ ≠ 0"},
+        {"tail": "left", "h0": "H₀: ρ ≥ 0", "ha": "Hₐ: ρ < 0"},
+        {"tail": "right", "h0": "H₀: ρ ≤ 0", "ha": "Hₐ: ρ > 0"}
+      ]
+    },
+    "independence": {
+      "parameter": "association",
+      "variants": [
+        {"tail": "global", "h0": "H₀: zmienne są niezależne", "ha": "Hₐ: zmienne są zależne"}
+      ]
+    },
+    "rank_two_independent": {
+      "parameter": "distribution_shift",
+      "variants": [
+        {"tail": "two_sided", "h0": "H₀: rozkłady grup są takie same", "ha": "Hₐ: rozkłady grup różnią się"},
+        {"tail": "left", "h0": "H₀: rozkład grupy 1 nie jest mniejszy", "ha": "Hₐ: grupa 1 ma mniejsze wartości"},
+        {"tail": "right", "h0": "H₀: rozkład grupy 1 nie jest większy", "ha": "Hₐ: grupa 1 ma większe wartości"}
+      ]
+    },
+    "rank_paired": {
+      "parameter": "median_diff",
+      "variants": [
+        {"tail": "two_sided", "h0": "H₀: mediana różnic = 0", "ha": "Hₐ: mediana różnic ≠ 0"},
+        {"tail": "left", "h0": "H₀: mediana różnic ≥ 0", "ha": "Hₐ: mediana różnic < 0"},
+        {"tail": "right", "h0": "H₀: mediana różnic ≤ 0", "ha": "Hₐ: mediana różnic > 0"}
+      ]
+    }
+  },
+  "rules": [
+    {
+      "rule_id": "one_quant_normal",
+      "conditions": {"scope": "one_variable", "one_data_type": "quantitative", "one_quant_normality": "ok"},
+      "result": {
+        "test_primary": "Test t dla jednej próby",
+        "test_alternatives": [
+          {"condition": "Normalność naruszona", "test": "Wilcoxon signed-rank"}
+        ],
+        "hypothesis_template": "mean_one_sample",
+        "example": "Czy średnia zawartość soli w posiłkach firmy X jest równa 20 g?",
+        "assumptions": ["Zmienne ilościowe", "Obserwacje niezależne", "Normalność w populacji lub wystarczająco duża próba"]
+      }
+    },
+    {
+      "rule_id": "one_quant_non_normal",
+      "conditions": {"scope": "one_variable", "one_data_type": "quantitative", "one_quant_normality": "violated"},
+      "result": {
+        "test_primary": "Wilcoxon signed-rank",
+        "test_alternatives": [
+          {"condition": "Normalność spełniona", "test": "Test t dla jednej próby"}
+        ],
+        "hypothesis_template": "rank_paired",
+        "example": "Czy mediana wyniku czasu reakcji różni się od wartości referencyjnej?",
+        "assumptions": ["Zmienne co najmniej porządkowe", "Obserwacje niezależne"]
+      }
+    },
+    {
+      "rule_id": "one_proportion_binomial",
+      "conditions": {"scope": "one_variable", "one_data_type": "categorical_proportion"},
+      "result": {
+        "test_primary": "Dokładny test dwumianowy",
+        "test_alternatives": [],
+        "hypothesis_template": "proportion_one_sample",
+        "example": "Czy udział odpowiedzi \"tak\" różni się od 0.5?",
+        "assumptions": ["Zmienne binarne", "Losowa próba", "Model Bernoulliego"]
+      }
+    },
+    {
+      "rule_id": "two_nominal_ok_counts",
+      "conditions": {"scope": "two_variables", "two_data_pattern": "two_nominal", "two_nominal_expected": "ok"},
+      "result": {
+        "test_primary": "Test chi-kwadrat niezależności",
+        "test_alternatives": [
+          {"condition": "Niskie oczekiwane liczebności", "test": "Dokładny test Fishera"}
+        ],
+        "hypothesis_template": "independence",
+        "example": "Czy istnieje związek pomiędzy prywatnym ubezpieczeniem a płcią?",
+        "assumptions": ["Dwie zmienne kategoryczne", "Niezależne obserwacje", "Oczekiwane liczebności zwykle >= 5"]
+      }
+    },
+    {
+      "rule_id": "two_nominal_low_counts",
+      "conditions": {"scope": "two_variables", "two_data_pattern": "two_nominal", "two_nominal_expected": "low"},
+      "result": {
+        "test_primary": "Dokładny test Fishera",
+        "test_alternatives": [
+          {"condition": "Wystarczające oczekiwane liczebności", "test": "Test chi-kwadrat niezależności"}
+        ],
+        "hypothesis_template": "independence",
+        "example": "Czy istnieje związek między ekspozycją na czynnik a chorobą w małej probie?",
+        "assumptions": ["Dwie zmienne kategoryczne", "Niezależne obserwacje", "Małe liczebności komórek"]
+      }
+    },
+    {
+      "rule_id": "two_continuous_normal",
+      "conditions": {"scope": "two_variables", "two_data_pattern": "two_continuous", "two_continuous_normality": "ok"},
+      "result": {
+        "test_primary": "Współczynnik korelacji Pearsona",
+        "test_alternatives": [
+          {"condition": "Brak normalności lub monotoniczny związek", "test": "Współczynnik korelacji Spearmana"}
+        ],
+        "hypothesis_template": "correlation",
+        "example": "Czy wraz ze wzrostem średniej zawartości soli rośnie średnia kaloryczność posiłków?",
+        "assumptions": ["Dwie zmienne ciągłe", "W przybliżeniu liniowy związek", "Brak silnych outlierów"]
+      }
+    },
+    {
+      "rule_id": "two_continuous_non_normal",
+      "conditions": {"scope": "two_variables", "two_data_pattern": "two_continuous", "two_continuous_normality": "violated"},
+      "result": {
+        "test_primary": "Współczynnik korelacji Spearmana",
+        "test_alternatives": [
+          {"condition": "Normalność i liniowość spełnione", "test": "Współczynnik korelacji Pearsona"}
+        ],
+        "hypothesis_template": "correlation",
+        "example": "Czy wyższy ranking sklepu idzie w parze z wyższa ocena klientów?",
+        "assumptions": ["Dwie zmienne co najmniej porządkowe", "Relacja monotoniczna"]
+      }
+    },
+    {
+      "rule_id": "two_groups_independent_normal_equal_var",
+      "conditions": {
+        "scope": "two_variables",
+        "two_data_pattern": "nominal_continuous",
+        "two_nomcont_groups": "two",
+        "two_nomcont_dependency": "independent",
+        "two_nomcont_normality": "ok",
+        "two_nomcont_variance": "ok"
+      },
+      "result": {
+        "test_primary": "Test t Studenta dla dwóch prób niezależnych",
+        "test_alternatives": [
+          {"condition": "Wariancja naruszona", "test": "Test t Welcha"},
+          {"condition": "Normalność naruszona", "test": "Test Manna-Whitneya U"}
+        ],
+        "hypothesis_template": "means_two_independent",
+        "example": "Czy średnia zawartość soli w posiłkach firmy X jest równa średniej firmy Y?",
+        "assumptions": ["Dwie niezależne grupy", "Normalność", "Jednorodnosc wariancji"]
+      }
+    },
+    {
+      "rule_id": "two_groups_independent_normal_unequal_var",
+      "conditions": {
+        "scope": "two_variables",
+        "two_data_pattern": "nominal_continuous",
+        "two_nomcont_groups": "two",
+        "two_nomcont_dependency": "independent",
+        "two_nomcont_normality": "ok",
+        "two_nomcont_variance": "violated"
+      },
+      "result": {
+        "test_primary": "Test t Welcha",
+        "test_alternatives": [
+          {"condition": "Normalność naruszona", "test": "Test Manna-Whitneya U"}
+        ],
+        "hypothesis_template": "means_two_independent",
+        "example": "Czy średnia w grupie A i B różni się przy nierównych wariancjach?",
+        "assumptions": ["Dwie niezależne grupy", "Normalność", "Brak założenia równości wariancji"]
+      }
+    },
+    {
+      "rule_id": "two_groups_independent_non_normal",
+      "conditions": {
+        "scope": "two_variables",
+        "two_data_pattern": "nominal_continuous",
+        "two_nomcont_groups": "two",
+        "two_nomcont_dependency": "independent",
+        "two_nomcont_normality": "violated"
+      },
+      "result": {
+        "test_primary": "Test Manna-Whitneya U",
+        "test_alternatives": [
+          {"condition": "Normalność i duża próba", "test": "Test t Welcha"}
+        ],
+        "hypothesis_template": "rank_two_independent",
+        "example": "Czy rozkład wyników grupy A różni się od grupy B bez normalności?",
+        "assumptions": ["Dwie niezależne grupy", "Dane co najmniej porządkowe"]
+      }
+    },
+    {
+      "rule_id": "two_groups_paired_normal",
+      "conditions": {
+        "scope": "two_variables",
+        "two_data_pattern": "nominal_continuous",
+        "two_nomcont_groups": "two",
+        "two_nomcont_dependency": "paired",
+        "two_nomcont_normality": "ok"
+      },
+      "result": {
+        "test_primary": "Test t dla prób zależnych",
+        "test_alternatives": [
+          {"condition": "Normalność różnic naruszona", "test": "Wilcoxon signed-rank"}
+        ],
+        "hypothesis_template": "means_paired",
+        "example": "Czy sredni wynik przed i po szkoleniu (te same osoby) jest różny?",
+        "assumptions": ["Pomiary sparowane", "Normalność różnic"]
+      }
+    },
+    {
+      "rule_id": "two_groups_paired_non_normal",
+      "conditions": {
+        "scope": "two_variables",
+        "two_data_pattern": "nominal_continuous",
+        "two_nomcont_groups": "two",
+        "two_nomcont_dependency": "paired",
+        "two_nomcont_normality": "violated"
+      },
+      "result": {
+        "test_primary": "Wilcoxon signed-rank",
+        "test_alternatives": [
+          {"condition": "Normalność różnic spełniona", "test": "Test t dla prób zależnych"}
+        ],
+        "hypothesis_template": "rank_paired",
+        "example": "Czy mediana różnic przed i po terapii jest różna od zera?",
+        "assumptions": ["Pomiary sparowane", "Dane co najmniej porządkowe"]
+      }
+    },
+    {
+      "rule_id": "more_than_two_normal_equal_var",
+      "conditions": {
+        "scope": "two_variables",
+        "two_data_pattern": "nominal_continuous",
+        "two_nomcont_groups": "more_than_two",
+        "two_nomcont_normality": "ok",
+        "two_nomcont_variance": "ok"
+      },
+      "result": {
+        "test_primary": "ANOVA jednoczynnikowa",
+        "test_alternatives": [
+          {"condition": "Wariancja naruszona", "test": "ANOVA Welcha"},
+          {"condition": "Normalność naruszona", "test": "Test Kruskala-Wallisa"}
+        ],
+        "hypothesis_template": "anova",
+        "example": "Czy średnia zawartość soli jest taka sama w więcej niż dwóch grupach?",
+        "assumptions": ["Niezależne grupy", "Normalność", "Jednorodnosc wariancji"]
+      }
+    },
+    {
+      "rule_id": "more_than_two_normal_unequal_var",
+      "conditions": {
+        "scope": "two_variables",
+        "two_data_pattern": "nominal_continuous",
+        "two_nomcont_groups": "more_than_two",
+        "two_nomcont_normality": "ok",
+        "two_nomcont_variance": "violated"
+      },
+      "result": {
+        "test_primary": "ANOVA Welcha",
+        "test_alternatives": [
+          {"condition": "Normalność naruszona", "test": "Test Kruskala-Wallisa"}
+        ],
+        "hypothesis_template": "anova",
+        "example": "Czy średnie kilku grup różnią się przy nierównych wariancjach?",
+        "assumptions": ["Niezależne grupy", "Normalność", "Brak założenia równości wariancji"]
+      }
+    },
+    {
+      "rule_id": "more_than_two_non_normal",
+      "conditions": {
+        "scope": "two_variables",
+        "two_data_pattern": "nominal_continuous",
+        "two_nomcont_groups": "more_than_two",
+        "two_nomcont_normality": "violated"
+      },
+      "result": {
+        "test_primary": "Test Kruskala-Wallisa",
+        "test_alternatives": [
+          {"condition": "Normalność i duże liczebności", "test": "ANOVA Welcha"}
+        ],
+        "hypothesis_template": "anova",
+        "example": "Czy rozkłady kilku grup różnią się bez założenia normalności?",
+        "assumptions": ["Niezależne grupy", "Dane co najmniej porządkowe"]
+      }
+    }
+  ]
+}
