@@ -6,9 +6,9 @@ def test_index_returns_200(test_selector_client):
     assert resp.status_code == 200
 
 
-def test_tree_ui_returns_200(test_selector_client):
+def test_tree_ui_returns_404(test_selector_client):
     resp = test_selector_client.get('/tree-ui')
-    assert resp.status_code == 200
+    assert resp.status_code == 404
 
 
 def test_tree_endpoint_contract(test_selector_client):
@@ -72,12 +72,11 @@ def test_resolve_one_variable_quantitative_normal(test_selector_client):
     assert data['result']['test_primary'] == 'Test t dla jednej próby'
 
 
-def test_resolve_one_variable_proportion_small_sample(test_selector_client):
+def test_resolve_one_variable_proportion_binomial(test_selector_client):
     payload = {
         'answers': {
             'scope': 'one_variable',
-            'one_data_type': 'categorical_proportion',
-            'one_prop_approx': 'violated'
+            'one_data_type': 'categorical_proportion'
         }
     }
     resp = test_selector_client.post('/api/resolve', json=payload)

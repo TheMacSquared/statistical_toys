@@ -1,6 +1,6 @@
 # Test Selector - Przewodnik wyboru testu
 
-Interaktywna aplikacja typu wizard, która prowadzi krok po kroku przez drzewo wyboru testu statystycznego i pomaga zapisać hipotezy H0/Ha.
+Interaktywna aplikacja z drzewem decyzyjnym, która prowadzi przez wybór testu statystycznego i pomaga zapisać hipotezy H0/Ha.
 
 ## Co robi aplikacja
 
@@ -9,7 +9,7 @@ Interaktywna aplikacja typu wizard, która prowadzi krok po kroku przez drzewo w
 - pokazuje alternatywy przy naruszeniu założeń (normalność, wariancja)
 - wyświetla gotowe szablony hipotez
 - podaje przykład problemu i listę założeń
-- zawiera dwa widoki UI: `wizard` (`/`) i `interaktywne drzewo` (`/tree-ui`)
+- zawiera jeden widok UI: interaktywne drzewo (`/`)
 
 ## Zakres testów
 
@@ -44,13 +44,13 @@ Wynik: `dist/test_selector.exe`
 
 - `GET /api/tree` - zwraca drzewo decyzyjne
 - `POST /api/resolve` - mapuje `answers` na wynik
-- `POST /api/reset` - resetuje sesję wizarda
+- `POST /api/reset` - resetuje aktualny wybór gałęzi
 - `GET /api/health` - prosty health-check
 
 ## Pliki kluczowe
 
 - `tree_config.json` - definicje pytań, reguły i szablony hipotez
 - `app.py` - backend Flask + engine wyboru reguły
-- `templates/index.html` - UI wizarda
-- `static/script.js` - logika frontendu
-- `static/style.css` - style aplikacji
+- `templates/tree.html` - UI interaktywnego drzewa
+- `static/tree.js` - logika frontendu
+- `static/tree.css` - style aplikacji
