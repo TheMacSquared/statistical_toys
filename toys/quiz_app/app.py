@@ -251,15 +251,21 @@ def next_question(quiz_id):
                 'question': question['question']
             }
 
-            # Dla quizów z losowaniem odpowiedzi (testy) - wybierz 3 losowe opcje
+            # Dla quizów z losowaniem odpowiedzi - wybierz 3 losowe opcje
             # zawsze włączając poprawną odpowiedź
             if 'all_options' in question:
-                correct_answer = question['correct']
-                other_options = [opt for opt in question['all_options'] if opt != correct_answer]
+                all_opts = question['all_options']
+            elif quiz_config and quiz_config.get('options'):
+                all_opts = [o['value'] for o in quiz_config['options']]
+            else:
+                all_opts = None
 
-                # Wylosuj niepoprawne opcje (3 dla 4-opcyjnych pytań, 2 dla reszty)
+            if all_opts:
+                correct_answer = question['correct']
+                other_options = [opt for opt in all_opts if opt != correct_answer]
+
                 random.shuffle(other_options)
-                if len(question['all_options']) <= 4:
+                if len(all_opts) <= 4:
                     selected_wrong = other_options
                 else:
                     selected_wrong = other_options[:2]
@@ -267,6 +273,15 @@ def next_question(quiz_id):
                 # Połącz poprawną z nieprawiymi i wymieszaj
                 selected_options = selected_wrong + [correct_answer]
                 random.shuffle(selected_options)
+
+                # Jeśli opcje mają labele w konfiguracji, użyj ich
+                if quiz_config and quiz_config.get('options'):
+                    label_map = {o['value']: o['label'] for o in quiz_config['options']}
+                    selected_options = [
+                        {'value': opt, 'label': label_map[opt]}
+                        if opt in label_map else opt
+                        for opt in selected_options
+                    ]
 
                 response_question['options'] = selected_options
 

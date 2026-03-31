@@ -32,7 +32,7 @@
       "emoji": "📈",
       "description": "Dopasuj zjawisko do rozkładu prawdopodobieństwa",
       "file": "rozklady.json",
-      "answer_type": "multiple_choice_6",
+      "answer_type": "multiple_choice_random",
       "options": [
         {
           "value": "dwumianowy",
