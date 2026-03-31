@@ -163,12 +163,6 @@
       "explanation": "Meteory pojawiają się ze stałą średnią częstością (λ=5/godz), niezależnie od siebie, w dowolnej chwili z równym prawdopodobieństwem. Brak górnego limitu. Rozkład Poissona."
     },
     {
-      "id": 28,
-      "question": "Wynik pojedynczego rzutu 100-ścienną kostką (D100)",
-      "correct": "dwumianowy",
-      "explanation": "UWAGA: To pytanie jest mylące. Pojedynczy rzut kostką ma rozkład JEDNOSTAJNY DYSKRETNY, nie dwumianowy. Dwumianowy dotyczy LICZBY sukcesów w próbach, a nie wyniku rzutu. [TO PYTANIE NALEŻY POPRAWIĆ]"
-    },
-    {
       "id": 29,
       "question": "Czas oczekiwania na autobus (rozkład czasu przyjazdu autobusów jest losowy wokół średniej)",
       "correct": "normalny",
@@ -179,6 +173,126 @@
       "question": "Liczba wypadków przy pracy w fabryce w ciągu roku (średnio 12/rok)",
       "correct": "poissona",
       "explanation": "Wypadki zachodzą ze stałą średnią częstością (λ=12/rok), niezależnie od siebie, w dowolnym momencie roku z równym prawdopodobieństwem. Brak górnego limitu. Rozkład Poissona."
+    },
+    {
+      "id": 31,
+      "question": "Liczba rzutów kostką do wypadnięcia pierwszej szóstki",
+      "correct": "geometryczny",
+      "explanation": "Powtarzamy niezależne próby Bernoulliego (p=1/6) aż do pierwszego sukcesu. Liczba prób do pierwszego sukcesu ma rozkład geometryczny Geom(1/6)."
+    },
+    {
+      "id": 32,
+      "question": "Liczba losowań karty do wyciągnięcia pierwszego asa (ze zwracaniem)",
+      "correct": "geometryczny",
+      "explanation": "Każde losowanie to próba Bernoulliego z p=4/52. Zwracanie zapewnia niezależność prób. Liczymy próby do pierwszego sukcesu — rozkład geometryczny Geom(1/13)."
+    },
+    {
+      "id": 33,
+      "question": "Ile telefonów do klienta, zanim odbierze (p=0.3)",
+      "correct": "geometryczny",
+      "explanation": "Każdy telefon to niezależna próba z p=0.3. Interesuje nas ile prób potrzeba do pierwszego sukcesu (odebrania) — rozkład geometryczny Geom(0.3)."
+    },
+    {
+      "id": 34,
+      "question": "Liczba prób wpisania losowego 4-cyfrowego PIN-u do trafienia poprawnego",
+      "correct": "geometryczny",
+      "explanation": "Każda próba to losowe wpisanie PIN-u z p=1/10000. Próby są niezależne, liczymy ile potrzeba do pierwszego trafienia — rozkład geometryczny Geom(1/10000)."
+    },
+    {
+      "id": 35,
+      "question": "Ile pudełek z płatkami trzeba kupić, żeby trafić na naklejkę (p=0.1)",
+      "correct": "geometryczny",
+      "explanation": "Każde pudełko to niezależna próba z p=0.1 szansy na naklejkę. Liczymy pudełka do pierwszego sukcesu — rozkład geometryczny Geom(0.1)."
+    },
+    {
+      "id": 36,
+      "question": "Liczba strzałów do pierwszego trafienia w tarczę (p=0.4)",
+      "correct": "geometryczny",
+      "explanation": "Każdy strzał to niezależna próba Bernoulliego z p=0.4. Interesuje nas liczba strzałów do pierwszego trafienia — rozkład geometryczny Geom(0.4)."
+    },
+    {
+      "id": 37,
+      "question": "Ile razy trzeba rzucić monetą, żeby wypadł orzeł",
+      "correct": "geometryczny",
+      "explanation": "Rzuty monetą to niezależne próby Bernoulliego z p=0.5. Liczymy rzuty do pierwszego orła — rozkład geometryczny Geom(0.5)."
+    },
+    {
+      "id": 38,
+      "question": "Liczba rozmów kwalifikacyjnych do otrzymania pierwszej oferty pracy (p=0.2)",
+      "correct": "geometryczny",
+      "explanation": "Każda rozmowa to niezależna próba z p=0.2. Liczymy ile rozmów do pierwszej oferty — rozkład geometryczny Geom(0.2)."
+    },
+    {
+      "id": 39,
+      "question": "Ile pacjentów trzeba zbadać, żeby znaleźć pierwszego z rzadką chorobą (p=0.01)",
+      "correct": "geometryczny",
+      "explanation": "Każde badanie to niezależna próba z p=0.01. Liczymy badania do pierwszego pozytywnego wyniku — rozkład geometryczny Geom(0.01)."
+    },
+    {
+      "id": 40,
+      "question": "Liczba prób uruchomienia starego samochodu do pierwszego udanego startu (p=0.6)",
+      "correct": "geometryczny",
+      "explanation": "Każda próba uruchomienia to próba Bernoulliego z p=0.6. Liczymy próby do pierwszego sukcesu — rozkład geometryczny Geom(0.6)."
+    },
+    {
+      "id": 41,
+      "question": "Miesięczne zarobki pracowników w dużej firmie",
+      "correct": "lognormalny",
+      "explanation": "Zarobki są zawsze dodatnie, większość osób zarabia blisko mediany, ale jest długi ogon bardzo wysokich płac. Logarytm zarobków ma rozkład normalny — stąd rozkład log-normalny."
+    },
+    {
+      "id": 42,
+      "question": "Czas trwania sesji użytkownika na stronie internetowej",
+      "correct": "lognormalny",
+      "explanation": "Czasy sesji są dodatnie, większość jest krótka, ale zdarzają się bardzo długie. Rozkład jest silnie skośny w prawo — logarytm czasu sesji ma rozkład normalny, więc czas ma rozkład log-normalny."
+    },
+    {
+      "id": 43,
+      "question": "Wielkość plików na dysku komputera",
+      "correct": "lognormalny",
+      "explanation": "Rozmiary plików są dodatnie, większość jest mała, ale zdarzają się bardzo duże pliki. Rozkład jest silnie skośny w prawo — to klasyczny przykład rozkładu log-normalnego."
+    },
+    {
+      "id": 44,
+      "question": "Stężenie zanieczyszczeń w powietrzu (pomiary dobowe)",
+      "correct": "lognormalny",
+      "explanation": "Stężenia są zawsze dodatnie, większość dni ma niskie wartości, ale zdarzają się dni z bardzo wysokim zanieczyszczeniem. Logarytm stężeń ma rozkład normalny — rozkład log-normalny."
+    },
+    {
+      "id": 45,
+      "question": "Cena akcji spółki giełdowej",
+      "correct": "lognormalny",
+      "explanation": "Ceny akcji są zawsze dodatnie. Model geometrycznego ruchu Browna zakłada, że logarytmiczne stopy zwrotu mają rozkład normalny, co oznacza, że same ceny mają rozkład log-normalny."
+    },
+    {
+      "id": 46,
+      "question": "Czas naprawy awarii sprzętu w serwisie",
+      "correct": "lognormalny",
+      "explanation": "Czasy napraw są dodatnie, większość napraw jest szybka, ale zdarzają się bardzo długie. Rozkład jest skośny w prawo — logarytm czasu naprawy ma rozkład normalny, więc czas ma rozkład log-normalny."
+    },
+    {
+      "id": 47,
+      "question": "Powierzchnia mieszkań w dużym mieście",
+      "correct": "lognormalny",
+      "explanation": "Powierzchnie są dodatnie, większość mieszkań ma podobny metraż, ale zdarzają się bardzo duże apartamenty. Rozkład jest skośny w prawo — to rozkład log-normalny."
+    },
+    {
+      "id": 48,
+      "question": "Masa cząstek aerozolu w atmosferze",
+      "correct": "lognormalny",
+      "explanation": "Rozmiary i masy cząstek aerozolu są dodatnie i mają rozkład silnie skośny w prawo. W fizyce atmosfery modeluje się je rozkładem log-normalnym."
+    },
+    {
+      "id": 49,
+      "question": "Czas od zakażenia do wystąpienia objawów choroby (okres inkubacji)",
+      "correct": "lognormalny",
+      "explanation": "Okres inkubacji jest zawsze dodatni, większość osób zachoruje w podobnym czasie, ale u niektórych objawy pojawią się znacznie później. W epidemiologii modeluje się go rozkładem log-normalnym."
+    },
+    {
+      "id": 50,
+      "question": "Wielkość odszkodowań wypłacanych przez firmę ubezpieczeniową",
+      "correct": "lognormalny",
+      "explanation": "Odszkodowania są dodatnie, większość jest niewielka, ale zdarzają się bardzo duże wypłaty. Rozkład jest silnie skośny w prawo — w aktuariacie modeluje się to rozkładem log-normalnym."
     }
   ]
 }
