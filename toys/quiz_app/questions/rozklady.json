@@ -293,6 +293,66 @@
       "question": "Wielkość odszkodowań wypłacanych przez firmę ubezpieczeniową",
       "correct": "lognormalny",
       "explanation": "Odszkodowania są dodatnie, większość jest niewielka, ale zdarzają się bardzo duże wypłaty. Rozkład jest silnie skośny w prawo — w aktuariacie modeluje się to rozkładem log-normalnym."
+    },
+    {
+      "id": 51,
+      "question": "Czas oczekiwania na następny autobus, gdy autobusy przyjeżdżają losowo (średnio co 10 min)",
+      "correct": "wykladniczy",
+      "explanation": "Jeśli autobusy przyjeżdżają losowo ze stałą średnią częstością (proces Poissona), to czas między kolejnymi przyjazda­mi ma rozkład wykładniczy. Kluczowa cecha: brak pamięci — nie ma znaczenia, ile już czekasz."
+    },
+    {
+      "id": 52,
+      "question": "Czas między kolejnymi zgłoszeniami na infolinię",
+      "correct": "wykladniczy",
+      "explanation": "Zgłoszenia przychodzą jako proces Poissona (ze stałą λ). Czas między kolejnymi zgłoszeniami ma rozkład wykładniczy Exp(λ). To naturalny partner rozkładu Poissona."
+    },
+    {
+      "id": 53,
+      "question": "Czas do pierwszej awarii nowego serwera",
+      "correct": "wykladniczy",
+      "explanation": "Przy założeniu stałej intensywności awarii (brak starzenia się), czas do awarii ma rozkład wykładniczy. Cecha braku pamięci: prawdopodobieństwo awarii w następnej godzinie nie zależy od tego, ile serwer już działa."
+    },
+    {
+      "id": 54,
+      "question": "Czas między kolejnymi trzęsieniami ziemi w danym regionie",
+      "correct": "wykladniczy",
+      "explanation": "Trzęsienia ziemi zachodzą losowo ze stałą średnią częstością. Czas między nimi ma rozkład wykładniczy — każda chwila jest równie prawdopodobna, niezależnie od tego, kiedy było ostatnie trzęsienie."
+    },
+    {
+      "id": 55,
+      "question": "Czas między kolejnymi klientami wchodzącymi do sklepu",
+      "correct": "wykladniczy",
+      "explanation": "Klienci przychodzą jako proces Poissona. Czas między kolejnymi klientami ma rozkład wykładniczy Exp(λ). Poisson liczy zdarzenia w przedziale czasu, wykładniczy mierzy czas między zdarzeniami."
+    },
+    {
+      "id": 56,
+      "question": "Czas do rozpadu pojedynczego atomu promieniotwórczego",
+      "correct": "wykladniczy",
+      "explanation": "Rozpad promieniotwórczy to klasyczny proces bezpamięciowy — prawdopodobieństwo rozpadu w następnej sekundzie nie zależy od tego, ile atom już istnieje. Czas do rozpadu ma rozkład wykładniczy."
+    },
+    {
+      "id": 57,
+      "question": "Czas między kolejnymi wypadkami na danym odcinku autostrady",
+      "correct": "wykladniczy",
+      "explanation": "Wypadki zachodzą losowo ze stałą średnią częstością (proces Poissona). Czas między kolejnymi wypadkami ma rozkład wykładniczy."
+    },
+    {
+      "id": 58,
+      "question": "Czas oczekiwania na kolejne połączenie telefoniczne w centrali",
+      "correct": "wykladniczy",
+      "explanation": "Połączenia przychodzą jako proces Poissona. Czas między kolejnymi połączeniami ma rozkład wykładniczy — naturalny partner Poissona w wymiarze ciągłym."
+    },
+    {
+      "id": 59,
+      "question": "Czas do znalezienia pierwszego błędu podczas code review (przy stałej intensywności przeglądania)",
+      "correct": "wykladniczy",
+      "explanation": "Przy stałym tempie przeglądania kodu, błędy pojawiają się losowo ze stałą częstością. Czas do pierwszego znalezionego błędu ma rozkład wykładniczy."
+    },
+    {
+      "id": 60,
+      "question": "Czas między kolejnymi meteorami podczas deszczu meteorów",
+      "correct": "wykladniczy",
+      "explanation": "Meteory pojawiają się losowo ze stałą średnią częstością (proces Poissona). Czas między kolejnymi meteorami ma rozkład wykładniczy — każda chwila jest równie prawdopodobna."
     }
   ]
 }

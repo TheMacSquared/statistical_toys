@@ -32,7 +32,7 @@
       "emoji": "📈",
       "description": "Dopasuj zjawisko do rozkładu prawdopodobieństwa",
       "file": "rozklady.json",
-      "answer_type": "multiple_choice_5",
+      "answer_type": "multiple_choice_6",
       "options": [
         {
           "value": "dwumianowy",
@@ -53,6 +53,10 @@
         {
           "value": "lognormalny",
           "label": "📐 Rozkład log-normalny"
+        },
+        {
+          "value": "wykladniczy",
+          "label": "⏱️ Rozkład wykładniczy"
         }
       ]
     },

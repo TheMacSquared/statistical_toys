@@ -326,7 +326,8 @@ function generateAnswerButtons() {
         // Standardowy quiz
         if (QUIZ_CONFIG.answer_type === 'multiple_choice_4' ||
             QUIZ_CONFIG.answer_type === 'multiple_choice_3' ||
-            QUIZ_CONFIG.answer_type === 'multiple_choice_5') {
+            QUIZ_CONFIG.answer_type === 'multiple_choice_5' ||
+            QUIZ_CONFIG.answer_type === 'multiple_choice_6') {
             options = QUIZ_CONFIG.options;
         } else if (QUIZ_CONFIG.answer_type === 'multiple_choice_random') {
             options = currentQuestion.options;
